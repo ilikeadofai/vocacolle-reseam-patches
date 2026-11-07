@@ -167,6 +167,29 @@ private val descriptionWorkers = ThreadPoolExecutor(2, 2, 30, TimeUnit.SECONDS, 
 @Export
 fun displayDescription(description: String?): String? {
     if (description == null || !AiSettings.aiDescriptions.value) return description
+    return translatePieces(description)
+}
+
+/** A notice's title, the same way: waited for off the main thread. */
+@Export
+fun displayNoticeTitle(title: String?): String? {
+    if (title == null || !AiSettings.aiNotices.value) return title
+    return translatePieces(title)
+}
+
+/**
+ * A notice's article, opened through Google Translate's page proxy, which translates the page
+ * and keeps its links working. Only web pages are wrapped; anything else opens as it is.
+ */
+@Export
+fun noticeArticleUrl(url: String?): String? {
+    if (url == null || !AiSettings.aiNotices.value) return url
+    if (!url.startsWith("https://") && !url.startsWith("http://")) return url
+    return "https://translate.google.com/translate?sl=ja&tl=${AiSettings.aiLanguage.value}&hl=${AiSettings.aiLanguage.value}&u=" +
+        URLEncoder.encode(url, "UTF-8")
+}
+
+private fun translatePieces(description: String): String {
     if (description.length > MAX_DESCRIPTION_CHARS || !JAPANESE.containsMatchIn(description)) return description
     val config = config() ?: return description
     val parts = TAG_OR_TEXT.findAll(description).map { it.value }.toList()

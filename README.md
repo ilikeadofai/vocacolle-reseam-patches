@@ -89,10 +89,12 @@ link in the share text with the YouTube **Original** PV that VocaDB lists for th
 Niconico video. Videos VocaDB hasn't been asked about yet keep the Niconico link and are looked
 up for the next share; the player's VocaDB title lookups fill the same cache.
 
-### Title translation
+### Content translation
 
 Off by default, with its own switch, also off. Translates Japanese song titles in the player
-into Korean or English. The service is Google Translate's public web endpoint by default (no
+and on the work detail screen, work descriptions (text between HTML tags only, so links and
+layout stay), and notice titles, into Korean or English. Notice articles open through Google
+Translate's page proxy. The service is Google Translate's public web endpoint by default (no
 key), or any OpenAI-compatible chat completions API with your own key, set from an **API key**
 row that stores it encrypted with the Android Keystore and keeps it out of settings exports.
 Only titles containing Japanese are sent, and not those VocaDB already titled. Translations are

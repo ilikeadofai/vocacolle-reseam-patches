@@ -23,11 +23,25 @@ private val mediaDetailDataInit = method("mediaDetailData.<init>") {
     }
 }
 
+/** `VocacolleNiconicoInfo(title, articleUrl, updateTime)`: one notice in Settings. */
+private val noticeInfo = klass("vocacolleNiconicoInfo") { strings("VocacolleNiconicoInfo(title=") }
+private val noticeInfoInit = method("vocacolleNiconicoInfo.<init>") {
+    inClass(noticeInfo)
+    custom { name == "<init>" && parameterTypes.size == 3 && parameterTypes[0] == Type.String }
+}
+
+/** The Settings click handler that opens a notice's article: `(fragment, url) -> open(Uri.parse(url))`. */
+private val openNoticeArticle = method("openNoticeArticle") {
+    inClass(klass("jp.nicovideo.nicobox.ui.setting.SettingFragment"))
+    params("jp.nicovideo.nicobox.ui.setting.SettingFragment", Type.String)
+    calls { owner("android.net.Uri"); name("parse") }
+}
+
 @Suppress("unused")
-val titleTranslation = patch("Title and description translation") {
+val titleTranslation = patch("Content translation") {
     description(
         """
-        Translates Japanese song titles in the player and work descriptions into Korean or English, with Google
+        Translates Japanese song titles, work descriptions, and notices into Korean or English, with Google
         Translate (no key) or an OpenAI-compatible API and your own key. Off until turned on in
         the Reseam patches screen; titles are then sent to the chosen service.
         """,
@@ -40,6 +54,7 @@ val titleTranslation = patch("Title and description translation") {
             VocaColleStrings.sectionAi,
             AiSettings.aiTitles,
             AiSettings.aiDescriptions,
+            AiSettings.aiNotices,
             AiSettings.aiLanguage,
             AiSettings.aiProvider,
             AiSettings.aiBaseUrl,
@@ -54,6 +69,10 @@ val titleTranslation = patch("Title and description translation") {
         gate(AiSettings.aiTitles) {
             playerVideoInfoInit.before { param(1).assign(TitleTranslator.displayTitle(param(0), param(1))) }
             mediaDetailDataInit.before { param(1).assign(TitleTranslator.displayTitle(param(0), param(1))) }
+        }
+        gate(AiSettings.aiNotices) {
+            noticeInfoInit.before { param(0).assign(TitleTranslator.displayNoticeTitle(param(0))) }
+            openNoticeArticle.before { param(1).assign(TitleTranslator.noticeArticleUrl(param(1))) }
         }
         gate(AiSettings.aiDescriptions) {
             mediaDetailDataInit.before { param(2).assign(TitleTranslator.displayDescription(param(2))) }

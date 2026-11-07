@@ -21,6 +21,8 @@
     <string name="ai_titles_summary">Translates Japanese song titles in the player. Each title is sent to the translation service below; translations are cached on the device. Titles VocaDB already provides are not sent.</string>
     <string name="ai_descriptions">Translate work descriptions</string>
     <string name="ai_descriptions_summary">Translates the Japanese text of a work\'s description, keeping its links and layout. The text is sent to the translation service below.</string>
+    <string name="ai_notices">Translate notices</string>
+    <string name="ai_notices_summary">Translates notice titles in Settings with the service below, and opens notice articles through Google Translate\'s page translation, which receives the article\'s address.</string>
     <string name="ai_language">Translate into</string>
     <string name="ai_language_ko">Korean</string>
     <string name="ai_language_en">English</string>
