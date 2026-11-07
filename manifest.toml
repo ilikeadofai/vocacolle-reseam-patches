@@ -1,0 +1,5 @@
+[bundle]
+name = "vocacolle-reseam-patches"
+author = "Your Name"
+description = "Example patches for Reseam"
+format_version = 1
