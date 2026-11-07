@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_title">Reseam patches</string>
+
+    <string name="section_ads">Ads and Premium prompts</string>
+    <string name="hide_app_open_ads">Hide app-open ads</string>
+    <string name="hide_app_open_ads_summary">Skips the full-screen ad shown when the app starts or returns.</string>
+    <string name="hide_display_ads">Hide banner and in-feed ads</string>
+    <string name="hide_display_ads_summary">Stops ads on Home, Search, Library, and playlists from loading.</string>
+    <string name="skip_audio_ads">Skip audio ads</string>
+    <string name="skip_audio_ads_summary">Plays the next track without the voice or network ad between tracks.</string>
+    <string name="hide_premium_prompts">Hide Premium pop-ups</string>
+    <string name="hide_premium_prompts_summary">Hides automatic Premium sheets and the pop-ups shown for Premium-only features. Premium registration stays available in Settings.</string>
+</resources>

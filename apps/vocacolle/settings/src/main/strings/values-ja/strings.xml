@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="menu_title">Reseam パッチ</string>
+
+    <string name="section_ads">広告とプレミアム案内</string>
+    <string name="hide_app_open_ads">起動時広告を非表示</string>
+    <string name="hide_app_open_ads_summary">アプリの起動・復帰時に表示される全画面広告をスキップします。</string>
+    <string name="hide_display_ads">バナー・フィード広告を非表示</string>
+    <string name="hide_display_ads_summary">ホーム、検索、ライブラリ、プレイリストの広告を読み込みません。</string>
+    <string name="skip_audio_ads">音声広告をスキップ</string>
+    <string name="skip_audio_ads_summary">曲間の音声広告・ネットワーク広告を再生せずに次の曲へ進みます。</string>
+    <string name="hide_premium_prompts">プレミアムのポップアップを非表示</string>
+    <string name="hide_premium_prompts_summary">自動で表示されるプレミアム案内シートと、プレミアム限定機能のポップアップを非表示にします。プレミアム登録は設定から引き続き行えます。</string>
+</resources>

@@ -1,0 +1,1615 @@
+# key	ja (VocaColle 7.48.0 source)	ko	en
+abc_action_bar_home_description	Navigate home	홈으로 이동	Navigate home
+abc_action_bar_up_description	Navigate up	위로 이동	Navigate up
+abc_action_menu_overflow_description	More options	옵션 더보기	More options
+abc_action_mode_done	Done	완료	Done
+abc_activity_chooser_view_see_all	See all	모두 보기	See all
+abc_activitychooserview_choose_application	Choose an app	앱 선택	Choose an app
+abc_capital_off	OFF	꺼짐	OFF
+abc_capital_on	ON	켜짐	ON
+abc_menu_alt_shortcut_label	Alt+	Alt+	Alt+
+abc_menu_ctrl_shortcut_label	Ctrl+	Ctrl+	Ctrl+
+abc_menu_delete_shortcut_label	delete	Delete	delete
+abc_menu_enter_shortcut_label	enter	Enter	enter
+abc_menu_function_shortcut_label	Function+	Function+	Function+
+abc_menu_meta_shortcut_label	Meta+	Meta+	Meta+
+abc_menu_shift_shortcut_label	Shift+	Shift+	Shift+
+abc_menu_space_shortcut_label	space	Space	space
+abc_menu_sym_shortcut_label	Sym+	Sym+	Sym+
+abc_prepend_shortcut_label	Menu+	Menu+	Menu+
+abc_search_hint	Search…	검색…	Search…
+abc_searchview_description_clear	Clear query	검색어 지우기	Clear query
+abc_searchview_description_query	Search query	검색어	Search query
+abc_searchview_description_search	Search	검색	Search
+abc_searchview_description_submit	Submit query	검색어 제출	Submit query
+abc_searchview_description_voice	Voice search	음성 검색	Voice search
+abc_shareactionprovider_share_with	Share with	공유 대상	Share with
+abc_shareactionprovider_share_with_application	Share with %s	%s와 공유	Share with %s
+abc_toolbar_collapse_description	Collapse	접기	Collapse
+account	アカウント	계정	Account
+account_detail_show	アカウント設定を表示	계정 설정 보기	View account settings
+account_release_attention_button_continue_logout	ログアウト	로그아웃	Log out
+account_release_attention_button_continue_unregister	退会	탈퇴	Delete account
+account_release_attention_button_open_library	ライブラリを開く	라이브러리 열기	Open library
+account_release_attention_message_cant_unregister	現在お使いのアカウントは有料支払い情報があるため退会できません。ニコニコプレミアムを解約し、会員期間満了後に改めて行ってください。	현재 사용 중인 계정에 유료 결제 정보가 있어 탈퇴할 수 없습니다. 니코니코 프리미엄을 해지하고 회원 기간이 만료된 후 다시 진행해 주세요.	You can't delete your account because it has paid payment information. Cancel Niconico Premium, then try again after your membership period ends.
+account_release_attention_message_cant_unregister_with_error	現在お使いのアカウントはエラーによりニコニコプレミアムを解約できません。詳しくはサポートにお問い合わせください。	현재 사용 중인 계정은 오류로 인해 니코니코 프리미엄을 해지할 수 없습니다. 자세한 내용은 고객지원에 문의해 주세요.	Niconico Premium can't be canceled for this account due to an error. Please contact support for details.
+account_release_attention_message_cant_unregister_with_expire_format	現在お使いのアカウントはニコニコプレミアム会員期間が残っているため退会できません。%s以降に改めて行ってください。	현재 사용 중인 계정은 니코니코 프리미엄 회원 기간이 남아 있어 탈퇴할 수 없습니다. %s 이후 다시 진행해 주세요.	You can't delete your account because your Niconico Premium membership period is still active. Please try again after %s.
+account_release_attention_message_logout	「ローカルリスト」へコピーしておくとログアウト後も別のアカウントで利用できます。	‘로컬 리스트’에 복사해 두면 로그아웃 후에도 다른 계정에서 이용할 수 있습니다.	Copying items to “Local List” lets you use them with another account even after logging out.
+account_release_attention_message_unregister	「ローカルリスト」へコピーしておくと退会後も別のアカウントで利用できます。	‘로컬 리스트’에 복사해 두면 탈퇴 후에도 다른 계정에서 이용할 수 있습니다.	Copying items to “Local List” lets you use them with another account even after deleting your account.
+account_release_attention_open_inquiry	お問い合わせを開く	문의 열기	Open contact form
+account_release_attention_stop_subscription	ニコニコプレミアムを解約する	니코니코 프리미엄 해지하기	Cancel Niconico Premium
+account_release_attention_title	「あとで見る」「マイリスト」が失なわれますがよろしいですか？	‘나중에 보기’‘마이리스트’가 사라집니다. 계속하시겠습니까?	“Watch Later” and “My List” will be lost. Are you sure?
+account_setting	アカウント設定	계정 설정	Account settings
+account_setting_restricted_by_age_restriction_dialog_message	ご登録の生年月日に基づき、現在は設定の変更が制限されています。\n登録されている生年月日は、プロフィールからご確認いただけます。	등록된 생년월일을 기준으로 현재 설정 변경이 제한되어 있습니다.\n등록된 생년월일은 프로필에서 확인할 수 있습니다.	Based on your registered date of birth, changes to your settings are currently restricted.\nYou can check your registered date of birth in your profile.
+action_sign_in	Sign in or register	로그인 또는 등록	Sign in or register
+action_sign_in_short	Sign in	로그인	Sign in
+add	追加	추가	Add
+add_to_following	フォローしました。	팔로우했습니다.	Followed.
+add_to_library	ライブラリに追加しました。	라이브러리에 추가했습니다.	Added to library.
+add_to_playlist	プレイリストに追加しました。	플레이리스트에 추가했습니다.	Added to playlist.
+age_verification_dialog_message_on_home	※他のユーザーには公開されません	※다른 사용자에게 공개되지 않습니다	※This will not be visible to other users
+age_verification_dialog_message_on_masked_content	入力後にコンテンツの表示設定を変更できます。\n※他のユーザーには公開されません	입력 후 콘텐츠 표시 설정을 변경할 수 있습니다.\n※다른 사용자에게 공개되지 않습니다	You can change the content visibility settings after entering this information.\n※This will not be visible to other users
+age_verification_dialog_negative_button_on_masked_content	あとで	나중에	Later
+age_verification_dialog_positive_button_on_masked_content	保存して表示設定へ	저장하고 표시 설정으로	Save and go to visibility settings
+age_verification_dialog_title	生年月日の入力	생년월일 입력	Enter your date of birth
+age_verification_failed_to_verification_message	サーバーの通信に失敗しました。\n時間をおいて再度お試しください。	서버 통신에 실패했습니다.\n잠시 후 다시 시도해 주세요.	Failed to connect to the server.\nPlease try again later.
+all_play	すべて再生	모두 재생	Play all
+androidx_compose_foundation_autofill	Autofill	자동 입력	Autofill
+androidx_compose_ui_autofill	Autofill	자동 입력	Autofill
+app_feedback	フィードバック	피드백	Feedback
+app_info	ボカコレについて	보카코레 정보	About VocaColle
+app_inquiry	お問い合わせ	문의	Contact us
+app_maintenance_message	ご迷惑をおかけしますがしばらくお待ちください。\nメンテナンスに関する情報は お知らせ をご確認ください。	불편을 드려 죄송합니다. 잠시만 기다려 주세요.\n점검 관련 정보는 공지사항을 확인해 주세요.	We apologize for the inconvenience. Please wait a while.\nCheck Announcements for maintenance information.
+app_maintenance_reload	再読み込み	새로고침	Reload
+app_maintenance_title	ただいまメンテナンス中です	현재 점검 중입니다	Currently undergoing maintenance
+app_setting	アプリ設定	앱 설정	App settings
+app_version_info	バージョン情報	버전 정보	Version information
+bottom_navigation_home	ホーム	홈	Home
+bottom_navigation_library	ライブラリ	라이브러리	Library
+bottom_navigation_mv_medley	MVメドレー	MV 메들리	Music video medley
+bottom_navigation_ranking	ランキング	랭킹	Rankings
+bottom_navigation_search	検索	검색	Search
+bottomsheet_action_collapse	Collapse the bottom sheet	하단 시트 접기	Collapse the bottom sheet
+bottomsheet_action_expand	Expand the bottom sheet	하단 시트 펼치기	Expand the bottom sheet
+bottomsheet_action_expand_halfway	Expand halfway	절반 펼치기	Expand halfway
+bottomsheet_drag_handle_content_description	Drag handle	드래그 핸들	Drag handle
+cache	キャッシュ	캐시	Cache
+cache_all_delete	キャッシュしたコンテンツを削除	캐시한 콘텐츠 삭제	Delete cached content
+cache_all_delete_dialog_message	キャッシュをすべて削除しますか？	캐시를 모두 삭제하시겠습니까?	Delete all cached content?
+cache_capacity	キャッシュ制限	캐시 제한	Cache limit
+cache_capacity_annotation	キャッシュできる容量を制限します。	캐시할 수 있는 용량을 제한합니다.	Limit the amount of content that can be cached.
+cache_high_quality_audio	高音質でキャッシュ	고음질로 캐시	Cache in high quality
+cache_high_quality_audio_annotation	高音質非対応の作品は標準の音質でキャッシュされます。既にキャッシュされた作品はキャッシュしたときの音質で引き続き再生されます。	고음질을 지원하지 않는 작품은 표준 음질로 캐시됩니다. 이미 캐시된 작품은 캐시할 때의 음질로 계속 재생됩니다.	Content that doesn't support high-quality audio will be cached in standard quality. Content already cached will continue to play in the quality used when it was cached.
+cache_notification_aborted_cache_capacity_limit_big_text	設定上限に到達したためキャッシュを停止しました	설정 한도에 도달하여 캐시를 중지했습니다	Caching stopped because the set limit was reached
+cache_notification_action_title	キャッシュを停止する	캐시 중지	Stop caching
+cache_notification_complete_big_content_title	キャッシュ完了	캐시 완료	Caching complete
+cache_notification_complete_big_text	キャッシュが完了しました	캐시가 완료되었습니다	Caching is complete
+cache_notification_processing_big_content_title	キャッシュ取得中の作品	캐시 중인 작품	Content being cached
+cache_notification_processing_big_text	残り %d作品	남은 작품 %d개	%d works remaining
+cache_notification_session_count_limited_big_text	節約視聴リストへの追加に失敗しました。\nしばらくしてからもう一度お試しください。	데이터 절약 시청 리스트에 추가하지 못했습니다.\n잠시 후 다시 시도해 주세요.	Failed to add to the data-saving watchlist.\nPlease try again later.
+cache_notification_stop_big_content_title	キャッシュ停止	캐시 중지	Caching stopped
+cache_notification_stop_big_text	キャッシュを停止しました	캐시를 중지했습니다	Caching stopped
+cache_notification_suspend_big_content_title	キャッシュ中断中	캐시 일시 중단 중	Caching paused
+cache_notification_suspend_big_text	アプリ設定および通信環境をご確認ください	앱 설정 및 통신 환경을 확인해 주세요	Check your app settings and network connection
+cache_wifi_only	Wi-Fi接続時のみキャッシュ	Wi-Fi 연결 시에만 캐시	Cache only over Wi-Fi
+cache_wifi_only_annotation	キャッシュ時の通信量を節約します。	캐시할 때 데이터 사용량을 절약합니다.	Reduce data usage while caching.
+call_notification_answer_action	Answer	응답	Answer
+call_notification_answer_video_action	Video	동영상	Video
+call_notification_decline_action	Decline	거절	Decline
+call_notification_hang_up_action	Hang Up	전화 끊기	Hang Up
+call_notification_incoming_text	Incoming call	수신 전화	Incoming call
+call_notification_ongoing_text	Ongoing call	통화 중	Ongoing call
+call_notification_screening_text	Screening an incoming call	수신 전화 확인 중	Screening an incoming call
+cancel	キャンセル	취소	Cancel
+channel	チャンネル	채널	Channel
+character_counter_content_description	Characters entered %1$d of %2$d	입력한 글자 수 %1$d/%2$d	Characters entered %1$d of %2$d
+character_counter_overflowed_content_description	Character limit exceeded %1$d of %2$d	글자 수 제한 초과 %1$d/%2$d	Character limit exceeded %1$d of %2$d
+clear_text_end_icon_content_description	Clear text	텍스트 지우기	Clear text
+close	閉じる	닫기	Close
+close_drawer	Close navigation menu	탐색 메뉴 닫기	Close navigation menu
+close_sheet	Close sheet	시트 닫기	Close sheet
+common_google_play_services_enable_button	Enable	사용 설정	Enable
+common_google_play_services_enable_text	%1$s won't work unless you enable Google Play services.	Google Play 서비스를 사용 설정해야 %1$s이(가) 작동합니다.	%1$s won't work unless you enable Google Play services.
+common_google_play_services_enable_title	Enable Google Play services	Google Play 서비스 사용 설정	Enable Google Play services
+common_google_play_services_install_button	Install	설치	Install
+common_google_play_services_install_text	%1$s won't run without Google Play services, which are missing from your device.	기기에 Google Play 서비스가 없어 %1$s을(를) 실행할 수 없습니다.	%1$s won't run without Google Play services, which are missing from your device.
+common_google_play_services_install_title	Get Google Play services	Google Play 서비스 받기	Get Google Play services
+common_google_play_services_notification_channel_name	Google Play services availability	Google Play 서비스 사용 가능 여부	Google Play services availability
+common_google_play_services_notification_ticker	Google Play services error	Google Play 서비스 오류	Google Play services error
+common_google_play_services_unknown_issue	%1$s is having trouble with Google Play services. Please try again.	%1$s에서 Google Play 서비스에 문제가 발생했습니다. 다시 시도해 주세요.	%1$s is having trouble with Google Play services. Please try again.
+common_google_play_services_unsupported_text	%1$s won't run without Google Play services, which are not supported by your device.	이 기기에서 Google Play 서비스가 지원되지 않아 %1$s을(를) 실행할 수 없습니다.	%1$s won't run without Google Play services, which are not supported by your device.
+common_google_play_services_update_button	Update	업데이트	Update
+common_google_play_services_update_text	%1$s won't run unless you update Google Play services.	Google Play 서비스를 업데이트해야 %1$s이(가) 실행됩니다.	%1$s won't run unless you update Google Play services.
+common_google_play_services_update_title	Update Google Play services	Google Play 서비스 업데이트	Update Google Play services
+common_google_play_services_updating_text	%1$s won't run without Google Play services, which are currently updating.	Google Play 서비스가 현재 업데이트 중이어서 %1$s을(를) 실행할 수 없습니다.	%1$s won't run without Google Play services, which are currently updating.
+common_google_play_services_wear_update_text	New version of Google Play services needed. It will update itself shortly.	새 버전의 Google Play 서비스가 필요합니다. 곧 자동으로 업데이트됩니다.	New version of Google Play services needed. It will update itself shortly.
+common_info_skip	スキップ	건너뛰기	Skip
+common_open_on_phone	Open on phone	휴대전화에서 열기	Open on phone
+common_rounded_meta_data_text_digit_one_hundred_million	億	억	100 million
+common_rounded_meta_data_text_digit_ten_thousand	万	만	10K
+common_signin_button_text	Sign in	로그인	Sign in
+common_signin_button_text_long	Sign in with Google	Google로 로그인	Sign in with Google
+complete	完了	완료	Done
+continuous_play	連続再生	연속 재생	Continuous play
+copy	コピー	복사	Copy
+copy_toast_msg	Link copied to clipboard	링크가 클립보드에 복사됨	Link copied to clipboard
+date_more_than_a_month_ago	1ヶ月以上前	1개월 이상 전	More than a month ago
+date_today	今日	오늘	Today
+date_within_a_month	1ヶ月	1개월	1 month
+date_within_a_week	1週間	1주일	1 week
+date_yesterday	昨日	어제	Yesterday
+default_error_message	Invalid input	잘못된 입력	Invalid input
+default_notification_channel_name	Now playing	현재 재생 중	Now playing
+default_popup_window_title	Pop-Up Window	팝업 창	Pop-Up Window
+delete	削除	삭제	Delete
+delete_from_playlist	%sから削除しました。	%s에서 삭제했습니다.	Removed from %s.
+detail_next	続きを読む	계속 읽기	Read more
+dropdown_menu	Dropdown menu	드롭다운 메뉴	Dropdown menu
+edit	編集	편집	Edit
+edit_profile	プロフィール編集	프로필 편집	Edit profile
+error_a11y_label	Error: invalid	오류: 잘못됨	Error: invalid
+error_audiowork_detail_fetch_cover_work_general	作品情報の取得に失敗しました。	작품 정보를 가져오지 못했습니다.	Failed to retrieve work information.
+error_audiowork_detail_fetch_cover_work_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_audiowork_detail_fetch_cover_work_invalid_parameter	作品情報の取得に失敗しました。	작품 정보를 가져오지 못했습니다.	Failed to retrieve work information.
+error_audiowork_detail_fetch_cover_work_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_audiowork_detail_fetch_cover_work_unknown	作品情報の取得に失敗しました。	작품 정보를 가져오지 못했습니다.	Failed to retrieve work information.
+error_common_add_muted_owner_bad_request	非表示に失敗しました。	숨기기에 실패했습니다.	Failed to hide.
+error_common_add_muted_owner_general	非表示に失敗しました。	숨기기에 실패했습니다.	Failed to hide.
+error_common_add_muted_owner_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_common_add_muted_owner_invalid_user_session	非表示に失敗しました。	숨기기에 실패했습니다.	Failed to hide.
+error_common_add_muted_owner_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_common_add_muted_owner_no_user_session	非表示に失敗しました。	숨기기에 실패했습니다.	Failed to hide.
+error_common_add_muted_owner_not_found	非表示に失敗しました。	숨기기에 실패했습니다.	Failed to hide.
+error_common_add_muted_owner_premium_account_limit	登録数が上限に達しています。アカウント設定から一覧を確認できます。	등록 수가 한도에 도달했습니다. 계정 설정에서 목록을 확인할 수 있습니다.	You have reached the registration limit. You can view the list in Account settings.
+error_common_add_muted_owner_regular_account_limit	登録数が上限に達しています。アカウント設定から一覧を確認できます。	등록 수가 한도에 도달했습니다. 계정 설정에서 목록을 확인할 수 있습니다.	You have reached the registration limit. You can view the list in Account settings.
+error_common_add_muted_owner_unknown	非表示に失敗しました。	숨기기에 실패했습니다.	Failed to hide.
+error_common_add_playlist_item_create_limit_exceeded_premium	登録数が上限に達しています。	등록 수가 한도에 도달했습니다.	You have reached the registration limit.
+error_common_add_playlist_item_duplicated	すでに登録されています。	이미 등록되어 있습니다.	Already added.
+error_common_add_playlist_item_forbidden	プレイリスト追加に失敗しました。	플레이리스트에 추가하지 못했습니다.	Failed to add to the playlist.
+error_common_add_playlist_item_general	プレイリスト追加に失敗しました。	플레이리스트에 추가하지 못했습니다.	Failed to add to the playlist.
+error_common_add_playlist_item_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_common_add_playlist_item_invalid_parameter	プレイリスト追加に失敗しました。	플레이리스트에 추가하지 못했습니다.	Failed to add to the playlist.
+error_common_add_playlist_item_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	The service is currently undergoing maintenance. Please wait until it is complete.
+error_common_add_playlist_item_not_found	プレイリスト追加に失敗しました。	플레이리스트에 추가하지 못했습니다.	Failed to add to the playlist.
+error_common_add_playlist_item_storage_create_limit_exceeded	登録数が上限に達しています。	등록 수가 한도에 도달했습니다.	You have reached the maximum number of items.
+error_common_add_playlist_item_unauthorized	プレイリスト追加に失敗しました。	플레이리스트에 추가하지 못했습니다.	Failed to add to the playlist.
+error_common_add_playlist_item_unknown	プレイリスト追加に失敗しました。	플레이리스트에 추가하지 못했습니다.	Failed to add to the playlist.
+error_common_check_account_releasable_general	エラーのため失敗しました。	오류로 인해 실패했습니다.	The operation failed due to an error.
+error_common_check_account_releasable_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	The service is currently undergoing maintenance. Please wait until it is complete.
+error_common_delete_locallist_general	削除に失敗しました。	삭제에 실패했습니다.	Failed to delete.
+error_common_delete_mylist_general	削除に失敗しました。	삭제에 실패했습니다.	Failed to delete.
+error_common_delete_mylist_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_common_delete_mylist_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	The service is currently undergoing maintenance. Please wait until it is complete.
+error_common_delete_mylist_not_found	削除に失敗しました。指定されたマイリストが見つかりません。	삭제에 실패했습니다. 지정한 마이리스트를 찾을 수 없습니다.	Failed to delete. The specified My List could not be found.
+error_common_delete_playlist_general	削除に失敗しました。	삭제에 실패했습니다.	Failed to delete.
+error_common_delete_playlist_item_forbidden	動画の削除に失敗しました。	동영상을 삭제하지 못했습니다.	Failed to delete the video.
+error_common_delete_playlist_item_general	動画の削除に失敗しました。	동영상을 삭제하지 못했습니다.	Failed to delete the video.
+error_common_delete_playlist_item_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_common_delete_playlist_item_invalid_parameter	動画の削除に失敗しました。	동영상을 삭제하지 못했습니다.	Failed to delete the video.
+error_common_delete_playlist_item_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	The service is currently undergoing maintenance. Please wait until it is complete.
+error_common_delete_playlist_item_not_found	削除に失敗しました。指定された動画が見つかりません。	삭제하지 못했습니다. 지정한 동영상을 찾을 수 없습니다.	Failed to delete. The specified video could not be found.
+error_common_delete_playlist_item_unauthorized	動画の削除に失敗しました。	동영상을 삭제하지 못했습니다.	Failed to delete the video.
+error_common_delete_playlist_item_unknown	動画の削除に失敗しました。	동영상을 삭제하지 못했습니다.	Failed to delete the video.
+error_common_follow_user_blocked_by_follower	ブロック中のユーザーです。ニコニコ動画でブロックを解除してください。	차단 중인 사용자입니다. 니코니코 동영상에서 차단을 해제해 주세요.	This user has blocked you. Unblock them on NicoNico Video.
+error_common_follow_user_blocked_user	非公開のユーザーです。	비공개 사용자입니다.	This user is private.
+error_common_follow_user_gateway_timeout	ユーザーのフォローに失敗しました。時間を置いて再度お試しください。	사용자를 팔로우하지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to follow the user. Please try again later.
+error_common_follow_user_general	ユーザーのフォローに失敗しました。	사용자를 팔로우하지 못했습니다.	Failed to follow the user.
+error_common_follow_user_limit_exceeded	フォロー数が上限に達しています。	팔로우 수가 한도에 도달했습니다.	You have reached the maximum number of users you can follow.
+error_common_follow_user_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	The service is currently undergoing maintenance. Please wait until it is complete.
+error_common_follow_user_not_found	ユーザー情報が見つかりません。	사용자 정보를 찾을 수 없습니다.	User information could not be found.
+error_common_follow_user_too_many_requests	ユーザーのフォローに失敗しました。時間を置いて再度お試しください。	사용자를 팔로우하지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to follow the user. Please try again later.
+error_common_open_url_general	遷移に失敗しました。	이동하지 못했습니다.	Failed to open the link.
+error_common_remove_muted_owner_bad_request	非表示の解除に失敗しました。	숨김을 해제하지 못했습니다.	Failed to unhide.
+error_common_remove_muted_owner_general	非表示の解除に失敗しました。	숨김을 해제하지 못했습니다.	Failed to unhide.
+error_common_remove_muted_owner_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_common_remove_muted_owner_invalid_user_session	非表示の解除に失敗しました。	숨김을 해제하지 못했습니다.	Failed to unhide.
+error_common_remove_muted_owner_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_common_remove_muted_owner_no_user_session	非表示の解除に失敗しました。	숨김을 해제하지 못했습니다.	Failed to unhide.
+error_common_remove_muted_owner_not_found	非表示の解除に失敗しました。	숨김을 해제하지 못했습니다.	Failed to unhide.
+error_common_remove_muted_owner_unknown	非表示の解除に失敗しました。	숨김을 해제하지 못했습니다.	Failed to unhide.
+error_common_scheme_link_general	遷移に失敗しました。	이동하지 못했습니다.	Failed to open the link.
+error_common_scheme_link_invalid_host	遷移に失敗しました。	이동하지 못했습니다.	Failed to open the link.
+error_common_scheme_link_invalid_parameter	遷移に失敗しました。	이동하지 못했습니다.	Failed to open the link.
+error_common_scheme_link_invalid_scheme	遷移に失敗しました。	이동하지 못했습니다.	Failed to open the link.
+error_common_unfollow_user_gateway_timeout	ユーザーのフォロー解除に失敗しました。時間を置いて再度お試しください。	사용자 팔로우를 해제하지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to unfollow the user. Please try again later.
+error_common_unfollow_user_general	ユーザーのフォロー解除に失敗しました。	사용자 팔로우를 해제하지 못했습니다.	Failed to unfollow the user.
+error_common_unfollow_user_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_common_unfollow_user_too_many_requests	ユーザーのフォロー解除に失敗しました。時間を置いて再度お試しください。	사용자 팔로우를 해제하지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to unfollow the user. Please try again later.
+error_cover_mix_mode_select_fetch_cover_work_general	カバー作品の取得に失敗しました。	커버 작품을 가져오지 못했습니다.	Failed to retrieve the cover work.
+error_cover_mix_mode_select_fetch_cover_work_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_cover_mix_mode_select_fetch_cover_work_invalid_parameter	カバー作品の取得に失敗しました。	커버 작품을 가져오지 못했습니다.	Failed to retrieve the cover work.
+error_cover_mix_mode_select_fetch_cover_work_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_cover_mix_mode_select_fetch_cover_work_unknown	カバー作品の取得に失敗しました。	커버 작품을 가져오지 못했습니다.	Failed to retrieve the cover work.
+error_external_service_login_linkage_make_account_screen_source_need_login	アカウント情報を取得できませんでした。ネットワーク接続をご確認下さい。	계정 정보를 가져오지 못했습니다. 네트워크 연결을 확인해 주세요.	Could not retrieve your account information. Please check your network connection.
+error_external_service_login_linkage_sns_linkage_general	SNS連携に失敗しました。時間を置いて再度お試しください。	SNS 연동에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to link your social media account. Please try again later.
+error_followee_activities_fetch_followee_activities_busy	フォロー中のユーザーのアクティビティの取得に失敗しました。時間を置いて再度お試しください。	팔로우 중인 사용자의 활동을 가져오지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to retrieve activities from users you follow. Please try again later.
+error_followee_activities_fetch_followee_activities_general	フォロー中のユーザーのアクティビティの取得に失敗しました。	팔로우 중인 사용자의 활동을 가져오지 못했습니다.	Failed to retrieve activities from users you follow.
+error_followee_activities_fetch_followee_activities_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_followee_activities_fetch_followee_activities_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_following_user_list_fetch_following_users_general	フォロー中のユーザーの取得に失敗しました。	팔로우 중인 사용자를 가져오지 못했습니다.	Failed to retrieve the users you follow.
+error_following_user_list_fetch_following_users_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_following_user_list_fetch_following_users_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_hidden_playlist_list_fetch_hidden_playlist_list_general	プレイリストの取得に失敗しました。	플레이리스트를 가져오지 못했습니다.	Failed to retrieve the playlist.
+error_home_fetch_frames_all_frames_fetch_failed	コンテンツの取得に失敗しました。	콘텐츠를 가져오지 못했습니다.	Failed to retrieve content.
+error_icon_content_description	Error	오류	Error
+error_inquiry_send_general	送信に失敗しました。\nしばらく時間をおいてから再度送信してください。\n※入力内容は、この画面を閉じても保持されます	전송하지 못했습니다.\n잠시 후 다시 전송해 주세요.\n※입력 내용은 이 화면을 닫아도 유지됩니다	Failed to send.\nPlease wait a while and try sending again.\n※Your entered information will be saved even if you close this screen.
+error_interest_contents_selection_make_playlist_general	プレイリストの作成に失敗しました。	플레이리스트를 만들지 못했습니다.	Failed to create the playlist.
+error_library_top_fetch_followee_activities_busy	フォロー中のユーザーのアクティビティの取得に失敗しました。時間を置いて再度お試しください。	팔로우 중인 사용자의 활동을 가져오지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to retrieve activity from users you follow. Please wait a while and try again.
+error_library_top_fetch_followee_activities_general	フォロー中のユーザーのアクティビティの取得に失敗しました。	팔로우 중인 사용자의 활동을 가져오지 못했습니다.	Failed to retrieve activity from users you follow.
+error_library_top_fetch_followee_activities_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please wait a while and try again.
+error_library_top_fetch_followee_activities_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is finished.
+error_library_top_fetch_following_user_general	フォロー中のユーザーの取得に失敗しました。	팔로우 중인 사용자를 가져오지 못했습니다.	Failed to retrieve the users you follow.
+error_library_top_fetch_following_user_internal_server_errror	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please wait a while and try again.
+error_library_top_fetch_following_user_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is finished.
+error_library_top_fetch_playlist_general	プレイリスト一覧の取得に失敗しました。	플레이리스트 목록을 가져오지 못했습니다.	Failed to retrieve the playlist list.
+error_library_top_hide_playlist_general	プレイリストを非表示にできませんでした。	플레이리스트를 숨기지 못했습니다.	Failed to hide the playlist.
+error_library_top_playlist_pin_general	ピン留めに失敗しました。	고정하지 못했습니다.	Failed to pin the playlist.
+error_library_top_playlist_pin_storage_access_error	ピン留めに失敗しました。時間を置いて再度お試しください。	고정하지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to pin the playlist. Please wait a while and try again.
+error_library_top_playlist_unpin_general	ピン留めに失敗しました。	고정하지 못했습니다.	Failed to unpin the playlist.
+error_library_top_playlist_unpin_storage_access_error	ピン留めに失敗しました。時間を置いて再度お試しください。	고정하지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to unpin the playlist. Please wait a while and try again.
+error_library_top_unfollow_mylist_forbidden	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow.
+error_library_top_unfollow_mylist_general	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow.
+error_library_top_unfollow_mylist_internal_server_errror	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please wait a while and try again.
+error_library_top_unfollow_mylist_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is finished.
+error_library_top_unfollow_mylist_not_found	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow.
+error_library_top_unfollow_mylist_unauthorized	フォロー解除に失敗しました。\nログイン状態を確認のうえ、再度お試しください。	팔로우를 취소하지 못했습니다.\n로그인 상태를 확인한 후 다시 시도해 주세요.	Failed to unfollow.\nPlease check your login status and try again.
+error_library_top_unfollow_mylist_unknown	フォロー解除に失敗しました。時間を置いて再度お試しください。	팔로우를 취소하지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to unfollow. Please wait a while and try again.
+error_like_dialog_user_follow_blocked_by_follower	ブロック中のユーザーです。ニコニコ動画でブロックを解除してください。	차단 중인 사용자입니다. 니코니코 동영상에서 차단을 해제해 주세요.	This user is blocked. Unblock them on NicoNico Video.
+error_like_dialog_user_follow_gateway_timeout	ユーザーのフォローに失敗しました。時間を置いて再度お試しください。	사용자를 팔로우하지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to follow the user. Please wait a while and try again.
+error_like_dialog_user_follow_general	ユーザーのフォローに失敗しました。	사용자를 팔로우하지 못했습니다.	Failed to follow the user.
+error_like_dialog_user_follow_limit_exceeded	フォロー数が上限に達しています。	팔로우 수가 한도에 도달했습니다.	You have reached the follow limit.
+error_like_dialog_user_follow_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is finished.
+error_like_dialog_user_follow_not_found	ユーザー情報が見つかりません。	사용자 정보를 찾을 수 없습니다.	User information not found.
+error_like_dialog_user_follow_too_many_requests	ユーザーのフォローに失敗しました。時間を置いて再度お試しください。	사용자를 팔로우하지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to follow the user. Please wait a while and try again.
+error_like_history_detail_fetch_first_page_general	取得に失敗しました。	가져오지 못했습니다.	Failed to retrieve.
+error_like_history_detail_fetch_first_page_internal_server_error	取得に失敗しました。\n時間を置いて再度お試しください。	가져오지 못했습니다.\n잠시 후 다시 시도해 주세요.	Failed to retrieve.\nPlease wait a while and try again.
+error_like_history_detail_fetch_first_page_invalid_parameter	取得に失敗しました。\n時間を置いて再度お試しください。	가져오지 못했습니다.\n잠시 후 다시 시도해 주세요.	Failed to load.\nPlease try again later.
+error_like_history_detail_fetch_first_page_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is finished.
+error_like_history_detail_fetch_first_page_unauthorized	取得に失敗しました。\n時間を置いて再度お試しください。	가져오지 못했습니다.\n잠시 후 다시 시도해 주세요.	Failed to load.\nPlease try again later.
+error_like_history_detail_fetch_next_page_general	取得に失敗しました。	가져오지 못했습니다.	Failed to load.
+error_like_history_detail_fetch_next_page_internal_server_error	取得に失敗しました。\n時間を置いて再度お試しください。	가져오지 못했습니다.\n잠시 후 다시 시도해 주세요.	Failed to load.\nPlease try again later.
+error_like_history_detail_fetch_next_page_invalid_parameter	取得に失敗しました。\n時間を置いて再度お試しください。	가져오지 못했습니다.\n잠시 후 다시 시도해 주세요.	Failed to load.\nPlease try again later.
+error_like_history_detail_fetch_next_page_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is finished.
+error_like_history_detail_fetch_next_page_unauthorized	取得に失敗しました。\n時間を置いて再度お試しください。	가져오지 못했습니다.\n잠시 후 다시 시도해 주세요.	Failed to load.\nPlease try again later.
+error_like_history_detail_unregister_like_general	「いいね！」の解除に失敗しました。	‘좋아요!’ 취소에 실패했습니다.	Failed to remove the like.
+error_like_history_detail_unregister_like_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is finished.
+error_login_login_app_check_token_failed	ログインに失敗しました。Google Play開発者サービスを最新版に更新のうえ再度お試しいただくか、時間を置いて再度お試しください。	로그인하지 못했습니다. Google Play 서비스를 최신 버전으로 업데이트한 뒤 다시 시도하거나, 잠시 후 다시 시도해 주세요.	Couldn't log in. Update Google Play services to the latest version and try again, or try again later.
+error_login_login_general	ログインに失敗しました。\n時間を置いて再度お試しください。	로그인하지 못했습니다.\n잠시 후 다시 시도해 주세요.	Login failed.\nPlease try again later.
+error_login_login_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is finished.
+error_login_store_authorization_general	ログインに失敗しました。\n時間を置いて再度お試しください。	로그인하지 못했습니다.\n잠시 후 다시 시도해 주세요.	Login failed.\nPlease try again later.
+error_mail_address_register_make_account_screen_source_need_login	アカウント情報を取得できませんでした。ネットワーク接続をご確認下さい。	계정 정보를 가져오지 못했습니다. 네트워크 연결을 확인해 주세요.	Could not retrieve your account information. Please check your network connection.
+error_message_authentication_expired	Sign in to use this app	이 앱을 사용하려면 로그인하세요	Sign in to use this app
+error_message_bad_value	Incorrect input data	입력 데이터가 올바르지 않습니다	Incorrect input data
+error_message_concurrent_stream_limit	Listening on too many devices	너무 많은 기기에서 청취 중입니다	Listening on too many devices
+error_message_content_already_playing	Already playing that content	이미 해당 콘텐츠를 재생 중입니다	Already playing that content
+error_message_disconnected	Disconnected from media app	미디어 앱과 연결이 끊겼습니다	Disconnected from media app
+error_message_end_of_playlist	Nothing else is queued up	대기열에 더 이상 항목이 없습니다	Nothing else is queued up
+error_message_fallback	Something’s wrong. Try later.	문제가 발생했습니다. 나중에 다시 시도하세요.	Something’s wrong. Try later.
+error_message_info_cancelled	Couldn’t finish. Try again.	완료할 수 없습니다. 다시 시도하세요.	Couldn’t finish. Try again.
+error_message_invalid_state	Can’t do that right now	지금은 할 수 없습니다	Can’t do that right now
+error_message_io	Input/output error	입출력 오류	Input/output error
+error_message_not_available_in_region	Can’t get that content here	여기서는 해당 콘텐츠를 이용할 수 없습니다	Can’t get that content here
+error_message_not_supported	This app can’t do that	이 앱에서는 지원되지 않습니다	This app can’t do that
+error_message_parental_control_restricted	That content is blocked	해당 콘텐츠가 차단되었습니다	That content is blocked
+error_message_permission_denied	Access denied	액세스가 거부되었습니다	Access denied
+error_message_premium_account_required	Premium access required	프리미엄 이용 권한이 필요합니다	Premium access required
+error_message_setup_required	Setup required	설정이 필요합니다	Setup required
+error_message_skip_limit_reached	Can’t skip any more tracks	더 이상 트랙을 건너뛸 수 없습니다	Can’t skip any more tracks
+error_muted_owner_list_fetch_muted_owner_list_general	読み込みに失敗しました。	불러오지 못했습니다.	Failed to load.
+error_muted_owner_list_fetch_muted_owner_list_internal_server_error	取得に失敗しました。\n時間を置いて再度お試しください。	가져오지 못했습니다.\n잠시 후 다시 시도해 주세요.	Failed to load.\nPlease try again later.
+error_muted_owner_list_fetch_muted_owner_list_invalid_parameter	ユーザー情報の取得に失敗しました。	사용자 정보를 가져오지 못했습니다.	Failed to retrieve user information.
+error_muted_owner_list_fetch_muted_owner_list_maintenance	取得に失敗しました。\n時間を置いて再度お試しください。	가져오지 못했습니다.\n잠시 후 다시 시도해 주세요.	Failed to load.\nPlease try again later.
+error_muted_owner_list_fetch_muted_owner_list_unauthorized	ユーザー情報の取得に失敗しました。	사용자 정보를 가져오지 못했습니다.	Failed to retrieve user information.
+error_mv_medley_fetch_comment_general	コメントの取得に失敗しました。時間を置いて再度お試しください。	댓글을 가져오지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to load comments. Please try again later.
+error_mv_medley_fetch_comment_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is finished.
+error_mv_medley_fetch_general	コンテンツの取得に失敗しました。\n通信状況をご確認ください。	콘텐츠를 가져오지 못했습니다.\n통신 상태를 확인해 주세요.	Failed to load content.\nPlease check your network connection.
+error_mylist_detail_create_locallist_create_limit_exceeded	登録数が上限に達しています。	등록 수가 한도에 도달했습니다.	You have reached the maximum number of items.
+error_mylist_detail_create_locallist_general	更新に失敗しました。	업데이트에 실패했습니다.	Failed to update.
+error_mylist_detail_fetch_mylist_items_forbidden	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to load videos.
+error_mylist_detail_fetch_mylist_items_general	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to load videos.
+error_mylist_detail_fetch_mylist_items_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_mylist_detail_fetch_mylist_items_invalid_parameter	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to load videos.
+error_mylist_detail_fetch_mylist_items_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is finished.
+error_mylist_detail_fetch_mylist_items_not_found	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to load videos.
+error_mylist_detail_fetch_mylist_items_unauthorized	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to load videos.
+error_mylist_detail_fetch_mylist_items_unknown	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to load videos.
+error_mylist_detail_fetch_public_mylist_forbidden	マイリストの取得に失敗しました。	마이리스트를 가져오지 못했습니다.	Failed to retrieve the My List.
+error_mylist_detail_fetch_public_mylist_general	マイリストの取得に失敗しました。	마이리스트를 가져오지 못했습니다.	Failed to retrieve the My List.
+error_mylist_detail_fetch_public_mylist_internal_server_error	サーバーとの通信に失敗しました。\n時間を置いて再度お試しください。	서버와의 통신에 실패했습니다.\n잠시 후 다시 시도해 주세요.	Failed to communicate with the server.\nPlease try again later.
+error_mylist_detail_fetch_public_mylist_invalid_parameter	マイリストの取得に失敗しました。	마이리스트를 가져오지 못했습니다.	Failed to retrieve the My List.
+error_mylist_detail_fetch_public_mylist_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_mylist_detail_fetch_public_mylist_not_found	マイリストの取得に失敗しました。	마이리스트를 가져오지 못했습니다.	Failed to retrieve the My List.
+error_mylist_detail_fetch_public_mylist_unauthorized	マイリストの取得に失敗しました。	마이리스트를 가져오지 못했습니다.	Failed to retrieve the My List.
+error_mylist_detail_fetch_public_mylist_unknown	マイリストの取得に失敗しました。	마이리스트를 가져오지 못했습니다.	Failed to retrieve the My List.
+error_mylist_detail_follow_mylist_following_limit_exceeded_premium	フォロー数が上限に達しています。	팔로우 수가 한도에 도달했습니다.	You have reached the follow limit.
+error_mylist_detail_follow_mylist_forbidden	フォローに失敗しました。	팔로우에 실패했습니다.	Failed to follow the My List.
+error_mylist_detail_follow_mylist_general	フォローに失敗しました。	팔로우에 실패했습니다.	Failed to follow the My List.
+error_mylist_detail_follow_mylist_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_mylist_detail_follow_mylist_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_mylist_detail_follow_mylist_not_found	フォローに失敗しました。	팔로우에 실패했습니다.	Failed to follow the My List.
+error_mylist_detail_follow_mylist_unauthorized	フォローに失敗しました。	팔로우에 실패했습니다.	Failed to follow the My List.
+error_mylist_detail_follow_mylist_unknown	フォローに失敗しました。	팔로우에 실패했습니다.	Failed to follow the My List.
+error_mylist_detail_unfollow_mylist_forbidden	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow the My List.
+error_mylist_detail_unfollow_mylist_general	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow the My List.
+error_mylist_detail_unfollow_mylist_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_mylist_detail_unfollow_mylist_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_mylist_detail_unfollow_mylist_not_found	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow the My List.
+error_mylist_detail_unfollow_mylist_unauthorized	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow the My List.
+error_mylist_detail_unfollow_mylist_unknown	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow the My List.
+error_past_feature_fetch_past_feature_list_general	特集の取得に失敗しました。	특집을 가져오지 못했습니다.	Failed to retrieve the feature.
+error_play_history_detail_delete_all_general	再生履歴の削除に失敗しました。	재생 기록을 삭제하지 못했습니다.	Failed to delete play history.
+error_play_history_detail_delete_general	再生履歴の削除に失敗しました。	재생 기록을 삭제하지 못했습니다.	Failed to delete play history.
+error_play_history_detail_fetch_play_history_general	再生履歴の取得に失敗しました。	재생 기록을 가져오지 못했습니다.	Failed to retrieve play history.
+error_play_history_detail_fetch_play_history_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_play_history_detail_fetch_play_history_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_play_history_detail_update_play_history_settings_general	動画紹介の表示切り替えに失敗しました。	동영상 소개 표시 전환에 실패했습니다.	Failed to change the display setting for video introductions.
+error_playlist_choice_add_media_cache_need_login	キャッシュ設定に失敗しました。ログイン状態をご確認の上お試しください。	캐시 설정에 실패했습니다. 로그인 상태를 확인한 후 다시 시도해 주세요.	Failed to configure caching. Please check that you are logged in and try again.
+error_playlist_choice_copy_playlist_item_create_limit_exceeded_premium	登録数が上限に達しています。	등록 수가 한도에 도달했습니다.	You have reached the registration limit.
+error_playlist_choice_copy_playlist_item_forbidden	コピーに失敗しました。	복사에 실패했습니다.	Copy failed.
+error_playlist_choice_copy_playlist_item_general	コピーに失敗しました。	복사에 실패했습니다.	Copy failed.
+error_playlist_choice_copy_playlist_item_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Communication with the server failed. Please try again later.
+error_playlist_choice_copy_playlist_item_invalid_parameter	コピーに失敗しました。	복사에 실패했습니다.	Copy failed.
+error_playlist_choice_copy_playlist_item_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	The service is currently undergoing maintenance. Please wait until it is complete.
+error_playlist_choice_copy_playlist_item_not_found	コピーに失敗しました。	복사에 실패했습니다.	Copy failed.
+error_playlist_choice_copy_playlist_item_storage_create_limit_exceeded	登録数が上限に達しています。	등록 수가 한도에 도달했습니다.	You have reached the registration limit.
+error_playlist_choice_copy_playlist_item_unauthorized	コピーに失敗しました。	복사에 실패했습니다.	Copy failed.
+error_playlist_choice_delete_media_cache_need_login	キャッシュ削除に失敗しました。\nログイン状態をご確認の上お試しください。	캐시 삭제에 실패했습니다.\n로그인 상태를 확인한 후 다시 시도해 주세요.	Failed to delete the cache.\nPlease check your login status and try again.
+error_playlist_choice_fetch_playlist_general	プレイリスト一覧の取得に失敗しました。	플레이리스트 목록을 가져오지 못했습니다.	Failed to retrieve the playlist list.
+error_playlist_choice_move_playlist_item_create_limit_exceeded_premium	登録数が上限に達しています。	등록 수가 한도에 도달했습니다.	You have reached the registration limit.
+error_playlist_choice_move_playlist_item_forbidden	移動に失敗しました。	이동에 실패했습니다.	Move failed.
+error_playlist_choice_move_playlist_item_general	移動に失敗しました。	이동에 실패했습니다.	Move failed.
+error_playlist_choice_move_playlist_item_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Communication with the server failed. Please try again later.
+error_playlist_choice_move_playlist_item_invalid_parameter	移動に失敗しました。	이동에 실패했습니다.	Move failed.
+error_playlist_choice_move_playlist_item_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	The service is currently undergoing maintenance. Please wait until it is complete.
+error_playlist_choice_move_playlist_item_not_found	移動に失敗しました。	이동에 실패했습니다.	Move failed.
+error_playlist_choice_move_playlist_item_storage_create_limit_exceeded	登録数が上限に達しています。	등록 수가 한도에 도달했습니다.	You have reached the registration limit.
+error_playlist_choice_move_playlist_item_unauthorized	移動に失敗しました。	이동에 실패했습니다.	Move failed.
+error_playlist_create_create_locallist_create_limit_exceeded	登録数が上限に達しているため作成できません。	등록 수가 한도에 도달하여 만들 수 없습니다.	Cannot create it because you have reached the registration limit.
+error_playlist_create_create_locallist_general	ローカルリストの作成に失敗しました。	로컬 리스트를 만들지 못했습니다.	Failed to create the local list.
+error_playlist_create_create_mylist_create_limit_exceeded_premium	登録数が上限に達しています。	등록 수가 한도에 도달했습니다.	You have reached the registration limit.
+error_playlist_create_create_mylist_forbidden	マイリストの作成に失敗しました	마이리스트를 만들지 못했습니다	Failed to create the My List.
+error_playlist_create_create_mylist_general	マイリストの作成に失敗しました	마이리스트를 만들지 못했습니다	Failed to create the My List.
+error_playlist_create_create_mylist_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Communication with the server failed. Please try again later.
+error_playlist_create_create_mylist_invalid_parameter	マイリストの作成に失敗しました	마이리스트를 만들지 못했습니다	Failed to create the My List.
+error_playlist_create_create_mylist_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	The service is currently undergoing maintenance. Please wait until it is complete.
+error_playlist_create_create_mylist_not_found	マイリストの作成に失敗しました	마이리스트를 만들지 못했습니다	Failed to create the My List.
+error_playlist_create_create_mylist_unauthorized	マイリストの作成に失敗しました	마이리스트를 만들지 못했습니다	Failed to create the My List.
+error_playlist_create_create_mylist_unknown	マイリストの作成に失敗しました	마이리스트를 만들지 못했습니다	Failed to create the My List.
+error_playlist_detail_add_media_cache_need_login	キャッシュ設定に失敗しました。ログイン状態をご確認の上お試しください。	캐시 설정에 실패했습니다. 로그인 상태를 확인한 후 다시 시도해 주세요.	Failed to configure the cache. Please check your login status and try again.
+error_playlist_detail_create_locallist_create_limit_exceeded	登録数が上限に達しているため作成できません。	등록 수가 한도에 도달하여 만들 수 없습니다.	Cannot create it because you have reached the registration limit.
+error_playlist_detail_create_locallist_general	作成に失敗しました。	만들지 못했습니다.	Failed to create.
+error_playlist_detail_delete_media_cache_need_login	キャッシュ削除に失敗しました。\nログイン状態をご確認の上お試しください。	캐시 삭제에 실패했습니다.\n로그인 상태를 확인한 후 다시 시도해 주세요.	Failed to delete the cache.\nPlease check that you are logged in and try again.
+error_playlist_detail_edit_add_media_cache_need_login	キャッシュ設定に失敗しました。ログイン状態をご確認の上お試しください。	캐시 설정에 실패했습니다. 로그인 상태를 확인한 후 다시 시도해 주세요.	Failed to configure the cache. Please check that you are logged in and try again.
+error_playlist_detail_edit_delete_locallist_general	削除に失敗しました。	삭제에 실패했습니다.	Failed to delete.
+error_playlist_detail_edit_delete_media_cache_need_login	キャッシュ削除に失敗しました。\nログイン状態をご確認の上お試しください。	캐시 삭제에 실패했습니다.\n로그인 상태를 확인한 후 다시 시도해 주세요.	Failed to delete the cache.\nPlease check that you are logged in and try again.
+error_playlist_detail_edit_delete_mylist_forbidden	削除に失敗しました。	삭제에 실패했습니다.	Failed to delete.
+error_playlist_detail_edit_delete_mylist_general	削除に失敗しました。	삭제에 실패했습니다.	Failed to delete.
+error_playlist_detail_edit_delete_mylist_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_playlist_detail_edit_delete_mylist_invalid_parameter	削除に失敗しました。	삭제에 실패했습니다.	Failed to delete.
+error_playlist_detail_edit_delete_mylist_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	The service is currently undergoing maintenance. Please wait until it is complete.
+error_playlist_detail_edit_delete_mylist_not_found	削除に失敗しました。指定されたマイリストが見つかりません。	삭제에 실패했습니다. 지정한 마이리스트를 찾을 수 없습니다.	Failed to delete. The specified My List could not be found.
+error_playlist_detail_edit_delete_mylist_unauthorized	削除に失敗しました。	삭제에 실패했습니다.	Failed to delete.
+error_playlist_detail_edit_delete_mylist_unknown	削除に失敗しました。	삭제에 실패했습니다.	Failed to delete.
+error_playlist_detail_edit_delete_playlist_general	削除に失敗しました。	삭제에 실패했습니다.	Failed to delete.
+error_playlist_detail_edit_fetch_playlist_general	リストの取得に失敗しました。	리스트를 가져오지 못했습니다.	Failed to retrieve the list.
+error_playlist_detail_edit_fetch_playlist_items_general	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to retrieve the videos.
+error_playlist_detail_edit_sync_playlist_general	同期に失敗しました。\nオフライン状態である場合は一度オンラインにしてお試しください。	동기화에 실패했습니다.\n오프라인 상태인 경우 온라인으로 전환한 후 다시 시도해 주세요.	Failed to sync.\nIf you are offline, please go online and try again.
+error_playlist_detail_edit_update_default_sort_general	更新に失敗しました。	업데이트에 실패했습니다.	Failed to update.
+error_playlist_detail_edit_update_locallist_general	リストの更新に失敗しました。	리스트 업데이트에 실패했습니다.	Failed to update the list.
+error_playlist_detail_edit_update_mylist_create_limit_exceeded_premium	登録数が上限に達しています。	등록 수가 한도에 도달했습니다.	You have reached the maximum number of items.
+error_playlist_detail_edit_update_mylist_forbidden	リストの更新に失敗しました。	리스트 업데이트에 실패했습니다.	Failed to update the list.
+error_playlist_detail_edit_update_mylist_general	リストの更新に失敗しました。	리스트 업데이트에 실패했습니다.	Failed to update the list.
+error_playlist_detail_edit_update_mylist_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_playlist_detail_edit_update_mylist_invalid_parameter	リストの更新に失敗しました。	리스트 업데이트에 실패했습니다.	Failed to update the list.
+error_playlist_detail_edit_update_mylist_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	The service is currently undergoing maintenance. Please wait until it is complete.
+error_playlist_detail_edit_update_mylist_not_found	リストの更新に失敗しました。	리스트 업데이트에 실패했습니다.	Failed to update the list.
+error_playlist_detail_edit_update_mylist_unauthorized	リストの更新に失敗しました。	리스트 업데이트에 실패했습니다.	Failed to update the list.
+error_playlist_detail_edit_update_mylist_unknown	リストの更新に失敗しました。	리스트 업데이트에 실패했습니다.	Failed to update the list.
+error_playlist_detail_edit_update_playlist_custom_order_general	更新に失敗しました。	업데이트에 실패했습니다.	Failed to update.
+error_playlist_detail_fetch_playlist_general	プレイリスト情報の取得に失敗しました。	플레이리스트 정보를 가져오지 못했습니다.	Failed to retrieve the playlist information.
+error_playlist_detail_fetch_playlist_items_general	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to retrieve the videos.
+error_playlist_detail_synchronize_item_connectionFailed	プレイリストの同期に失敗しました。\nオフライン状態である場合は一度オンラインにしてお試しください。	플레이리스트 동기화에 실패했습니다.\n오프라인 상태인 경우 온라인으로 전환한 후 다시 시도해 주세요.	Failed to sync the playlist.\nIf you are offline, please go online and try again.
+error_playlist_detail_synchronize_item_general	プレイリストの同期に失敗しました。	플레이리스트 동기화에 실패했습니다.	Failed to sync the playlist.
+error_playlist_detail_synchronize_item_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_playlist_detail_synchronize_item_needLogin	プレイリストの同期に失敗しました。\nログイン後再度お試しください。	플레이리스트 동기화에 실패했습니다.\n로그인 후 다시 시도해 주세요.	Failed to sync the playlist.\nPlease log in and try again.
+error_playlist_detail_unfollow_mylist_forbidden	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow.
+error_playlist_detail_unfollow_mylist_general	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow.
+error_playlist_detail_unfollow_mylist_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please wait a while and try again.
+error_playlist_detail_unfollow_mylist_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_playlist_detail_unfollow_mylist_not_found	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow.
+error_playlist_detail_unfollow_mylist_unauthorized	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow.
+error_playlist_detail_unfollow_mylist_unknown	フォロー解除に失敗しました。	팔로우 해제에 실패했습니다.	Failed to unfollow.
+error_playlist_detail_update_default_sort_general	更新に失敗しました。	업데이트에 실패했습니다.	Failed to update.
+error_premium_merit_detail_validate_external_payments_need_login	アカウント情報を取得できませんでした。ネットワーク接続をご確認下さい。\nログインしていない場合はログインしてお試しください。	계정 정보를 가져오지 못했습니다. 네트워크 연결을 확인해 주세요.\n로그인하지 않은 경우 로그인 후 다시 시도해 주세요.	Could not retrieve your account information. Please check your network connection.\nIf you are not logged in, please log in and try again.
+error_profile_edit_make_account_screen_source_need_login	アカウント情報を取得できませんでした。ネットワーク接続をご確認下さい。	계정 정보를 가져오지 못했습니다. 네트워크 연결을 확인해 주세요.	Could not retrieve your account information. Please check your network connection.
+error_profile_edit_profile_edit_bad_request	取得に失敗しました。	가져오지 못했습니다.	Failed to retrieve.
+error_profile_edit_profile_edit_description_too_long	自己紹介文が長すぎます。	자기소개가 너무 깁니다.	Your bio is too long.
+error_profile_edit_profile_edit_general	プロフィールの編集に失敗しました。	프로필 편집에 실패했습니다.	Failed to edit your profile.
+error_profile_edit_profile_edit_icon_invalid_file_format	対応していないファイル形式です。	지원하지 않는 파일 형식입니다.	This file format is not supported.
+error_profile_edit_profile_edit_icon_ivalid_image_resolution	画像の解像度が不正です。	이미지 해상도가 올바르지 않습니다.	The image resolution is invalid.
+error_profile_edit_profile_edit_icon_too_large	ファイルのサイズが大きすぎます。	파일 크기가 너무 큽니다.	The file is too large.
+error_profile_edit_profile_edit_icon_upload_restricted	アイコンの更新に失敗しました。	아이콘을 업데이트하지 못했습니다.	Couldn't update the icon.
+error_profile_edit_profile_edit_invalid_character_on_description	自己紹介文に対応していない文字列が含まれています。	자기소개에 지원하지 않는 문자가 포함되어 있습니다.	Your bio contains unsupported characters.
+error_profile_edit_profile_edit_invalid_character_on_nickname	ニックネームに対応していない文字列が含まれています。	닉네임에 지원하지 않는 문자가 포함되어 있습니다.	Your nickname contains unsupported characters.
+error_profile_edit_profile_edit_login_required	ログインが必要です。	로그인이 필요합니다.	You must log in.
+error_profile_edit_profile_edit_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_profile_edit_profile_edit_network_error	プロフィールの取得に失敗しました。時間を置いて再度お試しください。	프로필을 가져오지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to retrieve your profile. Please wait a while and try again.
+error_profile_edit_profile_edit_nickname_too_long	ニックネームが長すぎます。16文字以内で設定してください。	닉네임이 너무 깁니다. 16자 이내로 설정해 주세요.	Your nickname is too long. Please use 16 characters or fewer.
+error_profile_edit_profile_edit_nickname_too_short	ニックネームが短すぎます。2文字以上で設定してください。	닉네임이 너무 짧습니다. 2자 이상으로 설정해 주세요.	Your nickname is too short. Please use at least 2 characters.
+error_profile_edit_profile_edit_retry_later	プロフィールの取得に失敗しました。時間を置いて再度お試しください。	프로필을 가져오지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to retrieve your profile. Please wait a while and try again.
+error_profile_edit_profile_edit_too_many_icon_update	アイコンの更新に失敗しました。時間を置いて再度お試しください。	아이콘 업데이트에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to update the icon. Please wait a while and try again.
+error_projectsekai_fetch_wakutkool_blocked_user	取得に失敗しました。	가져오지 못했습니다.	Failed to retrieve.
+error_projectsekai_fetch_wakutkool_general	取得に失敗しました。\n時間を置いて再度お試しください。	가져오지 못했습니다.\n잠시 후 다시 시도해 주세요.	Failed to retrieve.\nPlease wait a while and try again.
+error_projectsekai_fetch_wakutkool_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_push_notification_setting_update_topic_status_busy	通信に失敗しました。時間を置いて再度お試しください。	통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Communication failed. Please wait a while and try again.
+error_push_notification_setting_update_topic_status_gateway_timeout	通信に失敗しました。時間を置いて再度お試しください。	통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Communication failed. Please wait a while and try again.
+error_push_notification_setting_update_topic_status_general	通信に失敗しました。	통신에 실패했습니다.	Communication failed.
+error_push_notification_setting_update_topic_status_internal_server_error	サーバーとの通信に失敗しました。	서버와의 통신에 실패했습니다.	Failed to communicate with the server.
+error_push_notification_setting_update_topic_status_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_push_notification_setting_update_topic_status_too_many_requests	通信に失敗しました。時間を置いて再度お試しください。	통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Communication failed. Please wait a while and try again.
+error_ranking_fetch_ranking_content_empty	表示するコンテンツがありません。	표시할 콘텐츠가 없습니다.	There is no content to display.
+error_ranking_fetch_ranking_general	ランキングの取得に失敗しました。	랭킹을 가져오지 못했습니다.	Failed to load the rankings.
+error_ranking_fetch_ranking_internal_server_error	ランキングの取得に失敗しました。	랭킹을 가져오지 못했습니다.	Failed to load the rankings.
+error_ranking_fetch_ranking_invalid_parameter	ランキングの取得に失敗しました。	랭킹을 가져오지 못했습니다.	Failed to load the rankings.
+error_ranking_fetch_ranking_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_ranking_fetch_ranking_not_found	ランキングの取得に失敗しました。	랭킹을 가져오지 못했습니다.	Failed to load the rankings.
+error_ranking_fetch_ranking_setting_general	ランキングの取得に失敗しました。	랭킹을 가져오지 못했습니다.	Failed to load the rankings.
+error_ranking_fetch_ranking_setting_internal_server_error	ランキングの取得に失敗しました。	랭킹을 가져오지 못했습니다.	Failed to load the rankings.
+error_ranking_fetch_ranking_setting_maintenance	ランキングの取得に失敗しました。	랭킹을 가져오지 못했습니다.	Failed to load the rankings.
+error_ranking_fetch_ranking_unknown	ランキングの取得に失敗しました。	랭킹을 가져오지 못했습니다.	Failed to load the rankings.
+error_search_result_fetch_search_result_content_empty	一致する結果が見つかりませんでした	일치하는 결과를 찾을 수 없습니다	No matching results were found.
+error_search_result_fetch_search_result_general	検索結果の取得に失敗しました。	검색 결과를 가져오지 못했습니다.	Failed to load the search results.
+error_search_result_fetch_search_result_internal_server_error	検索結果の取得に失敗しました。	검색 결과를 가져오지 못했습니다.	Failed to load the search results.
+error_search_result_fetch_search_result_invalid_parameter	検索結果の取得に失敗しました。	검색 결과를 가져오지 못했습니다.	Failed to load the search results.
+error_search_top_fetch_popular_tag_content_empty	表示するタグがありません。	표시할 태그가 없습니다.	There are no tags to display.
+error_search_top_fetch_popular_tag_general	タグの取得に失敗しました。	태그를 가져오지 못했습니다.	Failed to load the tags.
+error_setting_logout_general	ログアウトできませんでした。	로그아웃하지 못했습니다.	Failed to log out.
+error_setting_update_player_control_setting_general	設定の更新に失敗しました。	설정을 업데이트하지 못했습니다.	Failed to update the settings.
+error_smartlist_detail_copy_as_locallist_general	コピーに失敗しました。	복사에 실패했습니다.	Failed to copy.
+error_smartlist_detail_copy_as_locallist_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please wait a while and try again.
+error_smartlist_detail_fetch_first_page_general	プレイリストの取得に失敗しました。	플레이리스트를 가져오지 못했습니다.	Failed to load the playlist.
+error_smartlist_detail_fetch_first_page_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please wait a while and try again.
+error_smartlist_detail_fetch_next_page_general	プレイリストの取得に失敗しました。	플레이리스트를 가져오지 못했습니다.	Failed to load the playlist.
+error_smartlist_detail_fetch_next_page_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please wait a while and try again.
+error_startup_create_guest_account_app_check_token_failed	ゲストでのご利用に失敗しました。Google Play開発者サービスを最新版に更新のうえ再度お試しいただくか、時間を置いて再度お試しください。	게스트로 이용하지 못했습니다. Google Play 서비스를 최신 버전으로 업데이트한 뒤 다시 시도하거나, 잠시 후 다시 시도해 주세요.	Couldn't continue as a guest. Update Google Play services to the latest version and try again, or try again later.
+error_startup_create_guest_account_bad_connection	アカウントの作成に失敗しました。\n通信状態をお確かめの上、再度お試しください。	계정을 만들지 못했습니다.\n통신 상태를 확인한 후 다시 시도해 주세요.	Failed to create an account.\nPlease check your connection and try again.
+error_startup_create_guest_account_general	アカウントの作成に失敗しました。	계정을 만들지 못했습니다.	Failed to create an account.
+error_startup_create_guest_account_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_startup_store_authorization_general	ログインに失敗しました。	로그인에 실패했습니다.	Failed to log in.
+error_usage_restriction_logout_general	ログアウトできませんでした。	로그아웃하지 못했습니다.	Couldn't log out.
+error_user_public_mylist_list_fetch_public_mylist_list_general	マイリストの取得に失敗しました。	마이리스트를 가져오지 못했습니다.	Failed to retrieve the My List.
+error_user_public_mylist_list_fetch_public_mylist_list_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_user_top_fetch_all_artworks_forbidden	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to retrieve the videos.
+error_user_top_fetch_all_artworks_general	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to retrieve the videos.
+error_user_top_fetch_all_artworks_internal_server_error	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to retrieve the videos.
+error_user_top_fetch_all_artworks_invalid_parameter	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to retrieve the videos.
+error_user_top_fetch_all_artworks_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_user_top_fetch_all_artworks_not_found	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to retrieve the videos.
+error_user_top_fetch_public_mylist_forbidden	マイリストの取得に失敗しました。	마이리스트를 가져오지 못했습니다.	Failed to retrieve the My List.
+error_user_top_fetch_public_mylist_general	マイリストの取得に失敗しました。	마이리스트를 가져오지 못했습니다.	Failed to retrieve the My List.
+error_user_top_fetch_public_mylist_internal_server_error	マイリストの取得に失敗しました。	마이리스트를 가져오지 못했습니다.	Failed to retrieve the My List.
+error_user_top_fetch_public_mylist_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_user_top_fetch_public_mylist_not_found	マイリストの取得に失敗しました。	마이리스트를 가져오지 못했습니다.	Failed to retrieve the My List.
+error_user_top_fetch_user_detail_forbidden	ユーザー情報の取得に失敗しました。	사용자 정보를 가져오지 못했습니다.	Failed to retrieve the user information.
+error_user_top_fetch_user_detail_general	ユーザー情報の取得に失敗しました。	사용자 정보를 가져오지 못했습니다.	Failed to retrieve the user information.
+error_user_top_fetch_user_detail_internal_server_error	ユーザー情報の取得に失敗しました。	사용자 정보를 가져오지 못했습니다.	Failed to retrieve the user information.
+error_user_top_fetch_user_detail_maintenance	ただいまメンテナンス中です。\n終了までお待ちください。	현재 점검 중입니다.\n종료될 때까지 기다려 주세요.	Maintenance is currently in progress.\nPlease wait until it is complete.
+error_user_top_fetch_user_detail_not_found	ユーザー情報が見つかりません。	사용자 정보를 찾을 수 없습니다.	User information not found.
+error_user_video_list_fetch_user_video_list_general	動画の取得に失敗しました。	동영상을 가져오지 못했습니다.	Failed to retrieve the videos.
+error_user_video_list_fetch_user_video_list_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_vocatansaku_fetch_gateway_timeout	接続がタイムアウトしました。ネットワーク環境を確認の上、時間を置いて再度お試しください。	연결 시간이 초과되었습니다. 네트워크 환경을 확인한 후 잠시 후 다시 시도해 주세요.	The connection timed out. Check your network connection and try again later.
+error_vocatansaku_fetch_general	コンテンツの取得に失敗しました。時間を置いて再度お試しください。	콘텐츠를 가져오지 못했습니다. 잠시 후 다시 시도해 주세요.	Failed to retrieve the content. Please try again later.
+error_vocatansaku_fetch_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_vocatansaku_fetch_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_watch_build_player_administrator_delete_video	この動画は管理者により削除されたため視聴できません。	이 동영상은 관리자에 의해 삭제되어 시청할 수 없습니다.	This video cannot be watched because it was deleted by an administrator.
+error_watch_build_player_adult_video	この動画はボカコレでは再生できません。	이 동영상은 보카코레에서 재생할 수 없습니다.	This video cannot be played on VocaColle.
+error_watch_build_player_channel_member_only	この動画はチャンネル会員限定動画のため再生できません。	이 동영상은 채널 회원 전용 동영상이므로 재생할 수 없습니다.	This video is only available to channel members.
+error_watch_build_player_community_member_only	この動画はコミュニティをフォローすると視聴できるようになります。	이 동영상은 커뮤니티를 팔로우하면 시청할 수 있습니다.	Follow the community to watch this video.
+error_watch_build_player_deleted_channel_video	この動画は管理者により削除されたため視聴できません。	이 동영상은 관리자에 의해 삭제되어 시청할 수 없습니다.	This video can't be watched because it was deleted by an administrator.
+error_watch_build_player_deleted_community_video	この動画は非公開に設定されているため視聴できません。	이 동영상은 비공개로 설정되어 시청할 수 없습니다.	This video can't be watched because it has been set to private.
+error_watch_build_player_deleted_video	この動画は存在しないか、削除された可能性があります	이 동영상은 존재하지 않거나 삭제되었을 수 있습니다	This video may not exist or may have been deleted.
+error_watch_build_player_disapproval	この動画はボカコレでは再生できません。	이 동영상은 보카코레에서 재생할 수 없습니다.	This video can't be played on VocaColle.
+error_watch_build_player_domestic_video	この動画はお住まいの地域では視聴できません。	이 동영상은 거주 지역에서 시청할 수 없습니다.	This video isn't available in your region.
+error_watch_build_player_force_redirect	この動画は現在視聴できません。	이 동영상은 현재 시청할 수 없습니다.	This video is currently unavailable.
+error_watch_build_player_general	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_build_player_harmful_video	この動画にはセンシティブな内容が含まれているため、一部の視聴者に適さない可能性があります。	이 동영상에는 민감한 내용이 포함되어 있어 일부 시청자에게 적합하지 않을 수 있습니다.	This video contains sensitive content and may not be suitable for some viewers.
+error_watch_build_player_hidden_video	この動画は非公開に設定されているため視聴できません	이 동영상은 비공개로 설정되어 시청할 수 없습니다	This video can't be watched because it has been set to private.
+error_watch_build_player_high_risk_country_video	この動画はお住まいの地域では視聴できません。	이 동영상은 거주 지역에서 시청할 수 없습니다.	This video isn't available in your region.
+error_watch_build_player_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Failed to communicate with the server. Please try again later.
+error_watch_build_player_invalid_parameter	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_build_player_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_watch_build_player_not_allow_streaming_player	この動画を再生するには、wifiに接続するか、モバイル回線を使用可能にしてください。	이 동영상을 재생하려면 Wi-Fi에 연결하거나 모바일 회선을 사용할 수 있도록 설정해 주세요.	To play this video, connect to Wi-Fi or enable mobile data.
+error_watch_build_player_not_allowed	この動画はお使いの環境では再生できません。	이 동영상은 사용 중인 환경에서 재생할 수 없습니다.	This video can't be played in your current environment.
+error_watch_build_player_not_found	この動画は存在しないか、削除された可能性があります。	이 동영상은 존재하지 않거나 삭제되었을 수 있습니다.	This video may not exist or may have been deleted.
+error_watch_build_player_offline	オフラインのため動画の再生に失敗しました。	오프라인 상태라 동영상 재생에 실패했습니다.	Failed to play the video because you're offline.
+error_watch_build_player_only_hls	この動画はボカコレでは視聴できません。	이 동영상은 보카코레에서 시청할 수 없습니다.	This video can't be watched on VocaColle.
+error_watch_build_player_ppv_or_channel_member_video	この動画は有料のため再生できません。	이 동영상은 유료이므로 재생할 수 없습니다.	This video can't be played because it requires payment.
+error_watch_build_player_ppv_video	この動画は有料のため再生できません。	이 동영상은 유료이므로 재생할 수 없습니다.	This video can't be played because it requires payment.
+error_watch_build_player_right_holder_delete_video	この動画は権利者の申し立てにより削除されたため視聴できません。	이 동영상은 권리자의 이의 제기로 삭제되어 시청할 수 없습니다.	This video can't be watched because it was deleted following a rights holder's claim.
+error_watch_build_player_serial_video	この動画の視聴にはシリアルコードでの認証が必要です。\nブラウザ版ニコニコ動画から認証をしてください。\n過去に購入したことがある場合は、現在お使いのアカウントが購入時と同じであるかご確認ください。	이 동영상을 시청하려면 시리얼 코드 인증이 필요합니다.\n브라우저판 니코니코 동영상에서 인증해 주세요.\n과거에 구매한 적이 있는 경우, 현재 사용 중인 계정이 구매 당시와 동일한지 확인해 주세요.	You must authenticate with a serial code to watch this video.\nAuthenticate using the browser version of Niconico.\nIf you have purchased this video before, make sure you're using the same account you used to purchase it.
+error_watch_build_player_simultaneous_limited_video	一つのアカウントから複数端末での同時視聴はできません。他の端末での視聴を終了して、しばらく時間をあけてから視聴してください。	하나의 계정으로 여러 기기에서 동시에 시청할 수 없습니다. 다른 기기에서 시청을 종료하고 잠시 후 시청해 주세요.	You can't watch simultaneously on multiple devices with one account. Stop watching on the other device, then wait a while before trying again.
+error_watch_build_player_smile	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_build_player_too_many_requests	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_build_player_unauthorized	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_build_player_unknown	動画の再生に失敗しました。※このエラーが繰り返し表示される場合は、この画面のスクリーンショットを添付のうえ、お問い合わせください。	동영상 재생에 실패했습니다. ※이 오류가 반복해서 표시되면 이 화면의 스크린샷을 첨부하여 문의해 주세요.	Failed to play the video. ※If this error keeps appearing, please contact us and attach a screenshot of this screen.
+error_watch_build_player_user_protection	この動画は年齢制限のため視聴できません。	이 동영상은 연령 제한으로 인해 시청할 수 없습니다.	This video can't be watched due to age restrictions.
+error_watch_check_cache_expired_cache_expired	作品情報の期限切れのため再生に失敗しました。オンラインにしてお試しください。	작품 정보가 만료되어 재생에 실패했습니다. 온라인 상태로 전환한 후 시도해 주세요.	Failed to play the video because the work information has expired. Go online and try again.
+error_watch_fetch_audioworks_general	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_fetch_audioworks_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Could not communicate with the server. Please try again later.
+error_watch_fetch_audioworks_invalid_parameter	不正な動画IDの為再生できません。	잘못된 동영상 ID이므로 재생할 수 없습니다.	Cannot play this video because the video ID is invalid.
+error_watch_fetch_audioworks_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_watch_fetch_covermix_general	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_fetch_covermix_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Could not communicate with the server. Please try again later.
+error_watch_fetch_covermix_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_watch_fetch_list_common_general	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_fetch_lyrics_general	歌詞の表示に失敗しました。	가사를 표시하지 못했습니다.	Failed to display the lyrics.
+error_watch_fetch_lyrics_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_watch_fetch_lyrics_not_found	歌詞が見つかりませんでした。	가사를 찾을 수 없습니다.	Lyrics not found.
+error_watch_fetch_lyrics_offline	オフラインのため歌詞を表示できません。	오프라인 상태라 가사를 표시할 수 없습니다.	Cannot display the lyrics while offline.
+error_watch_fetch_mylist_general	マイリストの取得に失敗しました。	마이리스트를 가져오지 못했습니다.	Failed to load the My List.
+error_watch_fetch_mylist_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Could not communicate with the server. Please try again later.
+error_watch_fetch_mylist_invalid_parameter	不正なマイリストIDのため再生できません。	잘못된 마이리스트 ID라 재생할 수 없습니다.	Cannot play this video because the My List ID is invalid.
+error_watch_fetch_mylist_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_watch_fetch_mylist_not_found	マイリストが見つかりませんでした。	마이리스트를 찾을 수 없습니다.	My List not found.
+error_watch_fetch_playlist_general	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_fetch_playlist_not_found	プレイリストが見つかりませんでした。	플레이리스트를 찾을 수 없습니다.	Playlist not found.
+error_watch_fetch_random_general	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_fetch_random_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Could not communicate with the server. Please try again later.
+error_watch_fetch_random_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_watch_fetch_search_general	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_fetch_search_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Could not communicate with the server. Please try again later.
+error_watch_fetch_search_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_watch_fetch_user_uploaded_general	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_fetch_user_uploaded_internal_server_error	サーバーとの通信に失敗しました。時間を置いて再度お試しください。	서버와의 통신에 실패했습니다. 잠시 후 다시 시도해 주세요.	Could not communicate with the server. Please try again later.
+error_watch_fetch_user_uploaded_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_watch_playing_exo_player_error	動画の再生に失敗しました。	동영상 재생에 실패했습니다.	Failed to play the video.
+error_watch_register_like_daily_limit_exceeded	1日の上限に達したため「いいね！」に失敗しました。	1일 한도에 도달하여 ‘좋아요’를 하지 못했습니다.	Could not like the video because you reached the daily limit.
+error_watch_register_like_general	「いいね！」に失敗しました。	‘좋아요’를 하지 못했습니다.	Failed to like the video.
+error_watch_register_like_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	Maintenance is currently in progress. Please wait until it is complete.
+error_watch_unregister_like_general	「いいね！」の解除に失敗しました。	‘좋아요!’ 취소에 실패했습니다.	Failed to unlike the video.
+error_watch_unregister_like_maintenance	ただいまメンテナンス中です。終了までお待ちください。	현재 점검 중입니다. 종료될 때까지 기다려 주세요.	We’re currently undergoing maintenance. Please wait until it’s finished.
+exo_controls_cc_disabled_description	Enable subtitles	자막 사용	Enable subtitles
+exo_controls_cc_enabled_description	Disable subtitles	자막 사용 안 함	Disable subtitles
+exo_controls_fastforward_description	Fast forward	빨리 감기	Fast forward
+exo_controls_fullscreen_enter_description	Enter fullscreen	전체 화면 시작	Enter fullscreen
+exo_controls_fullscreen_exit_description	Exit fullscreen	전체 화면 종료	Exit fullscreen
+exo_controls_hide	Hide player controls	플레이어 컨트롤 숨기기	Hide player controls
+exo_controls_next_description	Next	다음	Next
+exo_controls_overflow_hide_description	Hide additional settings	추가 설정 숨기기	Hide additional settings
+exo_controls_overflow_show_description	Show additional settings	추가 설정 표시	Show additional settings
+exo_controls_pause_description	Pause	일시중지	Pause
+exo_controls_play_description	Play	재생	Play
+exo_controls_playback_speed	Speed	속도	Speed
+exo_controls_previous_description	Previous	이전	Previous
+exo_controls_repeat_all_description	Current mode: Repeat all. Toggle repeat mode.	현재 모드: 전체 반복. 반복 모드를 전환합니다.	Current mode: Repeat all. Toggle repeat mode.
+exo_controls_repeat_off_description	Current mode: Repeat none. Toggle repeat mode.	현재 모드: 반복 안 함. 반복 모드를 전환합니다.	Current mode: Repeat none. Toggle repeat mode.
+exo_controls_repeat_one_description	Current mode: Repeat one. Toggle repeat mode.	현재 모드: 한 곡 반복. 반복 모드를 전환합니다.	Current mode: Repeat one. Toggle repeat mode.
+exo_controls_rewind_description	Rewind	되감기	Rewind
+exo_controls_seek_bar_description	Playback progress	재생 진행률	Playback progress
+exo_controls_settings_description	Settings	설정	Settings
+exo_controls_show	Show player controls	플레이어 컨트롤 표시	Show player controls
+exo_controls_shuffle_off_description	Enable shuffle mode	셔플 모드 사용	Enable shuffle mode
+exo_controls_shuffle_on_description	Disable shuffle mode	셔플 모드 사용 안 함	Disable shuffle mode
+exo_controls_stop_description	Stop	중지	Stop
+exo_controls_vr_description	VR mode	VR 모드	VR mode
+exo_download_completed	Download completed	다운로드 완료	Download completed
+exo_download_description	Download	다운로드	Download
+exo_download_downloading	Downloading	다운로드 중	Downloading
+exo_download_failed	Download failed	다운로드 실패	Download failed
+exo_download_notification_channel_name	Downloads	다운로드	Downloads
+exo_download_paused	Downloads paused	다운로드 일시중지됨	Downloads paused
+exo_download_paused_for_network	Downloads waiting for network	네트워크 대기 중인 다운로드	Downloads waiting for network
+exo_download_paused_for_wifi	Downloads waiting for WiFi	WiFi 대기 중인 다운로드	Downloads waiting for WiFi
+exo_download_removing	Removing downloads	다운로드 삭제 중	Removing downloads
+exo_track_mono	Mono	모노	Mono
+exo_track_role_alternate	Alternate	대체	Alternate
+exo_track_role_closed_captions	CC	CC	CC
+exo_track_role_commentary	Commentary	해설	Commentary
+exo_track_role_supplementary	Supplementary	보조	Supplementary
+exo_track_selection_auto	Auto	자동	Auto
+exo_track_selection_none	None	없음	None
+exo_track_selection_title_audio	Audio	오디오	Audio
+exo_track_selection_title_text	Text	텍스트	Text
+exo_track_selection_title_video	Video	동영상	Video
+exo_track_stereo	Stereo	스테레오	Stereo
+exo_track_surround	Surround sound	서라운드 사운드	Surround sound
+exo_track_surround_5_point_1	5.1 surround sound	5.1 서라운드 사운드	5.1 surround sound
+exo_track_surround_7_point_1	7.1 surround sound	7.1 서라운드 사운드	7.1 surround sound
+exo_track_unknown	Unknown	알 수 없음	Unknown
+exo_track_unknown_name	Unknown (%1$s)	알 수 없음(%1$s)	Unknown (%1$s)
+expand_button_title	Advanced	고급	Advanced
+exposed_dropdown_menu_content_description	Show dropdown menu	드롭다운 메뉴 표시	Show dropdown menu
+fallback_menu_item_copy_link	Copy link	링크 복사	Copy link
+fallback_menu_item_open_in_browser	Open in browser	브라우저에서 열기	Open in browser
+fallback_menu_item_share_link	Share link	링크 공유	Share link
+fcm_fallback_notification_channel_label	Miscellaneous	기타	Miscellaneous
+first_launch_walk_through_begin_button_text	はじめる	시작하기	Get started
+first_launch_walk_through_description_part_1	ボカコレは	보카코레는	VocaColle is
+first_launch_walk_through_description_part_2	ボカロ楽曲に特化した音楽アプリ	보컬로이드 곡에 특화된 음악 앱	a music app dedicated to Vocaloid songs
+first_launch_walk_through_description_part_3	です。	입니다.	.
+first_launch_walk_through_grid_item_1_text	100万曲の作品が聴き放題	100만 곡을 무제한 감상	Unlimited access to 1 million songs
+first_launch_walk_through_grid_item_2_text	無料でバックグラウンド再生	무료로 백그라운드 재생	Free background playback
+first_launch_walk_through_grid_item_3_text	キャッシュで通信量を節約	캐시로 데이터 사용량 절약	Save data with caching
+first_launch_walk_through_grid_item_4_text	サビメドレーでサビだけ再生	후렴 메들리로 후렴만 재생	Play only the choruses with Chorus Medley
+first_launch_walk_through_title	ボカコレへようこそ！	보카코레에 오신 것을 환영합니다!	Welcome to VocaColle!
+follow	フォローする	팔로우하기	Follow
+followee_activity	フォロー新着	팔로우 새 소식	Recent activity from followed users
+followee_activity_list_blank	最近のアクティビティはありません\nお気に入りのユーザーをフォローしてみましょう！	최근 활동이 없습니다\n마음에 드는 사용자를 팔로우해 보세요!	No recent activity\nTry following your favorite users!
+following	フォロー中	팔로우 중	Following
+following_user	フォロー中のユーザー	팔로우 중인 사용자	Followed users
+following_user_list_blank_message	フォロー中のユーザーはいません\nお気に入りのユーザーをフォローしてみましょう	팔로우 중인 사용자가 없습니다\n마음에 드는 사용자를 팔로우해 보세요	You’re not following any users\nTry following your favorite users
+following_user_list_header_count_format	%d件	%d건	%d
+following_user_list_unfollow	解除	팔로우 해제	Unfollow
+following_user_list_unfollow_alert_title	このユーザーのフォローを解除しますか？	이 사용자의 팔로우를 취소할까요?	Unfollow this user?
+force_update_button	GooglePlay へ	Google Play로	Go to Google Play
+force_update_message	GooglePlay で アプリを最新版にアップデートしてください。	Google Play에서 앱을 최신 버전으로 업데이트해 주세요.	Please update the app to the latest version on Google Play.
+force_update_title	アップデートをお願いします	업데이트가 필요합니다	Please update
+free_space_format	空き容量 %s	여유 공간 %s	Free space %s
+full_mv	フルMV	풀 MV	Full MV
+help	ヘルプ	도움말	Help
+hidden_owner_name	非公開または退会済み	비공개 또는 탈퇴한 사용자	Private or deleted account
+hidden_playlist_list	非表示にしたプレイリスト	숨긴 플레이리스트	Hidden playlists
+hidden_playlist_list_blank_message	非表示中のプレイリストはありません	숨긴 플레이리스트가 없습니다	No hidden playlists
+hidden_playlist_list_header_count_format	%d件	%d건	%d
+hidden_playlist_list_toolbar_title	非表示にしたプレイリスト	숨긴 플레이리스트	Hidden playlists
+hidden_playlist_list_unhide_alert_button_unhide	再表示	다시 표시	Unhide
+hidden_playlist_list_unhide_alert_title	このプレイリストを再表示しますか？	이 플레이리스트를 다시 표시할까요?	Unhide this playlist?
+hidden_playlist_list_unhide_button_text	再表示する	다시 표시하기	Unhide
+high_quality_audio_play_setting_title	高音質で再生	고음질로 재생	Play in high quality
+home	ホーム	홈	Home
+home_event_content_title	イベントコンテンツ	이벤트 콘텐츠	Event Content
+home_event_news_title	イベントニュース	이벤트 소식	Event News
+home_event_ranking_title	イベントランキング	이벤트 랭킹	Event Rankings
+home_event_realtime_ranking_title	リアルタイムランキング	실시간 랭킹	Real-Time Rankings
+home_first_playlist_just_for_you_description	好みにピッタリなおすすめ曲を集めました。	취향에 꼭 맞는 추천곡을 모았어요.	A collection of recommended songs picked just for you.
+home_first_playlist_just_for_you_title	あなただけのプレイリスト	나만을 위한 플레이리스트	Your Personal Playlist
+home_first_playlist_recommended_title	おすすめプレイリスト	추천 플레이리스트	Recommended Playlists
+home_jasrac_permission	JASRAC許諾番号 9013388001Y45123	JASRAC 허가 번호 9013388001Y45123	JASRAC License Number 9013388001Y45123
+home_media_group_description_format	%s・%d作品	%s · %d개 작품	%s · %d works
+home_new_vocaloid_release_title	新着ボカロリリース	신규 보컬로이드 릴리스	New Vocaloid Releases
+home_nextone_permission	NexTone許諾番号 ID000010770	NexTone 허가 번호 ID000010770	NexTone License Number ID000010770
+home_past_event_title	過去のイベント	지난 이벤트	Past Events
+home_pick_up_large_check	チェックする	확인하기	Check it out
+home_pick_up_past_item_title	過去の\n特集を見る	지난\n특집 보기	View\nPast Features
+home_pick_up_title	PICK UP	추천	PICK UP
+home_play_history_ranking_description	の人気作品	의 인기 작품	Popular works
+home_popular_mylist_title	人気のマイリスト	인기 마이리스트	Popular My Lists
+home_ranking_read_more	このランキングをもっと見る	이 랭킹 더 보기	See more of this ranking
+home_recommend_title	あなたにおすすめ	회원님을 위한 추천	Recommended for You
+home_recommended_creator_title	あなたにおすすめのクリエイター	추천 크리에이터	Creators Recommended for You
+home_recommended_mylist_title	あなたにおすすめのマイリスト	추천 마이리스트	My Lists Recommended for You
+home_sns_follow_twitter	SNSでフォローする	SNS에서 팔로우하기	Follow us on social media
+home_trend_user_title	人気のユーザー	인기 사용자	Popular Users
+home_twitter_mylist_title	Xでポストされたマイリスト	X에 게시된 마이리스트	My Lists Posted on X
+home_user_birthday_registration_label	生年月日を設定して、ボカコレアプリをもっと快適に楽しもう！	생년월일을 설정하고 보카코레 앱을 더 편리하게 즐겨 보세요!	Set your date of birth and enjoy the VocaColle app even more!
+home_user_birthday_registration_succeeded_message	生年月日の登録ありがとうございます！今後はよりあなたに合ったコンテンツが表示されます。	생년월일을 등록해 주셔서 감사합니다! 앞으로 회원님에게 더 잘 맞는 콘텐츠가 표시됩니다.	Thank you for registering your date of birth! From now on, you'll see content better suited to you.
+home_vocaloid_classic_and_popular_sub_title	はじめてのあなたに	처음 이용하는 분께	For first-time listeners
+home_vocaloid_classic_and_popular_title	ボカロ定番＆人気曲	보컬로이드 명곡 & 인기곡	Vocaloid Classics & Popular Songs
+icon_content_description	Dialog Icon	대화상자 아이콘	Dialog Icon
+important_notice	重要なお知らせ	중요 공지	Important Notice
+in_progress	In progress	진행 중	In progress
+incomplete_transaction_attention_dialog_message	登録を完了するには、ニコニコプレミアムの登録画面にある［すでにニコニコプレミアム会員の場合］から［購入情報の復元（リストア）］を実行してください。別のニコニコアカウントでニコニコプレミアムへの登録を行いたい場合は、設定画面からログアウトし、ご希望のアカウントにログイン後、［購入情報の復元（リストア）］を実行してください。	등록을 완료하려면 니코니코 프리미엄 등록 화면의 [이미 니코니코 프리미엄 회원인 경우]에서 [구매 정보 복원(리스토어)]을 실행해 주세요. 다른 니코니코 계정으로 니코니코 프리미엄에 등록하려면 설정 화면에서 로그아웃하고 원하는 계정으로 로그인한 뒤 [구매 정보 복원(리스토어)]을 실행해 주세요.	To complete your registration, select [Restore Purchases] under [Already a Niconico Premium member?] on the Niconico Premium registration screen. To register for Niconico Premium with a different Niconico account, log out from Settings, log in to that account, and then select [Restore Purchases].
+incomplete_transaction_attention_dialog_positive_button	ニコニコプレミアム登録画面を開く	니코니코 프리미엄 등록 화면 열기	Open Niconico Premium registration
+incomplete_transaction_attention_dialog_title	ニコニコプレミアムへの登録が完了していません	니코니코 프리미엄 등록이 완료되지 않았습니다	Niconico Premium registration is incomplete
+indeterminate	Partially checked	일부 선택됨	Partially checked
+inquiry_body_note	困っていることを具体的にご入力ください。\n例：プレイリストをシャッフル再生すると途中で再生が止まってしまった	문제가 발생한 상황을 구체적으로 입력해 주세요.\n예: 플레이리스트를 셔플 재생하면 도중에 재생이 멈춤	Please describe your issue in detail.\nExample: Playback stopped midway when playing a playlist in shuffle mode
+inquiry_body_title	お問い合わせ内容	문의 내용	Inquiry details
+inquiry_cautionary_note	年末年始やGW等の大型連休中にいただいたお問い合わせは、休み明け以降に順次対応いたします。\n通常よりご返信にお時間がかかる場合がございますので、あらかじめご了承ください。	연말연시나 골든위크 등 대형 연휴 중 접수된 문의는 휴무 이후 순차적으로 대응합니다.\n평소보다 답변에 시간이 걸릴 수 있으니 양해 부탁드립니다.	Inquiries received during the year-end and New Year holidays, Golden Week, and other extended holidays will be handled in sequence after the holidays.\nPlease note that it may take longer than usual to receive a reply.
+inquiry_clear_button	入力内容をクリア	입력 내용 지우기	Clear entered text
+inquiry_confirm_clear_ok	クリア	지우기	Clear
+inquiry_confirm_clear_title	入力した内容をクリアしますか？	입력한 내용을 지울까요?	Clear the entered text?
+inquiry_confirm_send_ok	送信	전송	Send
+inquiry_confirm_send_title	入力した内容で送信しますか？	입력한 내용으로 전송할까요?	Send the entered text?
+inquiry_dropdown_placeholder	選択してください	선택해 주세요	Please select
+inquiry_error_count_limit_body	1,000文字以内で入力してください。	1,000자 이내로 입력해 주세요.	Enter no more than 1,000 characters.
+inquiry_error_count_limit_mail_address	500文字以内で入力してください。	500자 이내로 입력해 주세요.	Enter no more than 500 characters.
+inquiry_error_count_limit_media_info	300文字以内で入力してください。	300자 이내로 입력해 주세요.	Enter no more than 300 characters.
+inquiry_error_count_limit_occurred_date_info	100文字以内で入力してください。	100자 이내로 입력해 주세요.	Enter no more than 100 characters.
+inquiry_error_count_limit_occurred_version	100文字以内で入力してください。	100자 이내로 입력해 주세요.	Enter no more than 100 characters.
+inquiry_error_input_required	入力してください。	입력해 주세요.	Please enter this field.
+inquiry_error_invalid_format_mail_address	メールアドレスの形式が正しくありません。	이메일 주소 형식이 올바르지 않습니다.	The email address format is invalid.
+inquiry_error_invalid_format_screenshot_file	サポートしていないファイル形式です。png、jpg、gifいずれかの形式で送信してください。	지원하지 않는 파일 형식입니다. png, jpg, gif 중 하나의 형식으로 보내 주세요.	This file format is not supported. Send a file in png, jpg, or gif format.
+inquiry_error_screenshot_attach_problem	画像の添付処理中にエラーが発生しました。もう一度、画像を選択し直してください。解消しない場合は、お問い合わせ内容に画像が添付できない旨をご記入ください。	이미지 첨부 처리 중 오류가 발생했습니다. 이미지를 다시 선택해 주세요. 문제가 해결되지 않는 경우, 문의 내용에 이미지를 첨부할 수 없다고 적어 주세요.	An error occurred while attaching the image. Select the image again. If the issue persists, mention in your inquiry that you cannot attach an image.
+inquiry_error_select_required	選択してください。	선택해 주세요.	Please select an option.
+inquiry_error_size_limit_screenshot_file	ファイルサイズが大きすぎます。ファイルサイズを4MB以下に圧縮して送信してください。	파일 크기가 너무 큽니다. 파일 크기를 4MB 이하로 압축하여 보내 주세요.	The file is too large. Compress it to 4MB or less and send it again.
+inquiry_frequency_choices_every_time	毎回発生する	매번 발생함	Every time
+inquiry_frequency_choices_only_one_time	1回だけ発生した	한 번만 발생함	Only once
+inquiry_frequency_choices_sometimes	数回に1回発生する	몇 번에 한 번 발생함	Occasionally
+inquiry_frequency_title	問題発生頻度	문제 발생 빈도	Problem frequency
+inquiry_item_title_required	必須	필수	Required
+inquiry_mail_address_title	連絡先メールアドレス	연락처 이메일 주소	Contact email address
+inquiry_media_info_note	作品URLや作品ID（sm等から始まる英数字）が分かる場合には記載してください。\n※作品詳細画面の[︙]からコピーできます	작품 URL이나 작품 ID(sm 등으로 시작하는 영숫자)를 알고 있다면 기재해 주세요.\n※작품 상세 화면의 [︙]에서 복사할 수 있습니다	If you know the work URL or work ID (alphanumeric characters beginning with sm, etc.), please include it.\n※You can copy it from [︙] on the work details screen
+inquiry_media_info_title	作品情報	작품 정보	Work information
+inquiry_occurred_app_version_current_version_example	例：7.22.0の1つ前のバージョン	예: 7.22.0의 바로 이전 버전	Example: The version before 7.22.0
+inquiry_occurred_app_version_current_version_prefix	いまお使いのバージョンは	현재 사용 중인 버전은	The version you are currently using is
+inquiry_occurred_app_version_current_version_suffix	です	입니다	is
+inquiry_occurred_app_version_title	問題が発生したボカコレアプリのバージョン	문제가 발생한 보카코레 앱 버전	VocaColle app version where the problem occurred
+inquiry_occurred_date_note	例：昨日の夜21時頃、今発生しているなど	예: 어젯밤 21시경, 지금 발생 중 등	Example: Around 9 PM last night, happening now, etc.
+inquiry_occurred_date_title	問題発生日時	문제 발생 일시	When the problem occurred
+inquiry_select_screenshot_button	スクリーンショットを添付	스크린샷 첨부	Attach a screenshot
+inquiry_select_screenshot_note	エラーが表示された画面のスクリーンショットをご用意できる場合は、ここから添付してください。\n※対応画像ファイル：JPEG/PNG/GIF	오류가 표시된 화면의 스크린샷이 있다면 여기에서 첨부해 주세요.\n※지원 이미지 파일: JPEG/PNG/GIF	If you can provide a screenshot of the screen showing the error, attach it here.\n*Supported image files: JPEG/PNG/GIF
+inquiry_select_screenshot_title	スクリーンショット	스크린샷	Screenshot
+inquiry_send_button	送信	전송	Send
+inquiry_send_success_message	送信しました。\nご回答までいましばらくお待ちください。	전송했습니다.\n답변까지 잠시만 기다려 주세요.	Sent.\nPlease wait a little while for our response.
+inquiry_subject_choices_account_and_login	アカウントやログイン	계정 및 로그인	Account or login
+inquiry_subject_choices_general_functions	機能全般	기능 전반	General features
+inquiry_subject_choices_other_problem	その他	기타	Other
+inquiry_subject_choices_playback_problem	再生の不具合	재생 문제	Playback issue
+inquiry_subject_choices_premium_member	ニコニコプレミアム会員	니코니코 프리미엄 회원	Niconico Premium membership
+inquiry_subject_title	お問い合わせ項目	문의 항목	Inquiry topic
+inquiry_text_field_placeholder	入力してください	입력해 주세요	Enter your message
+inquiry_title	お問い合わせ	문의	Contact us
+interest_contents_completion_later_button_title	あとで	나중에	Later
+interest_contents_completion_library_play_message	からいつでも再生できます	에서 언제든지 재생할 수 있습니다	You can play it anytime from your library
+interest_contents_completion_message_format	%sができたよ！	%s이(가) 완성됐어요!	%s is ready!
+interest_contents_completion_play_button_title	プレイリストを再生する	플레이리스트 재생하기	Play playlist
+interest_contents_selection_create_playlist_format	プレイリストを作成する（%d/%d）	플레이리스트 만들기(%d/%d)	Create playlist (%d/%d)
+interest_contents_selection_dialog_message	作品の選択をスキップすると、あなたの好みに合ったプレイリストが作成されません。	작품 선택을 건너뛰면 취향에 맞는 플레이리스트가 만들어지지 않습니다.	If you skip selecting works, a playlist tailored to your tastes won't be created.
+interest_contents_selection_dialog_title	作品の選択をスキップしますか？	작품 선택을 건너뛰시겠습니까?	Skip selecting works?
+interest_contents_selection_header_message	気になる作品を直感で\n選んでみよう！	관심 있는 작품을 직감으로\n골라 보세요!	Choose works you like\nintuitively!
+interest_contents_selection_playlist_title_format	%sさんのプレイリスト	%s님의 플레이리스트	%s's playlist
+item_view_role_description	Tab	탭	Tab
+library	ライブラリ	라이브러리	Library
+library_followee_activities_offline	オンラインにするとアクティビティを表示できます	온라인으로 전환하면 활동을 표시할 수 있습니다	Go online to view activities
+library_hide	非表示	숨기기	Hide
+library_no_followee_activities	最近のアクティビティはありません\nお気に入りのユーザーをフォローしてみましょう！	최근 활동이 없습니다\n마음에 드는 사용자를 팔로우해 보세요!	No recent activities\nTry following users you like!
+library_pin_coaching_message	右スワイプでプレイリストをピン留めできます	오른쪽으로 스와이프하면 플레이리스트를 고정할 수 있습니다	Swipe right to pin a playlist
+library_playlist_blank_message	作成したプレイリストはここに表示されます	만든 플레이리스트가 여기에 표시됩니다	Your created playlists will appear here
+library_playlist_hidden	非表示	숨기기	Hidden
+library_playlist_hidden_message	プレイリストを非表示にしますか？	플레이리스트를 숨기시겠습니까?	Hide this playlist?
+library_playlist_hidden_success_message	プレイリストを非表示にしました。\nアプリ設定から再表示できます。	플레이리스트를 숨겼습니다.\n앱 설정에서 다시 표시할 수 있습니다.	Playlist hidden.\nYou can show it again in app settings.
+library_playlist_hidden_success_snackbar_action	設定	설정	Settings
+library_playlist_menu_delete	プレイリストを削除	플레이리스트 삭제	Delete playlist
+library_playlist_menu_hidden	プレイリストを非表示にする	플레이리스트 숨기기	Hide playlist
+library_playlist_menu_pin	ピン留めする	고정하기	Pin
+library_playlist_menu_unfollow	フォローを解除	팔로우 해제	Unfollow
+library_playlist_menu_unpin	ピン留めを解除	고정 해제	Unpin
+library_playlists_order_added_at	追加順	추가순	Date added
+library_playlists_order_played_at	再生順	재생순	Recently played
+library_unfollow_dialog_button_unfollow	解除	팔로우 해제	Unfollow
+library_unfollow_dialog_message_ask_unfollow	フォロー解除しますか？	팔로우를 해제하시겠습니까?	Unfollow this playlist?
+library_unfollow_dialog_title_deleted_mylist	削除されたマイリストです	삭제된 마이리스트입니다	This My List has been deleted
+library_unfollow_dialog_title_private_mylist	非公開のマイリストです	비공개 마이리스트입니다	This My List is private
+library_watch_later_transition_failure_message	あとで見るの読み込みに失敗しました。\nオンラインにして更新してください。	나중에 보기 불러오기에 실패했습니다.\n온라인으로 전환한 뒤 업데이트해 주세요.	Failed to load Watch Later.\nGo online and refresh.
+license	ライセンス情報	라이선스 정보	License information
+license_content_error	An error has occurred when fetching the license.	라이선스를 가져오는 중 오류가 발생했습니다.	An error has occurred when fetching the license.
+license_is_loading	License info is loading.	라이선스 정보를 불러오는 중입니다.	License info is loading.
+license_list_is_loading	License list is loading.	라이선스 목록을 불러오는 중입니다.	License list is loading.
+like_added_message	「いいね！」しました。	‘좋아요!’를 눌렀습니다.	Liked.
+like_deleted_message	「いいね！」を解除しました。	‘좋아요!’를 취소했습니다.	Like removed.
+like_dialog_title	「いいね！」しました	‘좋아요!’를 눌렀습니다	Liked
+like_history_blank	いいね！した作品はありません	좋아요를 누른 작품이 없습니다	You haven't liked any content
+like_history_error	いいね！した作品の取得に失敗しました	좋아요를 누른 작품을 가져오지 못했습니다	Failed to retrieve liked content
+like_history_header	いいね！した作品が%d件まで表示されます。	좋아요를 누른 작품이 최대 %d건까지 표시됩니다.	Up to %d liked items will be displayed.
+like_history_title	いいね！履歴	좋아요 기록	Like history
+locallist	ローカルリスト	로컬 리스트	Local list
+login	ログイン	로그인	Log in
+login_failed	Login failed	로그인 실패	Login failed
+logout	ログアウト	로그아웃	Log out
+logout_by_session_error_guest	長期間ご利用がないか、他の端末からログインがあったため、アカウント情報を取得できませんでした。アカウント情報の確認のため、［問い合わせ］よりお問い合わせください。	장기간 이용하지 않았거나 다른 기기에서 로그인되어 계정 정보를 가져올 수 없었습니다. 계정 정보 확인을 위해 [문의]에서 문의해 주세요.	We couldn't retrieve your account information because you haven't used the service for a long time or you logged in from another device. To verify your account information, please contact us through [Inquiry].
+logout_by_session_error_non_guest	長期間ご利用がないか、他の端末からログインがあったため、アカウント情報を取得できませんでした。再度ログインしてください。ログイン情報がご不明な場合はお問い合わせください。	장기간 이용하지 않았거나 다른 기기에서 로그인되어 계정 정보를 가져올 수 없었습니다. 다시 로그인해 주세요. 로그인 정보를 모르는 경우 문의해 주세요.	We couldn't retrieve your account information because you haven't used the service for a long time or you logged in from another device. Please log in again. If you don't know your login information, please contact us.
+logout_confirm_cancel	Cancel	취소	Cancel
+logout_confirm_message	Log out of the VocaColle.	VocaColle에서 로그아웃합니다.	Log out of the VocaColle.
+logout_confirm_ok	Logout	로그아웃	Logout
+logout_confirm_title	Do you want to log out?	로그아웃하시겠습니까?	Do you want to log out?
+logout_guest_confirm_cancel	Cancel	취소	Cancel
+logout_guest_confirm_message	ログアウトすると、このアカウントでの再ログインができなくなります。	로그아웃하면 이 계정으로 다시 로그인할 수 없습니다.	After logging out, you won't be able to log in again with this account.
+logout_guest_confirm_message_with_playlist_loss_warning	If you log out while using a guest account, you will not be able to log in again, and your Watch Later list and playlists will be lost.\nPlease register an email address or link an external account before logging out.	게스트 계정 사용 중 로그아웃하면 다시 로그인할 수 없으며, 나중에 볼 동영상 목록과 재생목록이 사라집니다.\n로그아웃하기 전에 이메일 주소를 등록하거나 외부 계정을 연결해 주세요.	If you log out while using a guest account, you will not be able to log in again, and your Watch Later list and playlists will be lost.\nPlease register an email address or link an external account before logging out.
+logout_guest_confirm_ok	Continue logging out	로그아웃 계속	Continue logging out
+logout_guest_confirm_register	Register login information	로그인 정보 등록	Register login information
+logout_guest_subscription_exists_confirm_message	You cannot log out because there is paid subscription information associated with your current account.\nPlease register an email address or link an external service login.	현재 계정에 연결된 유료 구독 정보가 있어 로그아웃할 수 없습니다.\n이메일 주소를 등록하거나 외부 서비스 로그인을 연결해 주세요.	You cannot log out because there is paid subscription information associated with your current account.\nPlease register an email address or link an external service login.
+logout_open_inquiry	問い合わせ	문의	Inquiry
+lyrics_registration_coaching_more_detail_button	さらに詳しく	자세히 보기	Learn more
+lyrics_registration_coaching_owner_message	歌詞を登録する際は、PCブラウザのニコニコガレージから歌詞データを投稿してください。	가사를 등록하려면 PC 브라우저의 니코니코 개러지에서 가사 데이터를 업로드해 주세요.	When registering lyrics, submit the lyrics data from Niconico Garage in a PC browser.
+lyrics_registration_coaching_owner_title	あなたの作品に歌詞を登録しよう！	내 작품에 가사를 등록해 보세요!	Add lyrics to your work!
+lyrics_registration_coaching_viewer_message	歌詞データの投稿は投稿者のみ行えます。\n歌詞を登録する際は、ニコニコガレージから歌詞データを投稿してください。	가사 데이터 업로드는 업로더만 할 수 있습니다.\n가사를 등록하려면 니코니코 개러지에서 가사 데이터를 업로드해 주세요.	Only the uploader can submit lyrics data.\nWhen registering lyrics, submit the lyrics data from Niconico Garage.
+lyrics_registration_coaching_viewer_title	この作品には歌詞が登録されていません	이 작품에는 가사가 등록되어 있지 않습니다	No lyrics have been registered for this work
+m3_loading_indicator_content_description	Loading	로드 중	Loading
+m3c_bottom_sheet_collapse_description	Collapse bottom sheet	하단 시트 접기	Collapse bottom sheet
+m3c_bottom_sheet_dismiss_description	Dismiss bottom sheet	하단 시트 닫기	Dismiss bottom sheet
+m3c_bottom_sheet_drag_handle_description	Drag handle	드래그 핸들	Drag handle
+m3c_bottom_sheet_expand_description	Expand bottom sheet	하단 시트 펼치기	Expand bottom sheet
+m3c_bottom_sheet_pane_title	Bottom Sheet	하단 시트	Bottom Sheet
+m3c_date_input_headline	Entered date	입력한 날짜	Entered date
+m3c_date_input_headline_description	Entered date: %1$s	입력한 날짜: %1$s	Entered date: %1$s
+m3c_date_input_invalid_for_pattern	Date does not match expected pattern: %1$s	날짜가 예상 형식과 일치하지 않습니다: %1$s	Date does not match expected pattern: %1$s
+m3c_date_input_invalid_not_allowed	Date not allowed: %1$s	허용되지 않는 날짜입니다: %1$s	Date not allowed: %1$s
+m3c_date_input_invalid_year_range	Date out of expected year range %1$s - %2$s	날짜가 예상 연도 범위 %1$s - %2$s을(를) 벗어났습니다	Date out of expected year range %1$s - %2$s
+m3c_date_input_label	Date	날짜	Date
+m3c_date_input_no_input_description	None	없음	None
+m3c_date_input_title	Select date	날짜 선택	Select date
+m3c_date_picker_headline	Selected date	선택한 날짜	Selected date
+m3c_date_picker_headline_description	Current selection: %1$s	현재 선택: %1$s	Current selection: %1$s
+m3c_date_picker_navigate_to_year_description	Navigate to year %1$s	%1$s년으로 이동	Navigate to year %1$s
+m3c_date_picker_no_selection_description	None	없음	None
+m3c_date_picker_scroll_to_earlier_years	Scroll to show earlier years	이전 연도를 보려면 스크롤	Scroll to show earlier years
+m3c_date_picker_scroll_to_later_years	Scroll to show later years	이후 연도를 보려면 스크롤	Scroll to show later years
+m3c_date_picker_switch_to_calendar_mode	Switch to calendar input mode	캘린더 입력 모드로 전환	Switch to calendar input mode
+m3c_date_picker_switch_to_day_selection	Swipe to select a year, or tap to switch back to selecting a day	스와이프하여 연도를 선택하거나 탭하여 날짜 선택으로 돌아가기	Swipe to select a year, or tap to switch back to selecting a day
+m3c_date_picker_switch_to_input_mode	Switch to text input mode	텍스트 입력 모드로 전환	Switch to text input mode
+m3c_date_picker_switch_to_next_month	Change to next month	다음 달로 변경	Change to next month
+m3c_date_picker_switch_to_previous_month	Change to previous month	이전 달로 변경	Change to previous month
+m3c_date_picker_switch_to_year_selection	Switch to selecting a year	연도 선택으로 전환	Switch to selecting a year
+m3c_date_picker_title	Select date	날짜 선택	Select date
+m3c_date_picker_today_description	Today	오늘	Today
+m3c_date_picker_year_picker_pane_title	Year picker visible	연도 선택기가 표시됨	Year picker visible
+m3c_date_range_input_invalid_range_input	Invalid date range input	잘못된 날짜 범위 입력	Invalid date range input
+m3c_date_range_input_title	Enter dates	날짜 입력	Enter dates
+m3c_date_range_picker_day_in_range	In range	범위 내	In range
+m3c_date_range_picker_end_headline	End date	종료일	End date
+m3c_date_range_picker_scroll_to_next_month	Scroll to show the next month	다음 달을 표시하려면 스크롤하세요	Scroll to show the next month
+m3c_date_range_picker_scroll_to_previous_month	Scroll to show the previous month	이전 달을 표시하려면 스크롤하세요	Scroll to show the previous month
+m3c_date_range_picker_start_headline	Start date	시작일	Start date
+m3c_date_range_picker_title	Select dates	날짜 선택	Select dates
+m3c_dialog	Dialog	대화상자	Dialog
+m3c_dropdown_menu_collapsed	Collapsed	접힘	Collapsed
+m3c_dropdown_menu_expanded	Expanded	펼쳐짐	Expanded
+m3c_dropdown_menu_toggle	Toggle dropdown menu	드롭다운 메뉴 전환	Toggle dropdown menu
+m3c_floating_toolbar_collapse	Collapse toolbar	툴바 접기	Collapse toolbar
+m3c_floating_toolbar_expand	Expand toolbar	툴바 펼치기	Expand toolbar
+m3c_search_bar_search	Search	검색	Search
+m3c_snackbar_dismiss	Dismiss	닫기	Dismiss
+m3c_snackbar_pane_title	Alert	알림	Alert
+m3c_suggestions_available	Suggestions below	아래에 추천 항목 있음	Suggestions below
+m3c_time_input_dialog_title	Enter Time	시간 입력	Enter Time
+m3c_time_picker_am	AM	오전	AM
+m3c_time_picker_dialog_title	Select Time	시간 선택	Select Time
+m3c_time_picker_hour	Hour	시	Hour
+m3c_time_picker_hour_24h_suffix	%1$d hours	%1$d시간	%1$d hours
+m3c_time_picker_hour_selection	Select hour	시간 선택	Select hour
+m3c_time_picker_hour_suffix	%1$d o'clock	%1$d시	%1$d o'clock
+m3c_time_picker_hour_text_field	for hour	시간 입력란	for hour
+m3c_time_picker_minute	Minute	분	Minute
+m3c_time_picker_minute_selection	Select minutes	분 선택	Select minutes
+m3c_time_picker_minute_suffix	%1$d minutes	%1$d분	%1$d minutes
+m3c_time_picker_minute_text_field	for minutes	분 입력란	for minutes
+m3c_time_picker_period_toggle_description	Select AM or PM	오전 또는 오후 선택	Select AM or PM
+m3c_time_picker_pm	PM	오후	PM
+m3c_time_picker_toggle_keyboard	Switch to text input mode for the time input	시간 입력을 텍스트 입력 모드로 전환	Switch to text input mode for the time input
+m3c_time_picker_toggle_touch	Switch to clock mode for the time input	시간 입력을 시계 모드로 전환	Switch to clock mode for the time input
+m3c_tooltip_long_press_label	Show tooltip	도움말 표시	Show tooltip
+m3c_tooltip_pane_description	Tooltip	도움말	Tooltip
+m3c_wide_navigation_rail_close_rail	Close rail	레일 닫기	Close rail
+m3c_wide_navigation_rail_pane_title	Navigation rail	탐색 레일	Navigation rail
+material_clock_toggle_content_description	Select AM or PM	오전 또는 오후 선택	Select AM or PM
+material_hour_24h_suffix	%1$s hours	%1$s시간	%1$s hours
+material_hour_selection	Select hour	시간 선택	Select hour
+material_hour_suffix	%1$s o'clock	%1$s시	%1$s o'clock
+material_minute_selection	Select minutes	분 선택	Select minutes
+material_minute_suffix	%1$s minutes	%1$s분	%1$s minutes
+material_slider_range_end	Range end	범위 끝	Range end
+material_slider_range_start	Range start	범위 시작	Range start
+material_slider_value	Value	값	Value
+material_timepicker_am	AM	오전	AM
+material_timepicker_clock_mode_description	Switch to clock mode for the time input.	시간 입력을 시계 모드로 전환합니다.	Switch to clock mode for the time input.
+material_timepicker_hour	Hour	시	Hour
+material_timepicker_minute	Minute	분	Minute
+material_timepicker_pm	PM	오후	PM
+material_timepicker_select_time	Select time	시간 선택	Select time
+material_timepicker_text_input_mode_description	Switch to text input mode for the time input.	시간 입력을 텍스트 입력 모드로 전환합니다.	Switch to text input mode for the time input.
+mc2_snackbar_pane_title	Alert	알림	Alert
+media3_controls_pause_description	Pause	일시중지	Pause
+media3_controls_play_description	Play	재생	Play
+media3_controls_seek_back_description	Seek back	뒤로 이동	Seek back
+media3_controls_seek_forward_description	Seek forward	앞으로 이동	Seek forward
+media3_controls_seek_to_next_description	Seek to next item	다음 항목으로 이동	Seek to next item
+media3_controls_seek_to_previous_description	Seek to previous item	이전 항목으로 이동	Seek to previous item
+media_cache_usage_volume_format	%s 使用	%s 사용	%s used
+media_detail	作品詳細	작품 상세	Work details
+media_detail_audio_quality	最高音質：	최고 음질:	Highest audio quality:
+media_detail_comment_count	コメント数：	댓글 수:	Comments:
+media_detail_copy_media_id_completed_message	作品IDをコピーしました。	작품 ID를 복사했습니다.	Work ID copied.
+media_detail_copy_media_id_format	作品ID(%s)をコピーする	작품 ID(%s) 복사	Copy work ID (%s)
+media_detail_duration	再生時間：	재생 시간:	Duration:
+media_detail_empty_supplementary_information	作品の補足情報はありません	작품 보충 정보가 없습니다	No additional information for this work
+media_detail_like_count	いいね！数：	좋아요 수:	Likes:
+media_detail_mute_user	このユーザーの作品を表示しない	이 사용자의 작품 숨기기	Hide this user's works
+media_detail_mute_user_alert_message	このユーザーの作品が検索やランキングなどから非表示になります	이 사용자의 작품이 검색이나 랭킹 등에서 숨겨집니다	This user's works will be hidden from search results, rankings, and more.
+media_detail_mute_user_alert_title	このユーザーの作品を非表示にしますか？	이 사용자의 작품을 숨기시겠습니까?	Hide this user's works?
+media_detail_mylist_count	マイリスト数：	마이리스트 수:	MyLists:
+media_detail_post_date	投稿日時：	게시 일시:	Posted:
+media_detail_related_mylist	関連マイリスト	관련 마이리스트	Related MyLists
+media_detail_report	このコンテンツを通報する	이 콘텐츠 신고하기	Report this content
+media_detail_supplementary_information	作品の補足情報	작품 보충 정보	Additional information
+media_detail_title	作品紹介	작품 소개	About this work
+media_detail_view_count	再生数：	재생 수:	Views:
+more_view	もっと見る	더 보기	See more
+move	移動	이동	Move
+move_to_store	移動する	이동하기	Move
+mtrl_badge_numberless_content_description	New notification	새 알림	New notification
+mtrl_button_collapsed_content_description	Collapsed	접힘	Collapsed
+mtrl_button_expanded_content_description	Expanded	펼쳐짐	Expanded
+mtrl_checkbox_state_description_checked	Checked	선택됨	Checked
+mtrl_checkbox_state_description_indeterminate	Partially checked	일부 선택됨	Partially checked
+mtrl_checkbox_state_description_unchecked	Not checked	선택되지 않음	Not checked
+mtrl_chip_close_icon_content_description	Remove %1$s	%1$s 삭제	Remove %1$s
+mtrl_exceed_max_badge_number_content_description	More than %1$d new notifications	새 알림 %1$d개 초과	More than %1$d new notifications
+mtrl_picker_a11y_next_month	Change to next month	다음 달로 변경	Change to next month
+mtrl_picker_a11y_prev_month	Change to previous month	이전 달로 변경	Change to previous month
+mtrl_picker_announce_current_range_selection	Start date selection: %1$s – End date selection: %2$s	시작일 선택: %1$s – 종료일 선택: %2$s	Start date selection: %1$s – End date selection: %2$s
+mtrl_picker_announce_current_selection	Current selection: %1$s	현재 선택: %1$s	Current selection: %1$s
+mtrl_picker_announce_current_selection_none	none	없음	none
+mtrl_picker_cancel	Cancel	취소	Cancel
+mtrl_picker_confirm	OK	확인	OK
+mtrl_picker_date_header_title	Select Date	날짜 선택	Select Date
+mtrl_picker_date_header_unselected	Selected date	선택한 날짜	Selected date
+mtrl_picker_end_date_description	End date %1$s	종료일 %1$s	End date %1$s
+mtrl_picker_invalid_format	Invalid format.	잘못된 형식입니다.	Invalid format.
+mtrl_picker_invalid_format_example	Example: %1$s	예: %1$s	Example: %1$s
+mtrl_picker_invalid_format_use	Use: %1$s	사용: %1$s	Use: %1$s
+mtrl_picker_invalid_range	Invalid range.	잘못된 범위입니다.	Invalid range.
+mtrl_picker_navigate_to_current_year_description	Navigate to current year %1$d	현재 연도 %1$d년으로 이동	Navigate to current year %1$d
+mtrl_picker_navigate_to_year_description	Navigate to year %1$d	%1$d년으로 이동	Navigate to year %1$d
+mtrl_picker_out_of_range	Out of range: %1$s	범위를 벗어남: %1$s	Out of range: %1$s
+mtrl_picker_range_header_only_end_selected	Start date – %1$s	시작일 – %1$s	Start date – %1$s
+mtrl_picker_range_header_only_start_selected	%1$s – End date	%1$s – 종료일	%1$s – End date
+mtrl_picker_range_header_title	Select Range	범위 선택	Select Range
+mtrl_picker_range_header_unselected	Start date – End date	시작일 – 종료일	Start date – End date
+mtrl_picker_save	Save	저장	Save
+mtrl_picker_start_date_description	Start date %1$s	시작일 %1$s	Start date %1$s
+mtrl_picker_text_input_date_hint	Date	날짜	Date
+mtrl_picker_text_input_date_range_end_hint	End date	종료일	End date
+mtrl_picker_text_input_date_range_start_hint	Start date	시작일	Start date
+mtrl_picker_text_input_day_abbr	d	일	d
+mtrl_picker_text_input_month_abbr	m	월	m
+mtrl_picker_text_input_year_abbr	y	년	y
+mtrl_picker_today_description	Today %1$s	오늘 %1$s	Today %1$s
+mtrl_picker_toggle_to_calendar_input_mode	Switch to calendar input mode	캘린더 입력 모드로 전환	Switch to calendar input mode
+mtrl_picker_toggle_to_day_selection	Switch to Calendar view	캘린더 보기로 전환	Switch to Calendar view
+mtrl_picker_toggle_to_text_input_mode	Switch to text input mode	텍스트 입력 모드로 전환	Switch to text input mode
+mtrl_picker_toggle_to_year_selection	Switch to year view	연도 보기로 전환	Switch to year view
+mtrl_picker_toggled_to_day_selection	Switched to Calendar view	캘린더 보기로 전환됨	Switched to Calendar view
+mtrl_picker_toggled_to_year_selection	Switched to year view	연도 보기로 전환됨	Switched to year view
+mtrl_timepicker_cancel	Cancel	취소	Cancel
+mtrl_timepicker_confirm	OK	확인	OK
+mute_add_result_already_exist	既に登録されているユーザーです。	이미 등록된 사용자입니다.	This user is already registered.
+mute_add_result_success	非表示にしました。アカウント設定から解除できます。	숨겼습니다. 계정 설정에서 해제할 수 있습니다.	User hidden. You can unhide them in Account settings.
+mute_remove_result_success	非表示を解除しました。	숨김을 해제했습니다.	User unhidden.
+muted_owner_list_blank_message	登録されていません\n登録はユーザーページや作品詳細右上のオプションメニューから行えます	등록되어 있지 않습니다\n등록은 사용자 페이지나 작품 상세 오른쪽 상단의 옵션 메뉴에서 할 수 있습니다	No users registered\nYou can register users from their user page or the options menu in the top-right corner of the work details.
+muted_owner_list_header_count_format	%d / %d件	%d / %d건	%d / %d items
+muted_owner_list_header_description	登録したユーザーの作品を、検索結果やランキングなどから非表示にします。	등록한 사용자의 작품을 검색 결과나 랭킹 등에서 숨깁니다.	Hide works by registered users from search results, rankings, and more.
+muted_owner_list_item_unregister_button_text	再表示する	다시 표시하기	Show again
+muted_owner_list_remove_muted_user_alert_message_format	このユーザーの作品が表示されるようになります	이 사용자의 작품이 다시 표시됩니다	This user's works will be shown again.
+muted_owner_list_remove_muted_user_alert_title	このユーザーの非表示を解除しますか？	이 사용자의 숨김을 해제하시겠습니까?	Unmute this user?
+muted_owner_list_toolbar_title	非表示にしたユーザー	숨긴 사용자	Muted users
+muted_user_list	非表示にしたユーザー	숨긴 사용자	Muted users
+mv_medley_blank_message	表示するコンテンツがありません	표시할 콘텐츠가 없습니다	No content to display
+mv_medley_coaching_three_point_menu_message	「プレーヤーで再生」から作品をフルで聴けるようになりました！	‘플레이어에서 재생’을 통해 작품 전체를 들을 수 있게 되었습니다!	You can now listen to the full work by selecting “Play with player”!
+mv_medley_description_read_more	 …続きを読む	 …더 보기	 …Read more
+mv_medley_error_message	コンテンツの取得に失敗しました。\n通信状況をご確認ください。	콘텐츠를 가져오지 못했습니다.\n통신 상태를 확인해 주세요.	Failed to retrieve content.\nCheck your connection.
+mv_medley_menu_16_9_screen	16:9表示に切り替え	16:9 표시로 전환	Switch to 16:9 display
+mv_medley_menu_comment_off	コメントを非表示	댓글 숨기기	Hide comments
+mv_medley_menu_comment_on	コメントを表示	댓글 표시	Show comments
+mv_medley_menu_full_screen	フルスクリーン表示に切り替え	전체 화면 표시로 전환	Switch to full-screen display
+mv_medley_menu_play_with_player	プレーヤーで再生	플레이어로 재생	Play with player
+mv_medley_menu_report_comment	コメントの通報	댓글 신고	Report comment
+mv_medley_menu_report_content	コンテンツの通報	콘텐츠 신고	Report content
+mylist	マイリスト	마이리스트	My Lists
+mylist_list_item_menu_bottom_sheet_show_owner	作成者を表示	작성자 표시	View creator
+native_body	Body	본문	Body
+native_headline	Headline	제목	Headline
+native_media_view	Media View	미디어 보기	Media View
+nav_rail_collapsed_a11y_label	Collapsed	접힘	Collapsed
+nav_rail_expanded_a11y_label	Expanded	펼쳐짐	Expanded
+navigation_menu	Navigation menu	탐색 메뉴	Navigation menu
+nico_ad	いきなり！動画紹介	깜짝! 동영상 소개	Sudden! Video Introductions
+niconico_info	お知らせ	공지사항	Announcements
+niconico_info_list	記事一覧	글 목록	Article list
+no_licenses_available	This app does not have any open source licenses.	이 앱에는 오픈소스 라이선스가 없습니다.	This app does not have any open source licenses.
+normal_member	一般会員	일반 회원	Standard member
+not_selected	Not selected	선택 안 됨	Not selected
+not_set	Not set	설정 안 됨	Not set
+notice_for_required_update_and_enable_google_chrome	表示に失敗しました\nGoogle Playで最新のGoogle Chromeをインストールし有効化してください	표시하지 못했습니다\nGoogle Play에서 최신 Google Chrome을 설치하고 활성화해 주세요	Failed to display.\nInstall and enable the latest version of Google Chrome from Google Play.
+notice_not_available_play_store	GooglePlayストアがインストールされていない、または無効になっています	Google Play 스토어가 설치되어 있지 않거나 비활성화되어 있습니다	Google Play Store is not installed or has been disabled.
+notification_channel_description_notification_from_vocacolle	おすすめの作品や機能、新着情報などの通知を表示します。	추천 작품과 기능, 새로운 소식 등의 알림을 표시합니다.	Shows notifications about recommended works and features, new updates, and more.
+notification_channel_name_background_player	バックグラウンドプレイヤー	백그라운드 플레이어	Background player
+notification_channel_name_cache	キャッシュ	캐시	Cache
+notification_channel_name_notification_from_vocacolle	ボカコレからのお知らせ	보카코레 소식	VocaColle announcements
+notification_custom_action_turnoff	通知設定	알림 설정	Notification settings
+notifications_permission_confirm	Allow	허용	Allow
+notifications_permission_decline	Don't allow	허용 안 함	Don't allow
+notifications_permission_title	Allow app to send you notifications?	앱에서 알림을 보내도록 허용하시겠습니까?	Allow app to send you notifications?
+offline_dialog_image_description	Icon	아이콘	Icon
+offline_dialog_text	Thanks for your interest.\nWe will share more once you're back online.	관심을 가져 주셔서 감사합니다.\n다시 온라인 상태가 되면 자세히 알려드리겠습니다.	Thanks for your interest.\nWe will share more once you're back online.
+offline_notification_title	You are back online! Let's pick up where we left off	다시 온라인 상태입니다! 이어서 진행해 보세요	You are back online! Let's pick up where we left off
+offline_notification_title_with_advertiser	You are back online! Continue learning about %s	다시 온라인 상태입니다! %s에 대해 계속 알아보세요	You are back online! Continue learning about %s
+offline_opt_in_confirm	OK	확인	OK
+offline_opt_in_decline	No thanks	괜찮습니다	No thanks
+offline_opt_in_message	We'll send you a notification with a link to the advertiser site.	광고주 사이트 링크가 포함된 알림을 보내드립니다.	We'll send you a notification with a link to the advertiser site.
+offline_opt_in_title	Open ad when you're back online.	다시 온라인 상태가 되면 광고를 엽니다.	Open ad when you're back online.
+ok	OK	확인	OK
+oss_license_title	Open source licenses	오픈소스 라이선스	Open source licenses
+password_toggle_content_description	Show password	비밀번호 표시	Show password
+past_feature_empty_message	現在表示できる特集はありません	현재 표시할 수 있는 특집이 없습니다	No featured content is currently available
+past_feature_title	過去の特集	지난 특집	Past features
+play	再生	재생	Play
+play_history	再生履歴	재생 기록	Play history
+play_history_blank	再生履歴がありません	재생 기록이 없습니다	No play history
+play_history_config	再生履歴設定	재생 기록 설정	Playback history settings
+play_history_config_delete_all	再生履歴を全て削除	재생 기록 모두 삭제	Delete all playback history
+play_history_config_hide_ad	動画紹介を非表示	동영상 소개 숨기기	Hide video recommendations
+play_history_config_show_ad	動画紹介を表示	동영상 소개 표시	Show video recommendations
+play_history_delete_all_confirm_message	一度削除すると元に戻せません。	한 번 삭제하면 되돌릴 수 없습니다.	Once deleted, this cannot be undone.
+play_history_delete_all_confirm_title	再生履歴をすべて削除します	재생 기록을 모두 삭제합니다	Delete all playback history?
+play_history_header	ボカコレで再生した作品が%d件まで表示されます。	보카코레에서 재생한 작품이 최대 %d개까지 표시됩니다.	Up to %d works played on VocaColle will be displayed.
+play_next_message	次に再生します。	다음에 재생합니다.	Up next.
+playback_list_item_menu_bottom_sheet_add_playlist	プレイリストに追加	플레이리스트에 추가	Add to playlist
+playback_list_item_menu_bottom_sheet_play_next	次に再生	다음에 재생	Play next
+playback_list_item_menu_bottom_sheet_remove_from_playback_list	再生リストから削除	재생 리스트에서 삭제	Remove from playback list
+player_ad_distributor_corporation	広告	광고	Ad
+player_ad_distributor_local	お知らせ	공지사항	Notice
+player_ad_guide	画像をタップ	이미지를 탭	Tap the image
+player_ad_title_local	ボカコレからのお知らせ	보카코레 소식	VocaColle notice
+player_coaching_playlist_cache_message	キャッシュすると外出先でも通信量をおさえて再生できます。	캐시하면 외출 중에도 데이터 사용량을 줄여 재생할 수 있습니다.	Cache playlists to save data when playing on the go.
+player_coaching_playlist_cache_open	プレイリストを開く	플레이리스트 열기	Open playlist
+player_coaching_playlist_cache_title	プレイリスト画面でキャッシュができます	플레이리스트 화면에서 캐시할 수 있습니다	Cache playlists from the playlist screen
+player_lyrics_access_limit_exceeded_message	歌詞の表示回数が今月の上限に達しています。\nニコニコプレミアムに登録すると歌詞を無制限に表示できます。	가사 표시 횟수가 이번 달 한도에 도달했습니다.\n니코니코 프리미엄에 등록하면 가사를 무제한으로 표시할 수 있습니다.	You have reached this month's limit for viewing lyrics.\nNiconico Premium members can view lyrics without limits.
+player_lyrics_cant_open_message_no_lyrics_channel_video	この作品では歌詞を表示できません	이 작품에서는 가사를 표시할 수 없습니다	Lyrics are not available for this work
+player_lyrics_cant_open_message_offline	オフラインでは歌詞を表示できません	오프라인에서는 가사를 표시할 수 없습니다	Lyrics cannot be displayed offline
+player_lyrics_cant_open_message_sabi_medley	サビメドレー中は歌詞を表示できません	하이라이트 메들리 중에는 가사를 표시할 수 없습니다	Lyrics cannot be displayed during a chorus medley
+player_lyrics_premium_merit_detail_message	さらに詳しく	자세히 보기	Learn more
+player_offline_dialog_message	キャッシュすると外出先でも通信量をおさえて再生できます。\nプレイリスト画面にてキャッシュを行えます。	캐시하면 외출 중에도 데이터 사용량을 줄여 재생할 수 있습니다.\n플레이리스트 화면에서 캐시할 수 있습니다.	Cache playlists to save data when playing on the go.\nYou can cache playlists from the playlist screen.
+player_offline_dialog_title	動画の再生に失敗しました	동영상 재생에 실패했습니다	Failed to play the video
+player_open_nico_app_confirm	ニコニコ動画を開きますか？	니코니코 동영상을 여시겠습니까?	Open NicoNico Douga?
+player_playable_content_empty_dialog_message	非表示またはセンシティブなコンテンツが含まれている可能性があります	숨김 또는 민감한 콘텐츠가 포함되어 있을 수 있습니다	The content may be hidden or sensitive.
+player_playable_content_empty_dialog_title	再生できるコンテンツがありません	재생할 수 있는 콘텐츠가 없습니다	No playable content
+player_playback_list_last_item_cant_remove_message	再生リストは空にできません。	재생 리스트는 비울 수 없습니다.	The playback list cannot be empty.
+player_playback_list_summary_format	%d曲	%d곡	%d tracks
+player_playback_notification_loudness_normalization_disabled	音量の自動調整は無効です。次にオンラインで再生したときに有効になります。	음량 자동 조정이 비활성화되어 있습니다. 다음에 온라인으로 재생할 때 활성화됩니다.	Volume normalization is disabled. It will be enabled the next time you play online.
+player_playlist_label	再生中：	재생 중:	Now playing: 
+player_playlist_title_recommend	%sからのおすすめリスト	%s의 추천 리스트	Recommended list from %s
+player_sabi_apply_message	最新のサビ情報を反映しました。	최신 후렴 정보를 반영했습니다.	The latest chorus information has been applied.
+player_sabi_edit	サビ編集	후렴 편집	Edit chorus
+player_sabi_edit_dialog_message	ボカコレでは最初のサビが使われます。	보카코레에서는 첫 번째 후렴이 사용됩니다.	The first chorus is used in VocaColle.
+player_sabi_edit_dialog_title	Songleでサビ情報を編集します	Songle에서 후렴 정보를 편집합니다	Edit chorus information in Songle
+player_sabi_medley_original	オリジナル	오리지널	Original
+player_sabi_off	サビメドレーOFF	후렴 메들리 OFF	Chorus medley OFF
+player_sabi_on	サビメドレーON	후렴 메들리 ON	Chorus medley ON
+player_setlist_title_from_external	外部指定の再生リスト	외부 지정 재생 리스트	Externally specified playlist
+player_setlist_title_from_new_vocaloid_release	新着ボカロリリース	신규 보컬로이드 릴리스	New Vocaloid releases
+player_setting_cross_fade_play	クロスフェード	크로스페이드	Crossfade
+player_setting_cross_fade_play_sub	作品と作品のつなぎをスムーズにします。\nサビメドレー・カバーMIXでは常に有効になります。	작품과 작품 사이를 부드럽게 이어줍니다.\n후렴 메들리·커버 MIX에서는 항상 활성화됩니다.	Smoothly connects tracks.\nAlways enabled for chorus medleys and cover mixes.
+player_setting_enable_mobile_play	再生時にモバイル回線を使用可能にする	재생 시 모바일 네트워크 사용 허용	Allow mobile data during playback
+player_setting_high_quality_audio	高音質で再生	고음질로 재생	Play in high quality
+player_setting_high_quality_audio_not_use	利用しない	사용 안 함	Don't use
+player_setting_high_quality_audio_sub	高音質非対応の作品は標準の音質で再生されます。	고음질을 지원하지 않는 작품은 표준 음질로 재생됩니다.	Tracks that don't support high-quality audio play at standard quality.
+player_setting_high_quality_audio_use	利用する	사용	Use
+player_setting_high_quality_audio_wifi	Wi-Fi接続時のみ	Wi-Fi 연결 시에만	Wi-Fi only
+player_setting_normalization	音量の自動調整	음량 자동 조정	Automatic volume adjustment
+player_setting_normalization_correction	音量の自動調整補正	음량 자동 조정 보정	Automatic volume adjustment boost
+player_setting_normalization_correction_sub	自動調整された音量を底上げします。	자동 조정된 음량을 높입니다.	Boosts automatically adjusted volume.
+player_setting_normalization_sub	作品再生時の音量バランスを自動で調整します。	작품 재생 시 음량 밸런스를 자동으로 조정합니다.	Automatically adjusts volume balance during playback.
+player_setting_recommended_auto_play	おすすめ自動再生	추천 자동 재생	Auto-play recommendations
+player_setting_recommended_auto_play_sub	検索やHOMEなどから作品を聴いた場合、\n関連したおすすめ作品を連続再生します。	검색이나 HOME 등에서 작품을 들은 경우,\n관련 추천 작품을 연속 재생합니다.	When you listen to a track from Search or HOME,\nrelated recommended tracks will play continuously.
+playlist	プレイリスト	플레이리스트	Playlist
+playlist_blank_message	プレイリストに動画が登録されていません。	플레이리스트에 동영상이 등록되어 있지 않습니다.	No videos have been added to the playlist.
+playlist_bottom_sheet_add_playlist	プレイリストに追加	플레이리스트에 추가	Add to playlist
+playlist_bottom_sheet_add_watch_later	あとで見るに追加	나중에 보기에 추가	Add to Watch later
+playlist_bottom_sheet_cache_restart	キャッシュを再取得	캐시 다시 가져오기	Refresh cache
+playlist_bottom_sheet_change_account_setting	設定を変更する	설정 변경	Change settings
+playlist_bottom_sheet_delete_history	再生履歴から削除	재생 기록에서 삭제	Remove from watch history
+playlist_bottom_sheet_delete_item	プレイリストから削除	플레이리스트에서 삭제	Remove from playlist
+playlist_bottom_sheet_delete_like	「いいね！」を解除	‘좋아요!’ 취소	Unlike
+playlist_bottom_sheet_play_from_this_video	ここから連続再生	여기부터 연속 재생	Play from here
+playlist_bottom_sheet_play_next	次に再生	다음에 재생	Play next
+playlist_bottom_sheet_show_owner	投稿者を表示	게시자 표시	Show uploader
+playlist_cache_delete_confirm	キャッシュを削除しますか？	캐시를 삭제하시겠습니까?	Delete cache?
+playlist_cache_delete_confirm_message	キャッシュを削除すると再生中の作品が停止する場合があります。	캐시를 삭제하면 재생 중인 작품이 중지될 수 있습니다.	Deleting the cache may stop the content currently playing.
+playlist_cache_expired	キャッシュの期限切れ	캐시 기한 만료	Cache expired
+playlist_cache_expired_dialog_message	ネットワークに接続してプレイリストを開いてください。	네트워크에 연결한 후 플레이리스트를 열어 주세요.	Connect to a network and open the playlist.
+playlist_cache_expired_dialog_title	有効期限が切れています	유효 기간이 만료되었습니다	Expired
+playlist_cache_start_timing_dialog_message_positive	設定を開く	설정 열기	Open settings
+playlist_cache_start_timing_dialog_message_start_when_online	次にオンラインになった時にキャッシュを開始します。\n設定からキャッシュの設定を変更できます。	다음에 온라인 상태가 되면 캐시를 시작합니다.\n설정에서 캐시 설정을 변경할 수 있습니다.	Caching will start the next time you are online.\nYou can change the cache settings from Settings.
+playlist_cache_start_timing_dialog_message_start_when_wifi_connect	次にWi-Fi接続されたときにキャッシュを開始します。\n設定からモバイル回線でもキャッシュを行うよう変更できます。	다음에 Wi-Fi에 연결되면 캐시를 시작합니다.\n설정에서 모바일 네트워크로도 캐시하도록 변경할 수 있습니다.	Caching will start the next time you connect to Wi-Fi.\nYou can change the settings to cache over a mobile network.
+playlist_coaching_message	キャッシュすると外出先でも通信量をおさえて再生できます	캐시하면 외출 중에도 데이터 사용량을 줄여 재생할 수 있습니다	Cache content to reduce data usage when playing on the go
+playlist_copy_create_locallist_title_format	%s のコピー	%s의 복사본	Copy of %s
+playlist_copy_create_locallist_title_with_owner_name_format	%s / %s のコピー	%s / %s의 복사본	Copy of %s / %s
+playlist_copy_mylist_dialog_message	コピーすることで、ライブラリ内にローカルリストとして表示されます。	복사하면 라이브러리에 로컬 리스트로 표시됩니다.	The copy will appear in your library as a local list.
+playlist_copy_mylist_dialog_title	このマイリストをコピーしますか？	이 마이리스트를 복사할까요?	Copy this playlist?
+playlist_copy_result_message_success	コピーが完了しました。	복사가 완료되었습니다.	Copy completed.
+playlist_create	プレイリスト新規作成	플레이리스트 새로 만들기	Create playlist
+playlist_create_category_section_description_locallist	現在ご使用の端末のみに保存されます	현재 사용 중인 기기에만 저장됩니다	Saved only on the device you are currently using
+playlist_create_category_section_description_mylist	ログイン中のアカウントに保存されます	로그인 중인 계정에 저장됩니다	Saved to the account you are currently signed in to
+playlist_create_category_section_title	作成するリストの種類	만들 리스트 종류	List type
+playlist_create_make_public_section_description_locallist	ローカルリストは公開できません	로컬 리스트는 공개할 수 없습니다	Local lists cannot be made public
+playlist_create_make_public_section_description_mylist	ONで他者がこのリストを見られるようになります	ON으로 설정하면 다른 사용자가 이 리스트를 볼 수 있습니다	When ON, others can view this list
+playlist_create_make_public_section_title	プレイリストを公開にする	플레이리스트를 공개로 설정	Make playlist public
+playlist_create_new_playlist	新規作成	새로 만들기	Create new
+playlist_default_title_prefix	プレイリスト	플레이리스트	Playlist
+playlist_delete_message_format	%sを削除しました。	%s을(를) 삭제했습니다.	%s was deleted.
+playlist_deleted	削除されたマイリスト	삭제된 마이리스트	Deleted playlist
+playlist_edit	プレイリスト編集	플레이리스트 편집	Edit playlist
+playlist_edit_ask_delete_items	本当に削除しますか？	정말 삭제할까요?	Are you sure you want to delete it?
+playlist_edit_ask_delete_locallist_message	削除したローカルリストは元に戻せません。	삭제한 로컬 리스트는 되돌릴 수 없습니다.	Deleted local lists cannot be restored.
+playlist_edit_ask_delete_mylist_message	マイリストを削除するとニコニコ動画のマイリストも削除されます。	마이리스트를 삭제하면 니코니코 동영상의 마이리스트도 삭제됩니다.	Deleting this playlist will also delete the My List on NicoNico.
+playlist_edit_ask_delete_question	%sを削除しますか？	%s을(를) 삭제할까요?	Delete %s?
+playlist_edit_copied_items	%d件コピーしました。	%d건 복사했습니다.	Copied %d items.
+playlist_edit_copied_items_all_duplicated	選択されたすべての作品が、重複のためコピーできませんでした。	선택한 모든 작품이 중복되어 복사할 수 없었습니다.	None of the selected works could be copied because they are duplicates.
+playlist_edit_copied_items_all_failed	コピーに失敗しました。時間を置いて再度お試しください。	복사하지 못했습니다. 잠시 후 다시 시도해 주세요.	Couldn't copy. Please try again later.
+playlist_edit_copied_items_part_duplicated	%d件中%d件コピーし、%d件は重複のためコピーできませんでした。	%d건 중 %d건을 복사했으며, %d건은 중복되어 복사할 수 없었습니다.	Copied %d of %d items. %d items could not be copied because they were duplicates.
+playlist_edit_copied_items_part_failed	%d件中%d件コピーし、%d件失敗しました。	%d건 중 %d건을 복사했으며, %d건은 실패했습니다.	Copied %d of %d items. %d items failed.
+playlist_edit_delete_items_format	%d件を削除しました。	%d건을 삭제했습니다.	Deleted %d items.
+playlist_edit_delete_locallist	ローカルリストを削除する	로컬 리스트 삭제	Delete local list
+playlist_edit_delete_mylist	マイリストを削除する	마이리스트 삭제	Delete My List
+playlist_edit_description_local_playlist_could_not_make_public	ローカルリストは公開できません	로컬 리스트는 공개할 수 없습니다	Local lists cannot be made public
+playlist_edit_description_make_public_if_turn_on	ONで他者がこのリストを見られるようになります	ON으로 설정하면 다른 사용자가 이 리스트를 볼 수 있습니다	When ON, others can view this list
+playlist_edit_description_watch_later_could_not_make_public	あとで見るは公開できません	나중에 보기는 공개할 수 없습니다	Watch Later cannot be made public
+playlist_edit_item_count_format	%d作品	%d개 작품	%d works
+playlist_edit_make_public_playlist	プレイリストを公開にする	플레이리스트를 공개로 설정	Make playlist public
+playlist_edit_moved_items	%d件移動しました。	%d건 이동했습니다.	Moved %d items.
+playlist_edit_moved_items_all_duplicated	選択されたすべての作品が、重複のため移動できませんでした。	선택한 모든 작품이 중복되어 이동할 수 없었습니다.	None of the selected works could be moved because they are duplicates.
+playlist_edit_moved_items_all_failed	移動に失敗しました。時間を置いて再度お試しください。	이동하지 못했습니다. 잠시 후 다시 시도해 주세요.	Couldn't move. Please try again later.
+playlist_edit_moved_items_part_duplicated	%d件中%d件移動し、%d件は重複のため移動できませんでした。	%d건 중 %d건을 이동했으며, %d건은 중복되어 이동할 수 없었습니다.	Moved %d of %d items. %d items could not be moved because they were duplicates.
+playlist_edit_moved_items_part_failed	%d件中%d件移動し、%d件失敗しました。	%d건 중 %d건을 이동했으며, %d건은 실패했습니다.	Moved %d of %d items. %d items failed.
+playlist_follow	マイリストをフォロー	마이리스트 팔로우	Follow My List
+playlist_follow_coaching_message	フォローするとライブラリに追加できます	팔로우하면 라이브러리에 추가할 수 있습니다	Follow to add it to your library
+playlist_info_for_loading_playlist	詳細画面を開いてマイリストを読み込む	상세 화면을 열어 마이리스트 불러오기	Open the details screen to load the My List
+playlist_item_count	%d作品	%d개 작품	%d works
+playlist_item_deleted	この作品は削除されているため再生ができません	이 작품은 삭제되어 재생할 수 없습니다	This work cannot be played because it has been deleted
+playlist_item_deleted_or_private	この作品は削除または非公開のため再生ができません	이 작품은 삭제되었거나 비공개라 재생할 수 없습니다	This work cannot be played because it was deleted or made private
+playlist_item_private	この作品は非公開のため再生ができません	이 작품은 비공개라 재생할 수 없습니다	This work cannot be played because it is private
+playlist_item_restricted	この作品はボカコレで再生できません	이 작품은 보카코레에서 재생할 수 없습니다	This work cannot be played on VocaColle
+playlist_items_order_added_at_asc	追加が古い順	추가 오래된 순	Date added: oldest first
+playlist_items_order_added_at_desc	追加が新しい順	최근 추가 순	Date added: newest first
+playlist_items_order_comment_count_asc	コメント数が少ない順	댓글 수가 적은 순	Comments: fewest first
+playlist_items_order_comment_count_desc	コメント数が多い順	댓글 수가 많은 순	Comments: most first
+playlist_items_order_custom	カスタム順	사용자 지정 순	Custom order
+playlist_items_order_duration_asc	再生時間が短い順	재생 시간이 짧은 순	Duration: shortest first
+playlist_items_order_duration_desc	再生時間が長い順	재생 시간이 긴 순	Duration: longest first
+playlist_items_order_like_count_asc	いいね！数が少ない順	좋아요 수가 적은 순	Likes: fewest first
+playlist_items_order_like_count_desc	いいね！数が多い順	좋아요 수가 많은 순	Most likes first
+playlist_items_order_mylist_comment_asc	メモ昇順	메모 오름차순	Notes: A–Z
+playlist_items_order_mylist_comment_desc	メモ降順	메모 내림차순	Notes: Z–A
+playlist_items_order_mylist_count_asc	マイリスト数が少ない順	마이리스트 수가 적은 순	Fewest Mylist adds first
+playlist_items_order_mylist_count_desc	マイリスト数が多い順	마이리스트 수가 많은 순	Most Mylist adds first
+playlist_items_order_registered_at_asc	投稿日時が古い順	게시 날짜가 오래된 순	Oldest posts first
+playlist_items_order_registered_at_desc	投稿日時が新しい順	게시 날짜가 최신인 순	Newest posts first
+playlist_items_order_title_asc	タイトル名昇順	제목 오름차순	Title: A–Z
+playlist_items_order_title_desc	タイトル名降順	제목 내림차순	Title: Z–A
+playlist_items_order_view_count_asc	再生数が少ない順	재생 수가 적은 순	Fewest plays first
+playlist_items_order_view_count_desc	再生数が多い順	재생 수가 많은 순	Most plays first
+playlist_items_read_more	作品をもっと見る	작품 더 보기	View more works
+playlist_locallist	ローカルリスト	로컬 리스트	Local list
+playlist_menu_copy	ライブラリにコピー	라이브러리에 복사	Copy to library
+playlist_menu_delete	プレイリストを削除	플레이리스트 삭제	Delete playlist
+playlist_menu_hidden_title	削除または非公開の作品	삭제되었거나 비공개인 작품	Deleted or private works
+playlist_menu_unfollow	フォローを解除	팔로우 해제	Unfollow
+playlist_mylist	マイリスト	마이리스트	Mylist
+playlist_mylist_blank_message	マイリストに動画が登録されていません。	마이리스트에 동영상이 등록되어 있지 않습니다.	No videos have been added to your Mylist.
+playlist_private	非公開のマイリスト	비공개 마이리스트	Private Mylist
+playlist_select	プレイリスト選択	플레이리스트 선택	Select playlist
+playlist_select_blank_message	公開マイリストがありません	공개 마이리스트가 없습니다	No public playlists
+playlist_select_blank_message_annotation	プレイリスト編集画面から\n「プレイリストを公開にする」をONにしてください	플레이리스트 편집 화면에서\n‘플레이리스트를 공개로 설정’을 켜 주세요	Turn on “Make playlist public”\nin the playlist editing screen.
+playlist_series	シリーズ	시리즈	Series
+playlist_share	プレイリストシェア	플레이리스트 공유	Share playlist
+playlist_share_application_update	アップデート	업데이트	Update
+playlist_share_comment_edit_placeholder	プレイリストの紹介文を書こう！	플레이리스트 소개 글을 써 보세요!	Write a description for your playlist!
+playlist_share_description_bottom	※個人情報や不適切な表現の入力はご遠慮ください。\n※Xに投稿されたマイリストは、ボカコレアプリ内「Xでポストされたマイリスト」に掲載される可能性があります。\n※画像の楽曲は4周年公式マイリスト掲載の対象になります。	※개인정보나 부적절한 표현은 입력하지 말아 주세요.\n※X에 포스트된 마이리스트는 보카코레 앱 내 'X에 포스트된 마이리스트'에 게재될 수 있습니다.\n※이미지 속 곡은 4주년 공식 마이리스트 게재 대상이 됩니다.	※Please do not enter personal information or inappropriate expressions.\n※Mylists posted to X may be featured in "Mylists Posted on X" in the VocaColle app.\n※Songs in the image are eligible for the official 4th anniversary mylist.
+playlist_share_description_middle	①みんなにおすすめしたい自分のプレイリストを選ぶ\n②プレイリストについて語りたいことを入力する\n③Xにポストしてみんなにシェア！	①모두에게 추천하고 싶은 내 플레이리스트 고르기\n②플레이리스트에 대해 이야기하고 싶은 내용 입력하기\n③X에 포스트해서 모두에게 공유!	①Pick a playlist you want to recommend\n②Write what you want to say about it\n③Post it to X and share it with everyone!
+playlist_share_description_top	かんたん３ステップでプレイリストをシェアしよう！	간단한 3단계로 플레이리스트를 공유해 보세요!	Share your playlist in 3 easy steps!
+playlist_share_dialog_message	プレイリストシェア画像が\n生成されました！	플레이리스트 공유 이미지가\n생성되었습니다!	The playlist sharing image\nhas been generated!
+playlist_share_dialog_save_button_label	画像を保存する	이미지 저장하기	Save image
+playlist_share_dialog_share_button_label	画像を共有する	이미지 공유하기	Share image
+playlist_share_generate_image_button_label	画像を生成する！	이미지 생성하기!	Generate image!
+playlist_share_image_share_text_format	#ボカコレアプリ4周年プレイリストシェア\nhttps://www.nicovideo.jp/share/vocacolle_app/mylist/%d	#ボカコレアプリ4周年プレイリストシェア\nhttps://www.nicovideo.jp/share/vocacolle_app/mylist/%d	#ボカコレアプリ4周年プレイリストシェア\nhttps://www.nicovideo.jp/share/vocacolle_app/mylist/%d
+playlist_share_need_application_update_message	プレイリストシェアを利用するためには最新バージョンへのアップデートが必要です。	플레이리스트 공유를 이용하려면 최신 버전으로 업데이트해야 합니다.	Update to the latest version to use playlist sharing.
+playlist_share_need_application_update_title	アップデートが必要です	업데이트가 필요합니다	Update required
+playlist_share_not_available_message	このページは現在表示できません。	현재 이 페이지를 표시할 수 없습니다.	This page is currently unavailable.
+playlist_share_playlist_select_result_empty_dialog_message	削除、または非公開設定の作品、およびボカコレアプリ非対応コンテンツは表示されません。	삭제되었거나 비공개 설정된 작품 및 보카코레 앱 미지원 콘텐츠는 표시되지 않습니다.	Deleted or private works, as well as content unsupported by the Vocalo Colle app, are not shown.
+playlist_share_playlist_select_result_empty_dialog_title	表示できる作品がありません	표시할 수 있는 작품이 없습니다	No works to display
+playlist_share_private_mylist_notice_dialog_message	マイリストを共有するためには、マイリストを公開してください。	마이리스트를 공유하려면 마이리스트를 공개해 주세요.	Make your My List public to share it.
+playlist_share_private_mylist_notice_dialog_open_button	編集画面を開く	편집 화면 열기	Open edit screen
+playlist_share_private_mylist_notice_dialog_title	マイリストが非公開です	마이리스트가 비공개입니다	My List is private
+playlist_share_reselect_button_label	プレイリストを選び直す	플레이리스트 다시 선택	Select a different playlist
+playlist_share_save_result_failure_message	画像の保存に失敗しました。再度お試しください。	이미지 저장에 실패했습니다. 다시 시도해 주세요.	Failed to save the image. Please try again.
+playlist_share_save_result_success_message	画像を保存しました。	이미지를 저장했습니다.	Image saved.
+playlist_share_select_playlist_message_description_2	公開設定がされている	공개 설정된	Only public
+playlist_share_select_playlist_message_description_3	プレイリストのみ選択できます	플레이리스트만 선택할 수 있습니다	playlists can be selected
+playlist_share_select_playlist_message_label	あなたのおすすめしたい\nプレイリストを選択してください	추천하고 싶은\n플레이리스트를 선택해 주세요	Select the playlist\nyou would like to recommend
+playlist_share_share_from_app_message_1	ボカコレアプリ	보카코레 앱	Vocalo Colle app
+playlist_share_share_from_app_message_2	から	에서	to
+playlist_share_share_from_app_message_3	プレイリストをシェア	플레이리스트를 공유	share a playlist
+playlist_share_share_from_app_message_4	しよう!	해보세요!	!
+playlist_share_user_name_edit_placeholder	名前を記入してください	이름을 입력해 주세요	Enter your name
+playlist_summary_item_count_label	作品数：	작품 수:	Items: 
+playlist_summary_owner_label	作成者：	작성자:	Created by: 
+playlist_summary_type_label	種別：	종류:	Type: 
+playlist_unfollow_dialog_message	ライブラリからは削除され、ニコニコ動画の「フォロー中のマイリスト」からも削除されます。	라이브러리에서 삭제되며, 니코니코 동영상의 ‘팔로우 중인 마이리스트’에서도 삭제됩니다.	It will be removed from your library and from NicoNico's "Followed My Lists."
+playlist_unfollow_dialog_positive_button	解除	팔로우 해제	Unfollow
+playlist_unfollow_dialog_title_format	%sのフォローを解除しますか？	%s 팔로우를 해제할까요?	Unfollow %s?
+playlist_unfollow_message_format	%sのフォローを解除しました。	%s 팔로우를 해제했습니다.	Unfollowed %s.
+preference_copied	"%1$s" copied to clipboard.	"%1$s"이(가) 클립보드에 복사되었습니다.	"%1$s" copied to clipboard.
+preferences_license_summary	License details for open source software	오픈소스 소프트웨어 라이선스 세부정보	License details for open source software
+premium_iab_course_type_error_dialog	ニコニコプレミアムの会員コースの取得に失敗しました。\n時間をおいて再度設定画面を開いてください。	니코니코 프리미엄 회원 코스를 가져오지 못했습니다.\n잠시 후 설정 화면을 다시 열어 주세요.	Couldn't retrieve your Niconico Premium plan.\nPlease wait a while, then open Settings again.
+premium_iab_course_type_not_iab_dialog	ご利用の決済手段は、アプリ上でニコニコプレミアムの会員コースを変更できません。\nスマートフォンブラウザ版ニコニコで変更方法をご確認ください。	이용 중인 결제 수단은 앱에서 니코니코 프리미엄 회원 코스를 변경할 수 없습니다.\n스마트폰 브라우저판 니코니코에서 변경 방법을 확인해 주세요.	Your payment method doesn't allow changing your Niconico Premium plan in the app.\nPlease check Niconico in your smartphone browser for how to change it.
+premium_iab_expiration_date	%sまで有効	%s까지 유효	Valid through %s
+premium_iab_pause_text	ニコニコプレミアム一時停止中（%s再開）	니코니코 프리미엄 일시 정지 중(%s 재개)	Niconico Premium paused (resumes %s)
+premium_iab_resume_premium_dialog_message	ご利用中のアカウントは、ニコニコプレミアムの定期購入を一時停止しています。\n（%s再開）\n\nGoogle Playから定期購入の再開ができます。	이용 중인 계정은 니코니코 프리미엄 정기 결제를 일시 정지하고 있습니다.\n(%s 재개)\n\nGoogle Play에서 정기 결제를 재개할 수 있습니다.	Your account's Niconico Premium subscription is paused.\n(Resumes %s)\n\nYou can resume your subscription through Google Play.
+premium_iab_resume_premium_dialog_positive	再開する	재개하기	Resume
+premium_member	ニコニコプレミアム会員	니코니코 프리미엄 회원	Niconico Premium member
+premium_merit_lead_button_audio_ad	音声お知らせなしで音楽を楽しむ	음성 알림 없이 음악 즐기기	Enjoy music without audio announcements
+premium_merit_lead_button_like_history	表示上限を1600件に増やす	표시 한도를 1600개로 늘리기	Increase the display limit to 1,600 items
+premium_merit_lead_button_play_history	表示上限を500件に増やす	표시 한도를 500개로 늘리기	Increase the display limit to 500 items
+premium_merit_lead_button_setting	ニコニコプレミアムに登録する	니코니코 프리미엄 등록하기	Join Niconico Premium
+premium_merit_lead_detail_button	詳しく	자세히	Details
+premium_merit_lead_footer_increase_mylist_count	マイリスト数を増やす	마이리스트 수 늘리기	Increase the number of My Lists
+premium_merit_lead_footer_increase_trend_item	トレンドをもっと見る	트렌드 더 보기	See more trends
+premium_merit_lead_increase_muted_user	非表示にできるユーザーの件数を増やす	숨길 수 있는 사용자 수 늘리기	Increase the number of users you can hide
+premium_merit_lead_message_high_quality_audio_cache	ニコニコプレミアムに登録すると今よりも高音質でキャッシュできます。ボカコレを高音質で楽しみましょう！	니코니코 프리미엄에 등록하면 지금보다 더 높은 음질로 캐시할 수 있습니다. 보카코레를 고음질로 즐겨 보세요!	Join Niconico Premium to cache in higher audio quality than now. Enjoy VocaColle in high quality!
+premium_merit_lead_message_high_quality_audio_play	ニコニコプレミアムに登録すると今よりも高音質で再生できます。ボカコレを高音質で楽しみましょう！	니코니코 프리미엄에 등록하면 지금보다 더 높은 음질로 재생할 수 있습니다. 보카코레를 고음질로 즐겨 보세요!	Join Niconico Premium to play in higher audio quality than now. Enjoy VocaColle in high quality!
+premium_merit_lead_message_mylist_create_count	登録数が上限に達しています。ニコニコプレミアムに登録すると作成できるマイリスト数を増やせます。	등록 수가 한도에 도달했습니다. 니코니코 프리미엄에 등록하면 만들 수 있는 마이리스트 수를 늘릴 수 있습니다.	You have reached the limit. Join Niconico Premium to create more mylists.
+premium_merit_lead_message_mylist_follow_count	フォロー数が上限に達しています。ニコニコプレミアムに登録するとフォローできるマイリスト数を増やせます。	팔로우 수가 한도에 도달했습니다. 니코니코 프리미엄에 등록하면 팔로우할 수 있는 마이리스트 수를 늘릴 수 있습니다.	You have reached the follow limit. Join Niconico Premium to follow more mylists.
+premium_merit_lead_message_mylist_item_registration_count	登録数が上限に達しています。ニコニコプレミアムに登録するとマイリスト全体の作品登録数を増やせます。	등록 수가 한도에 도달했습니다. 니코니코 프리미엄에 등록하면 전체 마이리스트의 작품 등록 수를 늘릴 수 있습니다.	You have reached the limit. Join Niconico Premium to add more works across your mylists.
+premium_merit_lead_message_playlist_cache_high_quality_audio	ニコニコプレミアムに登録すると高音質でキャッシュできます。	니코니코 프리미엄에 등록하면 고음질로 캐시할 수 있습니다.	Join Niconico Premium to cache music in high quality.
+premium_merit_lead_message_remove_app_open_ad	ニコニコプレミアムに登録すると広告なしでアプリを利用できます。	니코니코 프리미엄에 등록하면 광고 없이 앱을 이용할 수 있습니다.	Join Niconico Premium to use the app without ads.
+premium_merit_lead_message_search_result_sabi_medley	ニコニコプレミアムに登録すると、検索結果をサビメドレーで連続再生できます。	니코니코 프리미엄에 등록하면 검색 결과를 하이라이트 메들리로 연속 재생할 수 있습니다.	Join Niconico Premium to play search results continuously as a highlight medley.
+premium_merit_lead_message_watch_high_quality_audio	ニコニコプレミアムに登録すると高音質で再生できます。	니코니코 프리미엄에 등록하면 고음질로 재생할 수 있습니다.	Join Niconico Premium to play music in high quality.
+premium_merit_lead_more_detail_button	さらに詳しく	자세히 보기	Learn more
+premium_merit_lead_read_more	さらに詳しく	자세히 보기	Learn more
+premium_merit_lead_skip	スキップ	건너뛰기	Skip
+premium_merit_lead_title	ニコニコプレミアムに登録するとより便利にボカコレをお使いいただけます	니코니코 프리미엄에 등록하면 보카코레를 더 편리하게 이용할 수 있습니다	Join Niconico Premium to get more out of VocaColle
+premium_merit_lead_watch_premium_only_snackbar_message	ニコニコプレミアム限定動画です。ニコニコプレミアムに登録すると視聴できます。	니코니코 프리미엄 한정 동영상입니다. 니코니코 프리미엄에 등록하면 시청할 수 있습니다.	This video is exclusive to Niconico Premium. Join Niconico Premium to watch it.
+premium_registration_already_premium	すでにニコニコプレミアムに登録されています	이미 니코니코 프리미엄에 등록되어 있습니다	You are already registered for Niconico Premium
+premium_registration_description	ニコニコプレミアムに登録してボカコレを\nもっと便利に快適に楽しもう	니코니코 프리미엄에 등록하고 보카코레를\n더 편리하고 쾌적하게 즐겨 보세요	Join Niconico Premium and enjoy VocaColle\nwith more convenience and comfort
+premium_registration_error_message_with_code	%s\nコード：%s	%s\n코드: %s	%s\nCode: %s
+premium_registration_feature_not_supported	Google Play サービスに接続できませんでした。\nお使いの端末にインストールされているGooglePlayアプリのバージョンはサポートされていません。GooglePlayアプリのアップデートをしたあとに、再度お試しください。	Google Play 서비스에 연결할 수 없습니다.\n사용 중인 기기에 설치된 Google Play 앱 버전은 지원되지 않습니다. Google Play 앱을 업데이트한 후 다시 시도해 주세요.	Could not connect to Google Play services.\nThe version of the GooglePlay app installed on your device is not supported. Update the GooglePlay app and try again.
+premium_registration_maintenance	現在メンテナンス中です	현재 점검 중입니다	Maintenance is currently in progress
+premium_registration_maintenance_message	時間をおいて再度お試しください	잠시 후 다시 시도해 주세요	Please try again later
+premium_registration_monthly	%s / 1ヶ月	%s / 1개월	%s / 1 month
+premium_registration_niconico_terms	ニコニコ利用規約	니코니코 이용약관	Niconico Terms of Use
+premium_registration_note	利用料金の支払いは、利用者のGoogleアカウントにて行われます。月額／年額ともに、ニコニコプレミアム有効期限の24時間前までに解約しない限り、自動で更新されます。自動更新の解約はGoogle Playから行えます。	이용 요금은 이용자의 Google 계정으로 결제됩니다. 월간/연간 모두 니코니코 프리미엄 유효기간 24시간 전까지 해지하지 않으면 자동으로 갱신됩니다. 자동 갱신은 Google Play에서 해지할 수 있습니다.	Payments are charged to your Google Account. Both monthly and annual plans renew automatically unless canceled at least 24 hours before your Niconico Premium period ends. You can cancel automatic renewal on Google Play.
+premium_registration_open_google_play	Google Playを開く	Google Play 열기	Open Google Play
+premium_registration_premium_terms	ニコニコプレミアム利用規約	니코니코 프리미엄 이용약관	Niconico Premium Terms of Use
+premium_registration_price_jpy	%s円	%s엔	%s yen
+premium_registration_privacy_protection	個人情報保護方針	개인정보 보호방침	Privacy Policy
+premium_registration_query_product_info_failure	商品情報が取得できません	상품 정보를 가져올 수 없습니다	Could not retrieve product information
+premium_registration_query_product_info_failure_not_found	利用可能な商品が見つかりませんでした	이용 가능한 상품을 찾을 수 없습니다	No available products were found
+premium_registration_query_product_info_failure_timeout	Google Playサービスへの接続がタイムアウトしました	Google Play 서비스 연결 시간이 초과되었습니다	The connection to Google Play services timed out
+premium_registration_restore	すでにニコニコプレミアム会員の場合	이미 니코니코 프리미엄 회원인 경우	Already a Niconico Premium member
+premium_registration_restore_dialog_message	すでにアプリ内課金にてニコニコプレミアムに登録済みの方は、［購入情報の復元（リストア）］を押してください。\n※この操作を行っても再度課金されることはありません	이미 앱 내 결제로 니코니코 프리미엄에 등록하신 분은 [구매 정보 복원(리스토어)]을 눌러 주세요.\n※이 작업을 해도 다시 결제되지 않습니다	If you have already joined Niconico Premium through in-app billing, tap [Restore Purchases].\n※You will not be charged again
+premium_registration_restore_dialog_positive	購入情報の復元（リストア）	구매 정보 복원(리스토어)	Restore Purchases
+premium_registration_restore_dialog_title	すでにニコニコプレミアム会員の場合	이미 니코니코 프리미엄 회원인 경우	Already a Niconico Premium member
+premium_registration_restore_failure_active_purchase_not_found	現在ご利用中のGoogleアカウントには、有効な登録情報がありません	현재 사용 중인 Google 계정에는 유효한 등록 정보가 없습니다	There is no active subscription associated with your current Google Account
+premium_registration_restore_failure_already_premium	すでにニコニコプレミアムに登録されています	이미 니코니코 프리미엄에 등록되어 있습니다	You are already registered for Niconico Premium
+premium_registration_restore_failure_busy	時間をおいて再度お試しください\n\n解消しない場合は、お手数ですが アプリ設定＞［お問い合わせ］からお問い合わせください。	시간을 두고 다시 시도해 주세요\n\n문제가 해결되지 않으면 번거로우시겠지만 앱 설정＞[문의하기]에서 문의해 주세요.	Please wait a while and try again\n\nIf the issue persists, please contact us through App Settings > [Contact Us].
+premium_registration_restore_failure_inquiry	大変お手数ですが アプリ設定＞［お問い合わせ］からお問い合わせください。	번거로우시겠지만 앱 설정＞[문의하기]에서 문의해 주세요.	Please contact us through App Settings > [Contact Us].
+premium_registration_restore_failure_maintenance	現在メンテナンス中です。\n時間をおいて再度お試しください。	현재 점검 중입니다.\n시간을 두고 다시 시도해 주세요.	Maintenance is currently in progress.\nPlease wait a while and try again.
+premium_registration_restore_failure_multiple_payment	Google Play課金以外の決済方法で、すでにニコニコプレミアムに登録されているため、リストア処理がキャンセルされました。\nマイページにて会員状態が「ニコニコプレミアム会員」になっているかご確認ください。\n\n解消しない場合は、お手数ですが アプリ設定＞［お問い合わせ］からお問い合わせください。	Google Play 결제 이외의 결제 방법으로 이미 니코니코 프리미엄에 등록되어 있어 리스토어 처리가 취소되었습니다.\n마이페이지에서 회원 상태가 '니코니코 프리미엄 회원'인지 확인해 주세요.\n\n문제가 해결되지 않으면 번거로우시겠지만 앱 설정＞[문의하기]에서 문의해 주세요.	Restore was canceled because you are already registered for Niconico Premium through a payment method other than Google Play billing.\nPlease check My Page to make sure your membership status is "Niconico Premium member."\n\nIf the issue persists, please contact us through App Settings > [Contact Us].
+premium_registration_restore_failure_not_restore	リストアできませんでした	리스토어할 수 없었습니다	Could not restore your purchase
+premium_registration_restore_failure_purchase_not_found	登録情報がありません	등록 정보가 없습니다	No subscription information was found
+premium_registration_restore_success	リストアが完了しました	리스토어가 완료되었습니다	Purchase restored
+premium_registration_service_disconnected_message	Google Play サービスに接続できませんでした。\nお使いの端末でGoogle Playアプリが無効化されていないか、Google Playアプリがインストールされているかをご確認のうえ、再度お試しください。	Google Play 서비스에 연결할 수 없었습니다.\n사용 중인 기기에서 Google Play 앱이 비활성화되어 있지 않은지, Google Play 앱이 설치되어 있는지 확인한 후 다시 시도해 주세요.	Could not connect to Google Play services.\nPlease check whether the Google Play app is disabled or installed on your device, then try again.
+premium_registration_subscribe_failure_already_owned	現在ご利用中のGoogleアカウントでは、すでに別のニコニコアカウントでニコニコプレミアムに登録されています。\nこのニコニコアカウントでニコニコプレミアムに登録するには、Google Playを開いて現在登録中のニコニコプレミアムを解約してから、再度お試しください。\n\n解消しない場合は、お手数ですが アプリ設定＞［お問い合わせ］からお問い合わせください。	현재 사용 중인 Google 계정으로 이미 다른 니코니코 계정이 니코니코 프리미엄에 등록되어 있습니다.\n이 니코니코 계정으로 니코니코 프리미엄에 등록하려면 Google Play를 열어 현재 등록 중인 니코니코 프리미엄을 해지한 뒤 다시 시도해 주세요.\n\n문제가 해결되지 않으면 번거로우시겠지만 앱 설정＞[문의하기]에서 문의해 주세요.	Another Niconico account is already registered for Niconico Premium with your current Google Account.\nTo register this Niconico account, open Google Play, cancel the current Niconico Premium subscription, and try again.\n\nIf the issue persists, please contact us through App Settings > [Contact Us].
+premium_registration_subscribe_failure_already_premium	すでにニコニコプレミアムに登録されています	이미 니코니코 프리미엄에 등록되어 있습니다	You are already registered for Niconico Premium
+premium_registration_subscribe_failure_busy	しばらく時間をおいてから再度お試しください。\n\n解消しない場合は、お手数ですが アプリ設定＞［お問い合わせ］からお問い合わせください。	잠시 후 다시 시도해 주세요.\n\n문제가 해결되지 않으면 번거로우시겠지만 앱 설정＞[문의하기]에서 문의해 주세요.	Please wait a while and try again.\n\nIf the issue persists, please contact us through App Settings > [Contact Us].
+premium_registration_subscribe_failure_check_premium	マイページにて会員状態が「ニコニコプレミアム会員」になっているかご確認ください。\n\n解消しない場合は、お手数ですが アプリ設定＞［お問い合わせ］からお問い合わせください。	마이페이지에서 회원 상태가 '니코니코 프리미엄 회원'인지 확인해 주세요.\n\n문제가 해결되지 않으면 번거로우시겠지만 앱 설정＞[문의하기]에서 문의해 주세요.	Please check My Page to make sure your membership status is "Niconico Premium member."\n\nIf the issue persists, please contact us through App Settings > [Contact Us].
+premium_registration_subscribe_failure_inquiry	大変お手数ですが アプリ設定＞［お問い合わせ］からお問い合わせください。	번거로우시겠지만 앱 설정＞[문의하기]에서 문의해 주세요.	Please contact us through App Settings > [Contact Us].
+premium_registration_subscribe_failure_item_unavailable	この商品は現在購入できません。\n\n解消しない場合は、お手数ですが アプリ設定＞［お問い合わせ］からお問い合わせください。	이 상품은 현재 구매할 수 없습니다.\n\n문제가 해결되지 않으면 번거로우시겠지만 앱 설정＞[문의하기]에서 문의해 주세요.	This product is currently unavailable for purchase.\n\nIf the issue persists, please contact us through App Settings > [Contact Us].
+premium_registration_subscribe_failure_maintenance	現在メンテナンス中です。\nしばらく時間をおいてから再度お試しください。	현재 점검 중입니다.\n잠시 후 다시 시도해 주세요.	Maintenance is currently in progress.\nPlease wait a while and try again.
+premium_registration_subscribe_failure_multiple_payment	Google Play課金以外の決済方法で、すでにニコニコプレミアムに登録されているため、登録処理がキャンセルされました。\nマイページにて会員状態が「ニコニコプレミアム会員」になっているかご確認ください。\n\n解消しない場合は、お手数ですが アプリ設定＞［お問い合わせ］からお問い合わせください。	Google Play 결제 이외의 결제 방법으로 이미 니코니코 프리미엄에 등록되어 있어 등록 처리가 취소되었습니다.\n마이페이지에서 회원 상태가 '니코니코 프리미엄 회원'인지 확인해 주세요.\n\n문제가 해결되지 않으면 번거로우시겠지만 앱 설정＞[문의하기]에서 문의해 주세요.	Registration was canceled because you are already registered for Niconico Premium through a payment method other than Google Play billing.\nPlease check My Page to make sure your membership status is "Niconico Premium member."\n\nIf the issue persists, please contact us through App Settings > [Contact Us].
+premium_registration_subscribe_failure_not_complete_premium	ニコニコプレミアムへの登録を完了できませんでした	니코니코 프리미엄 등록을 완료하지 못했습니다	Couldn't complete Niconico Premium registration
+premium_registration_subscribe_failure_not_complete_successfully_premium	ニコニコプレミアムへの登録が正常に完了しませんでした	니코니코 프리미엄 등록이 정상적으로 완료되지 않았습니다	Niconico Premium registration didn't complete successfully
+premium_registration_subscribe_failure_pending	Google Playを開いて、ニコニコの決済状態を確認してください。\n\n解消しない場合は、お手数ですが アプリ設定＞［お問い合わせ］からお問い合わせください。	Google Play를 열어 니코니코의 결제 상태를 확인해 주세요.\n\n문제가 해결되지 않으면 번거로우시겠지만 앱 설정＞[문의하기]에서 문의해 주세요.	Open Google Play and check the payment status for niconico.\n\nIf the issue persists, please contact us from App Settings > [Contact Us].
+premium_registration_subscribe_failure_restore	この画面にある［すでにニコニコプレミアム会員の場合］から、購入情報を復元（リストア）してください。\n\n解消しない場合は、お手数ですが アプリ設定＞［お問い合わせ］からお問い合わせください。	이 화면의 [이미 니코니코 프리미엄 회원인 경우]에서 구매 정보를 복원(리스토어)해 주세요.\n\n문제가 해결되지 않으면 번거로우시겠지만 앱 설정＞[문의하기]에서 문의해 주세요.	Restore your purchase from [Already a Niconico Premium member] on this screen.\n\nIf the issue persists, please contact us through App Settings > [Contact Us].
+premium_registration_subscribe_failure_restore_with_maintenance	現在メンテナンス中です。\nしばらく時間をおいて、この画面の［すでにニコニコプレミアム会員の場合］から、購入情報を復元（リストア）してください。	현재 점검 중입니다.\n잠시 후 이 화면의 [이미 니코니코 프리미엄 회원인 경우]에서 구매 정보를 복원(리스토어)해 주세요.	Maintenance is in progress.\nAfter a while, restore your purchase from [Already a Niconico Premium member] on this screen.
+premium_registration_subscribe_failure_restore_with_wait	しばらく時間をおいて、この画面の［すでにニコニコプレミアム会員の場合］から、購入情報を復元（リストア）してください。\n\n解消しない場合は、お手数ですが アプリ設定＞［お問い合わせ］からお問い合わせください。	잠시 후 이 화면의 [이미 니코니코 프리미엄 회원인 경우]에서 구매 정보를 복원(리스토어)해 주세요.\n\n문제가 해결되지 않으면 번거로우시겠지만 앱 설정＞[문의하기]에서 문의해 주세요.	After a while, restore your purchase from [Already a Niconico Premium member] on this screen.\n\nIf the issue persists, please contact us through App Settings > [Contact Us].
+premium_registration_subscribe_success	ニコニコプレミアム登録が完了しました	니코니코 프리미엄 등록이 완료되었습니다	Niconico Premium registration is complete
+premium_registration_terms_message	ニコニコプレミアム登録の完了をもって\n以下の規約に同意したものとします	니코니코 프리미엄 등록을 완료하면\n아래 약관에 동의한 것으로 간주합니다	By completing Niconico Premium registration,\nyou agree to the following terms
+premium_registration_title	ニコニコプレミアム登録	니코니코 프리미엄 등록	Niconico Premium registration
+premium_registration_yearly	%s / 1年	%s / 1년	%s / 1 year
+premium_registration_yearly_sub	(%s / 1ヶ月)	(%s / 1개월)	(%s / 1 month)
+premium_terms	ニコニコプレミアム利用規約	니코니코 프리미엄 이용약관	Niconico Premium Terms of Use
+privacy_management	プライバシー管理	프라이버시 관리	Privacy management
+privacy_management_common_niconico_info_text_1	\n詳細は	\n자세한 내용은 	\nFor details, see 
+privacy_management_common_niconico_info_text_2	ニコニコインフォページ	니코니코 인포 페이지	the niconico Info page
+privacy_management_common_niconico_info_text_3	をご覧ください。	를 확인해 주세요.	.
+privacy_management_firebase_crashlytics_setting_sub	アプリのクラッシュ情報を調査するため、Google（Firebase Crashlytics）に情報を提供します。提供を希望しない場合は、設定をオフにしてください。オフにした場合、お問い合わせへの対応や不具合の解消にお時間をいただく場合がございます。	앱의 충돌 정보를 조사하기 위해 Google(Firebase Crashlytics)에 정보를 제공합니다. 제공을 원하지 않는 경우 설정을 꺼 주세요. 끄면 문의 대응이나 오류 해결에 시간이 걸릴 수 있습니다.	To investigate app crash information, information is provided to Google (Firebase Crashlytics). If you do not want to provide this information, turn off this setting. If it is turned off, it may take longer to respond to inquiries or resolve issues.
+prompt_email	Email	이메일	Email
+prompt_password	Password	비밀번호	Password
+proseka_top_app_install	インストール	설치	Install
+proseka_top_app_lead	プロジェクトセカイを遊ぼう！▼	프로젝트 세카이를 즐겨 보세요!▼	Let's play Project SEKAI! ▼
+proseka_top_description_title	プロジェクトセカイとは？	프로젝트 세카이란?	What is Project SEKAI?
+proseka_top_toolbar_title	プロジェクトセカイ	프로젝트 세카이	Project SEKAI
+proseka_top_units_subtitle	収録楽曲は随時追加されます！	수록곡은 수시로 추가됩니다!	More songs will be added regularly!
+proseka_top_units_title	プロセカの収録楽曲を聴こう	프로세카 수록곡을 들어보세요	Listen to songs from Project SEKAI
+push_notification	プッシュ通知	푸시 알림	Push notifications
+push_notification_setting_allow_push_notification	プッシュ通知を許可	푸시 알림 허용	Allow push notifications
+push_notification_setting_error_alert_message	通信環境をご確認いただき、時間を置いて再度お試しください。	통신 환경을 확인하신 후 잠시 뒤 다시 시도해 주세요.	Check your network connection and try again later.
+push_notification_setting_error_alert_title	プッシュ通知設定の取得に失敗しました	푸시 알림 설정을 가져오지 못했습니다	Failed to retrieve push notification settings
+push_notification_setting_individual_setting	個別設定	개별 설정	Individual settings
+push_notification_setting_permission_not_granted_description	プッシュ通知を受信するために、デバイスの通知を有効にしてください	푸시 알림을 받으려면 기기의 알림을 켜 주세요	Enable notifications on your device to receive push notifications
+push_notification_setting_permission_not_granted_message	このデバイスの通知がオフになっています	이 기기의 알림이 꺼져 있습니다	Notifications are turned off on this device
+push_notification_setting_turn_on	オンにする	켜기	Turn on
+range_end	Range end	범위 끝	Range end
+range_start	Range start	범위 시작	Range start
+ranking	ランキング	랭킹	Ranking
+ranking_not_found_message	指定されたランキングは存在しません。	지정한 랭킹이 존재하지 않습니다.	The specified ranking does not exist.
+ranking_not_found_title	読み込みに失敗しました	불러오지 못했습니다	Failed to load
+ranking_term_day	24時間	24시간	24 hours
+ranking_term_day_update_text	毎時更新	매시간 업데이트	Updated hourly
+ranking_term_hour	毎時	매시간	Hourly
+ranking_term_hour_update_text	毎時更新	매시간 업데이트	Updated hourly
+ranking_term_total	全期間	전체 기간	All time
+ranking_term_total_update_text	毎日更新	매일 업데이트	Updated daily
+ranking_term_trend_update_text	毎日更新	매일 업데이트	Updated daily
+ranking_trend	トレンド	트렌드	Trending
+register_email	メールアドレス登録	이메일 주소 등록	Register with email
+register_mail_address	Email address registration	이메일 주소 등록	Email address registration
+register_sns	外部サービスログイン連携	외부 서비스 로그인 연동	Link an external service account
+register_sns_cooperation	Link External Service	외부 서비스 연결	Link External Service
+registration	登録	등록	Register
+retry	再試行	다시 시도	Retry
+s1	Save image	이미지 저장	Save image
+s2	Allow Ad to store image in Picture gallery?	광고가 사진 갤러리에 이미지를 저장하도록 허용하시겠습니까?	Allow Ad to store image in Picture gallery?
+s3	Accept	수락	Accept
+s4	Decline	거절	Decline
+s5	Create calendar event	캘린더 일정 만들기	Create calendar event
+s6	Allow Ad to create a calendar event?	광고가 캘린더 일정을 만들도록 허용하시겠습니까?	Allow Ad to create a calendar event?
+s7	Test Ad	테스트 광고	Test Ad
+sabi_medley	サビメドレー	하이라이트 메들리	Chorus medley
+search	検索	검색	Search
+search_config	検索設定	검색 설정	Search settings
+search_config_apply	適用する	적용	Apply
+search_config_genre_filter	ジャンルの絞り込み	장르 필터	Filter by genre
+search_config_genre_filter_sound	音楽・サウンドジャンルに絞り込む	음악·사운드 장르로 제한	Filter to music and sound genres
+search_config_sort	並び替え	정렬	Sort by
+search_config_sort_name_comment_count_asc	コメント数が少ない順	댓글 수가 적은 순	Fewest comments
+search_config_sort_name_comment_count_desc	コメント数が多い順	댓글 수가 많은 순	Most comments
+search_config_sort_name_duration_asc	再生時間が短い順	재생 시간이 짧은 순	Shortest duration
+search_config_sort_name_duration_desc	再生時間が長い順	재생 시간이 긴 순	Longest duration
+search_config_sort_name_last_comment_posted_at_asc	コメントが古い順	오래된 댓글 순	Oldest comments
+search_config_sort_name_last_comment_posted_at_desc	コメントが新しい順	최신 댓글 순	Newest comments
+search_config_sort_name_like_count_asc	いいね！数が少ない順	좋아요 수가 적은 순	Fewest likes
+search_config_sort_name_like_count_desc	いいね！数が多い順	좋아요 수가 많은 순	Most likes
+search_config_sort_name_mylist_count_asc	マイリスト数が少ない順	마이리스트 수가 적은 순	Fewest My List additions
+search_config_sort_name_mylist_count_desc	マイリスト数が多い順	마이리스트 수가 많은 순	Most My List additions
+search_config_sort_name_personalized	あなたへのおすすめ順	맞춤 추천순	Recommended for you
+search_config_sort_name_popular	人気が高い順	인기순	Most popular
+search_config_sort_name_registerd_at_asc	投稿日時が古い順	게시 날짜가 오래된 순	Oldest first
+search_config_sort_name_registerd_at_desc	投稿日時が新しい順	게시 날짜가 최신인 순	Newest first
+search_config_sort_name_view_count_asc	再生数が少ない順	재생 수가 적은 순	Fewest views first
+search_config_sort_name_view_count_desc	再生数が多い順	재생 수가 많은 순	Most views first
+search_config_type_keyword	キーワード	키워드	Keyword
+search_config_type_tag	タグ	태그	Tag
+search_config_word	検索ワード	검색어	Search term
+search_input_cancel	キャンセル	취소	Cancel
+search_input_delete_all_search_history	全て削除	전체 삭제	Delete all
+search_input_empty	好きなタグやキーワードで\n曲を探してみよう	좋아하는 태그나 키워드로\n곡을 찾아보세요	Find songs with your favorite\ntags or keywords
+search_input_genre_filter_sound	音楽・サウンドジャンル	음악·사운드 장르	Music & Sound genres
+search_input_recent_search	最近の検索	최근 검색	Recent searches
+search_keyword	検索キーワード	검색 키워드	Search keyword
+search_menu_title	Search	검색	Search
+search_result_items_read_more	結果をもっと見る	결과 더 보기	See more results
+search_result_playlist_title	%sの検索結果 %s %s件	%s 검색 결과 %s %s건	Search results for %s %s %s items
+search_result_sound_genre_coaching_text	「音楽・サウンドジャンル」に絞り込むことができます	‘음악·사운드 장르’로 필터링할 수 있습니다	You can filter by "Music & Sound genres"
+search_result_total_item_unit	%s件	%s건	%s items
+search_top_check_frequently_searched_tag	よく検索されているタグをチェックしよう	자주 검색되는 태그를 확인해 보세요	Check out frequently searched tags
+search_top_popular_tag	人気のタグ	인기 태그	Popular tags
+searchview_clear_text_content_description	Clear text	텍스트 지우기	Clear text
+searchview_navigation_content_description	Back	뒤로	Back
+section_read_more	一覧を見る	목록 보기	View all
+selected	Selected	선택됨	Selected
+setting	設定	설정	Settings
+setting_account_change_course	会員コース変更	회원 코스 변경	Change membership plan
+setting_account_unregister	ニコニコを退会	니코니코 탈퇴	Leave Niconico
+share	共有	공유	Share
+shuffle_play	シャッフル再生	셔플 재생	Shuffle play
+side_sheet_accessibility_pane_title	Side Sheet	사이드 시트	Side Sheet
+sign_up	新規会員登録	신규 회원 가입	Sign up
+skip	スキップ	건너뛰기	Skip
+sleep_timer	スリープタイマー	취침 타이머	Sleep timer
+sleep_timer_end_of_current_media	作品の最後まで	작품이 끝날 때까지	End of current content
+sleep_timer_message_cancel	スリープタイマーをキャンセルしました。	취침 타이머를 취소했습니다.	Sleep timer canceled.
+sleep_timer_message_set	スリープタイマーをセットしました。	취침 타이머를 설정했습니다.	Sleep timer set.
+sleep_timer_minutes_10	10分	10분	10 minutes
+sleep_timer_minutes_15	15分	15분	15 minutes
+sleep_timer_minutes_30	30分	30분	30 minutes
+sleep_timer_minutes_45	45分	45분	45 minutes
+sleep_timer_minutes_5	5分	5분	5 minutes
+sleep_timer_minutes_60	1時間	1시간	1 hour
+sleep_timer_none	タイマーをキャンセル	타이머 취소	Cancel timer
+sleep_timer_remain_time	残り%d分	%d분 남음	%d minutes remaining
+sleep_timer_with_remain_time	スリープタイマー（%s）	취침 타이머(%s)	Sleep timer (%s)
+snackbar_pane_title	Alert	알림	Alert
+startup_guest_login_error_unavailable_user_forbidden_message	時間を置いて再度お試しいただくか、新規会員登録のうえアプリをご利用ください。	잠시 뒤 다시 시도하시거나 신규 회원 가입 후 앱을 이용해 주세요.	Please try again later, or register as a new member to use the app.
+startup_guest_login_error_unavailable_user_forbidden_title	ゲストでのご利用に失敗しました	게스트 이용에 실패했습니다	Failed to use the app as a guest
+startup_guest_start	ゲストとしてはじめる	게스트로 시작하기	Start as a guest
+startup_terms_of_service_description	アプリのご利用開始をもって利用規約に同意したものとします	앱 이용을 시작하면 이용약관에 동의한 것으로 간주됩니다	By starting to use the app, you agree to the Terms of Service.
+startup_terms_of_service_link_text	利用規約	이용약관	Terms of Service
+state_empty	Empty	비어 있음	Empty
+state_off	Off	꺼짐	Off
+state_on	On	켜짐	On
+subscription_course_change	会員コース変更	회원 코스 변경	Change membership plan
+success_login_message	%s でログインしました	%s로 로그인했습니다	Logged in with %s
+switch_role	Switch	스위치	Switch
+tab	Tab	탭	Tab
+template_percent	%1$d percent.	%1$d퍼센트.	%1$d percent.
+terms	『ボカコレ』利用規約	“보카코레” 이용약관	Bokakore Terms of Service
+tokutei_payment_rules	特定商取引法に基づく表記	특정상거래법에 따른 표기	Information based on the Act on Specified Commercial Transactions
+tooltip_description	tooltip	도구 설명	tooltip
+tooltip_label	show tooltip	도구 설명 표시	show tooltip
+trend_work	人気の作品	인기 작품	Popular works
+tt_ad_close_text	Ad closed	광고가 닫혔습니다	Ad closed
+tt_ad_data_error	Response data error	응답 데이터 오류	Response data error
+tt_ad_is_closed	Ads Closed	광고가 닫혔습니다	Ads Closed
+tt_ad_logo_txt	AD	광고	AD
+tt_add_bad_reason	Add the reason you think bad	나쁘다고 생각하는 이유를 추가하세요	Add the reason you think bad
+tt_adslot_empty	No request ad slot	요청 광고 슬롯이 없습니다	No request ad slot
+tt_adslot_id_error	Illegal ad slot id	잘못된 광고 슬롯 ID	Illegal ad slot id
+tt_adslot_size_empty	Empty ad slot size	광고 슬롯 크기가 비어 있습니다	Empty ad slot size
+tt_app_empty	No request app	요청 앱이 없습니다	No request app
+tt_bad	Bad	나쁨	Bad
+tt_banner_ad_load_image_error	Banner loading failed	배너 로드 실패	Banner loading failed
+tt_comment_num	%1$s reviews	리뷰 %1$s개	%1$s reviews
+tt_content_type	Http content type error	HTTP 콘텐츠 유형 오류	Http content type error
+tt_count_down_view	Skip	건너뛰기	Skip
+tt_dislike_header_tv_back	Back	뒤로	Back
+tt_dislike_header_tv_title	Select	선택	Select
+tt_display_error	Display error	표시 오류	Display error
+tt_done	Done	완료	Done
+tt_error_access_method_pass	Illegal access method	잘못된 접근 방식	Illegal access method
+tt_error_ad_able_false_msg	Prohibit request ads by compliance, please check GDPR settings	규정 준수로 인해 광고 요청이 금지되었습니다. GDPR 설정을 확인하세요	Prohibit request ads by compliance, please check GDPR settings
+tt_error_ad_type	Illegal ad type	잘못된 광고 유형	Illegal ad type
+tt_error_adtype_differ	Ad type error	광고 유형 오류	Ad type error
+tt_error_apk_sign_check_error	Illegal apk sha1 value	잘못된 APK SHA1 값	Illegal apk sha1 value
+tt_error_bidding_type	Placement is not bidding type, please check placement bidding type	게재 위치가 입찰 유형이 아닙니다. 게재 위치 입찰 유형을 확인하세요	Placement is not bidding type, please check placement bidding type
+tt_error_code_adcount_error	Incorrect number of ad	광고 수가 올바르지 않습니다	Incorrect number of ad
+tt_error_code_click_event_error	Click event error	클릭 이벤트 오류	Click event error
+tt_error_device_ip	Please check the country of the IP of the ad requesting device in service country	광고 요청 기기 IP의 국가가 서비스 국가에 포함되는지 확인하세요	Please check the country of the IP of the ad requesting device in service country
+tt_error_empty_content	IP is empty or ua is empty	IP가 비어 있거나 UA가 비어 있습니다	IP is empty or ua is empty
+tt_error_image_size	Illegal image size	잘못된 이미지 크기	Illegal image size
+tt_error_interstitial_version	The sdk version used for the new insertion style is too low. Please upgrade to version 3550 and above	새 삽입 스타일에 사용된 SDK 버전이 너무 낮습니다. 버전 3550 이상으로 업그레이드하세요	The sdk version used for the new insertion style is too low. Please upgrade to version 3550 and above
+tt_error_media_id	Illegal media id	잘못된 미디어 ID	Illegal media id
+tt_error_media_type	Illegal media type	잘못된 미디어 유형	Illegal media type
+tt_error_new_register_limit	New ad slot exceeded daily request limit	새 광고 슬롯이 일일 요청 한도를 초과했습니다	New ad slot exceeded daily request limit
+tt_error_origin_ad_error	Origin type error	원본 유형 오류	Origin type error
+tt_error_package_name	Package name error	패키지 이름 오류	Package name error
+tt_error_redirect	Redirect error	리디렉션 오류	Redirect error
+tt_error_request_invalid	Invalid request	잘못된 요청	Invalid request
+tt_error_slot_id_app_id_differ	SlotId and AppId match error	SlotId와 AppId가 일치하지 않습니다	SlotId and AppId match error
+tt_error_splash_ad_type	Splash ad type error	스플래시 광고 유형 오류	Splash ad type error
+tt_error_union_os_error	Os type error	OS 유형 오류	Os type error
+tt_error_union_sdk_too_old	Sdk version too low	SDK 버전이 너무 낮습니다	Sdk version too low
+tt_error_unknow	Unknown error	알 수 없는 오류	Unknown error
+tt_error_update_version	Please update to version 2310 or later	버전 2310 이상으로 업데이트하세요	Please update to version 2310 or later
+tt_error_verify_reward	Reward verify error	보상 확인 오류	Reward verify error
+tt_feedback_experience_text	We'll continue to improve our service.	서비스를 계속 개선해 나가겠습니다.	We'll continue to improve our service.
+tt_feedback_submit_text	You've submitted feedback! Please don't submit again.	피드백이 제출되었습니다! 다시 제출하지 마세요.	You've submitted feedback! Please don't submit again.
+tt_feedback_thank_text	Thanks for your feedback!	피드백 감사합니다!	Thanks for your feedback!
+tt_feel_hint	Tell us how this ad made you feel	이 광고에 대해 어떻게 느꼈는지 알려주세요	Tell us how this ad made you feel
+tt_frequent_call_erroe	Ad requests are too frequent	광고 요청이 너무 자주 발생합니다	Ad requests are too frequent
+tt_full_screen_skip_tx	Skip after 5S	5초 후 건너뛰기	Skip after 5S
+tt_good	Good	좋음	Good
+tt_init_setting_config_not_complete	Setting initialization is not completed	설정 초기화가 완료되지 않았습니다	Setting initialization is not completed
+tt_insert_ad_load_image_error	Interstitial loading failed	전면 광고 로드에 실패했습니다	Interstitial loading failed
+tt_lack_android_manifest_configuration	Initialization check error, please check the AndroidManifest	초기화 확인 오류입니다. AndroidManifest를 확인하세요	Initialization check error, please check the AndroidManifest
+tt_like_this_ad	Like this ad?	이 광고가 마음에 드시나요?	Like this ad?
+tt_list_end_tip	You've seen all the content	모든 콘텐츠를 확인했습니다	You've seen all the content
+tt_load_creative_icon_error	Icon loading failed	아이콘 로드에 실패했습니다	Icon loading failed
+tt_load_creative_icon_response_error	Icon loading error	아이콘 로드 오류	Icon loading error
+tt_loading_language	Landing page loading……	랜딩 페이지 로드 중……	Landing page loading……
+tt_loading_more	Loading more...	더 불러오는 중...	Loading more...
+tt_logo_cn	AD	광고	AD
+tt_logo_en	Ad	광고	Ad
+tt_more_copy_link	Copy Link	링크 복사	Copy Link
+tt_more_history	History	기록	History
+tt_more_open_browser	Open in Browser	브라우저에서 열기	Open in Browser
+tt_more_report	Report	신고	Report
+tt_more_retry	Retry	다시 시도	Retry
+tt_more_title	More	더보기	More
+tt_msgPlayable	Finish playing to get rewards	보상을 받으려면 플레이를 완료하세요	Finish playing to get rewards
+tt_multiple_ad_indicator	ad %1$d of %2$d	광고 %1$d/%2$d	ad %1$d of %2$d
+tt_multiple_playable_next_ad_tips	Next Ad	다음 광고	Next Ad
+tt_multiple_playable_wait_tips	Next ad in %1$ds	%1$d초 후 다음 광고	Next ad in %1$ds
+tt_negtiveBtnBtnText	Leave	나가기	Leave
+tt_negtive_txt	Cancel	취소	Cancel
+tt_net_error	Network error	네트워크 오류	Network error
+tt_no_ad	No ad	광고 없음	No ad
+tt_no_ad_parse	Parsing data without ad	광고 없는 데이터 파싱	Parsing data without ad
+tt_no_network	Network is unavailable, please try again later.	네트워크를 사용할 수 없습니다. 나중에 다시 시도해 주세요.	Network is unavailable, please try again later.
+tt_not_bad	Not bad	나쁘지 않음	Not bad
+tt_other_reason	Other reasons	기타 이유	Other reasons
+tt_parse_fail	Parsing error	파싱 오류	Parsing error
+tt_postiveBtnText	Resume	재개	Resume
+tt_postiveBtnTextPlayable	Continue playing	계속 재생	Continue playing
+tt_postive_txt	OK	확인	OK
+tt_privacy_title	Privacy Policy	개인정보 처리방침	Privacy Policy
+tt_reder_ad_load_timeout	Template loading timeout	템플릿 로드 시간 초과	Template loading timeout
+tt_render_diff_template_invalid	Template diff invalid	템플릿 차이가 유효하지 않음	Template diff invalid
+tt_render_fail_meta_invalid	Template invalid	템플릿이 유효하지 않음	Template invalid
+tt_render_fail_template_parse_error	Template parsing error	템플릿 파싱 오류	Template parsing error
+tt_render_fail_timeout	Render timeout	렌더링 시간 초과	Render timeout
+tt_render_fail_unknown	Render failed unknown	알 수 없는 렌더링 실패	Render failed unknown
+tt_render_main_template_invalid	Main template invalid	메인 템플릿이 유효하지 않음	Main template invalid
+tt_render_render_parse_error	Render parsing failed	렌더링 파싱 실패	Render parsing failed
+tt_report_this_ad	Report this ad to help us improve	이 광고를 신고하여 개선에 도움 주기	Report this ad to help us improve
+tt_request_body_error	Request entity is empty	요청 엔터티가 비어 있음	Request entity is empty
+tt_request_pb_error	Http request pb error	HTTP 요청 pb 오류	Http request pb error
+tt_reward_feedback	Feedback	피드백	Feedback
+tt_reward_full_skip	Skip after %1$ss	%1$ss 후 건너뛰기	Skip after %1$ss
+tt_reward_msg	Watch the entire video to claim your reward	보상을 받으려면 동영상을 끝까지 시청하세요	Watch the entire video to claim your reward
+tt_reward_screen_skip_tx	Skip	건너뛰기	Skip
+tt_ror_code_show_event_error	Show event error	표시 이벤트 오류	Show event error
+tt_select_reason	Please select reason	이유를 선택하세요	Please select reason
+tt_skip_ad_time_text	Skip after %ds	%ds 후 건너뛰기	Skip after %ds
+tt_slide_up_3d	wipe up	위로 밀기	wipe up
+tt_splash_ad_load_image_error	Splash loading failed	스플래시 로드 실패	Splash loading failed
+tt_splash_brush_mask_hint	Jump to details page or third party application	상세 페이지 또는 타사 애플리케이션으로 이동	Jump to details page or third party application
+tt_splash_brush_mask_title	Slide or click to Polish	밀거나 클릭하여 닦기	Slide or click to Polish
+tt_splash_cache_expired_error	Cache expired	캐시 만료됨	Cache expired
+tt_splash_cache_parse_error	Cache parsing failed	캐시 파싱 실패	Cache parsing failed
+tt_splash_default_click_shake	Shake or click to learn more	흔들거나 클릭하여 자세히 알아보기	Shake or click to learn more
+tt_splash_not_have_cache_error	No splash cache	스플래시 캐시 없음	No splash cache
+tt_splash_rock_text	Go to details page or third-party application	상세 페이지 또는 타사 애플리케이션으로 이동	Go to details page or third-party application
+tt_splash_rock_top_text	Shake or click the icon	흔들거나 아이콘 클릭	Shake or click the icon
+tt_splash_wriggle_text	Go to details page or third-party application	상세 페이지 또는 타사 애플리케이션으로 이동	Go to details page or third-party application
+tt_splash_wriggle_top_text	Twist the phone	휴대전화를 비틀기	Twist the phone
+tt_splash_wriggle_top_text_style_17	Twist the phone or tap the icon	휴대전화를 비틀거나 아이콘 탭	Twist the phone or tap the icon
+tt_suggestion_commit	Submit	제출	Submit
+tt_sys_error	System error	시스템 오류	System error
+tt_template_load_fail	main template load fail !	기본 템플릿을 불러오지 못했습니다!	main template load fail !
+tt_text_privacy_app_version	Version：V	버전: V	Version：V
+tt_text_privacy_development	Developer：	개발자:	Developer：
+tt_try_now	Try now	지금 시도	Try now
+tt_video_bytesize	Data	데이터	Data
+tt_video_dial_phone	DialNow	지금 전화	DialNow
+tt_video_download_apk	Download Now	지금 다운로드	Download Now
+tt_video_mobile_go_detail	View Now	지금 보기	View Now
+tt_video_retry_des_txt	load fail ，please retry	불러오지 못했습니다. 다시 시도해 주세요	load fail ，please retry
+tt_video_without_wifi_tips	Playing this content will use %.2f MB of data	이 콘텐츠를 재생하면 %.2fMB의 데이터가 사용됩니다	Playing this content will use %.2f MB of data
+tt_wap_empty	No request wap	WAP 요청 없음	No request wap
+tt_web_title_default	Advertise	광고	Advertise
+update_info_positive	詳細を見る	자세히 보기	View details
+user	ユーザー	사용자	User
+user_birthday_registration_failed_message	生年月日の登録に失敗しました。再度お試しください。	생년월일 등록에 실패했습니다. 다시 시도해 주세요.	Failed to register your date of birth. Please try again.
+user_bottom_sheet_mute_user	このユーザーを表示しない	이 사용자 숨기기	Hide this user
+user_bottom_sheet_report	このユーザーを通報する	이 사용자 신고하기	Report this user
+user_list_item_menu_bottom_sheet_show_user_media_list	投稿作品一覧を表示	게시 작품 목록 보기	View list of posted works
+user_list_item_menu_bottom_sheet_show_user_public_mylist_list	公開マイリスト一覧を表示	공개 마이리스트 목록 보기	View public My Lists
+user_media_blank_message	投稿作品がありません	게시 작품이 없습니다	No works posted
+user_media_list_order_comment_count_asc	コメント数が少ない順	댓글 수가 적은 순	Fewest comments first
+user_media_list_order_comment_count_desc	コメント数が多い順	댓글 수가 많은 순	Most comments first
+user_media_list_order_duration_asc	再生時間が短い順	재생 시간이 짧은 순	Shortest duration first
+user_media_list_order_duration_desc	再生時間が長い順	재생 시간이 긴 순	Longest duration first
+user_media_list_order_like_count_asc	いいね！数が少ない順	좋아요 수가 적은 순	Fewest Likes first
+user_media_list_order_like_count_desc	いいね！数が多い順	좋아요 수가 많은 순	Most Likes first
+user_media_list_order_mylist_count_asc	マイリスト数が少ない順	마이리스트 수가 적은 순	Fewest My List additions first
+user_media_list_order_mylist_count_desc	マイリスト数が多い順	마이리스트 수가 많은 순	Most My List additions first
+user_media_list_order_registered_at_asc	投稿日時が古い順	게시 날짜가 오래된 순	Oldest posts first
+user_media_list_order_registered_at_desc	投稿日時が新しい順	게시 날짜가 최신인 순	Newest posts first
+user_media_list_order_view_count_asc	再生数が少ない順	재생 수가 적은 순	Fewest plays first
+user_media_list_order_view_count_desc	再生数が多い順	재생 수가 많은 순	Most plays first
+user_media_list_title_format	%sの投稿一覧	%s의 게시 목록	%s's posts
+user_protection_check_profile_button	Check profile	프로필 확인	Check profile
+user_protection_help_button	Help	도움말	Help
+user_protection_inquiry_button	Inquiry	문의	Inquiry
+user_protection_logout_button	Logout	로그아웃	Logout
+user_protection_message	Based on your registered date of birth, you are unable to use the Vocacolle app. You may confirm your registered date of birth on your profile screen.	등록된 생년월일을 기준으로 Vocacolle 앱을 사용할 수 없습니다. 프로필 화면에서 등록된 생년월일을 확인할 수 있습니다.	Based on your registered date of birth, you are unable to use the Vocacolle app. You may confirm your registered date of birth on your profile screen.
+user_protection_title	About Usage Restrictions	이용 제한 안내	About Usage Restrictions
+user_public_mylist_list_blank_message	公開マイリストがありません。	공개 마이리스트가 없습니다.	No public My Lists.
+user_public_mylist_list_title_format	%sの公開マイリスト	%s의 공개 마이리스트	%s's public My Lists
+user_top_all_media	すべての作品	모든 작품	All works
+user_top_all_media_blank_message	投稿作品がありません。	게시 작품이 없습니다.	No posts.
+user_top_followee_count_format	%sフォロー中	%s 팔로우 중	Following %s
+user_top_follower_count_format	%sフォロワー	%s 팔로워	%s followers
+user_top_muted_mask_description	非表示にしたユーザーの一覧は\nアカウント設定>非表示にしたユーザー から確認できます	숨긴 사용자 목록은\n계정 설정>숨긴 사용자에서 확인할 수 있습니다	You can view the list of hidden users in\nAccount settings > Hidden users
+user_top_muted_mask_message_format	%sさんは非表示に設定されています	%s님은 숨김으로 설정되어 있습니다	%s is hidden
+user_top_public_mylist	公開マイリスト	공개 마이리스트	Public My Lists
+user_top_public_mylist_list_blank_message	公開マイリストがありません。	공개 마이리스트가 없습니다.	No public My Lists.
+v7_preference_off	OFF	꺼짐	OFF
+v7_preference_on	ON	켜짐	ON
+video_item_date_text_day_ago	%d日前	%d일 전	%d days ago
+video_item_date_text_hour_ago	%d時間前	%d시간 전	%d hours ago
+video_item_date_text_min_ago	%d分前	%d분 전	%d minutes ago
+video_item_date_text_month_ago	%dヶ月前	%d개월 전	%d months ago
+video_item_date_text_year	%s年	%s년	%s
+video_item_owner_muted	このユーザーの作品は非表示に設定されています	이 사용자의 작품은 숨김으로 설정되어 있습니다	Works by this user are hidden
+video_item_payment_required	有料	유료	Paid
+video_item_premium_limited	限定	한정	Limited
+video_item_sensitive_masking_content	センシティブな内容が含まれている可能性のあるコンテンツです	민감한 내용이 포함되어 있을 수 있는 콘텐츠입니다	This content may contain sensitive material
+vocatansaku_title	ボカ探索	보카 탐색	Voca Explore
+watch_later	あとで見る	나중에 보기	Watch later
+watch_niconico	動画で再生	동영상으로 재생	Play video
+watermark_label_prefix	AdMob - 	AdMob - 	AdMob - 
+zero_tap_restore_alert_message	基本設定の引き継ぎが完了しました。なお、履歴やキャッシュ、ローカルリストなどの端末保存データは引き継がれません。ご了承ください。	기본 설정 이전이 완료되었습니다. 단, 기록, 캐시, 로컬 리스트 등 기기에 저장된 데이터는 이전되지 않으니 양해 부탁드립니다.	Your basic settings have been transferred. Note that data stored on the device, such as history, cache, and local lists, is not transferred.
+zero_tap_restore_alert_title	アカウントを引き継いでログインしました	계정을 이전하여 로그인했습니다	Logged in with your transferred account

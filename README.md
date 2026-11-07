@@ -1,87 +1,102 @@
-<p align="center">
-  <img src="https://reseam.app/logo.svg" alt="Reseam logo" width="96">
-</p>
+# VocaColle Reseam Patches
 
-<h1 align="center">Reseam patch bundle template</h1>
+Unofficial [Reseam](https://reseam.app) patches for the Android app VocaColle
+(`jp.nicovideo.nicobox`): a complete Korean or English UI, and opt-in switches for
+ads and Premium pop-ups.
 
-Start here to write your own patches for [Reseam](https://reseam.app). Copy this repository, rename a few things, and you have a bundle that builds, signs itself, and publishes releases Reseam Manager can install.
+> [!NOTE]
+> This project is not affiliated with Reseam or DWANGO. It does not distribute
+> VocaColle APKs, signing keys, or account credentials. It replaces
+> [vocacolle-morphe-patches](https://github.com/ilikeadofai/vocacolle-morphe-patches),
+> which targeted Morphe and VocaColle 7.40.0.
 
-It ships two example patches that work on any app:
+## Install
 
-- `Enable debugging` edits the manifest.
-- `Allow screenshots` redirects calls into Kotlin code shipped in the bundle (an extension).
+1. Open the share link from the [latest release](https://github.com/ilikeadofai/vocacolle-reseam-patches/releases/latest)
+   on Android, or paste this repository's address into **Add patch source** in Reseam Manager.
+2. Check that the signer key Reseam Manager shows matches this one:
 
-The [docs](https://reseam.app/docs/authoring/start/) walk through this template step by step.
+   ```text
+   6285c75d50add046b07624ac8e7daa250b6c993e3319b570b75fbcb5e4a57c21
+   ```
+
+3. Patch VocaColle **7.48.0**. The APKPure XAPK (base plus language, density, and ABI splits)
+   works as it is; Reseam patches and signs every split together.
 
 ## Patches
 
 <!-- patches:start -->
 <!-- patches:end -->
 
-## Setup
+### Translate UI
 
-- JDK 17.
-- Android SDK, with `ANDROID_HOME` pointing at it.
-- The `reseam` CLI, on `PATH` or at the path in `RESEAM_BIN`. Use the version that matches the plugin version in `settings.gradle.kts`. Releases ship Linux x64 and Windows x64 binaries; on other platforms [build it from source](https://reseam.app/docs/cli/install/).
-- A signing key: `reseam bundle keygen --out ~/.reseam/bundle-signing.key`. It prints the public key users will trust. Keep the key file private and out of the repository.
+Selected by default. The `language` option picks Korean (`ko`, the default) or English (`en`).
 
-## Make it yours
+- **All 1,614 reviewed UI strings** are rewritten in the app's resource table while patching.
+  Every screen, dialog, notification, and XML layout reads them the normal way, so nothing
+  translates at run time and nothing is missed because a view bypasses a hook.
+- Each row of the catalog records the Japanese text 7.48.0 ships. A string whose Japanese
+  changed keeps its new Japanese instead of showing a stale translation.
+- Japanese literals compiled into the code (the external-link dialog, ad landing pages, the
+  Project SEKAI card) are replaced in the bytecode.
+- Ranking genre tabs and push-topic titles come from the server; they are translated only at
+  display time, for exact known values, so requests and caches keep the original Japanese.
+- Song titles, creator names, tags, and text sent to the server (report forms, share hashtags)
+  stay in Japanese.
 
-1. Set `name`, `author`, and `description` in `manifest.toml`, and `rootProject.name` in `settings.gradle.kts`.
-2. Rename `apps/example` to the app you patch and change the `app.example` packages to your own.
-3. Replace the example patches with your own.
+The language is fixed when patching. To switch, patch again with the other value.
 
-Layout:
+### Ad controls
 
-```text
-manifest.toml                     bundle name, author, description
-settings.gradle.kts               Reseam plugin version
-apps/<app>/patch/                 Kotlin patches, one module per app
-apps/<app>/extensions/<name>/     Kotlin code injected into the app
-apps/<app>/settings/              in-app settings and translated strings (optional)
-shared/<name>/                    extensions used by more than one app
-```
+Off by default. Once applied, a **Reseam patches** item appears in the menu of VocaColle's
+Settings screen. Its four switches all start off:
 
-Modules need no build script. The `app.reseam.workspace` plugin configures them from the layout. How to write patches is in [Your first patch](https://reseam.app/docs/authoring/first_patch/).
+| Switch | What it does |
+|---|---|
+| Hide app-open ads | Answers "not allowed" when the app asks whether to show its full-screen ad. |
+| Hide banner and in-feed ads | Stops the display-ad controller before it loads, and reports "no ad" so the slot collapses. |
+| Skip audio ads | Lets the ad source lookup finish, then swaps its answer for "no ad". |
+| Hide Premium pop-ups | Skips the seven Premium-only feature pop-ups, the launch-time Premium sheet, and the high-quality audio snackbar. |
+
+Premium registration, subscription management, and every entitlement check stay untouched.
+
+## Compatibility
+
+- Target: VocaColle 7.48.0 (`versionCode 187`). Other versions are skipped unless you run
+  them anyway (`--ignore-versions` on the CLI); targets are found by strings, structure, and
+  resource ids, so they fail loudly rather than patching the wrong code.
+- Reseam engine 0.39.x.
 
 ## Build and test
 
+You need JDK 17+, the Android SDK in `ANDROID_HOME`, and the `reseam` CLI matching the plugin
+version in `settings.gradle.kts`.
+
 ```shell
 ./gradlew bundle
-reseam bundle list build/reseam/example-patches.reseam
-reseam patch app.apk \
-  --bundle build/reseam/example-patches.reseam \
-  --trust <public key> \
-  --enable "Enable debugging" \
-  --output patched.apk
+reseam patch vocacolle-7.48.0.xapk \
+  --bundle build/reseam/vocacolle-reseam-patches.reseam \
+  --trust 6285c75d50add046b07624ac8e7daa250b6c993e3319b570b75fbcb5e4a57c21 \
+  --preset all --option "Translate UI.language=ko" \
+  --output vocacolle-patched.apks
 ```
+
+Install every APK of the output together (`adb install-multiple`), signed with the same key.
+
+The translation catalog is `apps/vocacolle/patch/src/main/resources/vocacolle/strings.tsv`:
+one row per string resource, with the 7.48.0 Japanese source, Korean, and English. Escapes are
+`\n`, `\t`, and `\\`.
 
 ## Release
 
-The workflow in `.github/workflows/release.yml` runs on `v*` tags, on GitHub and on Forgejo, including Codeberg. It builds and signs the bundle, then [`reseam release patches`](https://reseam.app/docs/cli/release/) adds the release to the `patches.json` of your latest release with the commit subjects since the previous tag as its notes, and publishes both on a release.
+Push a tag starting with `v`. The workflow builds and signs the bundle with the
+`BUNDLE_SIGNING_KEY_B64` secret, and publishes the `.reseam` file and `patches.json` on the
+release.
 
-1. Add the signing key as the repository secret `BUNDLE_SIGNING_KEY_B64`: `base64 -w0 ~/.reseam/bundle-signing.key`.
-2. On Forgejo, set the repository variable `RUNNER` to the label of a runner with Java and Node.js. GitHub uses `ubuntu-latest`.
-3. Push a tag: `git tag v0.1.0 && git push origin v0.1.0`.
+## Roadmap
 
-After publishing, the workflow lists the released patches between the `patches:start` and `patches:end` markers in `README.md`, grouped by app, and commits the change to your default branch. Without the markers it leaves the README alone.
-
-Share your patch source with this link. It opens Reseam Manager, which shows the source's apps, patches and signing key before adding it, and keeps it up to date from your latest release. Every release lists the link too.
-
-```text
-https://reseam.app/add/?url=https%3A%2F%2Fgithub.com%2F<owner>%2F<repo>
-```
-
-Put it behind the button in `.github/assets/add-to-reseam.svg` at the top of your README:
-
-```markdown
-[![Add to Reseam](.github/assets/add-to-reseam.svg)](https://reseam.app/add/?url=https%3A%2F%2Fgithub.com%2F<owner>%2F<repo>)
-```
-
-Without Reseam Manager, the link opens a page with the steps to add the source. Publish your public key where users can check it against the one Reseam Manager shows.
-
-When you move to a new Reseam version, bump the plugin version in `settings.gradle.kts`. The release workflow downloads the CLI of that same version.
+See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ## License
 
-AGPL-3.0-or-later.
+[GNU Affero General Public License v3.0](LICENSE), as the Reseam template and patch API are.

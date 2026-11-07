@@ -1,5 +1,6 @@
 [bundle]
 name = "vocacolle-reseam-patches"
-author = "Your Name"
-description = "Example patches for Reseam"
+author = "ilikeadofai"
+description = "Patches for VocaColle (jp.nicovideo.nicobox): Korean and English UI, ad and Premium prompt controls"
+license = "AGPL-3.0"
 format_version = 1

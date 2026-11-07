@@ -14,3 +14,12 @@ local.properties
 
 .DS_Store
 Thumbs.db
+
+# App inputs and patched outputs
+*.apk
+*.apks
+*.xapk
+*.apkm
+*.pk8
+*.der
+*.p12
