@@ -19,6 +19,8 @@
     <string name="section_ai">曲名の翻訳</string>
     <string name="ai_titles">曲名を翻訳</string>
     <string name="ai_titles_summary">プレイヤーの日本語の曲名を翻訳します。各曲名が下の翻訳サービスへ送信され、翻訳は端末にキャッシュされます。VocaDBの曲名がある曲は送信しません。</string>
+    <string name="ai_descriptions">作品説明を翻訳</string>
+    <string name="ai_descriptions_summary">作品説明の日本語部分を、リンクや書式はそのままに翻訳します。テキストは下の翻訳サービスへ送信されます。</string>
     <string name="ai_language">翻訳先の言語</string>
     <string name="ai_language_ko">韓国語</string>
     <string name="ai_language_en">英語</string>

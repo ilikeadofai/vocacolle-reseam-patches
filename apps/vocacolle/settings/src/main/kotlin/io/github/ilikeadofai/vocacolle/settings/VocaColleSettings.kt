@@ -32,6 +32,7 @@ object MetadataSettings : SettingsGroup(VocaColleStrings) {
  */
 object AiSettings : SettingsGroup(VocaColleStrings) {
     val aiTitles by toggle(default = false, key = "ai.titles", icon = Vector.lucide("sparkles"))
+    val aiDescriptions by toggle(default = false, key = "ai.descriptions", icon = Vector.lucide("file-text"))
     val aiLanguage by choice(
         default = "ko",
         key = "ai.language",

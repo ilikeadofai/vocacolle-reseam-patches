@@ -4,6 +4,7 @@ package io.github.ilikeadofai.vocacolle.core.translate
 
 import android.app.Activity
 import android.content.Context
+import android.os.Looper
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.text.InputType
@@ -115,13 +116,13 @@ private fun cacheKey(config: Config, source: String): String {
 
 private fun cacheFile(key: String) = appContext?.cacheDir?.let { File(File(it, "vocacolle-reseam/ai"), key) }
 
-private fun translate(config: Config, key: String, source: String) {
+private fun translate(config: Config, key: String, source: String, kind: Kind = Kind.TITLE): String? {
     try {
+        memory[key]?.let { return it }
         cacheFile(key)?.takeIf { it.isFile }?.let { file ->
-            memory[key] = file.readText(Charsets.UTF_8)
-            return
+            return file.readText(Charsets.UTF_8).also { memory[key] = it }
         }
-        val translated = request(config, source) ?: return
+        val translated = request(config, source, kind) ?: return null
         memory[key] = translated
         cacheFile(key)?.let { file ->
             file.parentFile?.mkdirs()
@@ -129,31 +130,97 @@ private fun translate(config: Config, key: String, source: String) {
             temp.writeText(translated, Charsets.UTF_8)
             if (!temp.renameTo(file)) temp.delete()
         }
+        return translated
     } catch (failure: Exception) {
         // Never log the key or the response; the status line is enough to debug a setup.
         Log.d(TAG, "translation failed: ${failure.javaClass.simpleName}: ${failure.message}")
+        return null
     } finally {
         inFlight.remove(key)
     }
 }
 
-private fun request(config: Config, source: String): String? =
-    if (config.provider == PROVIDER_GOOGLE) requestGoogle(config, source) else requestOpenAi(config, source)
+/** What is being translated: decides the prompt and what counts as a sane answer. */
+private enum class Kind { TITLE, TEXT }
+
+private fun request(config: Config, source: String, kind: Kind): String? =
+    if (config.provider == PROVIDER_GOOGLE) requestGoogle(config, source, kind) else requestOpenAi(config, source, kind)
+
+// Descriptions -----------------------------------------------------------------------------
+
+private const val MAX_DESCRIPTION_CHARS = 6_000
+private const val MAX_SEGMENTS = 60
+private const val DESCRIPTION_WAIT_MS = 5_000L
+private val TAG_OR_TEXT = Regex("<[^>]*>|[^<]+")
+
+// Descriptions are wanted while their screen opens, so they get their own small pool, apart
+// from the title queue that may be busy with a playlist.
+private val descriptionWorkers = ThreadPoolExecutor(2, 2, 30, TimeUnit.SECONDS, LinkedBlockingQueue(MAX_SEGMENTS), { runnable ->
+    Thread(runnable, "$TAG-text").apply { isDaemon = true }
+}, ThreadPoolExecutor.DiscardPolicy()).apply { allowCoreThreadTimeOut(true) }
+
+/**
+ * A work's description, translated piece by piece between its HTML tags, so links, line breaks,
+ * and formatting stay as they are. Off the main thread it waits a few seconds for the pieces;
+ * on it, it uses what is already known and fetches the rest for the next time.
+ */
+@Export
+fun displayDescription(description: String?): String? {
+    if (description == null || !AiSettings.aiDescriptions.value) return description
+    if (description.length > MAX_DESCRIPTION_CHARS || !JAPANESE.containsMatchIn(description)) return description
+    val config = config() ?: return description
+    val parts = TAG_OR_TEXT.findAll(description).map { it.value }.toList()
+    val texts = parts.filter { !it.startsWith("<") && JAPANESE.containsMatchIn(it) }.distinct()
+    if (texts.isEmpty() || texts.size > MAX_SEGMENTS) return description
+    val keys = texts.associateWith { cacheKey(config, "text|$it") }
+    val pending = texts.filter { memory[keys.getValue(it)] == null }.mapNotNull { text ->
+        val key = keys.getValue(text)
+        if (!inFlight.add(key)) return@mapNotNull null
+        try {
+            descriptionWorkers.submit<String?> { translate(config, key, text, Kind.TEXT) }
+        } catch (_: RuntimeException) {
+            inFlight.remove(key)
+            null
+        }
+    }
+    if (pending.isNotEmpty() && Looper.myLooper() != Looper.getMainLooper()) {
+        val deadline = System.currentTimeMillis() + DESCRIPTION_WAIT_MS
+        for (future in pending) {
+            val left = deadline - System.currentTimeMillis()
+            if (left <= 0) break
+            try {
+                future.get(left, TimeUnit.MILLISECONDS)
+            } catch (_: Exception) {
+                // A slow or failed piece stays in Japanese.
+            }
+        }
+    }
+    return parts.joinToString("") { part ->
+        if (part.startsWith("<")) part else keys[part]?.let { memory[it] }?.let { keepEdges(part, it) } ?: part
+    }
+}
+
+/** The translation with the original's leading and trailing whitespace, which services drop. */
+private fun keepEdges(original: String, translated: String): String {
+    val lead = original.takeWhile { it.isWhitespace() }
+    val trail = original.takeLastWhile { it.isWhitespace() }
+    return lead + translated.trim() + trail
+}
 
 /**
  * Google Translate's public web clients, as browser extensions use them: no key. The Chrome
  * dictionary client answers `["translated"]`; the older `gtx` one, tried when that fails,
  * answers `[[["translated", "source", …], …], …]`.
  */
-private fun requestGoogle(config: Config, source: String): String? {
+private fun requestGoogle(config: Config, source: String, kind: Kind): String? {
     val q = URLEncoder.encode(source, "UTF-8")
     return try {
         val reply = JSONArray(get("$GOOGLE_DICT_ENDPOINT?client=dict-chrome-ex&sl=ja&tl=${config.language}&q=$q"))
         val first = reply.get(0)
-        clean(if (first is JSONArray) first.optString(0) else first.toString(), source)
+        clean(if (first is JSONArray) first.optString(0) else first.toString(), source, kind)
     } catch (failure: Exception) {
         val sentences = JSONArray(get("$GOOGLE_ENDPOINT?client=gtx&sl=ja&tl=${config.language}&dt=t&q=$q")).getJSONArray(0)
-        clean((0 until sentences.length()).joinToString("") { sentences.getJSONArray(it).optString(0) }, source)
+        clean((0 until sentences.length()).joinToString("") { sentences.getJSONArray(it).optString(0) }, source, kind)
     }
 }
 
@@ -176,13 +243,19 @@ private fun get(url: String): String {
     }
 }
 
-private fun clean(content: String, source: String): String? {
-    // A reply that isn't a single short line gets no say in the UI.
+private fun clean(content: String, source: String, kind: Kind): String? {
+    if (kind == Kind.TEXT) {
+        // Lines must survive, or the description's layout falls apart.
+        val text = content.trim()
+        val lines = { value: String -> value.trim().count { it == '\n' } }
+        return text.takeIf { it.isNotEmpty() && it.length <= source.length * 4 + 40 && lines(text) == lines(source) }
+    }
+    // A title reply that isn't a single short line gets no say in the UI.
     val line = content.trim().trim('"', '“', '”', '「', '」').trim()
     return line.takeIf { it.isNotEmpty() && '\n' !in it && it.length <= MAX_TITLE_CHARS * 2 && it != source }
 }
 
-private fun requestOpenAi(config: Config, source: String): String? {
+private fun requestOpenAi(config: Config, source: String, kind: Kind): String? {
     val target = if (config.language == "en") "English" else "Korean"
     val body = JSONObject()
         .put("model", config.model)
@@ -193,10 +266,16 @@ private fun requestOpenAi(config: Config, source: String): String? {
                 .put(
                     JSONObject().put("role", "system").put(
                         "content",
-                        "You translate Japanese song titles into $target for a music player. " +
-                            "Reply with the translated title only, on one line, without quotes or notes. " +
-                            "Keep names of people, groups, and works in their usual $target form, " +
-                            "keep Latin-script parts and symbols as they are, and keep the title short.",
+                        if (kind == Kind.TITLE) {
+                            "You translate Japanese song titles into $target for a music player. " +
+                                "Reply with the translated title only, on one line, without quotes or notes. " +
+                                "Keep names of people, groups, and works in their usual $target form, " +
+                                "keep Latin-script parts and symbols as they are, and keep the title short."
+                        } else {
+                            "You translate part of a Japanese video description into $target. " +
+                                "Reply with the translation only. Keep exactly the same line breaks, " +
+                                "URLs, hashtags, video ids such as sm12345, and symbols."
+                        },
                     ),
                 )
                 .put(JSONObject().put("role", "user").put("content", source)),
@@ -220,7 +299,7 @@ private fun requestOpenAi(config: Config, source: String): String? {
         }
         val content = JSONObject(text).getJSONArray("choices").getJSONObject(0)
             .getJSONObject("message").optString("content")
-        return clean(content, source)
+        return clean(content, source, kind)
     } finally {
         connection.disconnect()
     }
