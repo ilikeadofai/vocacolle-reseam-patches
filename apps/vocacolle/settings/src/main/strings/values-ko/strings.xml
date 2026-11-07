@@ -11,4 +11,7 @@
     <string name="skip_audio_ads_summary">곡 사이에 나오는 음성·네트워크 광고 없이 다음 곡을 재생합니다.</string>
     <string name="hide_premium_prompts">프리미엄 팝업 숨기기</string>
     <string name="hide_premium_prompts_summary">자동으로 뜨는 프리미엄 안내 시트와 프리미엄 전용 기능 팝업을 숨깁니다. 프리미엄 가입은 설정에서 계속 할 수 있습니다.</string>
+    <string name="section_metadata">곡 정보</string>
+    <string name="vocadb_titles">VocaDB 곡 제목 표시</string>
+    <string name="vocadb_titles_summary">플레이어에서 해당 니코니코 동영상과 정확히 일치하는 VocaDB의 영어 또는 로마자 제목을 보여 줍니다. 플레이어에 있는 각 곡의 동영상 ID가 vocadb.net으로 전송되며, 결과는 기기에 캐시됩니다.</string>
 </resources>

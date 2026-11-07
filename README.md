@@ -60,6 +60,16 @@ Settings screen. Its four switches all start off:
 
 Premium registration, subscription management, and every entitlement check stay untouched.
 
+### VocaDB song titles
+
+Off by default, with its own switch, also off, in the Reseam patches screen. When on, each
+player item's title is replaced, for display only, with the English (or else romanized) title
+VocaDB lists for that **exact** Niconico video: the response must contain an active Niconico PV
+with the same id. The video ids of tracks in the player are sent to `vocadb.net`. Results are
+cached on the device for 7 days (6 hours for "not on VocaDB"), and a network failure never
+counts as "not found". A title that isn't cached yet appears from the player's next refresh,
+such as the next track change.
+
 ## Compatibility
 
 - Target: VocaColle 7.48.0 (`versionCode 187`). Other versions are skipped unless you run

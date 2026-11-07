@@ -14,3 +14,8 @@ object AdSettings : SettingsGroup(VocaColleStrings) {
     val skipAudioAds by toggle(default = false, key = "ads.skip_audio", icon = Vector.lucide("volume-x"))
     val hidePremiumPrompts by toggle(default = false, key = "ads.hide_premium_prompts", icon = Vector.lucide("badge-x"))
 }
+
+/** Metadata from VocaDB. Off by default, because turning it on sends video ids to vocadb.net. */
+object MetadataSettings : SettingsGroup(VocaColleStrings) {
+    val vocadbTitles by toggle(default = false, key = "metadata.vocadb_titles", icon = Vector.lucide("languages"))
+}

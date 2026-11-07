@@ -23,7 +23,7 @@ Morphe 시절 로드맵([vocacolle-morphe-patches/docs/ROADMAP.md](https://githu
 | Release | 범위 | 상태 |
 |---|---|---|
 | v0.1 | 설정 호스트, 한국어·영어 UI (7.48.0 신규·변경 문자열 70개 번역 포함), 광고·프리미엄 팝업 제어 | 7.48.0 XAPK에 전 패치 적용 확인. 기기 UI 확인 필요 |
-| v0.2 | VocaDB 정확 일치 곡명 (플레이어) | Morphe 버전 구현 완료, Reseam 포팅 예정 |
+| v0.2 | VocaDB 정확 일치 곡명 (플레이어) | 7.48.0 적용 확인. 7.48.0 플레이어가 Compose로 바뀌어 View 갱신 대신 `VideoInfo` 생성 시점에 표시 제목을 교체 (캐시 우선, 미스는 백그라운드 조회 후 다음 갱신부터 표시). 기기 확인 필요 |
 | v0.3 | AI BYOK 번역 core, 곡 제목·작품 상세 번역, YouTube 원본 링크 공유 | 예정 |
 | v0.4 | 공지 제목·본문 번역 | 예정 |
 | v1.0 | LRCLIB 외부 가사 fallback | 예정 |
@@ -41,6 +41,7 @@ Morphe 시절 로드맵([vocacolle-morphe-patches/docs/ROADMAP.md](https://githu
 - [ ] 음성 광고 건너뛰기 상태에서 다음 곡 버튼·진행 막대가 정상이고, 미니 플레이어가 멈추지 않는다
       (Morphe 버전에서 조기 반환 방식이 플레이어 상태를 고정시킨 적이 있음).
 - [ ] 스위치를 모두 끈 상태가 원본 앱과 같다.
+- [ ] (v0.2) VocaDB 스위치를 켠 뒤 곡을 넘기면 VocaDB에 등록된 곡의 제목이 영어/로마자로 바뀌고, 끄면 원래 제목으로 돌아온다.
 
 ## 원칙 (Morphe 시절과 동일)
 

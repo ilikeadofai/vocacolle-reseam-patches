@@ -11,4 +11,7 @@
     <string name="skip_audio_ads_summary">Plays the next track without the voice or network ad between tracks.</string>
     <string name="hide_premium_prompts">Hide Premium pop-ups</string>
     <string name="hide_premium_prompts_summary">Hides automatic Premium sheets and the pop-ups shown for Premium-only features. Premium registration stays available in Settings.</string>
+    <string name="section_metadata">Song information</string>
+    <string name="vocadb_titles">Show VocaDB song titles</string>
+    <string name="vocadb_titles_summary">Shows the English or romanized title VocaDB lists for the exact Niconico video, in the player. The video id of each track in the player is sent to vocadb.net; results are cached on the device.</string>
 </resources>

@@ -11,4 +11,7 @@
     <string name="skip_audio_ads_summary">曲間の音声広告・ネットワーク広告を再生せずに次の曲へ進みます。</string>
     <string name="hide_premium_prompts">プレミアムのポップアップを非表示</string>
     <string name="hide_premium_prompts_summary">自動で表示されるプレミアム案内シートと、プレミアム限定機能のポップアップを非表示にします。プレミアム登録は設定から引き続き行えます。</string>
+    <string name="section_metadata">楽曲情報</string>
+    <string name="vocadb_titles">VocaDBの曲名を表示</string>
+    <string name="vocadb_titles_summary">プレイヤーで、ニコニコ動画と完全に一致するVocaDBの英語またはローマ字の曲名を表示します。プレイヤー内の各曲の動画IDがvocadb.netに送信され、結果は端末にキャッシュされます。</string>
 </resources>
