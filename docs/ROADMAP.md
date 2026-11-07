@@ -25,8 +25,9 @@ Morphe 시절 로드맵([vocacolle-morphe-patches/docs/ROADMAP.md](https://githu
 |---|---|---|
 | v0.1 | 설정 호스트, 한국어·영어 UI (7.48.0 신규·변경 문자열 70개 번역 포함), 광고·프리미엄 팝업 제어 (기본 켜짐) | 7.48.0 XAPK에 전 패치 적용 확인. 기기 UI 확인 필요 |
 | v0.2 | VocaDB 정확 일치 곡명 (플레이어) | 7.48.0 적용 확인. 7.48.0 플레이어가 Compose로 바뀌어 View 갱신 대신 `VideoInfo` 생성 시점에 표시 제목을 교체 (캐시 우선, 미스는 백그라운드 조회 후 다음 갱신부터 표시). 기기 확인 필요 |
-| v0.3 | AI BYOK 번역 core, 곡 제목·작품 상세 번역, YouTube 원본 링크 공유 | 예정 |
-| v0.4 | 공지 제목·본문 번역 | 예정 |
+| v0.3 | YouTube 원본 링크 공유 | 7.48.0 적용 확인. 작품 공유 텍스트(`SnsMediaShareText`)의 니코니코 링크만 VocaDB YouTube Original로 교체 |
+| v0.4 | AI BYOK 번역 core, 곡 제목·작품 상세 번역 | 진행 중 |
+| v0.5 | 공지 제목·본문 번역 | 예정 |
 | v1.0 | LRCLIB 외부 가사 fallback | 예정 |
 | v1.1 | 태그 번역 (검색은 일본어 원문 유지) | 예정 |
 | v1.2 | 가사 발음·번역 다층 표시 | 예정 |

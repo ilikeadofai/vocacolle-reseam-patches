@@ -80,6 +80,13 @@ cached on the device for 7 days (6 hours for "not on VocaDB"), and a network fai
 counts as "not found". A title that isn't cached yet appears from the player's next refresh,
 such as the next track change.
 
+### YouTube share links
+
+Off by default, with its own switch, also off. When on, sharing a work replaces the Niconico
+link in the share text with the YouTube **Original** PV that VocaDB lists for that exact
+Niconico video. Videos VocaDB hasn't been asked about yet keep the Niconico link and are looked
+up for the next share; the player's VocaDB title lookups fill the same cache.
+
 ### Custom branding
 
 Off by default, and with no options set it changes nothing. `appName` sets the name under the
