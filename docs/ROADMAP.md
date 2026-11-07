@@ -17,6 +17,7 @@ Morphe 시절 로드맵([vocacolle-morphe-patches/docs/ROADMAP.md](https://githu
 | 프리미엄 팝업 | 호출부 7곳을 각각 지정 | 팩토리 `PremiumMeritLeadDialog.newInstance` 호출부 전체를 한 번에 찾아 `show` 생략 | 새 호출부도 자동 포함 |
 | 패치 버전 표시 | 앱 정보 화면 버전 문자열 수정 | Reseam 설정 화면 about 카드 | 런타임 기본 기능 |
 | 호환성 프로브 | 별도 no-op 패치 | 삭제 | Reseam CLI가 같은 검증을 함 |
+| 브랜딩 아이콘 | 원본 PNG 하나를 패치 시 5개 밀도로 리사이즈 + adaptive 생성 | 사용자가 준 PNG(단일 또는 밀도별)를 새 mipmap으로 추가하고 manifest가 가리키게 함 | Reseam 패치는 휴대폰(ART)에서도 실행되어 AWT 리사이즈를 쓸 수 없음 |
 
 ## 상태
 

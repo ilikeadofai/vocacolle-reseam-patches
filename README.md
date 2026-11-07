@@ -79,6 +79,18 @@ cached on the device for 7 days (6 hours for "not on VocaDB"), and a network fai
 counts as "not found". A title that isn't cached yet appears from the player's next refresh,
 such as the next track change.
 
+### Custom branding
+
+Off by default, and with no options set it changes nothing. `appName` sets the name under the
+launcher icon; it is a separate resource, so text inside the app that says ボカコレ stays.
+`icon` is a folder with either a square `icon.png`, or `mipmap-mdpi` … `mipmap-xxxhdpi`
+folders each holding a square `ic_launcher.png` (48, 72, 96, 144, 192 px). The icon becomes a
+plain (non-adaptive) launcher icon on every Android version.
+
+```shell
+--enable "Custom branding" --option "Custom branding.appName=보카코레" --option "Custom branding.icon=./my-icon"
+```
+
 ## Compatibility
 
 - Target: VocaColle 7.48.0 (`versionCode 187`). Other versions are skipped unless you run
