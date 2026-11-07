@@ -100,6 +100,15 @@ row that stores it encrypted with the Android Keystore and keeps it out of setti
 Only titles containing Japanese are sent, and not those VocaDB already titled. Translations are
 cached on the device.
 
+### External lyrics
+
+Off by default, with its own switch, also off. When VocaColle's own lyrics request ends in
+"not found" or "monthly limit reached", the patch answers with lyrics from public sources
+instead of the error: the song is matched by the exact Niconico video on VocaDB, LRCLIB is
+asked for synced lyrics of that song whose length is within 3 seconds, and VocaDB's original
+lyrics are shown, untimed, when LRCLIB has none. A credit line names the source. The official
+lyrics and the limit itself are not touched.
+
 ### Custom branding
 
 Off by default, and with no options set it changes nothing. `appName` sets the name under the

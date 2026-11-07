@@ -53,3 +53,8 @@ object AiSettings : SettingsGroup(VocaColleStrings) {
     val aiModel by text(default = "", key = "ai.model", icon = Vector.lucide("cpu"))
     val aiApiKey by action(key = "ai.api_key", icon = Vector.lucide("key-round"))
 }
+
+/** Lyrics from public sources. Off by default, because it sends video ids and song names out. */
+object LyricsSettings : SettingsGroup(VocaColleStrings) {
+    val externalLyrics by toggle(default = false, key = "lyrics.external", icon = Vector.lucide("mic-vocal"))
+}

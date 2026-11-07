@@ -41,4 +41,7 @@
     <string name="save">保存</string>
     <string name="remove">削除</string>
     <string name="cancel">キャンセル</string>
+    <string name="section_lyrics">歌詞</string>
+    <string name="external_lyrics">VocaDB・LRCLIBの歌詞</string>
+    <string name="external_lyrics_summary">ボカコレに歌詞がないとき、または今月の歌詞の上限に達したときに、ニコニコ動画と完全に一致する曲のLRCLIBの同期歌詞、またはVocaDBの原文歌詞を表示します。動画IDはvocadb.netに、曲名はlrclib.netに送信されます。</string>
 </resources>

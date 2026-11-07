@@ -41,4 +41,7 @@
     <string name="save">저장</string>
     <string name="remove">삭제</string>
     <string name="cancel">취소</string>
+    <string name="section_lyrics">가사</string>
+    <string name="external_lyrics">VocaDB·LRCLIB 가사</string>
+    <string name="external_lyrics_summary">보카코레에 가사가 없거나 이번 달 가사 한도에 도달했을 때, 해당 니코니코 동영상과 정확히 일치하는 곡의 LRCLIB 싱크 가사나 VocaDB 원문 가사를 보여 줍니다. 동영상 ID는 vocadb.net으로, 곡 이름은 lrclib.net으로 전송됩니다.</string>
 </resources>

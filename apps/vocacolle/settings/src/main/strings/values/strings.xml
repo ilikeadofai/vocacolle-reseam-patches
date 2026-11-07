@@ -41,4 +41,7 @@
     <string name="save">Save</string>
     <string name="remove">Remove</string>
     <string name="cancel">Cancel</string>
+    <string name="section_lyrics">Lyrics</string>
+    <string name="external_lyrics">Lyrics from VocaDB and LRCLIB</string>
+    <string name="external_lyrics_summary">When VocaColle has no lyrics for a song, or this month\'s lyrics limit is reached, shows synced lyrics from LRCLIB, or VocaDB\'s original lyrics, for the exact Niconico video. The video id goes to vocadb.net and the song name to lrclib.net.</string>
 </resources>
