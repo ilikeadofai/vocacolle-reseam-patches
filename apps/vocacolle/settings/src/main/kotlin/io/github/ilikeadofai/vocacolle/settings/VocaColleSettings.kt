@@ -18,4 +18,5 @@ object AdSettings : SettingsGroup(VocaColleStrings) {
 /** Metadata from VocaDB. Off by default, because turning it on sends video ids to vocadb.net. */
 object MetadataSettings : SettingsGroup(VocaColleStrings) {
     val vocadbTitles by toggle(default = false, key = "metadata.vocadb_titles", icon = Vector.lucide("languages"))
+    val shareYoutube by toggle(default = false, key = "metadata.share_youtube", icon = Vector.lucide("share-2"))
 }

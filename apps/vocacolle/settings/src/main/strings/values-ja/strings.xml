@@ -14,4 +14,6 @@
     <string name="section_metadata">楽曲情報</string>
     <string name="vocadb_titles">VocaDBの曲名を表示</string>
     <string name="vocadb_titles_summary">プレイヤーで、ニコニコ動画と完全に一致するVocaDBの英語またはローマ字の曲名を表示します。プレイヤー内の各曲の動画IDがvocadb.netに送信され、結果は端末にキャッシュされます。</string>
+    <string name="share_youtube">YouTubeのオリジナルでシェア</string>
+    <string name="share_youtube_summary">作品をシェアするとき、そのニコニコ動画についてVocaDBに登録されたYouTubeのオリジナルがあれば、ニコニコのリンクの代わりに使います。まだ照会していない動画は照会を始め、次のシェアから反映されます。</string>
 </resources>

@@ -18,7 +18,8 @@ import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
 
 /**
- * Display titles from VocaDB for the exact Niconico video a player item shows.
+ * Display titles, and YouTube links for sharing, from VocaDB for the exact Niconico video a
+ * player item shows.
  *
  * The player builds a fresh item list on every queue or track change. A title that is already
  * known is shown at once; an unknown one is looked up in the background and shows from the next
@@ -30,17 +31,25 @@ private const val ENDPOINT = "https://vocadb.net/api/songs/byPv"
 private const val MAX_BODY_BYTES = 256 * 1024
 private const val FOUND_TTL_MS = 7L * 24 * 60 * 60 * 1000
 private const val NOT_FOUND_TTL_MS = 6L * 60 * 60 * 1000
-private const val NOT_FOUND = ""
+private const val CACHE_FORMAT = "v2"
 private val MEDIA_ID = Regex("^(sm|so|nm)[0-9]{1,12}$")
+private val YOUTUBE_ID = Regex("^[A-Za-z0-9_-]{11}$")
 
-private class Entry(val title: String, val savedAt: Long)
+/** What VocaDB knows about one video. An empty [title] and no [youtubeIds] means "not on VocaDB". */
+private class Song(val title: String, val youtubeIds: List<String>) {
+    val isEmpty get() = title.isEmpty() && youtubeIds.isEmpty()
+}
+
+private val NOT_FOUND = Song("", emptyList())
+
+private class Entry(val song: Song, val savedAt: Long)
 
 @Volatile private var cacheDir: File? = null
 
-/** videoId -> VocaDB title, or [NOT_FOUND] when VocaDB has no usable title. */
-private val memory: MutableMap<String, String> = Collections.synchronizedMap(
-    object : LinkedHashMap<String, String>(64, 0.75f, true) {
-        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, String>?) = size > 512
+/** videoId -> what VocaDB knows, [NOT_FOUND] included. */
+private val memory: MutableMap<String, Song> = Collections.synchronizedMap(
+    object : LinkedHashMap<String, Song>(64, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, Song>?) = size > 512
     },
 )
 
@@ -62,8 +71,29 @@ fun init(context: Context?) {
 fun displayTitle(videoId: String?, title: String?): String? {
     if (videoId == null || title.isNullOrBlank() || !MEDIA_ID.matches(videoId)) return title
     if (!MetadataSettings.vocadbTitles.value) return title
-    val known = memory[videoId]
-    if (known != null) return if (known == NOT_FOUND) title else known
+    return known(videoId)?.title?.takeIf { it.isNotEmpty() } ?: title
+}
+
+/**
+ * The text of the app's "share this work" sheet, `<title> <niconico url> #<id> …`, with the
+ * niconico link swapped for the YouTube original when VocaDB lists one for that exact video.
+ * Unknown videos keep the niconico link, and are looked up for the next share.
+ */
+@Export
+fun shareText(text: String?): String? {
+    if (text == null || !MetadataSettings.shareYoutube.value) return text
+    val tokens = text.split(' ')
+    val videoId = tokens.firstNotNullOfOrNull { token -> token.removePrefix("#").takeIf { MEDIA_ID.matches(it) } }
+        ?: return text
+    val youtube = known(videoId)?.youtubeIds?.firstOrNull() ?: return text
+    val linkAt = tokens.indexOfFirst { it.startsWith("https://") && it.contains(videoId) }
+    if (linkAt < 0) return text
+    return tokens.toMutableList().apply { this[linkAt] = "https://youtu.be/$youtube" }.joinToString(" ")
+}
+
+/** What VocaDB knows about [videoId] so far; starts a background lookup when that is nothing. */
+private fun known(videoId: String): Song? {
+    memory[videoId]?.let { return it }
     if (inFlight.add(videoId)) {
         try {
             lookups.execute { load(videoId) }
@@ -71,15 +101,15 @@ fun displayTitle(videoId: String?, title: String?): String? {
             inFlight.remove(videoId)
         }
     }
-    return title
+    return null
 }
 
 private fun load(videoId: String) {
     try {
         val now = System.currentTimeMillis()
         val cached = readCache(videoId)
-        if (cached != null && now - cached.savedAt < ttl(cached.title)) {
-            memory[videoId] = cached.title
+        if (cached != null && now - cached.savedAt < ttl(cached.song)) {
+            memory[videoId] = cached.song
             return
         }
         val fetched = try {
@@ -87,7 +117,7 @@ private fun load(videoId: String) {
         } catch (failure: IOException) {
             // Offline or VocaDB unreachable: an expired entry is still better than nothing, and
             // a network error is never remembered as "not found".
-            cached?.let { memory[videoId] = it.title }
+            cached?.let { memory[videoId] = it.song }
             Log.d(TAG, "lookup failed for $videoId: ${failure.message}")
             return
         }
@@ -100,10 +130,9 @@ private fun load(videoId: String) {
     }
 }
 
-private fun ttl(title: String) = if (title == NOT_FOUND) NOT_FOUND_TTL_MS else FOUND_TTL_MS
+private fun ttl(song: Song) = if (song.isEmpty) NOT_FOUND_TTL_MS else FOUND_TTL_MS
 
-/** VocaDB's English name for the song, else its romanized one, else [NOT_FOUND]. */
-private fun fetch(videoId: String): String {
+private fun fetch(videoId: String): Song {
     val query = "pvService=NicoNicoDouga&pvId=" + URLEncoder.encode(videoId, "UTF-8") + "&fields=Names,PVs"
     val connection = URL("$ENDPOINT?$query").openConnection() as HttpURLConnection
     try {
@@ -125,25 +154,31 @@ private fun fetch(videoId: String): String {
         } catch (failure: org.json.JSONException) {
             throw IOException("malformed response", failure)
         }
-        return titleOf(song, videoId)
+        return songOf(song, videoId)
     } finally {
         connection.disconnect()
     }
 }
 
-private fun titleOf(song: JSONObject, videoId: String): String {
-    // byPv can answer with a song whose Niconico PV was since disabled or replaced; only an
-    // active PV with this exact id counts as a match.
-    val pvs = song.optJSONArray("pvs") ?: return NOT_FOUND
-    val exact = (0 until pvs.length()).map { pvs.getJSONObject(it) }.any {
-        it.optString("service") == "NicoNicoDouga" && it.optString("pvId") == videoId && !it.optBoolean("disabled")
-    }
-    if (!exact) return NOT_FOUND
-    val names = song.optJSONArray("names") ?: return NOT_FOUND
-    fun name(language: String) = (0 until names.length()).map { names.getJSONObject(it) }
-        .firstOrNull { it.optString("language") == language }
-        ?.optString("value")?.trim()?.takeIf { it.isNotEmpty() }
-    return name("English") ?: name("Romaji") ?: NOT_FOUND
+/**
+ * The song's English name, else its romanized one, and its active YouTube original PVs.
+ * byPv can answer with a song whose Niconico PV was since disabled or replaced; only an active PV
+ * with this exact id counts as a match.
+ */
+private fun songOf(song: JSONObject, videoId: String): Song {
+    val pvs = song.optJSONArray("pvs")?.let { array -> (0 until array.length()).map { array.getJSONObject(it) } }
+        ?: return NOT_FOUND
+    val active = pvs.filter { !it.optBoolean("disabled") }
+    if (active.none { it.optString("service") == "NicoNicoDouga" && it.optString("pvId") == videoId }) return NOT_FOUND
+    val youtube = active
+        .filter { it.optString("service") == "Youtube" && it.optString("pvType") == "Original" }
+        .map { it.optString("pvId").trim() }
+        .filter { YOUTUBE_ID.matches(it) }
+        .distinct()
+    val names = song.optJSONArray("names")?.let { array -> (0 until array.length()).map { array.getJSONObject(it) } }.orEmpty()
+    fun name(language: String) = names.firstOrNull { it.optString("language") == language }
+        ?.optString("value")?.trim()?.takeIf { it.isNotEmpty() && '\n' !in it }
+    return Song(name("English") ?: name("Romaji") ?: "", youtube)
 }
 
 private fun cacheFile(videoId: String) = cacheDir?.let { File(it, videoId) }
@@ -151,9 +186,11 @@ private fun cacheFile(videoId: String) = cacheDir?.let { File(it, videoId) }
 private fun readCache(videoId: String): Entry? {
     val file = cacheFile(videoId)?.takeIf { it.isFile } ?: return null
     return try {
-        val text = file.readText(Charsets.UTF_8)
-        val newline = text.indexOf('\n')
-        if (newline < 0) null else Entry(text.substring(newline + 1), text.substring(0, newline).toLong())
+        val lines = file.readText(Charsets.UTF_8).split('\n')
+        // Older entries held only a title; treat them as expired so they are fetched again.
+        if (lines.size != 4 || lines[0] != CACHE_FORMAT) return null
+        val youtube = lines[3].split(',').filter { YOUTUBE_ID.matches(it) }
+        Entry(Song(lines[2], youtube), lines[1].toLong())
     } catch (_: Exception) {
         file.delete()
         null
@@ -165,7 +202,10 @@ private fun writeCache(videoId: String, entry: Entry) {
     try {
         file.parentFile?.mkdirs()
         val temp = File(file.parentFile, "$videoId.tmp")
-        temp.writeText("${entry.savedAt}\n${entry.title}", Charsets.UTF_8)
+        temp.writeText(
+            "$CACHE_FORMAT\n${entry.savedAt}\n${entry.song.title}\n${entry.song.youtubeIds.joinToString(",")}",
+            Charsets.UTF_8,
+        )
         if (!temp.renameTo(file)) temp.delete()
     } catch (_: IOException) {
         // The title still shows for this session from memory.
