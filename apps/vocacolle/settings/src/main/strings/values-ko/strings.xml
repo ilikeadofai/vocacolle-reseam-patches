@@ -20,7 +20,7 @@
     <string name="ai_titles">곡 제목 번역</string>
     <string name="ai_titles_summary">홈, 검색, 랭킹, 플레이리스트, 플레이어 등 앱 전체의 일본어 곡 제목을 번역합니다. 제목은 여러 개씩 묶어 아래 번역 서비스로 전송되며, 번역은 기기에 캐시됩니다. VocaDB 제목이 있는 곡은 전송하지 않습니다.</string>
     <string name="ai_descriptions">작품 소개 번역 버튼</string>
-    <string name="ai_descriptions_summary">작품 소개 아래에 번역 버튼을 추가해, 누르면 번역을 보여 줍니다. 버튼을 누를 때만 소개 글이 아래 번역 서비스로 전송됩니다.</string>
+    <string name="ai_descriptions_summary">작품 소개 아래에 번역 버튼을 추가해, 누르면 원문 자리에 번역을 보여 줍니다. 버튼을 누를 때만 소개 글이 아래 번역 서비스로 전송됩니다.</string>
     <string name="ai_notices">공지 번역</string>
     <string name="ai_notices_summary">설정의 공지 제목을 아래 번역 서비스로 번역하고, 공지 본문은 Google 번역 페이지 번역으로 엽니다. 이때 본문 주소가 Google에 전달됩니다.</string>
     <string name="ai_language">번역할 언어</string>
@@ -42,8 +42,8 @@
     <string name="remove">삭제</string>
     <string name="cancel">취소</string>
     <string name="section_lyrics">가사</string>
-    <string name="external_lyrics">VocaDB·LRCLIB 가사</string>
-    <string name="external_lyrics_summary">보카코레에 가사가 없거나 이번 달 가사 한도에 도달했을 때, 해당 니코니코 동영상과 정확히 일치하는 곡의 LRCLIB 싱크 가사나 VocaDB 원문 가사를 보여 줍니다. 동영상 ID는 vocadb.net으로, 곡 이름은 lrclib.net으로 전송됩니다.</string>
+    <string name="external_lyrics">다른 출처의 가사</string>
+    <string name="external_lyrics_summary">보카코레에 가사가 없거나 가사를 표시하지 못할 때, VocaDB로 찾은 해당 니코니코 동영상의 곡 가사를 아래 출처에서 가져와 보여 줍니다. 동영상 ID는 vocadb.net으로, 곡 이름과 프로듀서는 각 출처로 전송됩니다.</string>
     <string name="ai_language_auto">앱 언어와 같게 (한국어 또는 영어)</string>
     <string name="translate">번역</string>
     <string name="translating">번역 중…</string>
@@ -51,4 +51,7 @@
     <string name="translation_failed">작품 소개를 번역하지 못했습니다. 연결과 번역 서비스를 확인한 뒤 다시 시도해 주세요.</string>
     <string name="translation_not_set_up">먼저 Reseam 패치 화면에서 번역 서비스를 설정해 주세요.</string>
     <string name="close">닫기</string>
+    <string name="lyrics_providers">가사 출처 (순서대로)</string>
+    <string name="lyrics_providers_summary">쉼표로 구분해 순서대로 시도합니다: lrclib (LRCLIB), netease (NetEase Cloud Music), kugou (KuGou), vocadb (VocaDB, 싱크 없음).</string>
+    <string name="show_original">원문 보기</string>
 </resources>

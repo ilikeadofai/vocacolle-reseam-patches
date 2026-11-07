@@ -5,6 +5,7 @@ package io.github.ilikeadofai.vocacolle.core.translate
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
+import android.os.Handler
 import android.content.Context
 import android.os.Looper
 import android.security.keystore.KeyGenParameterSpec
@@ -278,42 +279,65 @@ fun rememberDescription(description: String?) {
     lastDescription = description
 }
 
-/** The Translate button's label. */
+/** The app's `mutableStateOf(value)`: a Compose state, so the screen redraws when it changes. */
 @Export
-fun translateLabel(): String = VocaColleStrings.translate
+external fun newState(value: Any?): Any?
+
+@Export
+external fun readState(state: Any?): Any?
+
+@Export
+external fun writeState(state: Any?, value: Any?)
+
+/** The description shown in place of the original, as `[original, translation]`, or null. */
+private val shownTranslation: Any? by lazy { newState(null) }
+
+private val mainHandler by lazy { Handler(Looper.getMainLooper()) }
+
+/** The text the description area draws: [original], or its translation once the button asked. */
+@Export
+fun shownDescription(original: String?): String? {
+    val shown = readState(shownTranslation) as? Array<*> ?: return original
+    return if (shown.getOrNull(0) == original) shown.getOrNull(1) as? String ?: original else original
+}
+
+/** The button's label: Translate, or Show original while the translation is shown. */
+@Export
+fun translateLabel(): String {
+    val shown = readState(shownTranslation) as? Array<*>
+    return if (shown != null && shown.getOrNull(0) == lastDescription) VocaColleStrings.showOriginal else VocaColleStrings.translate
+}
 
 /**
- * The Translate button under a work's description: translates it in the background, then shows
- * the translation in a dialog over the current screen.
+ * The button under a work's description: translates it in the background and puts the
+ * translation in place of the original, or puts the original back.
  */
 @Export
 fun showDescriptionTranslation() {
     val description = lastDescription ?: return
-    val activity = currentActivity?.get() ?: return
-    val config = config()
-    if (config == null) {
-        Toast.makeText(activity, VocaColleStrings.translationNotSetUp, Toast.LENGTH_SHORT).show()
+    val shown = readState(shownTranslation) as? Array<*>
+    if (shown != null && shown.getOrNull(0) == description) {
+        writeState(shownTranslation, null)
         return
     }
-    Toast.makeText(activity, VocaColleStrings.translating, Toast.LENGTH_SHORT).show()
+    val activity = currentActivity?.get()
+    if (config() == null) {
+        activity?.let { Toast.makeText(it, VocaColleStrings.translationNotSetUp, Toast.LENGTH_SHORT).show() }
+        return
+    }
+    activity?.let { Toast.makeText(it, VocaColleStrings.translating, Toast.LENGTH_SHORT).show() }
     Thread({
         val translated = try {
             translatePieces(description, wait = true)
         } catch (_: Exception) {
             description
         }
-        val text = if ('<' in translated) {
-            android.text.Html.fromHtml(translated, android.text.Html.FROM_HTML_MODE_LEGACY).toString().trim()
-        } else {
-            translated
-        }
-        activity.runOnUiThread {
-            if (activity.isFinishing) return@runOnUiThread
-            Reseam.bundle(BUNDLE).ui(activity).dialog()
-                .title(VocaColleStrings.translatedDescription)
-                .message(if (translated == description) VocaColleStrings.translationFailed else text)
-                .dismissAction(VocaColleStrings.close)
-                .show()
+        mainHandler.post {
+            if (translated == description) {
+                activity?.let { Toast.makeText(it, VocaColleStrings.translationFailed, Toast.LENGTH_LONG).show() }
+            } else if (lastDescription == description) {
+                writeState(shownTranslation, arrayOf(description, translated))
+            }
         }
     }, "$TAG-description").apply { isDaemon = true }.start()
 }

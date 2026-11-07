@@ -34,7 +34,10 @@ private const val WAIT_MS = 6_000L
 private const val DURATION_TOLERANCE_S = 3.0
 private val MEDIA_ID = Regex("^(sm|so|nm)[0-9]{1,12}$")
 private val LRC_LINE = Regex("^\\[(\\d{1,3}):(\\d{2})(?:[.:](\\d{1,3}))?]\\s?(.*)$")
-private val FALLBACK_REASONS = setOf("NOT_FOUND", "LYRICS_ACCESS_LIMIT_EXCEEDED")
+// Every way the official request can fail, except having no connection, which the sources share.
+private val NO_FALLBACK_REASONS = setOf("OFFLINE", "INVALID_PARAMETER")
+private const val MAIN_THREAD_WAIT_MS = 3_000L
+private val DEFAULT_PROVIDERS = listOf("lrclib", "netease", "kugou", "vocadb")
 
 /** One line, with its start time when the lyrics are synced. */
 private class Line(val startMs: Int?, val text: String)
@@ -88,21 +91,42 @@ fun prefetch(videoId: String?) {
 @Export
 fun fallback(requestedId: String?, reason: String?): Any? {
     val videoId = requestedId ?: lastRequested
-    if (videoId == null || reason !in FALLBACK_REASONS || !MEDIA_ID.matches(videoId)) return null
+    if (videoId == null || reason == null || reason in NO_FALLBACK_REASONS || !MEDIA_ID.matches(videoId)) return null
     if (!LyricsSettings.externalLyrics.value) return null
     val found = memory[videoId] ?: run {
         val future = schedule(videoId)
-        if (future != null && Looper.myLooper() != Looper.getMainLooper()) {
+        if (future != null) {
+            // The loader may run on the main thread; the lookup itself never does, and the wait
+            // there is short, since the user is looking at a spinner either way.
+            val wait = if (Looper.myLooper() == Looper.getMainLooper()) MAIN_THREAD_WAIT_MS else WAIT_MS
             try {
-                future.get(WAIT_MS, TimeUnit.MILLISECONDS)
+                future.get(wait, TimeUnit.MILLISECONDS)
             } catch (_: Exception) {
                 // Too slow or failed: the app shows its own message.
             }
         }
         memory[videoId]
     } ?: return null
-    if (found.lines.isEmpty()) return null
+    if (found.lines.isEmpty()) {
+        Log.i(TAG, "no external lyrics for $videoId (app said $reason)")
+        return null
+    }
+    Log.i(TAG, "showing ${found.source} lyrics for $videoId (app said $reason)")
     return build(videoId, found)
+}
+
+/**
+ * Whether the lyrics button should open: the app's own answer, or yes once a source has lyrics
+ * for the track. The lookup started when the track did, so it is usually done by then.
+ */
+@Export
+fun hasLyrics(videoId: String?, original: Boolean): Boolean {
+    if (original || videoId == null || !LyricsSettings.externalLyrics.value || !MEDIA_ID.matches(videoId)) return original
+    val found = memory[videoId] ?: run {
+        schedule(videoId)
+        return false
+    }
+    return found.lines.isNotEmpty()
 }
 
 private fun schedule(videoId: String): Future<*>? {
@@ -145,10 +169,89 @@ private fun build(videoId: String, found: Found): Any? {
 
 private fun load(videoId: String): Found {
     val song = vocadbSong(videoId) ?: return NONE
-    val name = song.optString("defaultName").ifBlank { song.optString("name") }
+    val name = song.optString("defaultName").ifBlank { song.optString("name") }.trim()
+    val producer = song.optString("artistString").substringBefore(" feat.").substringBefore(",").trim()
     val length = song.optInt("lengthSeconds", 0)
-    if (name.isNotBlank() && length > 0) lrclib(name, length)?.let { return it }
-    return vocadbLyrics(song) ?: NONE
+    val order = LyricsSettings.lyricsProviders.value.split(',', ' ')
+        .map { it.trim().lowercase() }.filter { it.isNotEmpty() }.ifEmpty { DEFAULT_PROVIDERS }
+    for (provider in order) {
+        val found = try {
+            when (provider) {
+                "lrclib" -> if (name.isNotEmpty() && length > 0) lrclib(name, length) else null
+                "netease" -> if (name.isNotEmpty() && length > 0) netease(name, producer, length) else null
+                "kugou" -> if (name.isNotEmpty() && length > 0) kugou(name, producer, length) else null
+                "vocadb" -> vocadbLyrics(song)
+                else -> null
+            }
+        } catch (failure: Exception) {
+            Log.d(TAG, "$provider failed for $videoId: ${failure.javaClass.simpleName}")
+            null
+        }
+        if (found != null && found.lines.isNotEmpty()) return found
+    }
+    return NONE
+}
+
+private fun sameTitle(a: String, b: String): Boolean {
+    fun normal(value: String) = value.lowercase().replace(Regex("[\\s\u3000・\\-_~～!！?？「」『』()（）\\[\\]]"), "")
+    return normal(a) == normal(b)
+}
+
+/** Timed lines of an LRC file, without its tags and credit lines. */
+private fun parseLrc(text: String): List<Line> = text.lines().mapNotNull { raw ->
+    val parts = LRC_LINE.find(raw.trim()) ?: return@mapNotNull null
+    val (minutes, seconds, fraction, line) = parts.destructured
+    val ms = when (fraction.length) {
+        0 -> 0
+        1 -> fraction.toInt() * 100
+        2 -> fraction.toInt() * 10
+        else -> fraction.take(3).toInt()
+    }
+    Line((minutes.toInt() * 60 + seconds.toInt()) * 1000 + ms, line.trim())
+}.filterNot { CREDIT_LINE.containsMatchIn(it.text) }.sortedBy { it.startMs }
+
+private val CREDIT_LINE = Regex("^(作词|作詞|作曲|编曲|編曲|词|曲|ti|ar|al)\\s*[:：]")
+
+/** NetEase Cloud Music: search by title and producer, then its LRC for the one of the same length. */
+private fun netease(name: String, producer: String, length: Int): Found? {
+    val query = URLEncoder.encode("$name $producer".trim(), "UTF-8")
+    val songs = JSONObject(get("https://music.163.com/api/search/get?s=$query&type=1&limit=10", NETEASE_HEADERS))
+        .optJSONObject("result")?.optJSONArray("songs") ?: return null
+    val match = (0 until songs.length()).map { songs.getJSONObject(it) }
+        .filter { sameTitle(it.optString("name"), name) }
+        .minByOrNull { Math.abs(it.optLong("duration") / 1000.0 - length) }
+        ?.takeIf { Math.abs(it.optLong("duration") / 1000.0 - length) <= DURATION_TOLERANCE_S }
+        ?: return null
+    val lyric = JSONObject(get("https://music.163.com/api/song/lyric?id=${match.optLong("id")}&lv=1&tv=-1", NETEASE_HEADERS))
+        .optJSONObject("lrc")?.optString("lyric").orEmpty()
+    val lines = parseLrc(lyric)
+    return Found(lines, true, "NetEase Cloud Music").takeIf { lines.size > 2 }
+}
+
+private val NETEASE_HEADERS = mapOf("Referer" to "https://music.163.com")
+
+/** KuGou: its lyric search matches by keyword and length, then the LRC comes base64-encoded. */
+private fun kugou(name: String, producer: String, length: Int): Found? {
+    val query = URLEncoder.encode("$producer $name".trim(), "UTF-8")
+    val candidates = JSONObject(
+        get("https://lyrics.kugou.com/search?ver=1&man=yes&client=pc&keyword=$query&duration=${length * 1000}&hash="),
+    ).optJSONArray("candidates") ?: return null
+    val match = (0 until candidates.length()).map { candidates.getJSONObject(it) }
+        .filter { sameTitle(it.optString("song"), name) }
+        .minByOrNull { Math.abs(it.optLong("duration") / 1000.0 - length) }
+        ?.takeIf { Math.abs(it.optLong("duration") / 1000.0 - length) <= DURATION_TOLERANCE_S }
+        ?: return null
+    val download = JSONObject(
+        get(
+            "https://lyrics.kugou.com/download?ver=1&client=pc&id=${match.optString("id")}" +
+                "&accesskey=${match.optString("accesskey")}&fmt=lrc&charset=utf8",
+        ),
+    )
+    val content = download.optString("content").takeIf { it.isNotEmpty() } ?: return null
+    val text = String(android.util.Base64.decode(content, android.util.Base64.DEFAULT), Charsets.UTF_8)
+    // KuGou's first line repeats the title and singer.
+    val lines = parseLrc(text).filterNot { it.startMs == 0 && it.text.contains(" - ") }
+    return Found(lines, true, "KuGou").takeIf { lines.size > 2 }
 }
 
 private fun vocadbSong(videoId: String): JSONObject? {
@@ -169,22 +272,12 @@ private fun vocadbSong(videoId: String): JSONObject? {
 private fun lrclib(name: String, length: Int): Found? {
     val results = JSONArray(get("https://lrclib.net/api/search?track_name=" + URLEncoder.encode(name, "UTF-8")))
     val match = (0 until results.length()).map { results.getJSONObject(it) }
-        .filter { it.optString("trackName").trim() == name.trim() && !it.optBoolean("instrumental") }
+        .filter { sameTitle(it.optString("trackName"), name) && !it.optBoolean("instrumental") }
         .filter { it.optString("syncedLyrics").isNotBlank() }
         .minByOrNull { Math.abs(it.optDouble("duration", 0.0) - length) }
         ?.takeIf { Math.abs(it.optDouble("duration", 0.0) - length) <= DURATION_TOLERANCE_S }
         ?: return null
-    val lines = match.optString("syncedLyrics").lines().mapNotNull { raw ->
-        val parts = LRC_LINE.find(raw.trim()) ?: return@mapNotNull null
-        val (minutes, seconds, fraction, text) = parts.destructured
-        val ms = when (fraction.length) {
-            0 -> 0
-            1 -> fraction.toInt() * 100
-            2 -> fraction.toInt() * 10
-            else -> fraction.take(3).toInt()
-        }
-        Line((minutes.toInt() * 60 + seconds.toInt()) * 1000 + ms, text)
-    }
+    val lines = parseLrc(match.optString("syncedLyrics"))
     return Found(lines, true, "LRCLIB").takeIf { lines.isNotEmpty() }
 }
 
@@ -199,9 +292,10 @@ private fun vocadbLyrics(song: JSONObject): Found? {
     return Found(lines.dropLastWhile { it.text.isEmpty() }, false, source)
 }
 
-private fun get(url: String): String {
+private fun get(url: String, headers: Map<String, String> = emptyMap()): String {
     val connection = URL(url).openConnection() as HttpURLConnection
     try {
+        headers.forEach { (key, value) -> connection.setRequestProperty(key, value) }
         connection.connectTimeout = 5_000
         connection.readTimeout = 10_000
         connection.instanceFollowRedirects = false

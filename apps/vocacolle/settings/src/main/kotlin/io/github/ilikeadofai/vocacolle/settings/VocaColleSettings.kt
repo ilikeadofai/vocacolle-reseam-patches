@@ -61,4 +61,5 @@ object AiSettings : SettingsGroup(VocaColleStrings) {
 /** Lyrics from public sources. Off by default, because it sends video ids and song names out. */
 object LyricsSettings : SettingsGroup(VocaColleStrings) {
     val externalLyrics by toggle(default = false, key = "lyrics.external", icon = Vector.lucide("mic-vocal"))
+    val lyricsProviders by text(default = "lrclib,netease,kugou,vocadb", key = "lyrics.providers", icon = Vector.lucide("list-ordered"))
 }

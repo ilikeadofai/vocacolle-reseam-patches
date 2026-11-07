@@ -83,6 +83,12 @@ private val descriptionText = mediaDetailScreen.points("descriptionText") {
     argument(2) { literal(3) }
 }
 
+/** Compose's `MutableState` interface, with `getValue()` and `setValue(value)`. */
+private val mutableState = klass("MutableState") {
+    sourceFile("SnapshotState.kt")
+    custom { isInterface && methods.any { it.name == "setValue" } && methods.any { it.name == "getValue" } }
+}
+
 /** The app's text button: `(modifier, onClick, enabled, color, …, text, …, composer, changed, defaults)`. */
 private val appButton = method("appButton") {
     stringsStartingWith("jp.nicovideo.nicobox.")
@@ -111,7 +117,24 @@ private fun PatchRuntime.addTranslateButton() {
         TitleTranslator.showDescriptionTranslation()
         returnNull()
     }
+    // The description's own expanded flag is a Compose state made by the app's mutableStateOf, in
+    // the same screen; that call gives the factory and the state type for the translation's state.
+    val stateFactory = mediaDetailScreen.points("mutableStateOf") {
+        invokeStatic { paramCount(4); returns(mutableState.descriptor) }
+    }.all.firstOrNull()?.callee("mutableStateOf") ?: error("the detail screen makes no Compose state")
+    TitleTranslator.newState.implement { returnValue(call(stateFactory, param(0), nullObject, int(2), nullObject)) }
+    TitleTranslator.readState.implement {
+        returnValue(param(0).cast(mutableState.descriptor).callInterface(mutableState.descriptor, "getValue", "()Ljava/lang/Object;"))
+    }
+    TitleTranslator.writeState.implement {
+        param(0).cast(mutableState.descriptor).callInterface(mutableState.descriptor, "setValue", "(Ljava/lang/Object;)V", param(1))
+        returnVoid()
+    }
     gate(AiSettings.aiDescriptions) {
+        // Reading the state while drawing makes the screen redraw when the translation arrives.
+        description.captureArgumentAs("text", 1).before {
+            capture("text").assign(TitleTranslator.shownDescription(capture("text")))
+        }
         description.captureArgumentAs("composer", 7).after {
             call(
                 button,

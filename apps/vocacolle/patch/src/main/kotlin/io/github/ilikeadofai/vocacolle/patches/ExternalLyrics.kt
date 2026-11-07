@@ -1,8 +1,13 @@
 package io.github.ilikeadofai.vocacolle.patches
 
 import app.reseam.patch.dex.Opcode
+import app.reseam.patch.MethodTarget
 import app.reseam.patch.Type
+import app.reseam.patch.methods
+import app.reseam.patch.after
 import app.reseam.patch.before
+import app.reseam.patch.enumConstant
+import app.reseam.patch.point
 import app.reseam.patch.klass
 import app.reseam.patch.method
 import app.reseam.patch.patch
@@ -31,18 +36,52 @@ private val lyricsLoad = method("lyricsLoader.load") {
     custom { classDef.sourceFile == "LyricsLoader.kt" }
 }
 
+/** Why the lyrics button can't open; its "no lyrics registered" values lead to the check. */
+private val lyricsUnavailableReason = klass("lyricsUnavailableReason") {
+    enumConstants("NO_LYRICS_CHANNEL_VIDEO", "NO_LYRICS_USER_VIDEO", "INVALID_PLAY_MODE")
+}
+
+/** The PlayerViewModel checks that refuse a video whose metadata says it has no lyrics. */
+private val openLyricsChecks = methods("playerViewModel.openLyrics") {
+    accesses { owner(lyricsUnavailableReason.descriptor) }
+    custom { classDef.sourceFile == "PlayerViewModel.kt" }
+}
+
+/** `VideoWatchMetadata.getHasLyrics()`, read just before "no lyrics registered" is chosen. */
+private fun hasLyricsGetter(): MethodTarget {
+    val noLyrics = lyricsUnavailableReason.enumConstant("NO_LYRICS_USER_VIDEO")
+    val getters = openLyricsChecks.points("noLyricsUserVideo") {
+        field { owner(lyricsUnavailableReason.descriptor); name(noLyrics.name) }
+    }.all.map { it.previous { invokeVirtual { returns(Type.Boolean); paramCount(0) } }.callee("videoWatchMetadata.hasLyrics") }
+    return getters.distinctBy { it.descriptor }.singleOrNull()
+        ?: error("expected one hasLyrics getter, found ${getters.map { it.descriptor }.distinct()}")
+}
+
+private val videoWatchMetadata = klass("videoWatchMetadata") { strings("VideoWatchMetadata(id=") }
+
+/** The metadata's video id: the first field its constructor sets, from its first parameter. */
+private val videoWatchMetadataId = method("videoWatchMetadata.<init>") {
+    inClass(videoWatchMetadata)
+    custom { name == "<init>" && parameterTypes.size > 5 && parameterTypes[0] == Type.String && parameterTypes[1] == Type.String }
+    first()
+}.point("videoWatchMetadata.id") {
+    opcode(Opcode.IPUT_OBJECT)
+    field { owner(videoWatchMetadata.descriptor); type(Type.String) }
+}.field("videoWatchMetadata.id")
+
 @Suppress("unused")
 val externalLyrics = patch("External lyrics") {
     description(
         """
-        Shows synced lyrics from LRCLIB, or VocaDB's original lyrics, when VocaColle has none for
-        a song or the monthly lyrics limit is reached. Songs are matched by the exact Niconico
-        video on VocaDB. Off until turned on in the Reseam patches screen.
+        Shows lyrics from LRCLIB, NetEase Cloud Music, KuGou, or VocaDB when VocaColle has none
+        for a song or can't show them, and lets the lyrics button open for those songs. Songs are
+        matched by the exact Niconico video on VocaDB. Off until turned on in the Reseam patches
+        screen.
         """,
     )
     compatibleWith(VOCACOLLE)
     enabledByDefault(false)
-    settings(vocacolleSettings, section(VocaColleStrings.sectionLyrics, LyricsSettings.externalLyrics))
+    settings(vocacolleSettings, section(VocaColleStrings.sectionLyrics, LyricsSettings.externalLyrics, LyricsSettings.lyricsProviders))
 
     execute {
         ExternalLyrics.newSegment.implement {
@@ -57,6 +96,9 @@ val externalLyrics = patch("External lyrics") {
         val error = lyricsErrorReason.descriptor.substringBeforeLast('$') + ";"
         gate(LyricsSettings.externalLyrics) {
             playerVideoInfoInit.before { ExternalLyrics.prefetch(param(0)) }
+            hasLyricsGetter().after {
+                returnValue(ExternalLyrics.hasLyrics(thisObject.field(videoWatchMetadataId), result))
+            }
             lyricsLoad.before { ExternalLyrics.requested(param(0)) }
             lyricsLoad.points("lyricsError") { invokeDirect { owner(error); name("<init>") } }.forEach {
                 captureArgumentAs("reason", 1).next { opcode(Opcode.THROW) }.before {

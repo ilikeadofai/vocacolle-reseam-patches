@@ -99,8 +99,9 @@ Off by default, with its own switches, also off:
   Titles not translated yet show in Japanese and are translated in the background, up to 16 per
   request, for the next time they appear; translations are cached on the device. Titles VocaDB
   already provides are not sent.
-- **Descriptions**, on request: a **Translate** button under a work's description shows its
-  translation in a dialog. The description is sent only when the button is tapped.
+- **Descriptions**, on request: a **Translate** button under a work's description puts its
+  translation in place of the original, and **Show original** puts it back. The description is
+  sent only when the button is tapped.
 - **Notices**: notice titles in Settings are translated, and notice articles open through
   Google Translate's page proxy.
 
@@ -111,12 +112,14 @@ stores it encrypted with the Android Keystore and keeps it out of settings expor
 
 ### External lyrics
 
-Off by default, with its own switch, also off. When VocaColle's own lyrics request ends in
-"not found" or "monthly limit reached", the patch answers with lyrics from public sources
-instead of the error: the song is matched by the exact Niconico video on VocaDB, LRCLIB is
-asked for synced lyrics of that song whose length is within 3 seconds, and VocaDB's original
-lyrics are shown, untimed, when LRCLIB has none. A credit line names the source. The official
-lyrics and the limit itself are not touched.
+Off by default, with its own switch, also off. When VocaColle can't show a song's lyrics, for
+any reason but being offline, the patch answers with lyrics from other sources: the song is
+matched by the exact Niconico video on VocaDB, then the sources are tried in the order the
+**Lyrics sources** setting lists (default `lrclib,netease,kugou,vocadb`): LRCLIB, NetEase Cloud
+Music, and KuGou for synced lyrics whose recording is within 3 seconds of the song's length,
+and VocaDB's original lyrics, untimed. A credit line names the source. For songs with no lyrics
+registered, the lyrics button opens once a source has them; each track is looked up when it
+starts playing. The official lyrics and their limit are not touched.
 
 ### Custom branding
 
