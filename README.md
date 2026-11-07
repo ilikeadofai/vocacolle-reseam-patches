@@ -26,6 +26,15 @@ ads and Premium pop-ups.
 ## Patches
 
 <!-- patches:start -->
+
+### `jp.nicovideo.nicobox` 7.48.0
+
+| Patch | What it does |
+|---|---|
+| Ad controls | Adds switches to hide app-open ads, banner and in-feed ads, audio ads between tracks, and Premium pop-ups. All four start on, and can be turned off in the Reseam patches screen, opened from the menu of VocaColle's Settings. |
+| Translate UI | Shows VocaColle in Korean or English: every reviewed UI string, text compiled into the app, and the ranking and push-topic labels the server sends. Titles, creators, tags, and anything sent back to the server stay in the original Japanese. |
+| VocaDB song titles | Shows the English or romanized title VocaDB lists for the exact Niconico video in the player. Off until turned on in the Reseam patches screen; when on, the player's video ids are sent to vocadb.net. |
+
 <!-- patches:end -->
 
 ### Translate UI
