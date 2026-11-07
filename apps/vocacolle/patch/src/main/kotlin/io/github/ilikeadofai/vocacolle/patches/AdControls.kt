@@ -146,12 +146,11 @@ val adControls = patch("Ad controls") {
     description(
         """
         Adds switches to hide app-open ads, banner and in-feed ads, audio ads between tracks, and
-        Premium pop-ups. Each one starts off, and is turned on in the Reseam patches screen, opened
+        Premium pop-ups. All four start on, and can be turned off in the Reseam patches screen, opened
         from the menu of VocaColle's Settings.
         """,
     )
     compatibleWith(VOCACOLLE)
-    enabledByDefault(false)
     settings(
         vocacolleSettings,
         section(

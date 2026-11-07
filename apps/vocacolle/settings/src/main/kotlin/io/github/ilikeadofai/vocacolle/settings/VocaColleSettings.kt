@@ -6,13 +6,13 @@ import app.reseam.patch.settings.toggle
 
 /**
  * In-app switches. Keys are pinned so that renaming a property never drops a saved value.
- * Every switch starts off: the patches only change the app after the user opts in here.
+ * Ad switches start on; each can be turned off in the Reseam patches screen.
  */
 object AdSettings : SettingsGroup(VocaColleStrings) {
-    val hideAppOpenAds by toggle(default = false, key = "ads.hide_app_open", icon = Vector.lucide("smartphone"))
-    val hideDisplayAds by toggle(default = false, key = "ads.hide_display", icon = Vector.lucide("panels-top-left"))
-    val skipAudioAds by toggle(default = false, key = "ads.skip_audio", icon = Vector.lucide("volume-x"))
-    val hidePremiumPrompts by toggle(default = false, key = "ads.hide_premium_prompts", icon = Vector.lucide("badge-x"))
+    val hideAppOpenAds by toggle(default = true, key = "ads.hide_app_open", icon = Vector.lucide("smartphone"))
+    val hideDisplayAds by toggle(default = true, key = "ads.hide_display", icon = Vector.lucide("panels-top-left"))
+    val skipAudioAds by toggle(default = true, key = "ads.skip_audio", icon = Vector.lucide("volume-x"))
+    val hidePremiumPrompts by toggle(default = true, key = "ads.hide_premium_prompts", icon = Vector.lucide("badge-x"))
 }
 
 /** Metadata from VocaDB. Off by default, because turning it on sends video ids to vocadb.net. */
