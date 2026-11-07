@@ -35,9 +35,13 @@ object AiSettings : SettingsGroup(VocaColleStrings) {
     val aiDescriptions by toggle(default = false, key = "ai.descriptions", icon = Vector.lucide("file-text"))
     val aiNotices by toggle(default = false, key = "ai.notices", icon = Vector.lucide("megaphone"))
     val aiLanguage by choice(
-        default = "ko",
+        default = "auto",
         key = "ai.language",
-        choices = listOf(Choice("ko", VocaColleStrings.aiLanguageKo), Choice("en", VocaColleStrings.aiLanguageEn)),
+        choices = listOf(
+            Choice("auto", VocaColleStrings.aiLanguageAuto),
+            Choice("ko", VocaColleStrings.aiLanguageKo),
+            Choice("en", VocaColleStrings.aiLanguageEn),
+        ),
         icon = Vector.lucide("languages"),
     )
     val aiProvider by choice(

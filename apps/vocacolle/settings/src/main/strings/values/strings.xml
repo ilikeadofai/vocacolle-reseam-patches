@@ -18,9 +18,9 @@
     <string name="share_youtube_summary">When you share a work, uses the YouTube original that VocaDB lists for the exact Niconico video instead of the Niconico link. A video VocaDB hasn\'t been asked about yet is looked up, and keeps the Niconico link until the next share.</string>
     <string name="section_ai">Title translation</string>
     <string name="ai_titles">Translate song titles</string>
-    <string name="ai_titles_summary">Translates Japanese song titles in the player. Each title is sent to the translation service below; translations are cached on the device. Titles VocaDB already provides are not sent.</string>
-    <string name="ai_descriptions">Translate work descriptions</string>
-    <string name="ai_descriptions_summary">Translates the Japanese text of a work\'s description, keeping its links and layout. The text is sent to the translation service below.</string>
+    <string name="ai_titles_summary">Translates Japanese song titles across the app: Home, search, rankings, playlists, and the player. Titles are sent to the translation service below, many at a time; translations are cached on the device, and titles VocaDB already provides are not sent.</string>
+    <string name="ai_descriptions">Translate button for descriptions</string>
+    <string name="ai_descriptions_summary">Adds a Translate button under a work\'s description, which shows its translation. The description is sent to the translation service below only when you tap it.</string>
     <string name="ai_notices">Translate notices</string>
     <string name="ai_notices_summary">Translates notice titles in Settings with the service below, and opens notice articles through Google Translate\'s page translation, which receives the article\'s address.</string>
     <string name="ai_language">Translate into</string>
@@ -44,4 +44,11 @@
     <string name="section_lyrics">Lyrics</string>
     <string name="external_lyrics">Lyrics from VocaDB and LRCLIB</string>
     <string name="external_lyrics_summary">When VocaColle has no lyrics for a song, or this month\'s lyrics limit is reached, shows synced lyrics from LRCLIB, or VocaDB\'s original lyrics, for the exact Niconico video. The video id goes to vocadb.net and the song name to lrclib.net.</string>
+    <string name="ai_language_auto">Same as the app (Korean or English)</string>
+    <string name="translate">Translate</string>
+    <string name="translating">Translating…</string>
+    <string name="translated_description">Translated description</string>
+    <string name="translation_failed">Couldn\'t translate the description. Check the connection and the translation service, then try again.</string>
+    <string name="translation_not_set_up">Set up the translation service in the Reseam patches screen first.</string>
+    <string name="close">Close</string>
 </resources>

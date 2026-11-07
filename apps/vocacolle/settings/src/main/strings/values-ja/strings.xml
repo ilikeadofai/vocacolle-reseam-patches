@@ -18,9 +18,9 @@
     <string name="share_youtube_summary">作品をシェアするとき、そのニコニコ動画についてVocaDBに登録されたYouTubeのオリジナルがあれば、ニコニコのリンクの代わりに使います。まだ照会していない動画は照会を始め、次のシェアから反映されます。</string>
     <string name="section_ai">曲名の翻訳</string>
     <string name="ai_titles">曲名を翻訳</string>
-    <string name="ai_titles_summary">プレイヤーの日本語の曲名を翻訳します。各曲名が下の翻訳サービスへ送信され、翻訳は端末にキャッシュされます。VocaDBの曲名がある曲は送信しません。</string>
-    <string name="ai_descriptions">作品説明を翻訳</string>
-    <string name="ai_descriptions_summary">作品説明の日本語部分を、リンクや書式はそのままに翻訳します。テキストは下の翻訳サービスへ送信されます。</string>
+    <string name="ai_titles_summary">ホーム、検索、ランキング、プレイリスト、プレイヤーなど、アプリ全体の日本語の曲名を翻訳します。曲名はまとめて下の翻訳サービスへ送信され、翻訳は端末にキャッシュされます。VocaDBの曲名がある曲は送信しません。</string>
+    <string name="ai_descriptions">作品紹介の翻訳ボタン</string>
+    <string name="ai_descriptions_summary">作品紹介の下に翻訳ボタンを追加し、押すと翻訳を表示します。押したときだけ紹介文が下の翻訳サービスへ送信されます。</string>
     <string name="ai_notices">お知らせを翻訳</string>
     <string name="ai_notices_summary">設定のお知らせのタイトルを下の翻訳サービスで翻訳し、本文はGoogle翻訳のページ翻訳で開きます。その際、本文のアドレスがGoogleに渡されます。</string>
     <string name="ai_language">翻訳先の言語</string>
@@ -44,4 +44,11 @@
     <string name="section_lyrics">歌詞</string>
     <string name="external_lyrics">VocaDB・LRCLIBの歌詞</string>
     <string name="external_lyrics_summary">ボカコレに歌詞がないとき、または今月の歌詞の上限に達したときに、ニコニコ動画と完全に一致する曲のLRCLIBの同期歌詞、またはVocaDBの原文歌詞を表示します。動画IDはvocadb.netに、曲名はlrclib.netに送信されます。</string>
+    <string name="ai_language_auto">アプリと同じ（韓国語または英語）</string>
+    <string name="translate">翻訳</string>
+    <string name="translating">翻訳中…</string>
+    <string name="translated_description">翻訳した作品紹介</string>
+    <string name="translation_failed">作品紹介を翻訳できませんでした。接続と翻訳サービスを確認してから、もう一度お試しください。</string>
+    <string name="translation_not_set_up">先にReseamパッチ画面で翻訳サービスを設定してください。</string>
+    <string name="close">閉じる</string>
 </resources>

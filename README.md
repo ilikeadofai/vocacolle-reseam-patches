@@ -91,14 +91,22 @@ up for the next share; the player's VocaDB title lookups fill the same cache.
 
 ### Content translation
 
-Off by default, with its own switch, also off. Translates Japanese song titles in the player
-and on the work detail screen, work descriptions (text between HTML tags only, so links and
-layout stay), and notice titles, into Korean or English. Notice articles open through Google
-Translate's page proxy. The service is Google Translate's public web endpoint by default (no
-key), or any OpenAI-compatible chat completions API with your own key, set from an **API key**
-row that stores it encrypted with the Android Keystore and keeps it out of settings exports.
-Only titles containing Japanese are sent, and not those VocaDB already titled. Translations are
-cached on the device.
+Off by default, with its own switches, also off:
+
+- **Song titles**, across the app: the media models behind Home, search, rankings, playlists,
+  the mini player, the player, and the work detail screen get the translated title for display.
+  Titles not translated yet show in Japanese and are translated in the background, up to 16 per
+  request, for the next time they appear; translations are cached on the device. Titles VocaDB
+  already provides are not sent.
+- **Descriptions**, on request: a **Translate** button under a work's description shows its
+  translation in a dialog. The description is sent only when the button is tapped.
+- **Notices**: notice titles in Settings are translated, and notice articles open through
+  Google Translate's page proxy.
+
+The language is Korean or English: by default the same as the Translate UI patch's, else the
+device's. The service is Google Translate's public web endpoint by default (no key), or any
+OpenAI-compatible chat completions API with your own key, set from an **API key** row that
+stores it encrypted with the Android Keystore and keeps it out of settings exports.
 
 ### External lyrics
 

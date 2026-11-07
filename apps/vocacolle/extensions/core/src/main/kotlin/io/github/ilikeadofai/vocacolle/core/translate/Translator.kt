@@ -3,6 +3,8 @@
 package io.github.ilikeadofai.vocacolle.core.translate
 
 import android.app.Activity
+import android.app.Application
+import android.os.Bundle
 import android.content.Context
 import android.os.Looper
 import android.security.keystore.KeyGenParameterSpec
@@ -13,6 +15,7 @@ import android.util.Log
 import android.widget.Toast
 import app.reseam.runtime.Export
 import app.reseam.runtime.Reseam
+import io.github.ilikeadofai.vocacolle.core.language as uiLanguage
 import io.github.ilikeadofai.vocacolle.core.hasVocaDbTitle
 import io.github.ilikeadofai.vocacolle.settings.AiSettings
 import io.github.ilikeadofai.vocacolle.settings.VocaColleStrings
@@ -26,6 +29,8 @@ import java.net.URLEncoder
 import java.security.KeyStore
 import java.security.MessageDigest
 import java.util.Collections
+import java.util.Locale
+import java.util.concurrent.LinkedBlockingDeque
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
@@ -55,20 +60,67 @@ private val JAPANESE = Regex("[\\u3040-\\u30FF\\u3400-\\u9FFF]")
 
 private val memory: MutableMap<String, String> = Collections.synchronizedMap(
     object : LinkedHashMap<String, String>(64, 0.75f, true) {
-        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, String>?) = size > 512
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, String>?) = size > 4096
     },
 )
 private val inFlight: MutableSet<String> = Collections.synchronizedSet(HashSet())
 
-// Paid requests: one at a time, and a short queue so skipping through a long playlist doesn't
-// translate every title in it.
-private val requests = ThreadPoolExecutor(1, 1, 30, TimeUnit.SECONDS, LinkedBlockingQueue(8), { runnable ->
-    Thread(runnable, TAG).apply { isDaemon = true; priority = Thread.MIN_PRIORITY }
-}, ThreadPoolExecutor.DiscardPolicy()).apply { allowCoreThreadTimeOut(true) }
+private class TitleJob(val config: Config, val key: String, val source: String)
+
+// Titles to translate, newest first: what the user just scrolled to matters more than the rest of
+// a list they have left. When it is full the oldest are dropped, to be asked for again on sight.
+private val titleQueue = LinkedBlockingDeque<TitleJob>(300)
+
+private val titleWorker: Thread by lazy {
+    Thread({
+        while (true) {
+            val batch = mutableListOf(titleQueue.takeFirst())
+            while (batch.size < TITLE_BATCH) batch += titleQueue.pollFirst() ?: break
+            translateTitles(batch)
+        }
+    }, "$TAG-titles").apply { isDaemon = true; priority = Thread.MIN_PRIORITY; start() }
+}
+
+private const val TITLE_BATCH = 16
+private const val MAX_BATCH_QUERY_CHARS = 6_000
+
+@Volatile private var currentActivity: java.lang.ref.WeakReference<Activity>? = null
 
 @Export
 fun init(context: Context?) {
-    appContext = context?.applicationContext
+    val application = context?.applicationContext as? Application ?: return
+    if (appContext != null) return
+    appContext = application
+    application.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
+        override fun onActivityResumed(activity: Activity) {
+            currentActivity = java.lang.ref.WeakReference(activity)
+        }
+        override fun onActivityCreated(activity: Activity, state: Bundle?) {}
+        override fun onActivityStarted(activity: Activity) {}
+        override fun onActivityPaused(activity: Activity) {}
+        override fun onActivityStopped(activity: Activity) {}
+        override fun onActivitySaveInstanceState(activity: Activity, state: Bundle) {}
+        override fun onActivityDestroyed(activity: Activity) {}
+    })
+}
+
+private fun translateTitles(batch: List<TitleJob>) {
+    try {
+        val missing = batch.filter { job ->
+            val cached = cacheFile(job.key)?.takeIf { it.isFile }?.readText(Charsets.UTF_8)
+            if (cached != null) memory[job.key] = cached
+            cached == null
+        }
+        val google = missing.filter { it.config.provider == PROVIDER_GOOGLE }
+        val translated = if (google.size > 1) requestGoogleBatch(google) else emptyMap()
+        for (job in missing) {
+            if (job.key in translated) store(job.key, translated.getValue(job.key)) else translate(job.config, job.key, job.source)
+        }
+    } catch (failure: Exception) {
+        Log.d(TAG, "title batch failed: ${failure.javaClass.simpleName}: ${failure.message}")
+    } finally {
+        batch.forEach { inFlight.remove(it.key) }
+    }
 }
 
 /** The title to show; the given [title] until a translation is known. */
@@ -82,11 +134,9 @@ fun displayTitle(videoId: String?, title: String?): String? {
     val key = cacheKey(config, source)
     memory[key]?.let { return it }
     if (inFlight.add(key)) {
-        try {
-            requests.execute { translate(config, key, source) }
-        } catch (_: RuntimeException) {
-            inFlight.remove(key)
-        }
+        titleWorker
+        val job = TitleJob(config, key, source)
+        while (!titleQueue.offerFirst(job)) titleQueue.pollLast()?.let { inFlight.remove(it.key) }
     }
     return title
 }
@@ -97,8 +147,20 @@ private const val GOOGLE_ENDPOINT = "https://translate.googleapis.com/translate_
 
 private class Config(val provider: String, val baseUrl: String, val model: String, val language: String, val apiKey: String)
 
+/** The target language: the one chosen, or with "auto", the Translate UI patch's, else the device's. */
+private fun targetLanguage(): String {
+    val chosen = AiSettings.aiLanguage.value
+    if (chosen == "ko" || chosen == "en") return chosen
+    return try {
+        uiLanguage()
+    } catch (_: Throwable) {
+        // The Translate UI patch didn't run, so nothing implemented its language.
+        if (Locale.getDefault().language == "ko") "ko" else "en"
+    }
+}
+
 private fun config(): Config? {
-    val language = AiSettings.aiLanguage.value
+    val language = targetLanguage()
     if (AiSettings.aiProvider.value == PROVIDER_GOOGLE) return Config(PROVIDER_GOOGLE, GOOGLE_ENDPOINT, "", language, "")
     val baseUrl = AiSettings.aiBaseUrl.value.trim().trimEnd('/')
     val model = AiSettings.aiModel.value.trim()
@@ -123,13 +185,7 @@ private fun translate(config: Config, key: String, source: String, kind: Kind = 
             return file.readText(Charsets.UTF_8).also { memory[key] = it }
         }
         val translated = request(config, source, kind) ?: return null
-        memory[key] = translated
-        cacheFile(key)?.let { file ->
-            file.parentFile?.mkdirs()
-            val temp = File(file.parentFile, "$key.tmp")
-            temp.writeText(translated, Charsets.UTF_8)
-            if (!temp.renameTo(file)) temp.delete()
-        }
+        store(key, translated)
         return translated
     } catch (failure: Exception) {
         // Never log the key or the response; the status line is enough to debug a setup.
@@ -138,6 +194,56 @@ private fun translate(config: Config, key: String, source: String, kind: Kind = 
     } finally {
         inFlight.remove(key)
     }
+}
+
+private fun store(key: String, translated: String) {
+    memory[key] = translated
+    try {
+        cacheFile(key)?.let { file ->
+            file.parentFile?.mkdirs()
+            val temp = File(file.parentFile, "$key.tmp")
+            temp.writeText(translated, Charsets.UTF_8)
+            if (!temp.renameTo(file)) temp.delete()
+        }
+    } catch (_: IOException) {
+        // Still shown from memory for this session.
+    }
+}
+
+/**
+ * Several titles in one Google request: the Chrome dictionary client takes one `q` per text and
+ * answers with the translations in order. Anything that doesn't line up is left for one-by-one.
+ */
+private fun requestGoogleBatch(jobs: List<TitleJob>): Map<String, String> {
+    val language = jobs.first().config.language
+    val chunk = ArrayList<TitleJob>()
+    val result = HashMap<String, String>()
+    fun flush() {
+        if (chunk.isEmpty()) return
+        val query = chunk.joinToString("&") { "q=" + URLEncoder.encode(it.source, "UTF-8") }
+        val reply = try {
+            JSONArray(get("$GOOGLE_DICT_ENDPOINT?client=dict-chrome-ex&sl=ja&tl=$language&$query"))
+        } catch (_: Exception) {
+            null
+        }
+        if (reply != null && reply.length() == chunk.size) {
+            chunk.forEachIndexed { index, job ->
+                val item = reply.get(index)
+                val text = if (item is JSONArray) item.optString(0) else item.toString()
+                clean(text, job.source, Kind.TITLE)?.let { result[job.key] = it }
+            }
+        }
+        chunk.clear()
+    }
+    var length = 0
+    for (job in jobs.filter { it.config.language == language }) {
+        val cost = URLEncoder.encode(job.source, "UTF-8").length + 3
+        if (length + cost > MAX_BATCH_QUERY_CHARS) { flush(); length = 0 }
+        chunk += job
+        length += cost
+    }
+    flush()
+    return result
 }
 
 /** What is being translated: decides the prompt and what counts as a sane answer. */
@@ -164,17 +270,59 @@ private val descriptionWorkers = ThreadPoolExecutor(2, 2, 30, TimeUnit.SECONDS, 
  * and formatting stay as they are. Off the main thread it waits a few seconds for the pieces;
  * on it, it uses what is already known and fetches the rest for the next time.
  */
+@Volatile private var lastDescription: String? = null
+
+/** Remembers the description of the work whose detail screen is opening, for the Translate button. */
 @Export
-fun displayDescription(description: String?): String? {
-    if (description == null || !AiSettings.aiDescriptions.value) return description
-    return translatePieces(description)
+fun rememberDescription(description: String?) {
+    lastDescription = description
+}
+
+/** The Translate button's label. */
+@Export
+fun translateLabel(): String = VocaColleStrings.translate
+
+/**
+ * The Translate button under a work's description: translates it in the background, then shows
+ * the translation in a dialog over the current screen.
+ */
+@Export
+fun showDescriptionTranslation() {
+    val description = lastDescription ?: return
+    val activity = currentActivity?.get() ?: return
+    val config = config()
+    if (config == null) {
+        Toast.makeText(activity, VocaColleStrings.translationNotSetUp, Toast.LENGTH_SHORT).show()
+        return
+    }
+    Toast.makeText(activity, VocaColleStrings.translating, Toast.LENGTH_SHORT).show()
+    Thread({
+        val translated = try {
+            translatePieces(description, wait = true)
+        } catch (_: Exception) {
+            description
+        }
+        val text = if ('<' in translated) {
+            android.text.Html.fromHtml(translated, android.text.Html.FROM_HTML_MODE_LEGACY).toString().trim()
+        } else {
+            translated
+        }
+        activity.runOnUiThread {
+            if (activity.isFinishing) return@runOnUiThread
+            Reseam.bundle(BUNDLE).ui(activity).dialog()
+                .title(VocaColleStrings.translatedDescription)
+                .message(if (translated == description) VocaColleStrings.translationFailed else text)
+                .dismissAction(VocaColleStrings.close)
+                .show()
+        }
+    }, "$TAG-description").apply { isDaemon = true }.start()
 }
 
 /** A notice's title, the same way: waited for off the main thread. */
 @Export
 fun displayNoticeTitle(title: String?): String? {
     if (title == null || !AiSettings.aiNotices.value) return title
-    return translatePieces(title)
+    return translatePieces(title, wait = Looper.myLooper() != Looper.getMainLooper())
 }
 
 /**
@@ -189,7 +337,7 @@ fun noticeArticleUrl(url: String?): String? {
         URLEncoder.encode(url, "UTF-8")
 }
 
-private fun translatePieces(description: String): String {
+private fun translatePieces(description: String, wait: Boolean): String {
     if (description.length > MAX_DESCRIPTION_CHARS || !JAPANESE.containsMatchIn(description)) return description
     val config = config() ?: return description
     val parts = TAG_OR_TEXT.findAll(description).map { it.value }.toList()
@@ -206,7 +354,7 @@ private fun translatePieces(description: String): String {
             null
         }
     }
-    if (pending.isNotEmpty() && Looper.myLooper() != Looper.getMainLooper()) {
+    if (pending.isNotEmpty() && wait) {
         val deadline = System.currentTimeMillis() + DESCRIPTION_WAIT_MS
         for (future in pending) {
             val left = deadline - System.currentTimeMillis()
