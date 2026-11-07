@@ -9,7 +9,7 @@ Morphe 시절 로드맵([vocacolle-morphe-patches/docs/ROADMAP.md](https://githu
 
 | 영역 | Morphe 구현 | Reseam 구현 | 이유 |
 |---|---|---|---|
-| 설정 화면 | 앱의 라이선스 Activity를 빌려 쓴 자체 `PreferenceFragment` (약 1,500줄) | Reseam 앱 런타임의 설정 화면 + 설정 툴바 메뉴 항목 | 테마·다크 모드·내보내기/가져오기를 런타임이 제공 |
+| 설정 화면 | 앱의 라이선스 Activity를 빌려 쓴 자체 `PreferenceFragment` (약 1,500줄) | Reseam 앱 런타임의 설정 화면 + 앱 설정 목록의 "Reseam 패치" 행 (앱 자체 row composable 호출) | 테마·다크 모드·내보내기/가져오기를 런타임이 제공 |
 | 정적 UI 번역 | `res/values-ko` 추가 + 런타임 표시 언어 전환 | 패치 시점에 리소스 테이블의 기본 문자열을 직접 교체 (`poolAdd` + `replaceEntry`) | Reseam 리소스 API는 언어 qualifier를 만들 수 없음. 대신 XML 레이아웃까지 빠짐없이 번역되고 런타임 비용이 없음 |
 | 표시 언어 | 앱 안에서 시스템/일본어/영어/한국어 전환 | 패치 옵션 `language` (`ko`/`en`) | 위와 같음. 바꾸려면 다시 패치 |
 | 하드코딩 문자열 | 메서드별 smali 삽입 | `bytecode.replaceAllStrings` + 대화상자 한정 point | 고유 일본어 리터럴은 앱 전체 치환이 가장 단순 |
@@ -40,7 +40,7 @@ Morphe 시절 로드맵([vocacolle-morphe-patches/docs/ROADMAP.md](https://githu
 
 ## 기기 확인 체크리스트 (v0.1)
 
-- [ ] 설정 툴바 메뉴에 "Reseam 패치"가 보이고 Reseam 설정 화면이 열린다.
+- [ ] 설정 목록의 "ボカコレについて" 아래에 "Reseam 패치" 행이 보이고, 누르면 Reseam 설정 화면이 열린다.
 - [ ] 홈·검색·라이브러리·플레이어·설정·프리미엄 화면이 한국어/영어로 보인다.
 - [ ] 랭킹 장르 탭과 푸시 알림 설정의 주제 이름이 번역된다.
 - [ ] 각 광고 스위치를 켜고 끌 때 앱 시작 광고, 배너/피드 광고, 곡 사이 음성 광고, 프리미엄 팝업이 따라 바뀐다.

@@ -20,3 +20,7 @@ fun addItem(menu: Menu?) {
 
 @Export
 fun isItem(item: MenuItem?): Boolean = item?.itemId == ITEM_ID
+
+/** The title of the Reseam row added to VocaColle's settings list. */
+@Export
+fun rowTitle(): String = VocaColleStrings.menuTitle

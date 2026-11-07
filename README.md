@@ -60,8 +60,8 @@ The language is fixed when patching. To switch, patch again with the other value
 
 ### Ad controls
 
-Selected by default. Once applied, a **Reseam patches** item appears in the menu of VocaColle's
-Settings screen. Its four switches all start on, and each can be turned off there:
+Selected by default. Once applied, a **Reseam patches** row appears in VocaColle's Settings
+list, right after About VocaColle. Its four switches all start on, and each can be turned off there:
 
 | Switch | What it does |
 |---|---|
