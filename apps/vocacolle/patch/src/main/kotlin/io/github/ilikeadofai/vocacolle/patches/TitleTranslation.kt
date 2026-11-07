@@ -83,6 +83,15 @@ private val descriptionText = mediaDetailScreen.points("descriptionText") {
     argument(2) { literal(3) }
 }
 
+/**
+ * The update block of `DetailDescriptionText`, an AndroidView around a TextView whose text is set
+ * once, by its factory: `(…, context, …, view) -> Unit`, run on every change the block reads.
+ */
+private val descriptionViewUpdate = method("detailDescriptionText.update") {
+    calls { name("setMovementMethod") }
+    custom { classDef.sourceFile == "DetailDescriptionText.kt" && parameterTypes.size == 9 && parameterTypes[2] == "Landroid/content/Context;" }
+}
+
 /** Compose's `MutableState` interface, with `getValue()` and `setValue(value)`. */
 private val mutableState = klass("MutableState") {
     sourceFile("SnapshotState.kt")
@@ -131,6 +140,7 @@ private fun PatchRuntime.addTranslateButton() {
         returnVoid()
     }
     gate(AiSettings.aiDescriptions) {
+        descriptionViewUpdate.before { TitleTranslator.updateDescriptionView(param(8)) }
         // Reading the state while drawing makes the screen redraw when the translation arrives.
         description.captureArgumentAs("text", 1).before {
             capture("text").assign(TitleTranslator.shownDescription(capture("text")))

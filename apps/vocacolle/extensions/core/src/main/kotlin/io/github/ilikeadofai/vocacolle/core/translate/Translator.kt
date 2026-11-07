@@ -215,7 +215,7 @@ private fun store(key: String, translated: String) {
  * Several titles in one Google request: the Chrome dictionary client takes one `q` per text and
  * answers with the translations in order. Anything that doesn't line up is left for one-by-one.
  */
-private fun requestGoogleBatch(jobs: List<TitleJob>): Map<String, String> {
+private fun requestGoogleBatch(jobs: List<TitleJob>, kind: Kind = Kind.TITLE): Map<String, String> {
     val language = jobs.first().config.language
     val chunk = ArrayList<TitleJob>()
     val result = HashMap<String, String>()
@@ -231,7 +231,7 @@ private fun requestGoogleBatch(jobs: List<TitleJob>): Map<String, String> {
             chunk.forEachIndexed { index, job ->
                 val item = reply.get(index)
                 val text = if (item is JSONArray) item.optString(0) else item.toString()
-                clean(text, job.source, Kind.TITLE)?.let { result[job.key] = it }
+                clean(text, job.source, kind)?.let { result[job.key] = it }
             }
         }
         chunk.clear()
@@ -256,7 +256,7 @@ private fun request(config: Config, source: String, kind: Kind): String? =
 // Descriptions -----------------------------------------------------------------------------
 
 private const val MAX_DESCRIPTION_CHARS = 6_000
-private const val MAX_SEGMENTS = 60
+private const val MAX_SEGMENTS = 200
 private const val DESCRIPTION_WAIT_MS = 5_000L
 private val TAG_OR_TEXT = Regex("<[^>]*>|[^<]+")
 
@@ -300,6 +300,27 @@ fun shownDescription(original: String?): String? {
     val shown = readState(shownTranslation) as? Array<*> ?: return original
     return if (shown.getOrNull(0) == original) shown.getOrNull(1) as? String ?: original else original
 }
+
+/**
+ * Runs in the update block of the description's AndroidView, which draws the text in a
+ * TextView made once. Reading the state here makes the block run again when the translation
+ * arrives or is taken back, and the TextView gets that text, links and all.
+ */
+@Export
+fun updateDescriptionView(view: Any?) {
+    val textView = view as? android.widget.TextView ?: return
+    val shown = readState(shownTranslation) as? Array<*>
+    val original = lastDescription
+    val wanted = if (shown != null && shown.getOrNull(0) == original) shown.getOrNull(1) as? String else null
+    val current = textView.getTag(SHOWN_TAG) as? String
+    if (wanted == current) return
+    val html = wanted ?: original ?: return
+    textView.text = android.text.Html.fromHtml(html, android.text.Html.FROM_HTML_MODE_LEGACY)
+    textView.setTag(SHOWN_TAG, wanted)
+}
+
+// A key no app view uses: ids are 0x7fXXXXXX in the app and 0x01XXXXXX in the framework.
+private const val SHOWN_TAG = 0x0352_5E5A
 
 /** The button's label: Translate, or Show original while the translation is shown. */
 @Export
@@ -361,38 +382,58 @@ fun noticeArticleUrl(url: String?): String? {
         URLEncoder.encode(url, "UTF-8")
 }
 
+/**
+ * [description] with the Japanese text between its HTML tags translated line by line: the
+ * dictionary client joins lines it is given together, so each line goes on its own, batched.
+ * With [wait] the lines are translated on this thread; without, in the background for next time.
+ */
 private fun translatePieces(description: String, wait: Boolean): String {
     if (description.length > MAX_DESCRIPTION_CHARS || !JAPANESE.containsMatchIn(description)) return description
     val config = config() ?: return description
-    val parts = TAG_OR_TEXT.findAll(description).map { it.value }.toList()
-    val texts = parts.filter { !it.startsWith("<") && JAPANESE.containsMatchIn(it) }.distinct()
-    if (texts.isEmpty() || texts.size > MAX_SEGMENTS) return description
-    val keys = texts.associateWith { cacheKey(config, "text|$it") }
-    val pending = texts.filter { memory[keys.getValue(it)] == null }.mapNotNull { text ->
-        val key = keys.getValue(text)
-        if (!inFlight.add(key)) return@mapNotNull null
-        try {
-            descriptionWorkers.submit<String?> { translate(config, key, text, Kind.TEXT) }
-        } catch (_: RuntimeException) {
-            inFlight.remove(key)
-            null
-        }
+    val units = TAG_OR_TEXT.findAll(description).map { it.value }.toList()
+        .flatMap { part -> if (part.startsWith("<")) listOf(part) else part.split(LINE_END) }
+    val lines = units.filter { !it.startsWith("<") && JAPANESE.containsMatchIn(it) }.map { it.trim() }.distinct()
+    if (lines.isEmpty() || lines.size > MAX_SEGMENTS) return description
+    val keys = lines.associateWith { cacheKey(config, "line|$it") }
+    val missing = lines.filter { line ->
+        val key = keys.getValue(line)
+        memory[key] == null && cacheFile(key)?.takeIf { it.isFile }?.readText(Charsets.UTF_8)?.also { memory[key] = it } == null
     }
-    if (pending.isNotEmpty() && wait) {
-        val deadline = System.currentTimeMillis() + DESCRIPTION_WAIT_MS
-        for (future in pending) {
-            val left = deadline - System.currentTimeMillis()
-            if (left <= 0) break
+    if (missing.isNotEmpty()) {
+        if (wait) {
+            translateLines(config, missing, keys)
+        } else {
             try {
-                future.get(left, TimeUnit.MILLISECONDS)
-            } catch (_: Exception) {
-                // A slow or failed piece stays in Japanese.
+                descriptionWorkers.execute { translateLines(config, missing, keys) }
+            } catch (_: RuntimeException) {
+                // Busy: shown in Japanese this time.
             }
         }
     }
-    return parts.joinToString("") { part ->
-        if (part.startsWith("<")) part else keys[part]?.let { memory[it] }?.let { keepEdges(part, it) } ?: part
+    return units.joinToString("") { unit ->
+        if (unit.startsWith("<")) unit else keys[unit.trim()]?.let { memory[it] }?.let { keepEdges(unit, it) } ?: unit
     }
+}
+
+private val LINE_END = Regex("(?<=\\n)")
+
+private fun translateLines(config: Config, lines: List<String>, keys: Map<String, String>) {
+    val jobs = lines.map { TitleJob(config, keys.getValue(it), it) }
+    val batched = if (config.provider == PROVIDER_GOOGLE) {
+        try {
+            requestGoogleBatch(jobs, Kind.TEXT)
+        } catch (failure: Exception) {
+            Log.d(TAG, "line batch failed: ${failure.javaClass.simpleName}")
+            emptyMap()
+        }
+    } else {
+        emptyMap()
+    }
+    for (job in jobs) {
+        val translated = batched[job.key]
+        if (translated != null) store(job.key, translated) else translate(config, job.key, job.source, Kind.TEXT)
+    }
+    Log.i(TAG, "translated ${jobs.count { memory[it.key] != null }} of ${jobs.size} description lines")
 }
 
 /** The translation with the original's leading and trailing whitespace, which services drop. */

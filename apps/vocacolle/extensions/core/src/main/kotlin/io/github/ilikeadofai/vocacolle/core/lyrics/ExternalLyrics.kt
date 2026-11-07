@@ -53,9 +53,17 @@ private val memory: MutableMap<String, Found> = Collections.synchronizedMap(
 )
 private val pending: MutableMap<String, Future<*>> = Collections.synchronizedMap(HashMap())
 
-private val lookups = ThreadPoolExecutor(1, 1, 30, TimeUnit.SECONDS, LinkedBlockingQueue(8), { runnable ->
+// A full queue refuses new work outright, so a refused track is never left marked as pending.
+private val lookups = ThreadPoolExecutor(1, 1, 30, TimeUnit.SECONDS, LinkedBlockingQueue(16), { runnable ->
     Thread(runnable, TAG).apply { isDaemon = true; priority = Thread.MIN_PRIORITY }
-}, ThreadPoolExecutor.DiscardPolicy()).apply { allowCoreThreadTimeOut(true) }
+}, ThreadPoolExecutor.AbortPolicy()).apply { allowCoreThreadTimeOut(true) }
+
+/** The Niconico title and length of tracks that started playing, for songs VocaDB doesn't know. */
+private val trackInfo: MutableMap<String, Pair<String, Int>> = Collections.synchronizedMap(
+    object : LinkedHashMap<String, Pair<String, Int>>(16, 0.75f, true) {
+        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, Pair<String, Int>>?) = size > 64
+    },
+)
 
 /** `LyricsSegment(lines, startMs, endMs)`, built by the patch, which knows the app's class. */
 @Export
@@ -79,8 +87,13 @@ fun requested(videoId: String?) {
 
 /** Starts looking the track up while it plays, so its lyrics are ready when they are opened. */
 @Export
-fun prefetch(videoId: String?) {
+fun prefetch(videoId: String?, title: String?, duration: Long) {
     if (videoId == null || !MEDIA_ID.matches(videoId) || !LyricsSettings.externalLyrics.value) return
+    if (!title.isNullOrBlank() && duration > 0) {
+        // The watch API gives seconds; anything this long is milliseconds.
+        val seconds = if (duration > 100_000) (duration / 1000).toInt() else duration.toInt()
+        trackInfo[videoId] = title to seconds
+    }
     schedule(videoId)
 }
 
@@ -122,9 +135,10 @@ fun fallback(requestedId: String?, reason: String?): Any? {
 @Export
 fun hasLyrics(videoId: String?, original: Boolean): Boolean {
     if (original || videoId == null || !LyricsSettings.externalLyrics.value || !MEDIA_ID.matches(videoId)) return original
+    // Still looking: let the button open, and the lyrics request wait for the answer.
     val found = memory[videoId] ?: run {
         schedule(videoId)
-        return false
+        return true
     }
     return found.lines.isNotEmpty()
 }
@@ -136,7 +150,9 @@ private fun schedule(videoId: String): Future<*>? {
         return try {
             lookups.submit {
                 try {
-                    memory[videoId] = load(videoId)
+                    val found = load(videoId)
+                    memory[videoId] = found
+                    Log.i(TAG, if (found.lines.isEmpty()) "no lyrics found for $videoId" else "${found.source} has lyrics for $videoId")
                 } catch (failure: Exception) {
                     // A network failure isn't remembered, so the next try can still succeed.
                     Log.d(TAG, "lookup failed for $videoId: ${failure.javaClass.simpleName}")
@@ -144,7 +160,7 @@ private fun schedule(videoId: String): Future<*>? {
                     pending.remove(videoId)
                 }
             }.also { pending[videoId] = it }
-        } catch (_: RuntimeException) {
+        } catch (_: java.util.concurrent.RejectedExecutionException) {
             null
         }
     }
@@ -168,10 +184,21 @@ private fun build(videoId: String, found: Found): Any? {
 }
 
 private fun load(videoId: String): Found {
-    val song = vocadbSong(videoId) ?: return NONE
-    val name = song.optString("defaultName").ifBlank { song.optString("name") }.trim()
-    val producer = song.optString("artistString").substringBefore(" feat.").substringBefore(",").trim()
-    val length = song.optInt("lengthSeconds", 0)
+    val song = try {
+        vocadbSong(videoId)
+    } catch (failure: Exception) {
+        Log.d(TAG, "VocaDB failed for $videoId: ${failure.javaClass.simpleName}")
+        null
+    }
+    val track = trackInfo[videoId]
+    if (song == null && track == null) return NONE
+    // Without a VocaDB entry, the Niconico title stands in: "【…】Title / Producer feat. …".
+    val nicoTitle = track?.first.orEmpty().replace(Regex("【[^】]*】|［[^］]*］|\\[[^\\]]*]"), " ").trim()
+    val name = song?.let { it.optString("defaultName").ifBlank { it.optString("name") }.trim() }
+        ?: nicoTitle.substringBefore(" / ").substringBefore("／").trim()
+    val producer = song?.optString("artistString")?.substringBefore(" feat.")?.substringBefore(",")?.trim()
+        ?: nicoTitle.substringAfter(" / ", "").substringAfter("／", "").substringBefore(" feat").trim()
+    val length = song?.optInt("lengthSeconds", 0)?.takeIf { it > 0 } ?: track?.second ?: 0
     val order = LyricsSettings.lyricsProviders.value.split(',', ' ')
         .map { it.trim().lowercase() }.filter { it.isNotEmpty() }.ifEmpty { DEFAULT_PROVIDERS }
     for (provider in order) {
@@ -180,7 +207,7 @@ private fun load(videoId: String): Found {
                 "lrclib" -> if (name.isNotEmpty() && length > 0) lrclib(name, length) else null
                 "netease" -> if (name.isNotEmpty() && length > 0) netease(name, producer, length) else null
                 "kugou" -> if (name.isNotEmpty() && length > 0) kugou(name, producer, length) else null
-                "vocadb" -> vocadbLyrics(song)
+                "vocadb" -> song?.let(::vocadbLyrics)
                 else -> null
             }
         } catch (failure: Exception) {

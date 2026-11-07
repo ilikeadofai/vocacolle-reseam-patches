@@ -60,11 +60,16 @@ private fun hasLyricsGetter(): MethodTarget {
 private val videoWatchMetadata = klass("videoWatchMetadata") { strings("VideoWatchMetadata(id=") }
 
 /** The metadata's video id: the first field its constructor sets, from its first parameter. */
-private val videoWatchMetadataId = method("videoWatchMetadata.<init>") {
+private val videoWatchMetadataInit = method("videoWatchMetadata.<init>") {
     inClass(videoWatchMetadata)
-    custom { name == "<init>" && parameterTypes.size > 5 && parameterTypes[0] == Type.String && parameterTypes[1] == Type.String }
+    custom {
+        name == "<init>" && parameterTypes.size > 5 && parameterTypes[0] == Type.String &&
+            parameterTypes[1] == Type.String && parameterTypes[2] == Type.Long
+    }
     first()
-}.point("videoWatchMetadata.id") {
+}
+
+private val videoWatchMetadataId = videoWatchMetadataInit.point("videoWatchMetadata.id") {
     opcode(Opcode.IPUT_OBJECT)
     field { owner(videoWatchMetadata.descriptor); type(Type.String) }
 }.field("videoWatchMetadata.id")
@@ -95,7 +100,8 @@ val externalLyrics = patch("External lyrics") {
         // The error class is the reason enum's outer class.
         val error = lyricsErrorReason.descriptor.substringBeforeLast('$') + ";"
         gate(LyricsSettings.externalLyrics) {
-            playerVideoInfoInit.before { ExternalLyrics.prefetch(param(0)) }
+            // The watch info of the track that is starting: (id, title, duration, …).
+            videoWatchMetadataInit.after { ExternalLyrics.prefetch(param(0), param(1), param(2)) }
             hasLyricsGetter().after {
                 returnValue(ExternalLyrics.hasLyrics(thisObject.field(videoWatchMetadataId), result))
             }
