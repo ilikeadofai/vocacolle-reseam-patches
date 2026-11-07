@@ -16,4 +16,25 @@
     <string name="vocadb_titles_summary">Shows the English or romanized title VocaDB lists for the exact Niconico video, in the player. The video id of each track in the player is sent to vocadb.net; results are cached on the device.</string>
     <string name="share_youtube">Share YouTube original links</string>
     <string name="share_youtube_summary">When you share a work, uses the YouTube original that VocaDB lists for the exact Niconico video instead of the Niconico link. A video VocaDB hasn\'t been asked about yet is looked up, and keeps the Niconico link until the next share.</string>
+    <string name="section_ai">Title translation</string>
+    <string name="ai_titles">Translate song titles</string>
+    <string name="ai_titles_summary">Translates Japanese song titles in the player. Each title is sent to the translation service below; translations are cached on the device. Titles VocaDB already provides are not sent.</string>
+    <string name="ai_language">Translate into</string>
+    <string name="ai_language_ko">Korean</string>
+    <string name="ai_language_en">English</string>
+    <string name="ai_provider">Translation service</string>
+    <string name="ai_provider_google">Google Translate (no key)</string>
+    <string name="ai_provider_openai">OpenAI-compatible API (your key)</string>
+    <string name="ai_base_url">API base URL</string>
+    <string name="ai_base_url_summary">For the OpenAI-compatible service: the endpoint before /chat/completions, over HTTPS.</string>
+    <string name="ai_model">Model</string>
+    <string name="ai_model_summary">For the OpenAI-compatible service: the model name your provider expects.</string>
+    <string name="ai_api_key">API key</string>
+    <string name="ai_api_key_summary">For the OpenAI-compatible service. Stored encrypted on this device, and left out of settings exports.</string>
+    <string name="ai_api_key_hint">API key</string>
+    <string name="ai_api_key_saved">API key saved</string>
+    <string name="ai_api_key_cleared">API key removed</string>
+    <string name="save">Save</string>
+    <string name="remove">Remove</string>
+    <string name="cancel">Cancel</string>
 </resources>

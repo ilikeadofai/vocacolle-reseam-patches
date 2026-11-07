@@ -16,7 +16,7 @@ import io.github.ilikeadofai.vocacolle.settings.VocaColleStrings
 private val playerVideoInfo = klass("playerVideoInfo") {
     strings("VideoInfo(videoId=")
 }
-private val playerVideoInfoInit = method("playerVideoInfo.<init>") {
+internal val playerVideoInfoInit = method("playerVideoInfo.<init>") {
     inClass(playerVideoInfo)
     custom { name == "<init>" && parameterTypes.size == 6 && parameterTypes[0] == Type.String && parameterTypes[1] == Type.String }
 }

@@ -16,4 +16,25 @@
     <string name="vocadb_titles_summary">플레이어에서 해당 니코니코 동영상과 정확히 일치하는 VocaDB의 영어 또는 로마자 제목을 보여 줍니다. 플레이어에 있는 각 곡의 동영상 ID가 vocadb.net으로 전송되며, 결과는 기기에 캐시됩니다.</string>
     <string name="share_youtube">YouTube 원본 링크로 공유</string>
     <string name="share_youtube_summary">작품을 공유할 때, 해당 니코니코 동영상에 대해 VocaDB에 등록된 YouTube 원본이 있으면 니코니코 링크 대신 사용합니다. 아직 조회하지 않은 동영상은 조회를 시작하고, 다음 공유부터 적용됩니다.</string>
+    <string name="section_ai">곡 제목 번역</string>
+    <string name="ai_titles">곡 제목 번역</string>
+    <string name="ai_titles_summary">플레이어의 일본어 곡 제목을 번역합니다. 각 제목이 아래 번역 서비스로 전송되며, 번역은 기기에 캐시됩니다. VocaDB 제목이 있는 곡은 전송하지 않습니다.</string>
+    <string name="ai_language">번역할 언어</string>
+    <string name="ai_language_ko">한국어</string>
+    <string name="ai_language_en">영어</string>
+    <string name="ai_provider">번역 서비스</string>
+    <string name="ai_provider_google">Google 번역 (키 필요 없음)</string>
+    <string name="ai_provider_openai">OpenAI 호환 API (내 키)</string>
+    <string name="ai_base_url">API 기본 URL</string>
+    <string name="ai_base_url_summary">OpenAI 호환 서비스용: /chat/completions 앞까지의 엔드포인트 (HTTPS).</string>
+    <string name="ai_model">모델</string>
+    <string name="ai_model_summary">OpenAI 호환 서비스용: 제공자가 요구하는 모델 이름.</string>
+    <string name="ai_api_key">API 키</string>
+    <string name="ai_api_key_summary">OpenAI 호환 서비스용. 이 기기에 암호화되어 저장되며, 설정 내보내기에 포함되지 않습니다.</string>
+    <string name="ai_api_key_hint">API 키</string>
+    <string name="ai_api_key_saved">API 키를 저장했습니다</string>
+    <string name="ai_api_key_cleared">API 키를 삭제했습니다</string>
+    <string name="save">저장</string>
+    <string name="remove">삭제</string>
+    <string name="cancel">취소</string>
 </resources>

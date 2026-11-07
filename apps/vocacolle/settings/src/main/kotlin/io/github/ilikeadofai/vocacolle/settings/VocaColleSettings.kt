@@ -1,6 +1,10 @@
 package io.github.ilikeadofai.vocacolle.settings
 
+import app.reseam.patch.settings.Choice
 import app.reseam.patch.settings.SettingsGroup
+import app.reseam.patch.settings.action
+import app.reseam.patch.settings.choice
+import app.reseam.patch.settings.text
 import app.reseam.patch.settings.Vector
 import app.reseam.patch.settings.toggle
 
@@ -19,4 +23,31 @@ object AdSettings : SettingsGroup(VocaColleStrings) {
 object MetadataSettings : SettingsGroup(VocaColleStrings) {
     val vocadbTitles by toggle(default = false, key = "metadata.vocadb_titles", icon = Vector.lucide("languages"))
     val shareYoutube by toggle(default = false, key = "metadata.share_youtube", icon = Vector.lucide("share-2"))
+}
+
+/**
+ * Song-title translation: Google Translate's web endpoint by default, or any OpenAI-compatible
+ * chat completions endpoint with the user's own key. The key is not a setting: it lives
+ * encrypted with the Android Keystore, so it never ends up in a settings export.
+ */
+object AiSettings : SettingsGroup(VocaColleStrings) {
+    val aiTitles by toggle(default = false, key = "ai.titles", icon = Vector.lucide("sparkles"))
+    val aiLanguage by choice(
+        default = "ko",
+        key = "ai.language",
+        choices = listOf(Choice("ko", VocaColleStrings.aiLanguageKo), Choice("en", VocaColleStrings.aiLanguageEn)),
+        icon = Vector.lucide("languages"),
+    )
+    val aiProvider by choice(
+        default = "google",
+        key = "ai.provider",
+        choices = listOf(
+            Choice("google", VocaColleStrings.aiProviderGoogle),
+            Choice("openai", VocaColleStrings.aiProviderOpenai),
+        ),
+        icon = Vector.lucide("server"),
+    )
+    val aiBaseUrl by text(default = "https://api.openai.com/v1", key = "ai.base_url", icon = Vector.lucide("link"))
+    val aiModel by text(default = "", key = "ai.model", icon = Vector.lucide("cpu"))
+    val aiApiKey by action(key = "ai.api_key", icon = Vector.lucide("key-round"))
 }

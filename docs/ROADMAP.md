@@ -26,13 +26,17 @@ Morphe 시절 로드맵([vocacolle-morphe-patches/docs/ROADMAP.md](https://githu
 | v0.1 | 설정 호스트, 한국어·영어 UI (7.48.0 신규·변경 문자열 70개 번역 포함), 광고·프리미엄 팝업 제어 (기본 켜짐) | 7.48.0 XAPK에 전 패치 적용 확인. 기기 UI 확인 필요 |
 | v0.2 | VocaDB 정확 일치 곡명 (플레이어) | 7.48.0 적용 확인. 7.48.0 플레이어가 Compose로 바뀌어 View 갱신 대신 `VideoInfo` 생성 시점에 표시 제목을 교체 (캐시 우선, 미스는 백그라운드 조회 후 다음 갱신부터 표시). 기기 확인 필요 |
 | v0.3 | YouTube 원본 링크 공유 | 7.48.0 적용 확인. 작품 공유 텍스트(`SnsMediaShareText`)의 니코니코 링크만 VocaDB YouTube Original로 교체 |
-| v0.4 | AI BYOK 번역 core, 곡 제목·작품 상세 번역 | 진행 중 |
+| v0.4 | 곡 제목 번역 (Google 번역 기본, OpenAI 호환 BYOK 선택) | 7.48.0 적용 확인. Waydroid에서 패치 앱 실행·한국어 시작 화면 확인. 작품 상세 설명 번역은 다음 단계 |
 | v0.5 | 공지 제목·본문 번역 | 예정 |
 | v1.0 | LRCLIB 외부 가사 fallback | 예정 |
 | v1.1 | 태그 번역 (검색은 일본어 원문 유지) | 예정 |
 | v1.2 | 가사 발음·번역 다층 표시 | 예정 |
 | v2.x | 로컬 리스트·즐겨찾기, guest·offline·trend 실험 | 예정 |
 | 연구 | 고음질·프리미엄 영상 (서버 entitlement가 이미 허용한 경우만) | 연구 |
+
+## 알려진 제약
+
+- 7.48.0부터 로그인/게스트 시작에 Firebase App Check(Play Integrity) 토큰이 필요하다. 재서명한 APK는 토큰을 받지 못해 WL-E08로 실패한다. 루트 + CorePatch로 원래 서명을 유지해 설치하거나, Reseam mount 빌드로 원본 설치본 위에 마운트해야 한다.
 
 ## 기기 확인 체크리스트 (v0.1)
 

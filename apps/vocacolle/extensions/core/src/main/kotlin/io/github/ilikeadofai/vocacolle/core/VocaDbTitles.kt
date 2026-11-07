@@ -91,6 +91,10 @@ fun shareText(text: String?): String? {
     return tokens.toMutableList().apply { this[linkAt] = "https://youtu.be/$youtube" }.joinToString(" ")
 }
 
+/** Whether VocaDB titles are on and one is already known for [videoId]; read by the AI translator. */
+internal fun hasVocaDbTitle(videoId: String): Boolean =
+    MetadataSettings.vocadbTitles.value && memory[videoId]?.title?.isNotEmpty() == true
+
 /** What VocaDB knows about [videoId] so far; starts a background lookup when that is nothing. */
 private fun known(videoId: String): Song? {
     memory[videoId]?.let { return it }
