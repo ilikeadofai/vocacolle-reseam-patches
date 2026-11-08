@@ -109,7 +109,9 @@ val externalLyrics = patch("External lyrics") {
             lyricsLoad.points("lyricsError") { invokeDirect { owner(error); name("<init>") } }.forEach {
                 captureArgumentAs("reason", 1).next { opcode(Opcode.THROW) }.before {
                     val reason = capture("reason").callVirtual("java.lang.Enum", "name", "()Ljava/lang/String;")
-                    val lyrics = ExternalLyrics.fallback(param(0), reason)
+                    // By here Kotlin has reused the video id's register for the reason or the
+                    // exception, so the id the request started with stands in.
+                    val lyrics = ExternalLyrics.fallback(nullObject, reason)
                     whenNotNull(lyrics) {
                         returnValue(
                             newInstance(
