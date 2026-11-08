@@ -37,6 +37,7 @@ private val LRC_LINE = Regex("^\\[(\\d{1,3}):(\\d{2})(?:[.:](\\d{1,3}))?]\\s?(.*
 // Every way the official request can fail, except having no connection, which the sources share.
 private val NO_FALLBACK_REASONS = setOf("OFFLINE", "INVALID_PARAMETER")
 private const val MAIN_THREAD_WAIT_MS = 3_000L
+private const val BUTTON_WAIT_MS = 2_500L
 private val DEFAULT_PROVIDERS = listOf("lrclib", "netease", "kugou", "vocadb")
 
 /** One line, with its start time when the lyrics are synced. */
@@ -135,10 +136,16 @@ fun fallback(requestedId: String?, reason: String?): Any? {
 @Export
 fun hasLyrics(videoId: String?, original: Boolean): Boolean {
     if (original || videoId == null || !LyricsSettings.externalLyrics.value || !MEDIA_ID.matches(videoId)) return original
-    // Still looking: let the button open, and the lyrics request wait for the answer.
+    // Still looking: wait a moment for the answer, so a song no source has gets the app's own
+    // "no lyrics" message every time, instead of the lyrics screen first and the message later.
     val found = memory[videoId] ?: run {
-        schedule(videoId)
-        return true
+        val lookup = schedule(videoId)
+        try {
+            lookup?.get(BUTTON_WAIT_MS, TimeUnit.MILLISECONDS)
+        } catch (_: Exception) {
+            // Too slow: let the button open, and the lyrics request wait for the answer.
+        }
+        memory[videoId] ?: return true
     }
     return found.lines.isNotEmpty()
 }
