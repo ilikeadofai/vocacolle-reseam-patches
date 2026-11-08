@@ -74,6 +74,15 @@ private val videoWatchMetadataId = videoWatchMetadataInit.point("videoWatchMetad
     field { owner(videoWatchMetadata.descriptor); type(Type.String) }
 }.field("videoWatchMetadata.id")
 
+/**
+ * In `PlayerViewModel`'s lyrics coroutine, the failure branch:
+ * `_lyricsResult.setValue(Result.box(Result.failure(error)))`, after it logs "loadLyrics failed: ".
+ */
+private val lyricsFailurePublish = method("playerViewModel.loadLyrics") {
+    strings("loadLyrics failed: ")
+}.point("loadLyricsFailed") { string("loadLyrics failed: ") }
+    .next { invokeVirtual { paramCount(1); returns(Type.Void) } }
+
 @Suppress("unused")
 val externalLyrics = patch("External lyrics") {
     description(
@@ -97,6 +106,15 @@ val externalLyrics = patch("External lyrics") {
         ExternalLyrics.newLyrics.implement {
             returnValue(newInstance(lyricsWithMetadata.descriptor, "(Ljava/lang/String;Ljava/util/List;Z)V", param(0), param(1), param(2)))
         }
+        // The same LiveData, given a success instead: `setValue(Result.box(lyrics))`, where
+        // `Result.success(x)` is x itself.
+        val publish = lyricsFailurePublish.callee("lyricsResult.setValue")
+        val boxResult = lyricsFailurePublish.previous { invokeStatic { paramCount(1) } }
+            .callee("Result.box")
+        ExternalLyrics.showLyrics.implement {
+            param(0).cast(publish.owner).call(publish, call(boxResult, param(1)))
+            returnVoid()
+        }
         // The error class is the reason enum's outer class.
         val error = lyricsErrorReason.descriptor.substringBeforeLast('$') + ";"
         gate(LyricsSettings.externalLyrics) {
@@ -106,6 +124,9 @@ val externalLyrics = patch("External lyrics") {
                 returnValue(ExternalLyrics.hasLyrics(thisObject.field(videoWatchMetadataId), result))
             }
             lyricsLoad.before { ExternalLyrics.requested(param(0)) }
+            lyricsFailurePublish.captureArgumentAs("lyricsResult", 0).before {
+                ExternalLyrics.lyricsFailed(capture("lyricsResult"))
+            }
             lyricsLoad.points("lyricsError") { invokeDirect { owner(error); name("<init>") } }.forEach {
                 captureArgumentAs("reason", 1).next { opcode(Opcode.THROW) }.before {
                     val reason = capture("reason").callVirtual("java.lang.Enum", "name", "()Ljava/lang/String;")

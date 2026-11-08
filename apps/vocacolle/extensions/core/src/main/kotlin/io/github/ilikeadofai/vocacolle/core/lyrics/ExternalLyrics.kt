@@ -86,6 +86,42 @@ fun requested(videoId: String?) {
     if (LyricsSettings.externalLyrics.value) schedule(videoId)
 }
 
+/** `PlayerViewModel`'s lyrics LiveData: shows a lyrics result, built by the patch. */
+@Export
+external fun showLyrics(target: Any?, lyrics: Any?)
+
+/** The lyrics screen that got an error while its track's lookup was still running. */
+@Volatile private var waitingScreen: Pair<String, Any>? = null
+
+private val mainHandler by lazy { android.os.Handler(Looper.getMainLooper()) }
+
+/**
+ * The player is about to show an error for its lyrics. When that is because the lookup hadn't
+ * answered yet, remember the screen, and show the lyrics there once it does.
+ */
+@Export
+fun lyricsFailed(target: Any?) {
+    val videoId = lastRequested ?: return
+    if (target == null || !LyricsSettings.externalLyrics.value) return
+    waitingScreen = if (memory[videoId] == null && pending.containsKey(videoId)) videoId to target else null
+}
+
+private fun deliverLate(videoId: String, found: Found) {
+    val (waitingId, target) = waitingScreen ?: return
+    if (waitingId != videoId) return
+    waitingScreen = null
+    mainHandler.post {
+        // Only while the screen still shows that track.
+        if (lastRequested != videoId) return@post
+        try {
+            showLyrics(target, build(videoId, found))
+            Log.i(TAG, "showing ${found.source} lyrics for $videoId after the lookup finished")
+        } catch (failure: Throwable) {
+            Log.w(TAG, "couldn't show late lyrics for $videoId", failure)
+        }
+    }
+}
+
 /** Starts looking the track up while it plays, so its lyrics are ready when they are opened. */
 @Export
 fun prefetch(videoId: String?, title: String?, duration: Long) {
@@ -160,6 +196,7 @@ private fun schedule(videoId: String): Future<*>? {
                     val found = load(videoId)
                     memory[videoId] = found
                     Log.i(TAG, if (found.lines.isEmpty()) "no lyrics found for $videoId" else "${found.source} has lyrics for $videoId")
+                    if (found.lines.isNotEmpty()) deliverLate(videoId, found)
                 } catch (failure: Exception) {
                     // A network failure isn't remembered, so the next try can still succeed.
                     Log.d(TAG, "lookup failed for $videoId: ${failure.javaClass.simpleName}")
@@ -344,8 +381,9 @@ private fun get(url: String, headers: Map<String, String> = emptyMap()): String 
     val connection = URL(url).openConnection() as HttpURLConnection
     try {
         headers.forEach { (key, value) -> connection.setRequestProperty(key, value) }
-        connection.connectTimeout = 5_000
-        connection.readTimeout = 10_000
+        // Short: the user may be looking at the lyrics screen, and other sources can still answer.
+        connection.connectTimeout = 4_000
+        connection.readTimeout = 4_000
         connection.instanceFollowRedirects = false
         connection.setRequestProperty("Accept", "application/json")
         connection.setRequestProperty("User-Agent", USER_AGENT)
