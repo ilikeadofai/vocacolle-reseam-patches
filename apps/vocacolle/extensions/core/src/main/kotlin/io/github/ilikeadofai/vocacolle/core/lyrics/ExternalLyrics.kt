@@ -310,7 +310,7 @@ private fun netease(name: String, producer: String, length: Int): Found? {
     val lyric = JSONObject(get("https://music.163.com/api/song/lyric?id=${match.optLong("id")}&lv=1&tv=-1", NETEASE_HEADERS))
         .optJSONObject("lrc")?.optString("lyric").orEmpty()
     val lines = parseLrc(lyric)
-    return Found(lines, true, "NetEase Cloud Music").takeIf { lines.size > 2 }
+    return Found(lines, true, "NetEase Cloud Music").takeIf { lines.size > 2 && inSongLanguage(name, lines) }
 }
 
 private val NETEASE_HEADERS = mapOf("Referer" to "https://music.163.com")
@@ -336,7 +336,7 @@ private fun kugou(name: String, producer: String, length: Int): Found? {
     val text = String(android.util.Base64.decode(content, android.util.Base64.DEFAULT), Charsets.UTF_8)
     // KuGou's first line repeats the title and singer.
     val lines = parseLrc(text).filterNot { it.startMs == 0 && it.text.contains(" - ") }
-    return Found(lines, true, "KuGou").takeIf { lines.size > 2 }
+    return Found(lines, true, "KuGou").takeIf { lines.size > 2 && inSongLanguage(name, lines) }
 }
 
 private fun vocadbSong(videoId: String): JSONObject? {
@@ -356,15 +356,36 @@ private fun vocadbSong(videoId: String): JSONObject? {
 /** LRCLIB's synced lyrics for [name] whose recording is within a few seconds of [length]. */
 private fun lrclib(name: String, length: Int): Found? {
     val results = JSONArray(get("https://lrclib.net/api/search?track_name=" + URLEncoder.encode(name, "UTF-8")))
+    // Exact titles first, then the closest length. Entries in another language than the song's,
+    // such as an English translation filed under the original title, are skipped.
     val match = (0 until results.length()).map { results.getJSONObject(it) }
         .filter { sameTitle(it.optString("trackName"), name) && !it.optBoolean("instrumental") }
         .filter { it.optString("syncedLyrics").isNotBlank() }
-        .minByOrNull { Math.abs(it.optDouble("duration", 0.0) - length) }
-        ?.takeIf { Math.abs(it.optDouble("duration", 0.0) - length) <= DURATION_TOLERANCE_S }
-        ?: return null
+        .filter { Math.abs(it.optDouble("duration", 0.0) - length) <= DURATION_TOLERANCE_S }
+        .filter { inSongLanguage(name, parseLrc(it.optString("syncedLyrics"))) }
+        .sortedWith(
+            compareBy<JSONObject>(
+                { if (exactTitle(it.optString("trackName"), name)) 0 else 1 },
+                { Math.abs(it.optDouble("duration", 0.0) - length) },
+            ),
+        )
+        .firstOrNull() ?: return null
     val lines = parseLrc(match.optString("syncedLyrics"))
     return Found(lines, true, "LRCLIB").takeIf { lines.isNotEmpty() }
 }
+
+/**
+ * Whether [lines] are in the song's own language: for a Japanese title, a fair share of the
+ * lines must have Japanese in them. Translations are often filed under the original title.
+ */
+private fun inSongLanguage(name: String, lines: List<Line>): Boolean {
+    if (!JAPANESE_TEXT.containsMatchIn(name)) return true
+    val texts = lines.map { it.text }.filter { it.isNotBlank() }
+    if (texts.isEmpty()) return false
+    return texts.count { JAPANESE_TEXT.containsMatchIn(it) } * 10 >= texts.size * 3
+}
+
+private val JAPANESE_TEXT = Regex("[\\u3040-\\u30FF\\u3400-\\u9FFF]")
 
 /** VocaDB's original-language lyrics, as plain lines. */
 private fun vocadbLyrics(song: JSONObject): Found? {
