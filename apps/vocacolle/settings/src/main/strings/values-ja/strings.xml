@@ -21,6 +21,8 @@
     <string name="ai_titles_summary">ホーム、検索、ランキング、プレイリスト、プレイヤーなど、アプリ全体の日本語の曲名を翻訳します。曲名はまとめて下の翻訳サービスへ送信され、翻訳は端末にキャッシュされます。VocaDBの曲名がある曲は送信しません。</string>
     <string name="ai_descriptions">作品紹介の翻訳ボタン</string>
     <string name="ai_descriptions_summary">作品紹介の下に翻訳ボタンを追加し、押すと原文の位置に翻訳を表示します。押したときだけ紹介文が下の翻訳サービスへ送信されます。</string>
+    <string name="ai_tags">タグを翻訳</string>
+    <string name="ai_tags_summary">作品詳細のタグと検索画面の人気のタグを下の翻訳サービスで翻訳して表示します。その際、タグが翻訳サービスに渡されます。タグをタップすると、元の日本語のタグで検索します。</string>
     <string name="ai_notices">お知らせを翻訳</string>
     <string name="ai_notices_summary">設定のお知らせのタイトルを下の翻訳サービスで翻訳し、本文はGoogle翻訳のページ翻訳で開きます。その際、本文のアドレスがGoogleに渡されます。</string>
     <string name="ai_language">翻訳先の言語</string>

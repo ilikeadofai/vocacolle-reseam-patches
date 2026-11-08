@@ -92,6 +92,42 @@ private val descriptionViewUpdate = method("detailDescriptionText.update") {
     custom { classDef.sourceFile == "DetailDescriptionText.kt" && parameterTypes.size == 9 && parameterTypes[2] == "Landroid/content/Context;" }
 }
 
+/** Compose's `Text(text, modifier, color, …, style, composer, changed, changed1, defaults)`. */
+private const val TEXT_PARAMS = 22
+
+/**
+ * A work's tag chips on the detail screen: the tag is the loop's element (`Iterator.next()`), shown by a
+ * Text and passed, untouched, to the chip's click, which searches it.
+ */
+private val detailTagText = mediaDetailScreen.points("detailTagText") {
+    invokeStatic { paramCount(TEXT_PARAMS); returns(Type.Void) }
+    argument(0) { resultOf(Type.Object) }
+}
+
+/** The name on a popular or featured tag tile in Search; the click passes the tile's item. */
+private val searchTagText = methods("searchTopTagContentItem") {
+    stringsStartingWith("jp.nicovideo.nicobox.")
+    custom { classDef.sourceFile == "SearchTopTagContentItem.kt" }
+}.points("searchTagText") {
+    invokeStatic { paramCount(TEXT_PARAMS); returns(Type.Void) }
+    argument(0) { resultOf(Type.String) }
+}
+
+private fun PatchRuntime.translateTags() {
+    val detail = detailTagText.single()
+    val search = searchTagText.single()
+    check(detail.callee("detailText").descriptor == search.callee("searchText").descriptor) {
+        "the tag chips no longer use the same Text composable"
+    }
+    gate(AiSettings.aiTags) {
+        listOf(detail, search).forEach { text ->
+            text.captureArgumentAs("text", 0).before {
+                capture("text").assign(TitleTranslator.displayTag(capture("text")))
+            }
+        }
+    }
+}
+
 /** Compose's `MutableState` interface, with `getValue()` and `setValue(value)`. */
 private val mutableState = klass("MutableState") {
     sourceFile("SnapshotState.kt")
@@ -160,7 +196,7 @@ private fun PatchRuntime.addTranslateButton() {
 val titleTranslation = patch("Content translation") {
     description(
         """
-        Translates Japanese song titles, work descriptions, and notices into Korean or English, with Google
+        Translates Japanese song titles, tags, work descriptions, and notices into Korean or English, with Google
         Translate (no key) or an OpenAI-compatible API and your own key. Off until turned on in
         the Reseam patches screen; titles are then sent to the chosen service.
         """,
@@ -173,6 +209,7 @@ val titleTranslation = patch("Content translation") {
             VocaColleStrings.sectionAi,
             AiSettings.aiTitles,
             AiSettings.aiDescriptions,
+            AiSettings.aiTags,
             AiSettings.aiNotices,
             AiSettings.aiLanguage,
             AiSettings.aiProvider,
@@ -202,5 +239,6 @@ val titleTranslation = patch("Content translation") {
             mediaDetailDataInit.before { TitleTranslator.rememberDescription(param(2)) }
         }
         addTranslateButton()
+        translateTags()
     }
 }

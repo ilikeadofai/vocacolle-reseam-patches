@@ -21,6 +21,8 @@
     <string name="ai_titles_summary">홈, 검색, 랭킹, 플레이리스트, 플레이어 등 앱 전체의 일본어 곡 제목을 번역합니다. 제목은 여러 개씩 묶어 아래 번역 서비스로 전송되며, 번역은 기기에 캐시됩니다. VocaDB 제목이 있는 곡은 전송하지 않습니다.</string>
     <string name="ai_descriptions">작품 소개 번역 버튼</string>
     <string name="ai_descriptions_summary">작품 소개 아래에 번역 버튼을 추가해, 누르면 원문 자리에 번역을 보여 줍니다. 버튼을 누를 때만 소개 글이 아래 번역 서비스로 전송됩니다.</string>
+    <string name="ai_tags">태그 번역</string>
+    <string name="ai_tags_summary">작품 상세의 태그와 검색 화면의 인기 태그를 아래 번역 서비스로 번역해 보여 줍니다. 이때 태그가 번역 서비스에 전달됩니다. 태그를 누르면 여전히 일본어 원문 태그로 검색합니다.</string>
     <string name="ai_notices">공지 번역</string>
     <string name="ai_notices_summary">설정의 공지 제목을 아래 번역 서비스로 번역하고, 공지 본문은 Google 번역 페이지 번역으로 엽니다. 이때 본문 주소가 Google에 전달됩니다.</string>
     <string name="ai_language">번역할 언어</string>

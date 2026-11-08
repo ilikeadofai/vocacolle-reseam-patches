@@ -66,7 +66,8 @@ private val memory: MutableMap<String, String> = Collections.synchronizedMap(
 )
 private val inFlight: MutableSet<String> = Collections.synchronizedSet(HashSet())
 
-private class TitleJob(val config: Config, val key: String, val source: String)
+/** [redraw]: a tag, whose chips read [tagRevision] and redraw when it changes. */
+private class TitleJob(val config: Config, val key: String, val source: String, val redraw: Boolean = false)
 
 // Titles to translate, newest first: what the user just scrolled to matters more than the rest of
 // a list they have left. When it is full the oldest are dropped, to be asked for again on sight.
@@ -117,6 +118,7 @@ private fun translateTitles(batch: List<TitleJob>) {
         for (job in missing) {
             if (job.key in translated) store(job.key, translated.getValue(job.key)) else translate(job.config, job.key, job.source)
         }
+        if (batch.any { it.redraw && memory.containsKey(it.key) }) bumpTagRevision()
     } catch (failure: Exception) {
         Log.d(TAG, "title batch failed: ${failure.javaClass.simpleName}: ${failure.message}")
     } finally {
@@ -129,17 +131,45 @@ private fun translateTitles(batch: List<TitleJob>) {
 fun displayTitle(videoId: String?, title: String?): String? {
     if (title == null || !AiSettings.aiTitles.value) return title
     if (videoId != null && hasVocaDbTitle(videoId)) return title
-    val source = title.trim()
-    if (source.isEmpty() || source.length > MAX_TITLE_CHARS || !JAPANESE.containsMatchIn(source)) return title
-    val config = config() ?: return title
+    return shortText(title, redraw = false)
+}
+
+/** [text] translated if known, else [text], queued for the title worker. */
+private fun shortText(text: String, redraw: Boolean): String {
+    val source = text.trim()
+    if (source.isEmpty() || source.length > MAX_TITLE_CHARS || !JAPANESE.containsMatchIn(source)) return text
+    val config = config() ?: return text
     val key = cacheKey(config, source)
     memory[key]?.let { return it }
     if (inFlight.add(key)) {
         titleWorker
-        val job = TitleJob(config, key, source)
+        val job = TitleJob(config, key, source, redraw)
         while (!titleQueue.offerFirst(job)) titleQueue.pollLast()?.let { inFlight.remove(it.key) }
     }
-    return title
+    return text
+}
+
+// Tags ---------------------------------------------------------------------------------------
+
+/** A Compose state the tag chips read while drawing, so they redraw when translations arrive. */
+private val tagRevision: Any? by lazy { newState(0) }
+
+private fun bumpTagRevision() {
+    mainHandler.post {
+        val state = tagRevision ?: return@post
+        writeState(state, ((readState(state) as? Int) ?: 0) + 1)
+    }
+}
+
+/**
+ * The text of a tag chip: [tag] translated, for display only. The chip's click keeps the
+ * original tag, so searching and the server see Japanese. Called while composing the chip.
+ */
+@Export
+fun displayTag(tag: String?): String? {
+    if (tag == null || !AiSettings.aiTags.value) return tag
+    tagRevision?.let { readState(it) }
+    return shortText(tag, redraw = true)
 }
 
 private const val PROVIDER_GOOGLE = "google"

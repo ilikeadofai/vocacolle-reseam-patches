@@ -29,7 +29,7 @@ Morphe 시절 로드맵([vocacolle-morphe-patches/docs/ROADMAP.md](https://githu
 | v0.4 | 곡 제목 번역 (Google 번역 기본, OpenAI 호환 BYOK 선택). 앱 전체 미디어 모델 9종 생성자에 적용, 16개씩 묶어 요청. 작품 소개는 [번역] 버튼 → 원문 자리에 번역 (앱의 `mutableStateOf`로 만든 Compose state를 읽어 다시 그림) | 7.48.0 적용 확인. Waydroid에서 패치 앱 실행·한국어 시작 화면 확인. 작품 상세 제목·설명 번역 포함 (HTML 태그 사이 텍스트만) |
 | v0.5 | 공지 제목·본문 번역 | 7.48.0 적용 확인. 제목은 `VocacolleNiconicoInfo` 생성 시 번역, 본문은 여는 순간 Google 번역 페이지 프록시 URL로 감쌈 |
 | v1.0 | LRCLIB 외부 가사 fallback | 7.48.0 적용 확인. `LyricsLoader`가 NOT_FOUND/한도 초과 오류를 던지기 직전에 VocaDB(정확 일치)로 곡을 찾은 뒤 설정 순서대로 LRCLIB·NetEase·KuGou(길이 ±3초 싱크)→VocaDB 원문. 오프라인 외 모든 실패에 적용, 가사 미등록 곡도 외부 가사가 있으면 버튼 활성 |
-| v1.1 | 태그 번역 (검색은 일본어 원문 유지) | 예정 |
+| v1.1 | 태그 번역 (검색은 일본어 원문 유지) | 7.48.0 적용 확인. 작품 상세 태그 칩과 검색 화면 인기·특집 태그 타일의 `Text` 호출 인자만 번역으로 바꿈 — 클릭 람다는 원문 문자열을 그대로 잡고 있어 검색·기록은 일본어. 칩이 Compose state를 읽어 번역이 도착하면 바로 다시 그림 |
 | v1.2 | 가사 발음·번역 다층 표시 | 예정 |
 | v2.x | 로컬 리스트·즐겨찾기, guest·offline·trend 실험 | 예정 |
 | 연구 | 고음질·프리미엄 영상 (서버 entitlement가 이미 허용한 경우만) | 연구 |

@@ -21,6 +21,8 @@
     <string name="ai_titles_summary">Translates Japanese song titles across the app: Home, search, rankings, playlists, and the player. Titles are sent to the translation service below, many at a time; translations are cached on the device, and titles VocaDB already provides are not sent.</string>
     <string name="ai_descriptions">Translate button for descriptions</string>
     <string name="ai_descriptions_summary">Adds a Translate button under a work\'s description, which shows its translation in place of the original. The description is sent to the translation service below only when you tap it.</string>
+    <string name="ai_tags">Translate tags</string>
+    <string name="ai_tags_summary">Shows work tags on the detail screen and popular tags in Search translated, with the service below, which receives them. Tapping a tag still searches the original Japanese tag.</string>
     <string name="ai_notices">Translate notices</string>
     <string name="ai_notices_summary">Translates notice titles in Settings with the service below, and opens notice articles through Google Translate\'s page translation, which receives the article\'s address.</string>
     <string name="ai_language">Translate into</string>
