@@ -32,7 +32,8 @@ Morphe 시절 로드맵([vocacolle-morphe-patches/docs/ROADMAP.md](https://githu
 | v1.1 | 태그 번역 (검색은 일본어 원문 유지) | 7.48.0 적용 확인. 작품 상세 태그 칩과 검색 화면 인기·특집 태그 타일의 `Text` 호출 인자만 번역으로 바꿈 — 클릭 람다는 원문 문자열을 그대로 잡고 있어 검색·기록은 일본어. 칩이 Compose state를 읽어 번역이 도착하면 바로 다시 그림 |
 | v1.2 | 가사 발음·번역 다층 표시 | 7.48.0 적용 확인. 가사 행 composable이 세그먼트의 `lines`를 한 줄씩 그리는 구조를 이용해, 반복문의 `iterator()` 수신자를 원문+로마자+번역 목록으로 교체. 공식·외부 가사 모두 적용, 줄과 함께 강조·탐색. 로마자는 Google `dt=rm`을 ` ◆ `로 묶어 40줄씩, 번역은 선택한 서비스로. Compose state를 읽어 도착 즉시 다시 그림 |
 | v2.0 | 랭킹 전체 페이지 (trend 실험) | 7.48.0 적용 확인. 서버는 `pageSize` 최대 100, 3페이지(`hasNext`)까지 주는데 앱은 1페이지만 요청하고 `hasNext`를 읽지 않음. 랭킹 화면 로더의 요청 결과에 같은 클라이언트·세션으로 2·3페이지를 받아 중복 없이 이어 붙임. 홈 랭킹 섹션은 그대로 |
-| v2.x | 로컬 리스트·즐겨찾기, guest·offline 실험 | 예정 |
+| v2.1 | 로컬 즐겨찾기 | 7.48.0 적용 확인. 작품 상세 설명 아래 ☆ 버튼(앱 자체 버튼 composable, 라벨은 Compose state), 기기 전용 저장(SharedPreferences JSON, 제한 없음), Reseam 설정 화면에서 목록·재생·삭제·JSON 내보내기/가져오기. 재생은 앱의 `nicobox://playlist?vid=…&current=N` 딥링크로 앱 자체 재생목록 플레이어 사용. 서버 좋아요·마이리스트는 건드리지 않음 |
+| v2.x | 로컬 재생목록 여러 개, guest·offline 실험 | 예정. guest는 재서명 APK에서 App Check로 막힘(로그인과 같은 원인), offline 캐시는 프리미엄 entitlement라 범위 밖 |
 | 연구 | 고음질·프리미엄 영상 (서버 entitlement가 이미 허용한 경우만) | 연구 |
 
 ## 알려진 제약

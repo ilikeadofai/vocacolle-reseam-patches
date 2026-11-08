@@ -36,6 +36,7 @@ ads and Premium pop-ups.
 | Custom branding | Changes the launcher name and icon. With no options set it changes nothing, so the original ボカコレ name and icon stay. The name is a separate resource, so text inside the app that says ボカコレ is not affected. |
 | External lyrics | Shows lyrics from LRCLIB, NetEase Cloud Music, KuGou, or VocaDB when VocaColle has none for a song or can't show them, and lets the lyrics button open for those songs. Songs are matched by the exact Niconico video on VocaDB. Off until turned on in the Reseam patches screen. |
 | Full rankings | Shows every page of a ranking, up to 300 songs, instead of only the top 100. The extra pages come from VocaColle's own ranking service. Can be turned off in the Reseam patches screen. |
+| Local favorites | Adds favorites kept on this device only, with no limit: a ☆ Favorite button on a work's detail screen, and a list in the Reseam patches screen that plays them as a VocaColle playlist and exports or imports them as text. Nothing is sent, and the account's likes and mylists don't change. |
 | Translate UI | Shows VocaColle in Korean or English: every reviewed UI string, text compiled into the app, and the ranking and push-topic labels the server sends. Titles, creators, tags, and anything sent back to the server stay in the original Japanese. |
 | VocaDB song titles | Shows the English or romanized title VocaDB lists for the exact Niconico video in the player. Off until turned on in the Reseam patches screen; when on, the player's video ids are sent to vocadb.net. |
 | YouTube share links | When sharing a work, uses the YouTube original that VocaDB lists for the exact Niconico video instead of the Niconico link. Off until turned on in the Reseam patches screen; when on, the shared video's id is sent to vocadb.net. |
@@ -137,6 +138,21 @@ for page 1 of 100 and stops there, though the service serves three pages and say
 patch asks for pages 2 and 3 the same way the app asked for page 1, with the same session and
 filters, and appends them, dropping a video that moved between pages so it shows once. A page
 that fails ends the list at the pages that loaded. Home's ranking sections are left as they are.
+
+### Local favorites
+
+Selected by default. VocaColle's likes, mylists, and follows live on the server, with the
+account's limits. This patch adds a separate list kept only on the device, with no limit:
+
+- A **☆ Favorite** button under a work's description adds it, and **★ Remove from favorites**
+  takes it out. The button can be hidden with its switch.
+- **Favorites on this device**, in the Reseam patches screen, lists them, newest first. Tap a
+  song to play the list from it, or **Play all**; both open VocaColle's own playlist player.
+- **Export / import** copies the list as JSON text and opens the share sheet, or adds the songs
+  of a pasted list that aren't there yet.
+
+Nothing is sent anywhere, the account's likes and mylists don't change, and the list isn't
+synced to other devices. It is removed with the app's data.
 
 ### Custom branding
 

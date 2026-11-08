@@ -1,5 +1,6 @@
 package io.github.ilikeadofai.vocacolle.patches
 
+import app.reseam.patch.ExtMethod
 import app.reseam.patch.MethodTarget
 import app.reseam.patch.PatchRuntime
 import app.reseam.patch.Type
@@ -22,8 +23,8 @@ import io.github.ilikeadofai.vocacolle.settings.AiSettings
 import io.github.ilikeadofai.vocacolle.settings.VocaColleStrings
 
 /** `MediaDetailData(mediaId, title, description, …)`, what the work detail screen shows. */
-private val mediaDetailData = klass("mediaDetailData") { strings("MediaDetailData(mediaId=") }
-private val mediaDetailDataInit = method("mediaDetailData.<init>") {
+internal val mediaDetailData = klass("mediaDetailData") { strings("MediaDetailData(mediaId=") }
+internal val mediaDetailDataInit = method("mediaDetailData.<init>") {
     inClass(mediaDetailData)
     custom {
         name == "<init>" && parameterTypes.size == classDef.instanceFields.size &&
@@ -73,13 +74,13 @@ private fun PatchRuntime.titledModelConstructors(): List<MethodTarget> {
 }
 
 /** The work detail screen's composable, found by its source file and Compose's trace strings. */
-private val mediaDetailScreen = methods("mediaDetailScreen") {
+internal val mediaDetailScreen = methods("mediaDetailScreen") {
     stringsStartingWith("jp.nicovideo.nicobox.")
     custom { classDef.sourceFile == "MediaDetailScreen.kt" }
 }
 
 /** The description: the app's expandable text, called with 3 visible lines. */
-private val descriptionText = mediaDetailScreen.points("descriptionText") {
+internal val descriptionText = mediaDetailScreen.points("descriptionText") {
     invokeStatic { paramCount(10); returns(Type.Void) }
     argument(2) { literal(3) }
 }
@@ -159,13 +160,13 @@ private fun PatchRuntime.translateTags() {
 }
 
 /** Compose's `MutableState` interface, with `getValue()` and `setValue(value)`. */
-private val mutableState = klass("MutableState") {
+internal val mutableState = klass("MutableState") {
     sourceFile("SnapshotState.kt")
     custom { isInterface && methods.any { it.name == "setValue" } && methods.any { it.name == "getValue" } }
 }
 
 /** The app's text button: `(modifier, onClick, enabled, color, …, text, …, composer, changed, defaults)`. */
-private val appButton = method("appButton") {
+internal val appButton = method("appButton") {
     stringsStartingWith("jp.nicovideo.nicobox.")
     custom {
         classDef.sourceFile == "Buttons.kt" && parameterTypes.size == 13 &&
@@ -174,37 +175,50 @@ private val appButton = method("appButton") {
 }
 
 // Defaults mask: modifier, enabled, the second color, and the last two style arguments.
-private const val BUTTON_DEFAULTS = 789
+internal const val BUTTON_DEFAULTS = 789
 
 /** The button's text color: VocaColle's cyan, as a packed sRGB Compose color. */
-private const val BUTTON_COLOR = (0xFF00A4E4L shl 32)
+internal const val BUTTON_COLOR = (0xFF00A4E4L shl 32)
 
-private fun PatchRuntime.addTranslateButton() {
-    val description = descriptionText.single()
-    val button = appButton
-    val clickType = bytecode.findClass(button.parameterTypes[1]) ?: error("the app's button has no click type")
+/**
+ * Implements an extension's `newState(value)`, `readState(state)`, and `writeState(state, value)`
+ * with Compose's `MutableState`, made by the app's own `mutableStateOf`: the description's
+ * expanded flag is one, in the detail screen, and that call gives the factory and the type.
+ */
+internal fun PatchRuntime.implementComposeState(new: ExtMethod, read: ExtMethod, write: ExtMethod) {
+    val stateFactory = mediaDetailScreen.points("mutableStateOf") {
+        invokeStatic { paramCount(4); returns(mutableState.descriptor) }
+    }.all.firstOrNull()?.callee("mutableStateOf") ?: error("the detail screen makes no Compose state")
+    new.implement { returnValue(call(stateFactory, param(0), nullObject, int(2), nullObject)) }
+    read.implement {
+        returnValue(param(0).cast(mutableState.descriptor).callInterface(mutableState.descriptor, "getValue", "()Ljava/lang/Object;"))
+    }
+    write.implement {
+        param(0).cast(mutableState.descriptor).callInterface(mutableState.descriptor, "setValue", "(Ljava/lang/Object;)V", param(1))
+        returnVoid()
+    }
+}
+
+/** The click type of the app's button: an R8-renamed `Function0`, and its `invoke`. */
+internal fun PatchRuntime.buttonClick(): Pair<String, app.reseam.patch.dex.Method> {
+    val clickType = bytecode.findClass(appButton.parameterTypes[1]) ?: error("the app's button has no click type")
     val invoke = clickType.virtualMethods.singleOrNull()
     check(clickType.isInterface && invoke != null && invoke.returnType == Type.Object) {
         "the app's button no longer takes a Function0 click"
     }
-    TranslateDescriptionClick.target.classDef.addInterface(clickType.descriptor)
+    return clickType.descriptor to invoke
+}
+
+private fun PatchRuntime.addTranslateButton() {
+    val description = descriptionText.single()
+    val button = appButton
+    val (clickType, invoke) = buttonClick()
+    TranslateDescriptionClick.target.classDef.addInterface(clickType)
     TranslateDescriptionClick.target.addMethod(invoke.name, invoke.proto) {
         TitleTranslator.showDescriptionTranslation()
         returnNull()
     }
-    // The description's own expanded flag is a Compose state made by the app's mutableStateOf, in
-    // the same screen; that call gives the factory and the state type for the translation's state.
-    val stateFactory = mediaDetailScreen.points("mutableStateOf") {
-        invokeStatic { paramCount(4); returns(mutableState.descriptor) }
-    }.all.firstOrNull()?.callee("mutableStateOf") ?: error("the detail screen makes no Compose state")
-    TitleTranslator.newState.implement { returnValue(call(stateFactory, param(0), nullObject, int(2), nullObject)) }
-    TitleTranslator.readState.implement {
-        returnValue(param(0).cast(mutableState.descriptor).callInterface(mutableState.descriptor, "getValue", "()Ljava/lang/Object;"))
-    }
-    TitleTranslator.writeState.implement {
-        param(0).cast(mutableState.descriptor).callInterface(mutableState.descriptor, "setValue", "(Ljava/lang/Object;)V", param(1))
-        returnVoid()
-    }
+    implementComposeState(TitleTranslator.newState, TitleTranslator.readState, TitleTranslator.writeState)
     gate(AiSettings.aiDescriptions) {
         descriptionViewUpdate.before { TitleTranslator.updateDescriptionView(param(8)) }
         // Reading the state while drawing makes the screen redraw when the translation arrives.

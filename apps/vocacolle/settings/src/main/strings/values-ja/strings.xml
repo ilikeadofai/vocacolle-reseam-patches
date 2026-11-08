@@ -63,4 +63,26 @@
     <string name="section_ranking">ランキング</string>
     <string name="full_ranking">ランキングをすべて表示</string>
     <string name="full_ranking_summary">ランキングの上位100曲だけでなく、すべてのページ（最大300曲）を表示します。追加のページはボカコレ自身のランキングサービスから取得し、ランキングを開くときにリクエストが2回増えます。</string>
+    <string name="section_library">ライブラリ</string>
+    <string name="favorite_button">お気に入りボタン</string>
+    <string name="favorite_button_summary">作品詳細画面に、この端末のお気に入りに追加・削除するボタンを表示します。</string>
+    <string name="local_favorites">この端末のお気に入り</string>
+    <string name="local_favorites_summary">この端末だけに保存する曲のリストで、件数の制限はありません。何も送信されず、いいねやマイリストも変わりません。プレイリストとして再生でき、テキストで書き出し・読み込みができます。</string>
+    <string name="favorite_add">☆ お気に入り</string>
+    <string name="favorite_remove">★ お気に入りから外す</string>
+    <string name="favorite_added">この端末のお気に入りに追加しました</string>
+    <string name="favorite_removed">お気に入りから外しました</string>
+    <string name="favorites_title">お気に入り</string>
+    <string name="favorites_empty">お気に入りはまだありません。作品詳細画面の☆ お気に入りボタンで曲を追加してください。</string>
+    <string name="favorites_more">書き出し・読み込み</string>
+    <string name="favorites_more_summary">書き出しはリストをテキストとしてコピーし、共有画面を開きます。読み込みは書き出したリストのうち、まだない曲を追加します。</string>
+    <string name="favorites_play_all">すべて再生</string>
+    <string name="favorites_play_from_here">ここから再生</string>
+    <string name="favorites_open_failed">ボカコレでプレイリストを開けませんでした。</string>
+    <string name="favorites_export">書き出す</string>
+    <string name="favorites_import">読み込む</string>
+    <string name="favorites_import_hint">書き出したリストを貼り付け</string>
+    <string name="favorites_import_failed">書き出したお気に入りリストではありません。</string>
+    <string name="favorites_imported">%d曲を追加しました</string>
+    <string name="favorites_copied">リストをコピーしました</string>
 </resources>

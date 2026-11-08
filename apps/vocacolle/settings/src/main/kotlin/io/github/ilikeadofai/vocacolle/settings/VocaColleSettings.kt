@@ -71,3 +71,9 @@ object LyricsSettings : SettingsGroup(VocaColleStrings) {
 object RankingSettings : SettingsGroup(VocaColleStrings) {
     val fullRanking by toggle(default = true, key = "ranking.full", icon = Vector.lucide("list-ordered"))
 }
+
+/** Favorites kept on the device, outside the account's likes and mylists. */
+object LibrarySettings : SettingsGroup(VocaColleStrings) {
+    val favoriteButton by toggle(default = true, key = "library.favorite_button", icon = Vector.lucide("star"))
+    val localFavorites by action(key = "library.favorites", icon = Vector.lucide("list-music"))
+}

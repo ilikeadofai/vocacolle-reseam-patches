@@ -63,4 +63,26 @@
     <string name="section_ranking">Rankings</string>
     <string name="full_ranking">Full rankings</string>
     <string name="full_ranking_summary">Shows every page of a ranking (up to 300 songs) instead of only the top 100. The extra pages come from VocaColle\'s own ranking service, two more requests when a ranking opens.</string>
+    <string name="section_library">Library</string>
+    <string name="favorite_button">Favorite button</string>
+    <string name="favorite_button_summary">Shows a button on a work\'s detail screen that adds it to, or removes it from, the favorites on this device.</string>
+    <string name="local_favorites">Favorites on this device</string>
+    <string name="local_favorites_summary">Songs saved on this device only, with no limit: nothing is sent, and your likes and mylists don\'t change. Play them as a playlist, and export or import them as text.</string>
+    <string name="favorite_add">☆ Favorite</string>
+    <string name="favorite_remove">★ Remove from favorites</string>
+    <string name="favorite_added">Added to the favorites on this device</string>
+    <string name="favorite_removed">Removed from the favorites</string>
+    <string name="favorites_title">Favorites</string>
+    <string name="favorites_empty">No favorites yet. Add songs with the ☆ Favorite button on a work\'s detail screen.</string>
+    <string name="favorites_more">Export / import</string>
+    <string name="favorites_more_summary">Export copies the list as text and opens the share sheet. Import adds the songs of an exported list that aren\'t here yet.</string>
+    <string name="favorites_play_all">Play all</string>
+    <string name="favorites_play_from_here">Play from here</string>
+    <string name="favorites_open_failed">Couldn\'t open the playlist in VocaColle.</string>
+    <string name="favorites_export">Export</string>
+    <string name="favorites_import">Import</string>
+    <string name="favorites_import_hint">Paste an exported list</string>
+    <string name="favorites_import_failed">That isn\'t an exported favorites list.</string>
+    <string name="favorites_imported">Added %d songs</string>
+    <string name="favorites_copied">Copied the list</string>
 </resources>
