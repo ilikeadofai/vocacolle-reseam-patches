@@ -194,7 +194,10 @@ private fun load(videoId: String): Found {
     if (song == null && track == null) return NONE
     // Without a VocaDB entry, the Niconico title stands in: "【…】Title / Producer feat. …".
     val nicoTitle = track?.first.orEmpty().replace(Regex("【[^】]*】|［[^］]*］|\\[[^\\]]*]"), " ").trim()
+    // Covers and many uploads name the song in quotes: 『デビットビット』歌ってみた, …「1996」.
+    val quoted = QUOTED_NAME.find(track?.first.orEmpty())?.groupValues?.drop(1)?.firstOrNull { it.isNotBlank() }
     val name = song?.let { it.optString("defaultName").ifBlank { it.optString("name") }.trim() }
+        ?: quoted?.trim()
         ?: nicoTitle.substringBefore(" / ").substringBefore("／").trim()
     val producer = song?.optString("artistString")?.substringBefore(" feat.")?.substringBefore(",")?.trim()
         ?: nicoTitle.substringAfter(" / ", "").substringAfter("／", "").substringBefore(" feat").trim()
@@ -219,7 +222,18 @@ private fun load(videoId: String): Found {
     return NONE
 }
 
-private fun sameTitle(a: String, b: String): Boolean {
+private val QUOTED_NAME = Regex("『([^』]+)』|「([^」]+)」")
+
+/** A source's title without what sources add after it: " / artist", "(feat. …)", "【…】". */
+private fun baseTitle(value: String) = value
+    .substringBefore(" / ").substringBefore("／")
+    .replace(Regex("\\s*[(（\\[【][^)）\\]】]*[)）\\]】]\\s*$"), "")
+    .substringBefore(" feat.").substringBefore(" ft.")
+
+private fun sameTitle(source: String, wanted: String): Boolean =
+    exactTitle(source, wanted) || exactTitle(baseTitle(source), baseTitle(wanted))
+
+private fun exactTitle(a: String, b: String): Boolean {
     fun normal(value: String) = value.lowercase().replace(Regex("[\\s\u3000・\\-_~～!！?？「」『』()（）\\[\\]]"), "")
     return normal(a) == normal(b)
 }
