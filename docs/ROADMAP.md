@@ -30,7 +30,7 @@ Morphe 시절 로드맵([vocacolle-morphe-patches/docs/ROADMAP.md](https://githu
 | v0.5 | 공지 제목·본문 번역 | 7.48.0 적용 확인. 제목은 `VocacolleNiconicoInfo` 생성 시 번역, 본문은 여는 순간 Google 번역 페이지 프록시 URL로 감쌈 |
 | v1.0 | LRCLIB 외부 가사 fallback | 7.48.0 적용 확인. `LyricsLoader`가 NOT_FOUND/한도 초과 오류를 던지기 직전에 VocaDB(정확 일치)로 곡을 찾은 뒤 설정 순서대로 LRCLIB·NetEase·KuGou(길이 ±3초 싱크)→VocaDB 원문. 오프라인 외 모든 실패에 적용, 가사 미등록 곡도 외부 가사가 있으면 버튼 활성 |
 | v1.1 | 태그 번역 (검색은 일본어 원문 유지) | 7.48.0 적용 확인. 작품 상세 태그 칩과 검색 화면 인기·특집 태그 타일의 `Text` 호출 인자만 번역으로 바꿈 — 클릭 람다는 원문 문자열을 그대로 잡고 있어 검색·기록은 일본어. 칩이 Compose state를 읽어 번역이 도착하면 바로 다시 그림 |
-| v1.2 | 가사 발음·번역 다층 표시 | 예정 |
+| v1.2 | 가사 발음·번역 다층 표시 | 7.48.0 적용 확인. 가사 행 composable이 세그먼트의 `lines`를 한 줄씩 그리는 구조를 이용해, 반복문의 `iterator()` 수신자를 원문+로마자+번역 목록으로 교체. 공식·외부 가사 모두 적용, 줄과 함께 강조·탐색. 로마자는 Google `dt=rm`을 ` ◆ `로 묶어 40줄씩, 번역은 선택한 서비스로. Compose state를 읽어 도착 즉시 다시 그림 |
 | v2.x | 로컬 리스트·즐겨찾기, guest·offline·trend 실험 | 예정 |
 | 연구 | 고음질·프리미엄 영상 (서버 entitlement가 이미 허용한 경우만) | 연구 |
 

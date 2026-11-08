@@ -47,7 +47,7 @@ import javax.crypto.spec.GCMParameterSpec
  * sent, so a title VocaDB already replaced is left alone.
  */
 
-private const val TAG = "VocaColleAi"
+internal const val TAG = "VocaColleAi"
 private const val BUNDLE = "vocacolle-reseam-patches"
 private const val KEY_ALIAS = "vocacolle_reseam_ai_key"
 private const val SECRETS = "vocacolle_reseam_secrets"
@@ -55,11 +55,11 @@ private const val SECRET_API_KEY = "ai_api_key"
 private const val PROMPT_VERSION = 1
 private const val MAX_TITLE_CHARS = 200
 private const val MAX_BODY_BYTES = 128 * 1024
-private val JAPANESE = Regex("[\\u3040-\\u30FF\\u3400-\\u9FFF]")
+internal val JAPANESE = Regex("[\\u3040-\\u30FF\\u3400-\\u9FFF]")
 
 @Volatile private var appContext: Context? = null
 
-private val memory: MutableMap<String, String> = Collections.synchronizedMap(
+internal val memory: MutableMap<String, String> = Collections.synchronizedMap(
     object : LinkedHashMap<String, String>(64, 0.75f, true) {
         override fun removeEldestEntry(eldest: MutableMap.MutableEntry<String, String>?) = size > 4096
     },
@@ -67,7 +67,7 @@ private val memory: MutableMap<String, String> = Collections.synchronizedMap(
 private val inFlight: MutableSet<String> = Collections.synchronizedSet(HashSet())
 
 /** [redraw]: a tag, whose chips read [tagRevision] and redraw when it changes. */
-private class TitleJob(val config: Config, val key: String, val source: String, val redraw: Boolean = false)
+internal class TitleJob(val config: Config, val key: String, val source: String, val redraw: Boolean = false)
 
 // Titles to translate, newest first: what the user just scrolled to matters more than the rest of
 // a list they have left. When it is full the oldest are dropped, to be asked for again on sight.
@@ -84,7 +84,7 @@ private val titleWorker: Thread by lazy {
 }
 
 private const val TITLE_BATCH = 16
-private const val MAX_BATCH_QUERY_CHARS = 6_000
+internal const val MAX_BATCH_QUERY_CHARS = 6_000
 
 @Volatile private var currentActivity: java.lang.ref.WeakReference<Activity>? = null
 
@@ -172,11 +172,11 @@ fun displayTag(tag: String?): String? {
     return shortText(tag, redraw = true)
 }
 
-private const val PROVIDER_GOOGLE = "google"
+internal const val PROVIDER_GOOGLE = "google"
 private const val GOOGLE_DICT_ENDPOINT = "https://clients5.google.com/translate_a/t"
 private const val GOOGLE_ENDPOINT = "https://translate.googleapis.com/translate_a/single"
 
-private class Config(val provider: String, val baseUrl: String, val model: String, val language: String, val apiKey: String)
+internal class Config(val provider: String, val baseUrl: String, val model: String, val language: String, val apiKey: String)
 
 /** The target language: the one chosen, or with "auto", the Translate UI patch's, else the device's. */
 private fun targetLanguage(): String {
@@ -190,7 +190,7 @@ private fun targetLanguage(): String {
     }
 }
 
-private fun config(): Config? {
+internal fun config(): Config? {
     val language = targetLanguage()
     if (AiSettings.aiProvider.value == PROVIDER_GOOGLE) return Config(PROVIDER_GOOGLE, GOOGLE_ENDPOINT, "", language, "")
     val baseUrl = AiSettings.aiBaseUrl.value.trim().trimEnd('/')
@@ -201,13 +201,13 @@ private fun config(): Config? {
 }
 
 /** The cache key covers everything that changes the answer, and never the API key. */
-private fun cacheKey(config: Config, source: String): String {
+internal fun cacheKey(config: Config, source: String): String {
     val digest = MessageDigest.getInstance("SHA-256")
         .digest("v$PROMPT_VERSION|${config.provider}|${config.baseUrl}|${config.model}|${config.language}|$source".toByteArray())
     return digest.joinToString("") { "%02x".format(it) }.take(40)
 }
 
-private fun cacheFile(key: String) = appContext?.cacheDir?.let { File(File(it, "vocacolle-reseam/ai"), key) }
+internal fun cacheFile(key: String) = appContext?.cacheDir?.let { File(File(it, "vocacolle-reseam/ai"), key) }
 
 private fun translate(config: Config, key: String, source: String, kind: Kind = Kind.TITLE): String? {
     try {
@@ -227,7 +227,7 @@ private fun translate(config: Config, key: String, source: String, kind: Kind = 
     }
 }
 
-private fun store(key: String, translated: String) {
+internal fun store(key: String, translated: String) {
     memory[key] = translated
     try {
         cacheFile(key)?.let { file ->
@@ -245,7 +245,7 @@ private fun store(key: String, translated: String) {
  * Several titles in one Google request: the Chrome dictionary client takes one `q` per text and
  * answers with the translations in order. Anything that doesn't line up is left for one-by-one.
  */
-private fun requestGoogleBatch(jobs: List<TitleJob>, kind: Kind = Kind.TITLE): Map<String, String> {
+internal fun requestGoogleBatch(jobs: List<TitleJob>, kind: Kind = Kind.TITLE): Map<String, String> {
     val language = jobs.first().config.language
     val chunk = ArrayList<TitleJob>()
     val result = HashMap<String, String>()
@@ -278,7 +278,7 @@ private fun requestGoogleBatch(jobs: List<TitleJob>, kind: Kind = Kind.TITLE): M
 }
 
 /** What is being translated: decides the prompt and what counts as a sane answer. */
-private enum class Kind { TITLE, TEXT }
+internal enum class Kind { TITLE, TEXT, LYRICS }
 
 private fun request(config: Config, source: String, kind: Kind): String? =
     if (config.provider == PROVIDER_GOOGLE) requestGoogle(config, source, kind) else requestOpenAi(config, source, kind)
@@ -322,7 +322,7 @@ external fun writeState(state: Any?, value: Any?)
 /** The description shown in place of the original, as `[original, translation]`, or null. */
 private val shownTranslation: Any? by lazy { newState(null) }
 
-private val mainHandler by lazy { Handler(Looper.getMainLooper()) }
+internal val mainHandler by lazy { Handler(Looper.getMainLooper()) }
 
 /** The text the description area draws: [original], or its translation once the button asked. */
 @Export
@@ -490,7 +490,7 @@ private fun requestGoogle(config: Config, source: String, kind: Kind): String? {
     }
 }
 
-private fun get(url: String): String {
+internal fun get(url: String): String {
     val connection = URL(url).openConnection() as HttpURLConnection
     try {
         connection.connectTimeout = 10_000
@@ -509,8 +509,8 @@ private fun get(url: String): String {
     }
 }
 
-private fun clean(content: String, source: String, kind: Kind): String? {
-    if (kind == Kind.TEXT) {
+internal fun clean(content: String, source: String, kind: Kind): String? {
+    if (kind != Kind.TITLE) {
         // Lines must survive, or the description's layout falls apart.
         val text = content.trim()
         val lines = { value: String -> value.trim().count { it == '\n' } }
@@ -521,7 +521,7 @@ private fun clean(content: String, source: String, kind: Kind): String? {
     return line.takeIf { it.isNotEmpty() && '\n' !in it && it.length <= MAX_TITLE_CHARS * 2 && it != source }
 }
 
-private fun requestOpenAi(config: Config, source: String, kind: Kind): String? {
+internal fun requestOpenAi(config: Config, source: String, kind: Kind): String? {
     val target = if (config.language == "en") "English" else "Korean"
     val body = JSONObject()
         .put("model", config.model)
@@ -537,6 +537,10 @@ private fun requestOpenAi(config: Config, source: String, kind: Kind): String? {
                                 "Reply with the translated title only, on one line, without quotes or notes. " +
                                 "Keep names of people, groups, and works in their usual $target form, " +
                                 "keep Latin-script parts and symbols as they are, and keep the title short."
+                        } else if (kind == Kind.LYRICS) {
+                            "You translate Japanese song lyrics into $target, line by line, for subtitles " +
+                                "under each line. Reply with the translation only: exactly one line for each " +
+                                "line given, in the same order, with no numbering, quotes, or notes."
                         } else {
                             "You translate part of a Japanese video description into $target. " +
                                 "Reply with the translation only. Keep exactly the same line breaks, " +

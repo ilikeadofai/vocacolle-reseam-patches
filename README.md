@@ -32,7 +32,7 @@ ads and Premium pop-ups.
 | Patch | What it does |
 |---|---|
 | Ad controls | Adds switches to hide app-open ads, banner and in-feed ads, audio ads between tracks, and Premium pop-ups. All four start on, and can be turned off in the Reseam patches screen, opened from its row in VocaColle's Settings. |
-| Content translation | Translates Japanese song titles, tags, work descriptions, and notices into Korean or English, with Google Translate (no key) or an OpenAI-compatible API and your own key. Off until turned on in the Reseam patches screen; titles are then sent to the chosen service. |
+| Content translation | Translates Japanese song titles, tags, work descriptions, lyrics, and notices into Korean or English, with Google Translate (no key) or an OpenAI-compatible API and your own key. Off until turned on in the Reseam patches screen; titles are then sent to the chosen service. |
 | Custom branding | Changes the launcher name and icon. With no options set it changes nothing, so the original ボカコレ name and icon stay. The name is a separate resource, so text inside the app that says ボカコレ is not affected. |
 | External lyrics | Shows lyrics from LRCLIB, NetEase Cloud Music, KuGou, or VocaDB when VocaColle has none for a song or can't show them, and lets the lyrics button open for those songs. Songs are matched by the exact Niconico video on VocaDB. Off until turned on in the Reseam patches screen. |
 | Translate UI | Shows VocaColle in Korean or English: every reviewed UI string, text compiled into the app, and the ranking and push-topic labels the server sends. Titles, creators, tags, and anything sent back to the server stay in the original Japanese. |
@@ -105,6 +105,11 @@ Off by default, with its own switches, also off:
 - **Descriptions**, on request: a **Translate** button under a work's description puts its
   translation in place of the original, and **Show original** puts it back. The description is
   sent only when the button is tapped.
+- **Lyrics**, as extra rows: **Lyrics reading** adds the romanized reading under each Japanese
+  line (always from Google Translate), and **Lyrics translation** adds the translation, with the
+  chosen service. They work on any lyrics the player shows, VocaColle's own or the External
+  lyrics patch's, and highlight and seek with their line. The lines on screen are sent, 40 per
+  request, and the layers appear as they arrive; the lyrics the app loads and caches don't change.
 - **Notices**: notice titles in Settings are translated, and notice articles open through
   Google Translate's page proxy.
 

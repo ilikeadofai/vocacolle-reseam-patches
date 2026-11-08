@@ -15,6 +15,7 @@ import app.reseam.patch.patch
 import app.reseam.patch.settings.gate
 import app.reseam.patch.settings.onAction
 import app.reseam.patch.settings.section
+import io.github.ilikeadofai.vocacolle.core.translate.bindings.LyricLayers
 import io.github.ilikeadofai.vocacolle.core.translate.bindings.TitleTranslator
 import io.github.ilikeadofai.vocacolle.core.translate.bindings.TranslateDescriptionClick
 import io.github.ilikeadofai.vocacolle.settings.AiSettings
@@ -113,6 +114,35 @@ private val searchTagText = methods("searchTopTagContentItem") {
     argument(0) { resultOf(Type.String) }
 }
 
+/** `LyricsSegment(lines, startMs, endMs)`: one timed group of lyric lines. */
+private val lyricsSegmentModel = klass("lyricsSegmentModel") { strings("LyricsSegment(lines=") }
+
+/** `LyricsWithMetadata(videoId, lyricSegments, hasTimeInformation)`: the lyrics the player shows. */
+private val lyricsModel = klass("lyricsWithMetadata") { strings("LyricsWithMetadata(videoId=") }
+
+/**
+ * The lyrics list's row: it draws each string of the segment's `lines` as its own row,
+ * highlighted with the segment, so layers added to that list are drawn like lyrics.
+ */
+private fun PatchRuntime.addLyricLayers() {
+    val segment = lyricsSegmentModel.descriptor
+    val lyrics = lyricsModel.descriptor
+    // The row is an `itemsIndexed` item lambda, inlined from Compose: its class keeps Compose's
+    // trace string and source file (LazyDsl.kt), and holds the lyrics it draws.
+    val rowLines = methods("playerLyricsRow") {
+        stringsStartingWith("androidx.compose.foundation.lazy.itemsIndexed.")
+        custom { classDef.instanceFields.any { it.fieldType == lyrics } }
+    }.points("lyricsRowLines") {
+        invokeVirtual { owner(segment); returns("Ljava/util/List;") }
+        then(within = 2) { invokeInterface { name("iterator") } }
+    }.single()
+    // The match is the loop's iterator() call; its receiver is the segment's lines. Two
+    // switches decide the layers, so the extension reads them instead of one gate.
+    rowLines.captureArgumentAs("lines", 0).before {
+        capture("lines").assign(LyricLayers.lines(capture("lines")))
+    }
+}
+
 private fun PatchRuntime.translateTags() {
     val detail = detailTagText.single()
     val search = searchTagText.single()
@@ -196,7 +226,7 @@ private fun PatchRuntime.addTranslateButton() {
 val titleTranslation = patch("Content translation") {
     description(
         """
-        Translates Japanese song titles, tags, work descriptions, and notices into Korean or English, with Google
+        Translates Japanese song titles, tags, work descriptions, lyrics, and notices into Korean or English, with Google
         Translate (no key) or an OpenAI-compatible API and your own key. Off until turned on in
         the Reseam patches screen; titles are then sent to the chosen service.
         """,
@@ -210,6 +240,8 @@ val titleTranslation = patch("Content translation") {
             AiSettings.aiTitles,
             AiSettings.aiDescriptions,
             AiSettings.aiTags,
+            AiSettings.aiLyricsRomaji,
+            AiSettings.aiLyricsTranslation,
             AiSettings.aiNotices,
             AiSettings.aiLanguage,
             AiSettings.aiProvider,
@@ -240,5 +272,6 @@ val titleTranslation = patch("Content translation") {
         }
         addTranslateButton()
         translateTags()
+        addLyricLayers()
     }
 }
