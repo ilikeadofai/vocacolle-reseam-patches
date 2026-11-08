@@ -168,6 +168,8 @@ private fun bumpTagRevision() {
 @Export
 fun displayTag(tag: String?): String? {
     if (tag == null || !AiSettings.aiTags.value) return tag
+    // Reviewed names first: no request, and the same spelling everywhere.
+    dictionaryTag(tag, targetLanguage())?.let { return it }
     tagRevision?.let { readState(it) }
     return shortText(tag, redraw = true)
 }

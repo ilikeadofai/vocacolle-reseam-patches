@@ -22,7 +22,7 @@
     <string name="ai_descriptions">Translate button for descriptions</string>
     <string name="ai_descriptions_summary">Adds a Translate button under a work\'s description, which shows its translation in place of the original. The description is sent to the translation service below only when you tap it.</string>
     <string name="ai_tags">Translate tags</string>
-    <string name="ai_tags_summary">Shows work tags on the detail screen and popular tags in Search translated, with the service below, which receives them. Tapping a tag still searches the original Japanese tag.</string>
+    <string name="ai_tags_summary">Shows work tags on the detail screen and popular tags in Search translated: common tags, such as voice banks and milestones, from a reviewed built-in list that sends nothing, and others with the service below, which receives them. Tapping a tag still searches the original Japanese tag.</string>
     <string name="ai_lyrics_romaji">Lyrics reading</string>
     <string name="ai_lyrics_romaji_summary">Adds the romanized reading under each Japanese lyric line, from Google Translate, which receives the lines. Works for VocaColle\'s lyrics and other sources\' alike.</string>
     <string name="ai_lyrics_translation">Lyrics translation</string>

@@ -22,7 +22,7 @@
     <string name="ai_descriptions">作品紹介の翻訳ボタン</string>
     <string name="ai_descriptions_summary">作品紹介の下に翻訳ボタンを追加し、押すと原文の位置に翻訳を表示します。押したときだけ紹介文が下の翻訳サービスへ送信されます。</string>
     <string name="ai_tags">タグを翻訳</string>
-    <string name="ai_tags_summary">作品詳細のタグと検索画面の人気のタグを下の翻訳サービスで翻訳して表示します。その際、タグが翻訳サービスに渡されます。タグをタップすると、元の日本語のタグで検索します。</string>
+    <string name="ai_tags_summary">作品詳細のタグと検索画面の人気のタグを翻訳して表示します。音声ライブラリや殿堂入りなどのよく使われるタグは確認済みの内蔵リストで（送信なし）、それ以外は下の翻訳サービスで翻訳し、その際タグが渡されます。タグをタップすると、元の日本語のタグで検索します。</string>
     <string name="ai_lyrics_romaji">歌詞の読み</string>
     <string name="ai_lyrics_romaji_summary">日本語の歌詞の各行の下に、Google翻訳によるローマ字の読みを表示します。その際、歌詞の行がGoogleに渡されます。ボカコレの歌詞にも外部の歌詞にも使えます。</string>
     <string name="ai_lyrics_translation">歌詞の翻訳</string>

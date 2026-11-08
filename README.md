@@ -103,7 +103,9 @@ Off by default, with its own switches, also off:
   request, for the next time they appear; translations are cached on the device. Titles VocaDB
   already provides are not sent.
 - **Tags**: the tag chips on a work's detail screen and the popular and featured tag tiles in
-  Search show translated names, redrawn as each translation arrives. Only the text drawn on the
+  Search show translated names, redrawn as each translation arrives. About a hundred common tags
+  (voice banks, milestones such as VOCALOID殿堂入り, genres) come from a reviewed built-in list,
+  with no request and the usual spelling of each name; others go to the chosen service. Only the text drawn on the
   chip changes: tapping a tag still searches the original Japanese tag, and search history keeps it.
 - **Descriptions**, on request: a **Translate** button under a work's description puts its
   translation in place of the original, and **Show original** puts it back. The description is

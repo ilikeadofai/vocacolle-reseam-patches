@@ -22,7 +22,7 @@
     <string name="ai_descriptions">작품 소개 번역 버튼</string>
     <string name="ai_descriptions_summary">작품 소개 아래에 번역 버튼을 추가해, 누르면 원문 자리에 번역을 보여 줍니다. 버튼을 누를 때만 소개 글이 아래 번역 서비스로 전송됩니다.</string>
     <string name="ai_tags">태그 번역</string>
-    <string name="ai_tags_summary">작품 상세의 태그와 검색 화면의 인기 태그를 아래 번역 서비스로 번역해 보여 줍니다. 이때 태그가 번역 서비스에 전달됩니다. 태그를 누르면 여전히 일본어 원문 태그로 검색합니다.</string>
+    <string name="ai_tags_summary">작품 상세의 태그와 검색 화면의 인기 태그를 번역해 보여 줍니다. 보이스뱅크·달성 태그 같은 자주 쓰이는 태그는 검토된 내장 목록으로(전송 없음), 나머지는 아래 번역 서비스로 번역하며 이때 태그가 전달됩니다. 태그를 누르면 여전히 일본어 원문 태그로 검색합니다.</string>
     <string name="ai_lyrics_romaji">가사 발음</string>
     <string name="ai_lyrics_romaji_summary">일본어 가사 각 줄 아래에 로마자 발음을 Google 번역으로 붙입니다. 이때 가사 줄이 Google에 전달됩니다. 보카코레 가사와 외부 가사 모두에 적용됩니다.</string>
     <string name="ai_lyrics_translation">가사 번역</string>
