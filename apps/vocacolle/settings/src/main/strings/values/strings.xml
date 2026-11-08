@@ -60,4 +60,7 @@
     <string name="lyrics_providers">Lyrics sources, in order</string>
     <string name="lyrics_providers_summary">Comma-separated, tried in order: lrclib (LRCLIB), netease (NetEase Cloud Music), kugou (KuGou), vocadb (VocaDB, untimed).</string>
     <string name="show_original">Show original</string>
+    <string name="section_ranking">Rankings</string>
+    <string name="full_ranking">Full rankings</string>
+    <string name="full_ranking_summary">Shows every page of a ranking (up to 300 songs) instead of only the top 100. The extra pages come from VocaColle\'s own ranking service, two more requests when a ranking opens.</string>
 </resources>

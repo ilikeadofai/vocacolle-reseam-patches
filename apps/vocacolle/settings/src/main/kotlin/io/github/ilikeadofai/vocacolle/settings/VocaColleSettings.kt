@@ -66,3 +66,8 @@ object LyricsSettings : SettingsGroup(VocaColleStrings) {
     val externalLyrics by toggle(default = false, key = "lyrics.external", icon = Vector.lucide("mic-vocal"))
     val lyricsProviders by text(default = "lrclib,netease,kugou,vocadb", key = "lyrics.providers", icon = Vector.lucide("list-ordered"))
 }
+
+/** Rankings: the pages of a ranking past the first, which the app never asks for. */
+object RankingSettings : SettingsGroup(VocaColleStrings) {
+    val fullRanking by toggle(default = true, key = "ranking.full", icon = Vector.lucide("list-ordered"))
+}

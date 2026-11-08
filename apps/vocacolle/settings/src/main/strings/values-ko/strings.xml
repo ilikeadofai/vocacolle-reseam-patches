@@ -60,4 +60,7 @@
     <string name="lyrics_providers">가사 출처 (순서대로)</string>
     <string name="lyrics_providers_summary">쉼표로 구분해 순서대로 시도합니다: lrclib (LRCLIB), netease (NetEase Cloud Music), kugou (KuGou), vocadb (VocaDB, 싱크 없음).</string>
     <string name="show_original">원문 보기</string>
+    <string name="section_ranking">랭킹</string>
+    <string name="full_ranking">랭킹 전체 보기</string>
+    <string name="full_ranking_summary">랭킹의 상위 100곡만이 아니라 모든 페이지(최대 300곡)를 보여 줍니다. 추가 페이지는 보카코레 자체 랭킹 서비스에서 받아 오며, 랭킹을 열 때 요청이 두 번 더 갑니다.</string>
 </resources>

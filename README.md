@@ -35,6 +35,7 @@ ads and Premium pop-ups.
 | Content translation | Translates Japanese song titles, tags, work descriptions, lyrics, and notices into Korean or English, with Google Translate (no key) or an OpenAI-compatible API and your own key. Off until turned on in the Reseam patches screen; titles are then sent to the chosen service. |
 | Custom branding | Changes the launcher name and icon. With no options set it changes nothing, so the original ボカコレ name and icon stay. The name is a separate resource, so text inside the app that says ボカコレ is not affected. |
 | External lyrics | Shows lyrics from LRCLIB, NetEase Cloud Music, KuGou, or VocaDB when VocaColle has none for a song or can't show them, and lets the lyrics button open for those songs. Songs are matched by the exact Niconico video on VocaDB. Off until turned on in the Reseam patches screen. |
+| Full rankings | Shows every page of a ranking, up to 300 songs, instead of only the top 100. The extra pages come from VocaColle's own ranking service. Can be turned off in the Reseam patches screen. |
 | Translate UI | Shows VocaColle in Korean or English: every reviewed UI string, text compiled into the app, and the ranking and push-topic labels the server sends. Titles, creators, tags, and anything sent back to the server stay in the original Japanese. |
 | VocaDB song titles | Shows the English or romanized title VocaDB lists for the exact Niconico video in the player. Off until turned on in the Reseam patches screen; when on, the player's video ids are sent to vocadb.net. |
 | YouTube share links | When sharing a work, uses the YouTube original that VocaDB lists for the exact Niconico video instead of the Niconico link. Off until turned on in the Reseam patches screen; when on, the shared video's id is sent to vocadb.net. |
@@ -128,6 +129,14 @@ Music, and KuGou for synced lyrics whose recording is within 3 seconds of the so
 and VocaDB's original lyrics, untimed. A credit line names the source. For songs with no lyrics
 registered, the lyrics button opens once a source has them; each track is looked up when it
 starts playing. The official lyrics and their limit are not touched.
+
+### Full rankings
+
+Selected by default, with its switch on. VocaColle's ranking screen asks the ranking service
+for page 1 of 100 and stops there, though the service serves three pages and says so. This
+patch asks for pages 2 and 3 the same way the app asked for page 1, with the same session and
+filters, and appends them, dropping a video that moved between pages so it shows once. A page
+that fails ends the list at the pages that loaded. Home's ranking sections are left as they are.
 
 ### Custom branding
 
