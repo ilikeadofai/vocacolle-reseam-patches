@@ -33,7 +33,8 @@ Morphe 시절 로드맵([vocacolle-morphe-patches/docs/ROADMAP.md](https://githu
 | v1.2 | 가사 발음·번역 다층 표시 | 7.48.0 적용 확인. 가사 행 composable이 세그먼트의 `lines`를 한 줄씩 그리는 구조를 이용해, 반복문의 `iterator()` 수신자를 원문+로마자+번역 목록으로 교체. 공식·외부 가사 모두 적용, 줄과 함께 강조·탐색. 로마자는 Google `dt=rm`을 ` ◆ `로 묶어 40줄씩, 번역은 선택한 서비스로. Compose state를 읽어 도착 즉시 다시 그림 |
 | v2.0 | 랭킹 전체 페이지 (trend 실험) | 7.48.0 적용 확인. 서버는 `pageSize` 최대 100, 3페이지(`hasNext`)까지 주는데 앱은 1페이지만 요청하고 `hasNext`를 읽지 않음. 랭킹 화면 로더의 요청 결과에 같은 클라이언트·세션으로 2·3페이지를 받아 중복 없이 이어 붙임. 홈 랭킹 섹션은 그대로 |
 | v2.1 | 로컬 즐겨찾기 | 7.48.0 적용 확인. 작품 상세 설명 아래 ☆ 버튼(앱 자체 버튼 composable, 라벨은 Compose state), 기기 전용 저장(SharedPreferences JSON, 제한 없음), Reseam 설정 화면에서 목록·재생·삭제·JSON 내보내기/가져오기. 재생은 앱의 `nicobox://playlist?vid=…&current=N` 딥링크로 앱 자체 재생목록 플레이어 사용. 서버 좋아요·마이리스트는 건드리지 않음 |
-| v2.x | 로컬 재생목록 여러 개, guest·offline 실험 | 예정. guest는 재서명 APK에서 App Check로 막힘(로그인과 같은 원인), offline 캐시는 프리미엄 entitlement라 범위 밖 |
+| v2.2 | 로컬 재생목록 여러 개 | 7.48.0 적용 확인. 작품 상세에 `+ 재생목록` 버튼(선택 대화상자: ✓ 표시로 넣기/빼기, 새 재생목록), Reseam 설정의 라이브러리에서 즐겨찾기+재생목록별 재생·곡 삭제·이름 변경·삭제, 내보내기/가져오기 v2(재생목록 포함, v1 즐겨찾기 형식도 읽음) |
+| 제외 | guest·offline 실험 | guest: 재서명 APK에서 App Check(Play Integrity) 토큰을 못 받아 로그인과 같은 WL-E08로 실패 — 클라이언트 패치로 고칠 수 없고, 원래 서명 유지(CorePatch) 시엔 원본 흐름 그대로 동작. offline 캐시: 프리미엄 entitlement이므로 원칙상 위조하지 않음 |
 | 연구 | 고음질·프리미엄 영상 (서버 entitlement가 이미 허용한 경우만) | 연구 |
 
 ## 알려진 제약

@@ -65,9 +65,9 @@
     <string name="full_ranking_summary">Shows every page of a ranking (up to 300 songs) instead of only the top 100. The extra pages come from VocaColle\'s own ranking service, two more requests when a ranking opens.</string>
     <string name="section_library">Library</string>
     <string name="favorite_button">Favorite button</string>
-    <string name="favorite_button_summary">Shows a button on a work\'s detail screen that adds it to, or removes it from, the favorites on this device.</string>
-    <string name="local_favorites">Favorites on this device</string>
-    <string name="local_favorites_summary">Songs saved on this device only, with no limit: nothing is sent, and your likes and mylists don\'t change. Play them as a playlist, and export or import them as text.</string>
+    <string name="favorite_button_summary">Shows ☆ Favorite and + Playlist buttons on a work\'s detail screen, for the favorites and playlists on this device.</string>
+    <string name="local_favorites">Favorites and playlists on this device</string>
+    <string name="local_favorites_summary">Favorites and any number of playlists, saved on this device only, with no limit: nothing is sent, and your likes and mylists don\'t change. Play them in VocaColle\'s player, and export or import them as text.</string>
     <string name="favorite_add">☆ Favorite</string>
     <string name="favorite_remove">★ Remove from favorites</string>
     <string name="favorite_added">Added to the favorites on this device</string>
@@ -75,7 +75,7 @@
     <string name="favorites_title">Favorites</string>
     <string name="favorites_empty">No favorites yet. Add songs with the ☆ Favorite button on a work\'s detail screen.</string>
     <string name="favorites_more">Export / import</string>
-    <string name="favorites_more_summary">Export copies the list as text and opens the share sheet. Import adds the songs of an exported list that aren\'t here yet.</string>
+    <string name="favorites_more_summary">Export copies the favorites and every playlist as text and opens the share sheet. Import adds the songs and playlists of an exported text that aren\'t here yet.</string>
     <string name="favorites_play_all">Play all</string>
     <string name="favorites_play_from_here">Play from here</string>
     <string name="favorites_open_failed">Couldn\'t open the playlist in VocaColle.</string>
@@ -85,4 +85,16 @@
     <string name="favorites_import_failed">That isn\'t an exported favorites list.</string>
     <string name="favorites_imported">Added %d songs</string>
     <string name="favorites_copied">Copied the list</string>
+    <string name="playlist_add">+ Playlist</string>
+    <string name="playlist_in">✓ In %d playlists</string>
+    <string name="playlist_added">Added to %s</string>
+    <string name="playlist_removed">Removed from %s</string>
+    <string name="playlist_new">New playlist</string>
+    <string name="playlist_name">Playlist name</string>
+    <string name="playlist_empty">This playlist is empty. Add songs with the + Playlist button on a work\'s detail screen.</string>
+    <string name="playlist_edit">Rename / delete</string>
+    <string name="playlist_rename">Rename</string>
+    <string name="playlist_delete">Delete</string>
+    <string name="playlist_delete_confirm">Delete this playlist and its song list? Songs stay in your other lists.</string>
+    <string name="playlist_exists">A playlist with that name already exists.</string>
 </resources>

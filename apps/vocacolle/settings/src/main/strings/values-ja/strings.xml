@@ -65,9 +65,9 @@
     <string name="full_ranking_summary">ランキングの上位100曲だけでなく、すべてのページ（最大300曲）を表示します。追加のページはボカコレ自身のランキングサービスから取得し、ランキングを開くときにリクエストが2回増えます。</string>
     <string name="section_library">ライブラリ</string>
     <string name="favorite_button">お気に入りボタン</string>
-    <string name="favorite_button_summary">作品詳細画面に、この端末のお気に入りに追加・削除するボタンを表示します。</string>
-    <string name="local_favorites">この端末のお気に入り</string>
-    <string name="local_favorites_summary">この端末だけに保存する曲のリストで、件数の制限はありません。何も送信されず、いいねやマイリストも変わりません。プレイリストとして再生でき、テキストで書き出し・読み込みができます。</string>
+    <string name="favorite_button_summary">作品詳細画面に、この端末のお気に入り・プレイリスト用の☆ お気に入りと＋ プレイリストボタンを表示します。</string>
+    <string name="local_favorites">この端末のお気に入り・プレイリスト</string>
+    <string name="local_favorites_summary">この端末だけに保存するお気に入りと、好きなだけ作れるプレイリストで、件数の制限はありません。何も送信されず、いいねやマイリストも変わりません。ボカコレのプレイヤーで再生でき、テキストで書き出し・読み込みができます。</string>
     <string name="favorite_add">☆ お気に入り</string>
     <string name="favorite_remove">★ お気に入りから外す</string>
     <string name="favorite_added">この端末のお気に入りに追加しました</string>
@@ -75,7 +75,7 @@
     <string name="favorites_title">お気に入り</string>
     <string name="favorites_empty">お気に入りはまだありません。作品詳細画面の☆ お気に入りボタンで曲を追加してください。</string>
     <string name="favorites_more">書き出し・読み込み</string>
-    <string name="favorites_more_summary">書き出しはリストをテキストとしてコピーし、共有画面を開きます。読み込みは書き出したリストのうち、まだない曲を追加します。</string>
+    <string name="favorites_more_summary">書き出しはお気に入りとすべてのプレイリストをテキストとしてコピーし、共有画面を開きます。読み込みは書き出したテキストのうち、まだない曲とプレイリストを追加します。</string>
     <string name="favorites_play_all">すべて再生</string>
     <string name="favorites_play_from_here">ここから再生</string>
     <string name="favorites_open_failed">ボカコレでプレイリストを開けませんでした。</string>
@@ -85,4 +85,16 @@
     <string name="favorites_import_failed">書き出したお気に入りリストではありません。</string>
     <string name="favorites_imported">%d曲を追加しました</string>
     <string name="favorites_copied">リストをコピーしました</string>
+    <string name="playlist_add">+ プレイリスト</string>
+    <string name="playlist_in">✓ %d個のプレイリストに追加済み</string>
+    <string name="playlist_added">%sに追加しました</string>
+    <string name="playlist_removed">%sから外しました</string>
+    <string name="playlist_new">新しいプレイリスト</string>
+    <string name="playlist_name">プレイリスト名</string>
+    <string name="playlist_empty">このプレイリストは空です。作品詳細画面の＋ プレイリストボタンで曲を追加してください。</string>
+    <string name="playlist_edit">名前の変更・削除</string>
+    <string name="playlist_rename">名前を変更</string>
+    <string name="playlist_delete">削除</string>
+    <string name="playlist_delete_confirm">このプレイリストと曲リストを削除しますか？ほかのリストの曲はそのまま残ります。</string>
+    <string name="playlist_exists">同じ名前のプレイリストがすでにあります。</string>
 </resources>
