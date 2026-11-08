@@ -419,3 +419,11 @@ private fun get(url: String, headers: Map<String, String> = emptyMap()): String 
         connection.disconnect()
     }
 }
+
+/** How many songs' lyrics this session holds; they live in memory only. */
+internal fun cachedLyricsCount(): Int = memory.size
+
+/** Forgets the lyrics found this session, so the next look-up asks the sources again. */
+internal fun clearLyricsCache() {
+    memory.clear()
+}

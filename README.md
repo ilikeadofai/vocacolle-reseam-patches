@@ -32,6 +32,7 @@ ads and Premium pop-ups.
 | Patch | What it does |
 |---|---|
 | Ad controls | Adds switches to hide app-open ads, banner and in-feed ads, audio ads between tracks, and Premium pop-ups. All four start on, and can be turned off in the Reseam patches screen, opened from its row in VocaColle's Settings. |
+| Clear caches | Adds a Clear caches row to the Reseam patches screen: VocaDB titles and links, translations and readings, and the lyrics found this session, each with its size, cleared one at a time or all together. Favorites and playlists are kept. |
 | Content translation | Translates Japanese song titles, tags, work descriptions, lyrics, and notices into Korean or English, with Google Translate (no key) or an OpenAI-compatible API and your own key. Off until turned on in the Reseam patches screen; titles are then sent to the chosen service. |
 | Custom branding | Changes the launcher name and icon. With no options set it changes nothing, so the original ボカコレ name and icon stay. The name is a separate resource, so text inside the app that says ボカコレ is not affected. |
 | External lyrics | Shows lyrics from LRCLIB, NetEase Cloud Music, KuGou, or VocaDB when VocaColle has none for a song or can't show them, and lets the lyrics button open for those songs. Songs are matched by the exact Niconico video on VocaDB. Off until turned on in the Reseam patches screen. |
@@ -156,6 +157,14 @@ device, with no limit:
 
 Nothing is sent anywhere, the account's likes and mylists don't change, and the lists aren't
 synced to other devices. They are removed with the app's data.
+
+### Clear caches
+
+Selected by default. The patches keep what they look up so they don't ask again: VocaDB
+answers (7 days, 6 hours for "not found") and translations and readings on disk, and lyrics
+in memory for the session. **Clear caches** in the Reseam patches screen shows each with its
+size and clears one, or all of them; the next look-up then asks again. Favorites and
+playlists are not a cache and are never cleared.
 
 ### Custom branding
 

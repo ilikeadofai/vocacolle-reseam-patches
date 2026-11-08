@@ -97,4 +97,12 @@
     <string name="playlist_delete">Delete</string>
     <string name="playlist_delete_confirm">Delete this playlist and its song list? Songs stay in your other lists.</string>
     <string name="playlist_exists">A playlist with that name already exists.</string>
+    <string name="section_storage">Storage</string>
+    <string name="clear_caches">Clear caches</string>
+    <string name="clear_caches_summary">VocaDB answers, translations, and lyrics are kept so they aren\'t asked for again. Clearing one makes the next look-up ask again. Favorites and playlists aren\'t a cache and stay.</string>
+    <string name="cache_vocadb">VocaDB titles and links (%s)</string>
+    <string name="cache_translations">Translations and readings (%s)</string>
+    <string name="cache_lyrics">Lyrics found this session (%d songs)</string>
+    <string name="clear_all">Clear all</string>
+    <string name="cache_cleared">Cleared %s</string>
 </resources>

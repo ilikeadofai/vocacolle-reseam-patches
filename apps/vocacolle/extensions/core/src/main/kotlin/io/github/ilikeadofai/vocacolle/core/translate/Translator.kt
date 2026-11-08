@@ -646,3 +646,9 @@ fun editApiKey(activity: Activity?) {
         }
         .show()
 }
+
+/** Forgets every translation and reading, in memory and on disk; returns the bytes freed. */
+internal fun clearTranslationCache(context: Context): Long {
+    memory.clear()
+    return io.github.ilikeadofai.vocacolle.core.deleteTree(File(context.cacheDir, "vocacolle-reseam/ai"))
+}

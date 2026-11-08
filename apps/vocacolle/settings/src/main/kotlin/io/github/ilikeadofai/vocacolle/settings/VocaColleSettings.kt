@@ -77,3 +77,8 @@ object LibrarySettings : SettingsGroup(VocaColleStrings) {
     val favoriteButton by toggle(default = true, key = "library.favorite_button", icon = Vector.lucide("star"))
     val localFavorites by action(key = "library.favorites", icon = Vector.lucide("list-music"))
 }
+
+/** The patches' caches, shown whichever patches are applied. */
+object StorageSettings : SettingsGroup(VocaColleStrings) {
+    val clearCaches by action(key = "storage.clear_caches", icon = Vector.lucide("trash"))
+}

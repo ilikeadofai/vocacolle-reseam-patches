@@ -97,4 +97,12 @@
     <string name="playlist_delete">削除</string>
     <string name="playlist_delete_confirm">このプレイリストと曲リストを削除しますか？ほかのリストの曲はそのまま残ります。</string>
     <string name="playlist_exists">同じ名前のプレイリストがすでにあります。</string>
+    <string name="section_storage">ストレージ</string>
+    <string name="clear_caches">キャッシュを削除</string>
+    <string name="clear_caches_summary">VocaDBの応答・翻訳・歌詞は再度リクエストしないよう保存しています。削除すると次の取得時にもう一度リクエストします。お気に入りとプレイリストはキャッシュではないので残ります。</string>
+    <string name="cache_vocadb">VocaDBのタイトル・リンク（%s）</string>
+    <string name="cache_translations">翻訳・読み（%s）</string>
+    <string name="cache_lyrics">このセッションで見つけた歌詞（%d曲）</string>
+    <string name="clear_all">すべて削除</string>
+    <string name="cache_cleared">%sを削除しました</string>
 </resources>

@@ -215,3 +215,19 @@ private fun writeCache(videoId: String, entry: Entry) {
         // The title still shows for this session from memory.
     }
 }
+
+/** Forgets every VocaDB answer, in memory and on disk; returns the bytes freed. */
+internal fun clearVocaDbCache(context: android.content.Context): Long {
+    memory.clear()
+    return deleteTree(File(context.cacheDir, "vocacolle-reseam/vocadb"))
+}
+
+/** Deletes [dir] and what it holds; returns the bytes freed. */
+internal fun deleteTree(dir: File): Long {
+    if (!dir.exists()) return 0
+    val size = treeSize(dir)
+    dir.deleteRecursively()
+    return size
+}
+
+internal fun treeSize(dir: File): Long = if (!dir.exists()) 0 else dir.walkBottomUp().filter { it.isFile }.sumOf { it.length() }

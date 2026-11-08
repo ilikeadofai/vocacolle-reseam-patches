@@ -97,4 +97,12 @@
     <string name="playlist_delete">삭제</string>
     <string name="playlist_delete_confirm">이 재생목록과 곡 목록을 삭제할까요? 다른 목록의 곡은 그대로 남습니다.</string>
     <string name="playlist_exists">같은 이름의 재생목록이 이미 있습니다.</string>
+    <string name="section_storage">저장 공간</string>
+    <string name="clear_caches">캐시 삭제</string>
+    <string name="clear_caches_summary">VocaDB 응답·번역·가사는 다시 요청하지 않도록 보관됩니다. 하나를 지우면 다음 조회 때 다시 요청합니다. 즐겨찾기와 재생목록은 캐시가 아니므로 남습니다.</string>
+    <string name="cache_vocadb">VocaDB 제목·링크 (%s)</string>
+    <string name="cache_translations">번역·발음 (%s)</string>
+    <string name="cache_lyrics">이번 세션에서 찾은 가사 (%d곡)</string>
+    <string name="clear_all">모두 삭제</string>
+    <string name="cache_cleared">%s를 지웠습니다</string>
 </resources>

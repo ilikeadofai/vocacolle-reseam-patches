@@ -35,6 +35,7 @@ Morphe 시절 로드맵([vocacolle-morphe-patches/docs/ROADMAP.md](https://githu
 | v2.1 | 로컬 즐겨찾기 | 7.48.0 적용 확인. 작품 상세 설명 아래 ☆ 버튼(앱 자체 버튼 composable, 라벨은 Compose state), 기기 전용 저장(SharedPreferences JSON, 제한 없음), Reseam 설정 화면에서 목록·재생·삭제·JSON 내보내기/가져오기. 재생은 앱의 `nicobox://playlist?vid=…&current=N` 딥링크로 앱 자체 재생목록 플레이어 사용. 서버 좋아요·마이리스트는 건드리지 않음 |
 | v2.2 | 로컬 재생목록 여러 개 | 7.48.0 적용 확인. 작품 상세에 `+ 재생목록` 버튼(선택 대화상자: ✓ 표시로 넣기/빼기, 새 재생목록), Reseam 설정의 라이브러리에서 즐겨찾기+재생목록별 재생·곡 삭제·이름 변경·삭제, 내보내기/가져오기 v2(재생목록 포함, v1 즐겨찾기 형식도 읽음) |
 | 제외 | guest·offline 실험 | guest: 재서명 APK에서 App Check(Play Integrity) 토큰을 못 받아 로그인과 같은 WL-E08로 실패 — 클라이언트 패치로 고칠 수 없고, 원래 서명 유지(CorePatch) 시엔 원본 흐름 그대로 동작. offline 캐시: 프리미엄 entitlement이므로 원칙상 위조하지 않음 |
+| v2.3 | 캐시 관리 (Morphe 로드맵 §3.4) | 7.48.0 적용 확인. Reseam 설정에 "캐시 삭제": VocaDB·번역/발음(디스크, 크기 표시)·이번 세션 가사(메모리)를 각각 또는 모두 삭제. 즐겨찾기·재생목록은 캐시가 아니라 유지. 설정 호스트의 install은 action 검사 뒤에 실행되어 action을 가질 수 없으므로 기본 선택된 별도 패치 |
 | 연구 → 종료 | 고음질·프리미엄 영상 (서버 entitlement가 이미 허용한 경우만) | 조사 완료, 패치 없음. 오디오 목록은 서버 watch 응답의 `isAvailable`(계정별)과 `accessRightKey`로 오고 (`MediaConverter`), `AudioInfoExtractor`는 `isAvailable`인 항목 중 서버의 `audioUpperLimit` 이하만 고른다. 사용자의 고음질 설정(사용/Wi-Fi만/사용 안 함)은 그 안에서의 선택일 뿐이다. 무료 계정의 고음질 항목은 서버가 사용 불가로 표시하고 실제 스트림은 서버 access-rights에서 승인되므로, 클라이언트에서 열 수 있는 게이트가 없다(열려면 entitlement 위조가 필요 — 원칙상 제외). 프리미엄 계정은 원래 흐름 그대로 동작하며 클라이언트 버그는 발견되지 않았다. 프리미엄 영상도 같은 구조 |
 
 ## 알려진 제약
