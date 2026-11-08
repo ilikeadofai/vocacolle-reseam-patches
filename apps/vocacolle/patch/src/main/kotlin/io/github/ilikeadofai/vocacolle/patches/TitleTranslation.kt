@@ -255,6 +255,7 @@ val titleTranslation = patch("Content translation") {
             AiSettings.aiDescriptions,
             AiSettings.aiTags,
             AiSettings.aiLyricsRomaji,
+            AiSettings.aiLyricsScript,
             AiSettings.aiLyricsTranslation,
             AiSettings.aiNotices,
             AiSettings.aiLanguage,

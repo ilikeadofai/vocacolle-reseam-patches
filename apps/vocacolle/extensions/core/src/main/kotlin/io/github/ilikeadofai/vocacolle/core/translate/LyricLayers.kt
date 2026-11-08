@@ -85,6 +85,11 @@ fun lines(lines: List<String>?): List<String>? {
     revision?.let { readState(it) }
     val config = if (translate) config() else null
     if (!romanize && config == null) return lines
+    val hangul = romanize && when (AiSettings.aiLyricsScript.value) {
+        "hangul" -> true
+        "romaji" -> false
+        else -> targetLanguage() == "ko"
+    }
     val shown = ArrayList<String>(lines.size * 3)
     for (line in lines) {
         shown += line
@@ -92,7 +97,7 @@ fun lines(lines: List<String>?): List<String>? {
         if (source.isEmpty() || source.length > MAX_LINE_CHARS || !JAPANESE.containsMatchIn(source)) continue
         val reading = if (romanize) memory[romajiKey(source)] else null
         val translation = config?.let { memory[cacheKey(it, source)] }
-        reading?.let { shown += it }
+        reading?.let { shown += if (hangul) romajiToHangul(it, source) else it }
         translation?.takeIf { it != source }?.let { shown += it }
         if ((romanize && reading == null) || (config != null && translation == null)) want(source, config, romanize)
     }

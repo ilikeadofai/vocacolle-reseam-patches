@@ -179,7 +179,7 @@ private const val GOOGLE_ENDPOINT = "https://translate.googleapis.com/translate_
 internal class Config(val provider: String, val baseUrl: String, val model: String, val language: String, val apiKey: String)
 
 /** The target language: the one chosen, or with "auto", the Translate UI patch's, else the device's. */
-private fun targetLanguage(): String {
+internal fun targetLanguage(): String {
     val chosen = AiSettings.aiLanguage.value
     if (chosen == "ko" || chosen == "en") return chosen
     return try {

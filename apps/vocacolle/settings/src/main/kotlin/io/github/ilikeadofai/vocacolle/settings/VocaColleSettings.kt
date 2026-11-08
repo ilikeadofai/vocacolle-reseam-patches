@@ -35,6 +35,16 @@ object AiSettings : SettingsGroup(VocaColleStrings) {
     val aiDescriptions by toggle(default = false, key = "ai.descriptions", icon = Vector.lucide("file-text"))
     val aiTags by toggle(default = false, key = "ai.tags", icon = Vector.lucide("tag"))
     val aiLyricsRomaji by toggle(default = false, key = "ai.lyrics_romaji", icon = Vector.lucide("languages"))
+    val aiLyricsScript by choice(
+        default = "auto",
+        key = "ai.lyrics_script",
+        choices = listOf(
+            Choice("auto", VocaColleStrings.aiLyricsScriptAuto),
+            Choice("romaji", VocaColleStrings.aiLyricsScriptRomaji),
+            Choice("hangul", VocaColleStrings.aiLyricsScriptHangul),
+        ),
+        icon = Vector.lucide("type"),
+    )
     val aiLyricsTranslation by toggle(default = false, key = "ai.lyrics_translation", icon = Vector.lucide("captions"))
     val aiNotices by toggle(default = false, key = "ai.notices", icon = Vector.lucide("megaphone"))
     val aiLanguage by choice(

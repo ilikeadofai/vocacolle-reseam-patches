@@ -2,12 +2,14 @@
 
 package io.github.ilikeadofai.vocacolle.core.lyrics
 
+import android.content.Context
 import android.os.Looper
 import android.util.Log
 import app.reseam.runtime.Export
 import io.github.ilikeadofai.vocacolle.settings.LyricsSettings
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.File
 import java.io.IOException
 import java.net.HttpURLConnection
 import java.net.URL
@@ -34,8 +36,11 @@ private const val WAIT_MS = 6_000L
 private const val DURATION_TOLERANCE_S = 3.0
 private val MEDIA_ID = Regex("^(sm|so|nm)[0-9]{1,12}$")
 private val LRC_LINE = Regex("^\\[(\\d{1,3}):(\\d{2})(?:[.:](\\d{1,3}))?]\\s?(.*)$")
-// Every way the official request can fail, except having no connection, which the sources share.
-private val NO_FALLBACK_REASONS = setOf("OFFLINE", "INVALID_PARAMETER")
+// Every way the official request can fail but a bad id. Offline, only saved lyrics are shown.
+private val NO_FALLBACK_REASONS = setOf("INVALID_PARAMETER")
+private const val OFFLINE = "OFFLINE"
+private const val FOUND_TTL_MS = 30L * 24 * 60 * 60 * 1000
+private const val NONE_TTL_MS = 24L * 60 * 60 * 1000
 private const val MAIN_THREAD_WAIT_MS = 3_000L
 private const val BUTTON_WAIT_MS = 2_500L
 private val DEFAULT_PROVIDERS = listOf("lrclib", "netease", "kugou", "vocadb")
@@ -53,6 +58,62 @@ private val memory: MutableMap<String, Found> = Collections.synchronizedMap(
     },
 )
 private val pending: MutableMap<String, Future<*>> = Collections.synchronizedMap(HashMap())
+
+@Volatile private var cacheDir: File? = null
+
+@Export
+fun init(context: Context?) {
+    if (cacheDir == null) cacheDir = context?.applicationContext?.cacheDir?.let { File(it, "vocacolle-reseam/lyrics") }
+}
+
+private fun providers(): String = LyricsSettings.lyricsProviders.value.trim().lowercase()
+
+/**
+ * Lyrics saved for [videoId], or null: found lyrics for 30 days, and "none found" for a day,
+ * and only while the sources asked are the same.
+ */
+private fun readSaved(videoId: String): Found? {
+    val file = cacheDir?.let { File(it, videoId) }?.takeIf { it.isFile } ?: return null
+    return try {
+        val saved = JSONObject(file.readText(Charsets.UTF_8))
+        val age = System.currentTimeMillis() - saved.optLong("savedAt")
+        val lines = saved.optJSONArray("lines") ?: JSONArray()
+        if (lines.length() == 0) {
+            if (age !in 0..NONE_TTL_MS || saved.optString("providers") != providers()) return null
+            return NONE
+        }
+        if (age !in 0..FOUND_TTL_MS) return null
+        Found(
+            (0 until lines.length()).map { index ->
+                val line = lines.getJSONArray(index)
+                Line(if (line.isNull(0)) null else line.getInt(0), line.getString(1))
+            },
+            saved.optBoolean("timed"),
+            saved.optString("source"),
+        )
+    } catch (_: Exception) {
+        null
+    }
+}
+
+private fun save(videoId: String, found: Found) {
+    val dir = cacheDir ?: return
+    try {
+        val lines = JSONArray()
+        found.lines.forEach { lines.put(JSONArray().put(it.startMs ?: JSONObject.NULL).put(it.text)) }
+        val json = JSONObject().put("savedAt", System.currentTimeMillis()).put("source", found.source)
+            .put("timed", found.timed).put("providers", providers()).put("lines", lines)
+        dir.mkdirs()
+        val temp = File(dir, "$videoId.tmp")
+        temp.writeText(json.toString(), Charsets.UTF_8)
+        if (!temp.renameTo(File(dir, videoId))) temp.delete()
+    } catch (_: IOException) {
+        // Kept in memory for this session.
+    }
+}
+
+/** Lyrics known for [videoId], from memory or the disk. */
+private fun known(videoId: String): Found? = memory[videoId] ?: readSaved(videoId)?.also { memory[videoId] = it }
 
 // A full queue refuses new work outright, so a refused track is never left marked as pending.
 private val lookups = ThreadPoolExecutor(1, 1, 30, TimeUnit.SECONDS, LinkedBlockingQueue(16), { runnable ->
@@ -143,7 +204,12 @@ fun fallback(requestedId: String?, reason: String?): Any? {
     val videoId = requestedId ?: lastRequested
     if (videoId == null || reason == null || reason in NO_FALLBACK_REASONS || !MEDIA_ID.matches(videoId)) return null
     if (!LyricsSettings.externalLyrics.value) return null
-    val found = memory[videoId] ?: run {
+    if (reason == OFFLINE) {
+        val saved = known(videoId)?.takeIf { it.lines.isNotEmpty() } ?: return null
+        Log.i(TAG, "showing saved ${saved.source} lyrics for $videoId (offline)")
+        return build(videoId, saved)
+    }
+    val found = known(videoId) ?: run {
         val future = schedule(videoId)
         if (future != null) {
             // The loader may run on the main thread; the lookup itself never does, and the wait
@@ -174,7 +240,7 @@ fun hasLyrics(videoId: String?, original: Boolean): Boolean {
     if (original || videoId == null || !LyricsSettings.externalLyrics.value || !MEDIA_ID.matches(videoId)) return original
     // Still looking: wait a moment for the answer, so a song no source has gets the app's own
     // "no lyrics" message every time, instead of the lyrics screen first and the message later.
-    val found = memory[videoId] ?: run {
+    val found = known(videoId) ?: run {
         val lookup = schedule(videoId)
         try {
             lookup?.get(BUTTON_WAIT_MS, TimeUnit.MILLISECONDS)
@@ -187,7 +253,7 @@ fun hasLyrics(videoId: String?, original: Boolean): Boolean {
 }
 
 private fun schedule(videoId: String): Future<*>? {
-    if (memory.containsKey(videoId)) return null
+    if (known(videoId) != null) return null
     synchronized(pending) {
         pending[videoId]?.let { return it }
         return try {
@@ -195,6 +261,7 @@ private fun schedule(videoId: String): Future<*>? {
                 try {
                     val found = load(videoId)
                     memory[videoId] = found
+                    save(videoId, found)
                     Log.i(TAG, if (found.lines.isEmpty()) "no lyrics found for $videoId" else "${found.source} has lyrics for $videoId")
                     if (found.lines.isNotEmpty()) deliverLate(videoId, found)
                 } catch (failure: Exception) {
@@ -420,10 +487,13 @@ private fun get(url: String, headers: Map<String, String> = emptyMap()): String 
     }
 }
 
-/** How many songs' lyrics this session holds; they live in memory only. */
+/** How many songs' lyrics this session holds in memory. */
 internal fun cachedLyricsCount(): Int = memory.size
 
 /** Forgets the lyrics found this session, so the next look-up asks the sources again. */
-internal fun clearLyricsCache() {
+internal fun clearLyricsCache(): Long {
     memory.clear()
+    return cacheDir?.let { io.github.ilikeadofai.vocacolle.core.deleteTree(it) } ?: 0
 }
+
+internal fun lyricsCacheBytes(): Long = cacheDir?.let { io.github.ilikeadofai.vocacolle.core.treeSize(it) } ?: 0

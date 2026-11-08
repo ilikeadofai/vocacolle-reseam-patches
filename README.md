@@ -108,8 +108,9 @@ Off by default, with its own switches, also off:
 - **Descriptions**, on request: a **Translate** button under a work's description puts its
   translation in place of the original, and **Show original** puts it back. The description is
   sent only when the button is tapped.
-- **Lyrics**, as extra rows: **Lyrics reading** adds the romanized reading under each Japanese
-  line (always from Google Translate), and **Lyrics translation** adds the translation, with the
+- **Lyrics**, as extra rows: **Lyrics reading** adds the reading under each Japanese line
+  (always from Google Translate), in romaji or in Hangul as Koreans read Japanese (**Reading
+  script**; Auto uses Hangul when translating into Korean, and Latin words of the line stay), and **Lyrics translation** adds the translation, with the
   chosen service. They work on any lyrics the player shows, VocaColle's own or the External
   lyrics patch's, and highlight and seek with their line. The lines on screen are sent, 40 per
   request, and the layers appear as they arrive; the lyrics the app loads and caches don't change.
@@ -124,13 +125,14 @@ stores it encrypted with the Android Keystore and keeps it out of settings expor
 ### External lyrics
 
 Off by default, with its own switch, also off. When VocaColle can't show a song's lyrics, for
-any reason but being offline, the patch answers with lyrics from other sources: the song is
+any reason but a bad request (offline, saved lyrics only), the patch answers with lyrics from other sources: the song is
 matched by the exact Niconico video on VocaDB, then the sources are tried in the order the
 **Lyrics sources** setting lists (default `lrclib,netease,kugou,vocadb`): LRCLIB, NetEase Cloud
 Music, and KuGou for synced lyrics whose recording is within 3 seconds of the song's length,
 and VocaDB's original lyrics, untimed. A credit line names the source. For songs with no lyrics
 registered, the lyrics button opens once a source has them; each track is looked up when it
-starts playing. The official lyrics and their limit are not touched.
+starts playing. Found lyrics are saved on the device for 30 days ("none found" for a day, while
+the source order is the same), so they also show offline, and Clear caches removes them. The official lyrics and their limit are not touched.
 
 ### Full rankings
 

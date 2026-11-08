@@ -102,7 +102,12 @@
     <string name="clear_caches_summary">VocaDB answers, translations, and lyrics are kept so they aren\'t asked for again. Clearing one makes the next look-up ask again. Favorites and playlists aren\'t a cache and stay.</string>
     <string name="cache_vocadb">VocaDB titles and links (%s)</string>
     <string name="cache_translations">Translations and readings (%s)</string>
-    <string name="cache_lyrics">Lyrics found this session (%d songs)</string>
+    <string name="cache_lyrics">Lyrics from other sources (%s)</string>
     <string name="clear_all">Clear all</string>
     <string name="cache_cleared">Cleared %s</string>
+    <string name="ai_lyrics_script">Reading script</string>
+    <string name="ai_lyrics_script_summary">How the lyrics reading is written: in Latin letters (romaji), or in Hangul as Koreans read Japanese. Auto uses Hangul when translating into Korean.</string>
+    <string name="ai_lyrics_script_auto">Auto</string>
+    <string name="ai_lyrics_script_romaji">Romaji</string>
+    <string name="ai_lyrics_script_hangul">Hangul</string>
 </resources>

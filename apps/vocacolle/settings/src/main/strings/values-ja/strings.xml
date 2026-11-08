@@ -102,7 +102,12 @@
     <string name="clear_caches_summary">VocaDBの応答・翻訳・歌詞は再度リクエストしないよう保存しています。削除すると次の取得時にもう一度リクエストします。お気に入りとプレイリストはキャッシュではないので残ります。</string>
     <string name="cache_vocadb">VocaDBのタイトル・リンク（%s）</string>
     <string name="cache_translations">翻訳・読み（%s）</string>
-    <string name="cache_lyrics">このセッションで見つけた歌詞（%d曲）</string>
+    <string name="cache_lyrics">外部の歌詞（%s）</string>
     <string name="clear_all">すべて削除</string>
     <string name="cache_cleared">%sを削除しました</string>
+    <string name="ai_lyrics_script">読みの表記</string>
+    <string name="ai_lyrics_script_summary">歌詞の読みをローマ字で書くか、韓国語での日本語表記（ハングル）で書くかを選びます。自動は韓国語に翻訳するときハングルを使います。</string>
+    <string name="ai_lyrics_script_auto">自動</string>
+    <string name="ai_lyrics_script_romaji">ローマ字</string>
+    <string name="ai_lyrics_script_hangul">ハングル</string>
 </resources>

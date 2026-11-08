@@ -102,7 +102,12 @@
     <string name="clear_caches_summary">VocaDB 응답·번역·가사는 다시 요청하지 않도록 보관됩니다. 하나를 지우면 다음 조회 때 다시 요청합니다. 즐겨찾기와 재생목록은 캐시가 아니므로 남습니다.</string>
     <string name="cache_vocadb">VocaDB 제목·링크 (%s)</string>
     <string name="cache_translations">번역·발음 (%s)</string>
-    <string name="cache_lyrics">이번 세션에서 찾은 가사 (%d곡)</string>
+    <string name="cache_lyrics">외부 가사 (%s)</string>
     <string name="clear_all">모두 삭제</string>
     <string name="cache_cleared">%s를 지웠습니다</string>
+    <string name="ai_lyrics_script">발음 표기</string>
+    <string name="ai_lyrics_script_summary">가사 발음을 로마자로 쓸지, 한국어로 읽는 일본어 표기(한글)로 쓸지 정합니다. 자동은 한국어로 번역할 때 한글을 씁니다.</string>
+    <string name="ai_lyrics_script_auto">자동</string>
+    <string name="ai_lyrics_script_romaji">로마자</string>
+    <string name="ai_lyrics_script_hangul">한글</string>
 </resources>

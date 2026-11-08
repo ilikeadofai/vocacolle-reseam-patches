@@ -10,6 +10,7 @@ import app.reseam.patch.enumConstant
 import app.reseam.patch.point
 import app.reseam.patch.klass
 import app.reseam.patch.method
+import app.reseam.patch.appEntry
 import app.reseam.patch.patch
 import app.reseam.patch.points
 import app.reseam.patch.settings.gate
@@ -117,6 +118,7 @@ val externalLyrics = patch("External lyrics") {
         }
         // The error class is the reason enum's outer class.
         val error = lyricsErrorReason.descriptor.substringBeforeLast('$') + ";"
+        appEntry { ExternalLyrics.init(application) }
         gate(LyricsSettings.externalLyrics) {
             // The watch info of the track that is starting: (id, title, duration, …).
             videoWatchMetadataInit.after { ExternalLyrics.prefetch(param(0), param(1), param(2)) }
