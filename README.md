@@ -29,7 +29,7 @@ a library on your phone with one-tap offline downloads.
 |---|---|---|
 | **Translate UI** | The whole app in Korean or English | On |
 | **Hide ads** | Reseam patches → Ads: launch, banner/list, audio ads, Premium pop-ups | On |
-| **My library** | Settings → My library; ☆ Favorite and ＋ Save under each song's description | On |
+| **My library** | Settings → My library; *Add to favorites* and *Save · Download…* in the player's ⋮ menu | On |
 | **Full rankings** | Rankings show up to 300 songs | On |
 | **Lyrics from other sources** | Reseam patches → Lyrics | Switch off |
 | **Translate songs, tags, and lyrics** | Reseam patches → Translation, and → Lyrics → Under each line | Switches off |
@@ -44,9 +44,9 @@ says what it sends. Turning a switch off puts that part of the app back the way 
 
 Everything here is kept on the phone, with no limit, and never changes your account.
 
-- **☆ Favorite** under a song's description adds it to the favorites.
-- **＋ Save** opens a list: **⬇ Download for offline**, your playlists (✓ where the song is), a
-  new playlist, and **Watch creator**.
+- In the player, **⋮ → Add to favorites** adds the song to the favorites.
+- **⋮ → Save · Download…** opens a list: **⬇ Download for offline**, your playlists (✓ where the
+  song is), a new playlist, and **Watch creator**.
 - **Download for offline** uses VocaColle's own cache, which the app otherwise offers only for
   whole playlists: progress shows in VocaColle's notification, the cache settings (Wi-Fi only,
   size limit) apply, and *Delete cached content* removes downloads too. You need to be logged in.
@@ -61,11 +61,12 @@ Everything here is kept on the phone, with no limit, and never changes your acco
 
 - **Translation** page: song titles everywhere, tags (common ones from a built-in list), a
   Translate button for descriptions, and notices. The service is Google Translate (no key) or an
-  OpenAI-compatible API with your key, stored encrypted on the phone.
+  OpenAI-compatible API with your key, stored encrypted on the phone. Text drawn inside VocaColle
+  by the patches follows the *Translate UI* language, not the phone's.
 - **Lyrics** page: lyrics from LRCLIB, NetEase, KuGou, or VocaDB when VocaColle has none or hit
   its limit, matched to the exact video and its length, and kept for offline songs. Under each
   line: the **reading** in romaji or Hangul, and a **translation**, in smaller text and close to
-  their line.
+  their line. *Translating…* shows under a line while its reading or translation is on its way.
 
 - **Search in Korean or English** (Translation page): type 千本桜 as *senbonzakura*,
   *thousand cherry blossoms*, or *천본앵*, or 初音ミク as *hatsune miku* or *하츠네 미쿠*. Song,

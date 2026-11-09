@@ -64,8 +64,8 @@
     <string name="full_ranking">랭킹 전체</string>
     <string name="full_ranking_summary">상위 100곡 대신 최대 300곡.</string>
     <string name="section_library">내 라이브러리</string>
-    <string name="favorite_button">곡 화면의 버튼</string>
-    <string name="favorite_button_summary">작품 소개 아래의 ☆ 즐겨찾기와 ＋ 저장(다운로드·재생목록·크리에이터)</string>
+    <string name="favorite_button">⋮ 메뉴에 라이브러리</string>
+    <string name="favorite_button_summary">플레이어 ⋮ 메뉴에 즐겨찾기에 추가와 저장 · 다운로드…(오프라인 다운로드·재생목록·크리에이터)를 추가합니다.</string>
     <string name="local_favorites">내 라이브러리 열기</string>
     <string name="local_favorites_summary">즐겨찾기·재생목록·다운로드·크리에이터·저장한 마이리스트를 이 폰에 개수 제한 없이 보관합니다. 보카코레 설정에도 있습니다.</string>
     <string name="favorite_add">☆ 즐겨찾기</string>
@@ -73,7 +73,7 @@
     <string name="favorite_added">이 기기의 즐겨찾기에 추가했습니다</string>
     <string name="favorite_removed">즐겨찾기에서 뺐습니다</string>
     <string name="favorites_title">즐겨찾기</string>
-    <string name="favorites_empty">아직 즐겨찾기가 없습니다. 작품 상세 화면의 ☆ 즐겨찾기 버튼으로 곡을 추가하세요.</string>
+    <string name="favorites_empty">아직 즐겨찾기가 없습니다. 플레이어에서 ⋮ → 즐겨찾기에 추가를 누르세요.</string>
     <string name="favorites_more">내보내기·가져오기</string>
     <string name="favorites_more_summary">내보내기는 즐겨찾기와 모든 재생목록을 텍스트로 복사하고 공유 화면을 엽니다. 가져오기는 내보낸 텍스트에서 아직 없는 곡과 재생목록을 추가합니다.</string>
     <string name="favorites_play_all">전체 재생</string>
@@ -91,7 +91,7 @@
     <string name="playlist_removed">%s에서 뺐습니다</string>
     <string name="playlist_new">새 재생목록</string>
     <string name="playlist_name">재생목록 이름</string>
-    <string name="playlist_empty">재생목록이 비어 있습니다. 작품 상세 화면의 + 재생목록 버튼으로 곡을 추가하세요.</string>
+    <string name="playlist_empty">재생목록이 비어 있습니다. 플레이어에서 ⋮ → 저장 · 다운로드…를 누르세요.</string>
     <string name="playlist_edit">이름 변경·삭제</string>
     <string name="playlist_rename">이름 변경</string>
     <string name="playlist_delete">삭제</string>
@@ -119,7 +119,7 @@
     <string name="limit_saved_creator">팔로우 한도에 도달해 대신 이 기기의 크리에이터 워치리스트에 추가했습니다</string>
     <string name="creator_unknown">사용자 %s</string>
     <string name="creators_title">크리에이터</string>
-    <string name="creators_empty">아직 크리에이터가 없습니다. 작품 상세 화면의 + 재생목록에서 워치하세요.</string>
+    <string name="creators_empty">아직 크리에이터가 없습니다. 플레이어의 ⋮ → 저장 · 다운로드…에서 워치하세요.</string>
     <string name="creator_open">프로필 열기</string>
     <string name="creators_feed">크리에이터 최신곡</string>
     <string name="creators_feed_loading">최신 업로드를 불러오는 중…</string>
@@ -175,7 +175,7 @@
     <string name="download_removed">다운로드를 삭제했습니다</string>
     <string name="download_failed">다운로드를 시작하지 못했습니다. 로그인했는지 확인하세요.</string>
     <string name="downloads_title">다운로드</string>
-    <string name="downloads_empty">아직 다운로드가 없습니다. 곡 소개 아래의 ＋ 저장에서 오프라인용 다운로드를 누르세요.</string>
+    <string name="downloads_empty">아직 다운로드가 없습니다. 플레이어에서 ⋮ → 저장 · 다운로드…를 누르세요.</string>
     <string name="downloads_item_summary">보카코레 캐시에 저장됨: 캐시 설정(Wi-Fi만, 용량 제한)을 따르며, 캐시한 콘텐츠 삭제로도 지워집니다.</string>
     <string name="page_ads">광고</string>
     <string name="page_ads_summary">시작·배너·음성 광고와 프리미엄 팝업</string>
@@ -183,4 +183,8 @@
     <string name="ai_search">한국어·영어로 검색</string>
     <string name="ai_search_summary">곡·프로듀서·가수 이름은 VocaDB에서 찾고, 그 밖의 한국어·영어 문구는 번역해 일본어로 검색합니다. 검색어가 VocaDB와 Google 번역에 전달됩니다. 입력한 검색어는 검색창과 기록에 그대로 남습니다.</string>
     <string name="search_translated">%s(으)로 검색했습니다</string>
+    <string name="lyrics_layers_loading">번역 중…</string>
+    <string name="menu_favorite_add">즐겨찾기에 추가</string>
+    <string name="menu_favorite_remove">즐겨찾기에서 빼기</string>
+    <string name="menu_save">저장 · 다운로드…</string>
 </resources>

@@ -64,8 +64,8 @@
     <string name="full_ranking">Full rankings</string>
     <string name="full_ranking_summary">Up to 300 songs instead of the top 100.</string>
     <string name="section_library">My library</string>
-    <string name="favorite_button">Buttons on the song page</string>
-    <string name="favorite_button_summary">☆ Favorite and ＋ Save (download, playlists, creator) under a work\'s description</string>
+    <string name="favorite_button">Library in the ⋮ menu</string>
+    <string name="favorite_button_summary">Adds Add to favorites and Save · Download… (offline download, playlists, creator) to the player\'s ⋮ menu.</string>
     <string name="local_favorites">Open my library</string>
     <string name="local_favorites_summary">Favorites, playlists, downloads, creators, and saved mylists, kept on this phone with no limit. Also in VocaColle\'s Settings.</string>
     <string name="favorite_add">☆ Favorite</string>
@@ -73,7 +73,7 @@
     <string name="favorite_added">Added to the favorites on this device</string>
     <string name="favorite_removed">Removed from the favorites</string>
     <string name="favorites_title">Favorites</string>
-    <string name="favorites_empty">No favorites yet. Add songs with the ☆ Favorite button on a work\'s detail screen.</string>
+    <string name="favorites_empty">No favorites yet. In the player, tap ⋮ then Add to favorites.</string>
     <string name="favorites_more">Export / import</string>
     <string name="favorites_more_summary">Export copies the favorites and every playlist as text and opens the share sheet. Import adds the songs and playlists of an exported text that aren\'t here yet.</string>
     <string name="favorites_play_all">Play all</string>
@@ -91,7 +91,7 @@
     <string name="playlist_removed">Removed from %s</string>
     <string name="playlist_new">New playlist</string>
     <string name="playlist_name">Playlist name</string>
-    <string name="playlist_empty">This playlist is empty. Add songs with the + Playlist button on a work\'s detail screen.</string>
+    <string name="playlist_empty">This playlist is empty. In the player, tap ⋮ then Save · Download….</string>
     <string name="playlist_edit">Rename / delete</string>
     <string name="playlist_rename">Rename</string>
     <string name="playlist_delete">Delete</string>
@@ -119,7 +119,7 @@
     <string name="limit_saved_creator">Follow limit reached: added to the creators you watch on this device instead</string>
     <string name="creator_unknown">User %s</string>
     <string name="creators_title">Creators</string>
-    <string name="creators_empty">No creators yet. Watch one from + Playlist on a work\'s detail screen.</string>
+    <string name="creators_empty">No creators yet. Watch one from ⋮ → Save · Download… in the player.</string>
     <string name="creator_open">Open profile</string>
     <string name="creators_feed">Latest from creators</string>
     <string name="creators_feed_loading">Loading the latest uploads…</string>
@@ -175,7 +175,7 @@
     <string name="download_removed">Download removed</string>
     <string name="download_failed">Couldn\'t start the download. Check that you\'re logged in.</string>
     <string name="downloads_title">Downloads</string>
-    <string name="downloads_empty">No downloads yet. Tap ＋ Save under a song\'s description, then Download for offline.</string>
+    <string name="downloads_empty">No downloads yet. In the player, tap ⋮ then Save · Download….</string>
     <string name="downloads_item_summary">Saved in VocaColle\'s cache: it follows the cache settings (Wi-Fi only, size limit), and Delete cached content removes it too.</string>
     <string name="page_ads">Ads</string>
     <string name="page_ads_summary">Launch, banner, and audio ads, and Premium pop-ups</string>
@@ -183,4 +183,8 @@
     <string name="ai_search">Search in Korean or English</string>
     <string name="ai_search_summary">Song, producer, and singer names are matched on VocaDB, other Korean or English phrases are translated, and the search runs in Japanese. Sends the search to VocaDB and Google Translate. What you typed stays in the search box and history.</string>
     <string name="search_translated">Searched for %s</string>
+    <string name="lyrics_layers_loading">Translating…</string>
+    <string name="menu_favorite_add">Add to favorites</string>
+    <string name="menu_favorite_remove">Remove from favorites</string>
+    <string name="menu_save">Save · Download…</string>
 </resources>

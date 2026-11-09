@@ -64,8 +64,8 @@
     <string name="full_ranking">ランキング全体</string>
     <string name="full_ranking_summary">上位100曲ではなく最大300曲。</string>
     <string name="section_library">マイライブラリ</string>
-    <string name="favorite_button">曲の画面のボタン</string>
-    <string name="favorite_button_summary">作品紹介の下の☆ お気に入りと＋ 保存（ダウンロード・プレイリスト・クリエイター）</string>
+    <string name="favorite_button">⋮ メニューにライブラリ</string>
+    <string name="favorite_button_summary">プレーヤーの⋮メニューに「お気に入りに追加」と「保存・ダウンロード…」（オフラインダウンロード・プレイリスト・クリエイター）を追加します。</string>
     <string name="local_favorites">マイライブラリを開く</string>
     <string name="local_favorites_summary">お気に入り・プレイリスト・ダウンロード・クリエイター・保存したマイリストを、この端末に件数の制限なく保存します。ボカコレの設定にもあります。</string>
     <string name="favorite_add">☆ お気に入り</string>
@@ -73,7 +73,7 @@
     <string name="favorite_added">この端末のお気に入りに追加しました</string>
     <string name="favorite_removed">お気に入りから外しました</string>
     <string name="favorites_title">お気に入り</string>
-    <string name="favorites_empty">お気に入りはまだありません。作品詳細画面の☆ お気に入りボタンで曲を追加してください。</string>
+    <string name="favorites_empty">お気に入りはまだありません。プレーヤーで⋮ →「お気に入りに追加」をタップしてください。</string>
     <string name="favorites_more">書き出し・読み込み</string>
     <string name="favorites_more_summary">書き出しはお気に入りとすべてのプレイリストをテキストとしてコピーし、共有画面を開きます。読み込みは書き出したテキストのうち、まだない曲とプレイリストを追加します。</string>
     <string name="favorites_play_all">すべて再生</string>
@@ -91,7 +91,7 @@
     <string name="playlist_removed">%sから外しました</string>
     <string name="playlist_new">新しいプレイリスト</string>
     <string name="playlist_name">プレイリスト名</string>
-    <string name="playlist_empty">このプレイリストは空です。作品詳細画面の＋ プレイリストボタンで曲を追加してください。</string>
+    <string name="playlist_empty">このプレイリストは空です。プレーヤーで⋮ →「保存・ダウンロード…」をタップしてください。</string>
     <string name="playlist_edit">名前の変更・削除</string>
     <string name="playlist_rename">名前を変更</string>
     <string name="playlist_delete">削除</string>
@@ -119,7 +119,7 @@
     <string name="limit_saved_creator">フォローの上限に達したため、代わりにこの端末のクリエイターウォッチリストに追加しました</string>
     <string name="creator_unknown">ユーザー %s</string>
     <string name="creators_title">クリエイター</string>
-    <string name="creators_empty">クリエイターはまだいません。作品詳細画面の＋ プレイリストからウォッチしてください。</string>
+    <string name="creators_empty">クリエイターはまだいません。プレーヤーの⋮ →「保存・ダウンロード…」からウォッチしてください。</string>
     <string name="creator_open">プロフィールを開く</string>
     <string name="creators_feed">クリエイターの新着</string>
     <string name="creators_feed_loading">新着の投稿を読み込み中…</string>
@@ -175,7 +175,7 @@
     <string name="download_removed">ダウンロードを削除しました</string>
     <string name="download_failed">ダウンロードを開始できませんでした。ログインしているか確認してください。</string>
     <string name="downloads_title">ダウンロード</string>
-    <string name="downloads_empty">ダウンロードはまだありません。曲の紹介の下の＋ 保存から、オフライン用にダウンロードを選んでください。</string>
+    <string name="downloads_empty">ダウンロードはまだありません。プレーヤーで⋮ →「保存・ダウンロード…」をタップしてください。</string>
     <string name="downloads_item_summary">ボカコレのキャッシュに保存：キャッシュの設定（Wi-Fiのみ、容量制限）に従い、キャッシュしたコンテンツを削除でも消えます。</string>
     <string name="page_ads">広告</string>
     <string name="page_ads_summary">起動時・バナー・音声の広告とプレミアムのポップアップ</string>
@@ -183,4 +183,8 @@
     <string name="ai_search">韓国語・英語で検索</string>
     <string name="ai_search_summary">曲・プロデューサー・歌手の名前はVocaDBで探し、それ以外の韓国語・英語の語句は翻訳して日本語で検索します。検索語がVocaDBとGoogle翻訳に渡されます。入力した検索語は検索欄と履歴にそのまま残ります。</string>
     <string name="search_translated">%sで検索しました</string>
+    <string name="lyrics_layers_loading">翻訳中…</string>
+    <string name="menu_favorite_add">お気に入りに追加</string>
+    <string name="menu_favorite_remove">お気に入りから外す</string>
+    <string name="menu_save">保存・ダウンロード…</string>
 </resources>

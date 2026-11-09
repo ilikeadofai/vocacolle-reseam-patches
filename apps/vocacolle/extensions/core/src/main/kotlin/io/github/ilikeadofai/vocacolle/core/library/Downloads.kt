@@ -8,7 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import app.reseam.runtime.Export
 import app.reseam.runtime.Reseam
-import io.github.ilikeadofai.vocacolle.settings.VocaColleStrings
+import io.github.ilikeadofai.vocacolle.core.AppStrings
 import org.json.JSONArray
 import org.json.JSONObject
 
@@ -65,17 +65,17 @@ internal fun toggleDownload(context: Context, id: String, title: String): Boolea
         if (list.any { it.id == id }) {
             uncacheSongs(listOf(id), DOWNLOADS_PLAYLIST_ID)
             save(context, list.filter { it.id != id })
-            Toast.makeText(context, VocaColleStrings.downloadRemoved, Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, AppStrings.downloadRemoved, Toast.LENGTH_SHORT).show()
             false
         } else {
             cacheSongs(listOf(id), DOWNLOADS_PLAYLIST_ID)
             save(context, listOf(Download(id, title)) + list)
-            Toast.makeText(context, VocaColleStrings.downloadStarted, Toast.LENGTH_LONG).show()
+            Toast.makeText(context, AppStrings.downloadStarted, Toast.LENGTH_LONG).show()
             true
         }
     } catch (failure: Throwable) {
         Log.w(TAG, "download toggle failed for $id", failure)
-        Toast.makeText(context, VocaColleStrings.downloadFailed, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, AppStrings.downloadFailed, Toast.LENGTH_LONG).show()
         list.any { it.id == id }
     }
 }
@@ -84,25 +84,25 @@ internal fun toggleDownload(context: Context, id: String, title: String): Boolea
 internal fun openDownloads(activity: Activity) {
     val list = downloads(activity)
     val ui = Reseam.bundle(BUNDLE).ui(activity)
-    val dialog = ui.dialog().title("${VocaColleStrings.downloadsTitle} (${list.size})")
+    val dialog = ui.dialog().title("${AppStrings.downloadsTitle} (${list.size})")
     if (list.isEmpty()) {
-        dialog.message(VocaColleStrings.downloadsEmpty)
+        dialog.message(AppStrings.downloadsEmpty)
     } else {
         dialog.choices(list.map { it.title }.toTypedArray(), -1) { index ->
             val download = list[index]
             ui.dialog()
                 .title(download.title)
-                .message(VocaColleStrings.downloadsItemSummary)
-                .action(VocaColleStrings.downloadRemove) {
+                .message(AppStrings.downloadsItemSummary)
+                .action(AppStrings.downloadRemove) {
                     toggleDownload(activity, download.id, download.title)
                     openDownloads(activity)
                 }
-                .action(VocaColleStrings.favoritesPlayFromHere) {
-                    playSongs(activity, VocaColleStrings.downloadsTitle, (list.drop(index) + list.take(index)).map { it.id to it.title })
+                .action(AppStrings.favoritesPlayFromHere) {
+                    playSongs(activity, AppStrings.downloadsTitle, (list.drop(index) + list.take(index)).map { it.id to it.title })
                 }
                 .show()
         }
-        dialog.action(VocaColleStrings.favoritesPlayAll) { playSongs(activity, VocaColleStrings.downloadsTitle, list.map { it.id to it.title }) }
+        dialog.action(AppStrings.favoritesPlayAll) { playSongs(activity, AppStrings.downloadsTitle, list.map { it.id to it.title }) }
     }
     dialog.show()
 }

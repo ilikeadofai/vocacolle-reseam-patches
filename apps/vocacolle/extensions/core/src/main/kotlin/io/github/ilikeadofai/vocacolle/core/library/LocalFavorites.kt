@@ -14,7 +14,7 @@ import android.util.Log
 import android.widget.Toast
 import app.reseam.runtime.Export
 import app.reseam.runtime.Reseam
-import io.github.ilikeadofai.vocacolle.settings.VocaColleStrings
+import io.github.ilikeadofai.vocacolle.core.AppStrings
 import org.json.JSONArray
 import org.json.JSONObject
 import java.lang.ref.WeakReference
@@ -40,7 +40,7 @@ private class Song(val id: String, val title: String, val addedAt: Long)
 
 /** A named playlist; [name] is null for the favorites. */
 private class Playlist(val name: String?, val songs: List<Song>) {
-    val label: String get() = name ?: VocaColleStrings.favoritesTitle
+    val label: String get() = name ?: AppStrings.favoritesTitle
 }
 
 @Volatile private var appContext: Context? = null
@@ -129,17 +129,17 @@ private fun changed() {
 @Export
 fun buttonLabel(detail: Any?): String {
     revision?.let { readState(it) }
-    val id = details[detail ?: return VocaColleStrings.favoriteAdd]?.get(0)
-    return if (id != null && favorites().songs.any { it.id == id }) VocaColleStrings.favoriteRemove else VocaColleStrings.favoriteAdd
+    val id = details[detail ?: return AppStrings.favoriteAdd]?.get(0)
+    return if (id != null && favorites().songs.any { it.id == id }) AppStrings.favoriteRemove else AppStrings.favoriteAdd
 }
 
 /** The playlist button's label: how many of the playlists hold the work [detail]. */
 @Export
 fun playlistLabel(detail: Any?): String {
     revision?.let { readState(it) }
-    val id = details[detail ?: return VocaColleStrings.playlistAdd]?.get(0) ?: return VocaColleStrings.playlistAdd
+    val id = details[detail ?: return AppStrings.playlistAdd]?.get(0) ?: return AppStrings.playlistAdd
     val count = playlists().count { list -> list.songs.any { it.id == id } } + if (isDownloaded(appContext, id)) 1 else 0
-    return if (count == 0) VocaColleStrings.playlistAdd else String.format(VocaColleStrings.playlistIn, count)
+    return if (count == 0) AppStrings.playlistAdd else String.format(AppStrings.playlistIn, count)
 }
 
 /** Adds the work [detail] to the favorites, or removes it if it is there. */
@@ -149,7 +149,7 @@ fun toggle(detail: Any?) {
     val id = info[0] ?: return
     val removed = toggleIn(null, id, info[1] ?: id)
     appContext?.let {
-        Toast.makeText(it, if (removed) VocaColleStrings.favoriteRemoved else VocaColleStrings.favoriteAdded, Toast.LENGTH_SHORT).show()
+        Toast.makeText(it, if (removed) AppStrings.favoriteRemoved else AppStrings.favoriteAdded, Toast.LENGTH_SHORT).show()
     }
 }
 
@@ -157,17 +157,20 @@ fun toggle(detail: Any?) {
 @Export
 fun choosePlaylists(detail: Any?) {
     val info = details[detail ?: return] ?: return
-    val id = info[0] ?: return
-    val title = info[1] ?: id
-    val creatorId = info[2]
-    val creatorName = info[3] ?: creatorId
+    chooseFor(info[0] ?: return, info[1], info[2], info[3])
+}
+
+/** The save chooser for a song: download, playlists, a new playlist, and its creator if known. */
+private fun chooseFor(id: String, songTitle: String?, creatorId: String?, ownerName: String?) {
+    val title = songTitle ?: id
+    val creatorName = ownerName ?: creatorId
     val activity = currentActivity?.get()?.takeUnless { it.isFinishing } ?: return
     val lists = playlists()
     // First the offline download, then each playlist, a new one, and the creator.
     val downloaded = isDownloaded(activity, id)
-    val labels = listOf(if (downloaded) VocaColleStrings.downloadDone else VocaColleStrings.downloadAdd) +
+    val labels = listOf(if (downloaded) AppStrings.downloadDone else AppStrings.downloadAdd) +
         lists.map { list -> (if (list.songs.any { it.id == id }) "✓ " else "") + "${list.name} (${list.songs.size})" } +
-        VocaColleStrings.playlistNew +
+        AppStrings.playlistNew +
         listOfNotNull(creatorId?.let { creatorChoiceLabel(activity, it, creatorName ?: it) })
     Reseam.bundle(BUNDLE).ui(activity).dialog()
         .title(title)
@@ -183,34 +186,76 @@ fun choosePlaylists(detail: Any?) {
                 changed()
                 Toast.makeText(
                     activity,
-                    String.format(if (watched) VocaColleStrings.creatorWatched else VocaColleStrings.creatorUnwatched, creatorName),
+                    String.format(if (watched) AppStrings.creatorWatched else AppStrings.creatorUnwatched, creatorName),
                     Toast.LENGTH_SHORT,
                 ).show()
             } else if (index < lists.size) {
                 val removed = toggleIn(lists[index].name, id, title)
                 Toast.makeText(
                     activity,
-                    String.format(if (removed) VocaColleStrings.playlistRemoved else VocaColleStrings.playlistAdded, lists[index].name),
+                    String.format(if (removed) AppStrings.playlistRemoved else AppStrings.playlistAdded, lists[index].name),
                     Toast.LENGTH_SHORT,
                 ).show()
             } else {
-                askName(activity, VocaColleStrings.playlistNew, "") { name ->
+                askName(activity, AppStrings.playlistNew, "") { name ->
                     createPlaylist(activity, name)
                     toggleIn(name, id, title)
-                    Toast.makeText(activity, String.format(VocaColleStrings.playlistAdded, name), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, String.format(AppStrings.playlistAdded, name), Toast.LENGTH_SHORT).show()
                 }
             }
         }
-        .dismissAction(VocaColleStrings.close)
+        .dismissAction(AppStrings.close)
         .show()
 }
 
-/** The clicks of the buttons: Function0s the patch makes these classes implement. */
+
+// The player's ⋮ menu -------------------------------------------------------------------------
+
+/** The song the player's ⋮ menu was opened for: id, title, creator id, creator name. */
+@Volatile private var menuSong: Array<String?>? = null
+
+/** VocaColle built the menu's request: `(mediaId, title, mediaDetailData, …)`. */
 @Export
-class FavoriteClick(@Export @JvmField val detail: Any?)
+fun menuOpened(mediaId: String?, title: String?, detail: Any?) {
+    if (mediaId == null) return
+    val info = detail?.let { details[it] }
+    menuSong = arrayOf(mediaId, title ?: info?.get(1), info?.get(2), info?.get(3))
+    rememberTitle(mediaId, title)
+}
+
+/** The menu's favorite row: "♡ Favorite" or "♥ Remove from favorites"; read while drawing it. */
+@Export
+fun menuFavoriteLabel(): String {
+    revision?.let { readState(it) }
+    val id = menuSong?.get(0) ?: return AppStrings.menuFavoriteAdd
+    return if (favorites().songs.any { it.id == id }) AppStrings.menuFavoriteRemove else AppStrings.menuFavoriteAdd
+}
 
 @Export
-class PlaylistClick(@Export @JvmField val detail: Any?)
+fun menuSaveLabel(): String = AppStrings.menuSave
+
+@Export
+fun menuToggleFavorite() {
+    val song = menuSong ?: return
+    val id = song[0] ?: return
+    val removed = toggleIn(null, id, song[1] ?: id)
+    appContext?.let {
+        Toast.makeText(it, if (removed) AppStrings.favoriteRemoved else AppStrings.favoriteAdded, Toast.LENGTH_SHORT).show()
+    }
+}
+
+@Export
+fun menuChoose() {
+    val song = menuSong ?: return
+    chooseFor(song[0] ?: return, song[1], song[2], song[3])
+}
+
+/** The clicks of the menu's rows: Function0s the patch makes these classes implement. */
+@Export
+class MenuFavoriteClick
+
+@Export
+class MenuSaveClick
 
 /** The click of the "My library" row in VocaColle's Settings. */
 @Export
@@ -218,7 +263,7 @@ class OpenLibraryClick
 
 /** The title of that row. */
 @Export
-fun libraryRowTitle(): String = VocaColleStrings.libraryRow
+fun libraryRowTitle(): String = AppStrings.libraryRow
 
 // Storage -----------------------------------------------------------------------------------
 
@@ -310,7 +355,7 @@ private fun play(activity: Activity, title: String, songs: List<Song>, start: In
         activity.startActivity(Intent(Intent.ACTION_VIEW, uri).setPackage(activity.packageName).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
     } catch (failure: Exception) {
         Log.w(TAG, "couldn't open the playlist: ${failure.javaClass.simpleName}")
-        Toast.makeText(activity, VocaColleStrings.favoritesOpenFailed, Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, AppStrings.favoritesOpenFailed, Toast.LENGTH_LONG).show()
     }
 }
 
@@ -327,12 +372,12 @@ fun open(activity: Activity?) {
     init(activity)
     val lists = listOf(favorites(activity)) + playlists(activity)
     val labels = lists.map { "${it.label} (${it.songs.size})" } + listOf(
-        "${VocaColleStrings.creatorsTitle} (${creators(activity).size})",
-        "${VocaColleStrings.savedMylistsTitle} (${savedMylists(activity).size})",
-        "${VocaColleStrings.downloadsTitle} (${downloads(activity).size})",
+        "${AppStrings.creatorsTitle} (${creators(activity).size})",
+        "${AppStrings.savedMylistsTitle} (${savedMylists(activity).size})",
+        "${AppStrings.downloadsTitle} (${downloads(activity).size})",
     )
     Reseam.bundle(BUNDLE).ui(activity).dialog()
-        .title(VocaColleStrings.localFavorites)
+        .title(AppStrings.localFavorites)
         .choices(labels.toTypedArray(), -1) { index ->
             when (index) {
                 lists.size -> openCreators(activity)
@@ -341,9 +386,9 @@ fun open(activity: Activity?) {
                 else -> openList(activity, lists[index].name)
             }
         }
-        .action(VocaColleStrings.favoritesMore) { more(activity) }
-        .action(VocaColleStrings.playlistNew) {
-            askName(activity, VocaColleStrings.playlistNew, "") { name ->
+        .action(AppStrings.favoritesMore) { more(activity) }
+        .action(AppStrings.playlistNew) {
+            askName(activity, AppStrings.playlistNew, "") { name ->
                 createPlaylist(activity, name)
                 open(activity)
             }
@@ -355,12 +400,12 @@ private fun openList(activity: Activity, name: String?) {
     val playlist = list(name, activity)
     val dialog = Reseam.bundle(BUNDLE).ui(activity).dialog().title("${playlist.label} (${playlist.songs.size})")
     if (playlist.songs.isEmpty()) {
-        dialog.message(if (name == null) VocaColleStrings.favoritesEmpty else VocaColleStrings.playlistEmpty)
+        dialog.message(if (name == null) AppStrings.favoritesEmpty else AppStrings.playlistEmpty)
     } else {
         dialog.choices(playlist.songs.map { it.title }.toTypedArray(), -1) { index -> song(activity, playlist, index) }
     }
-    if (name != null) dialog.action(VocaColleStrings.playlistEdit) { editList(activity, name) }
-    if (playlist.songs.isNotEmpty()) dialog.action(VocaColleStrings.favoritesPlayAll) { play(activity, playlist.label, playlist.songs, 0) }
+    if (name != null) dialog.action(AppStrings.playlistEdit) { editList(activity, name) }
+    if (playlist.songs.isNotEmpty()) dialog.action(AppStrings.favoritesPlayAll) { play(activity, playlist.label, playlist.songs, 0) }
     dialog.show()
 }
 
@@ -369,34 +414,34 @@ private fun song(activity: Activity, playlist: Playlist, index: Int) {
     Reseam.bundle(BUNDLE).ui(activity).dialog()
         .title(song.title)
         .message(song.id)
-        .action(VocaColleStrings.remove) {
+        .action(AppStrings.remove) {
             saveSongs(playlist.name, list(playlist.name, activity).songs.filter { it.id != song.id }, activity)
             openList(activity, playlist.name)
         }
-        .action(VocaColleStrings.favoritesPlayFromHere) { play(activity, playlist.label, playlist.songs, index) }
+        .action(AppStrings.favoritesPlayFromHere) { play(activity, playlist.label, playlist.songs, index) }
         .show()
 }
 
 private fun editList(activity: Activity, name: String) {
     Reseam.bundle(BUNDLE).ui(activity).dialog()
         .title(name)
-        .action(VocaColleStrings.playlistDelete) {
+        .action(AppStrings.playlistDelete) {
             Reseam.bundle(BUNDLE).ui(activity).dialog()
                 .title(name)
-                .message(VocaColleStrings.playlistDeleteConfirm)
-                .dismissAction(VocaColleStrings.cancel)
-                .action(VocaColleStrings.playlistDelete) {
+                .message(AppStrings.playlistDeleteConfirm)
+                .dismissAction(AppStrings.cancel)
+                .action(AppStrings.playlistDelete) {
                     savePlaylists(playlists(activity).filter { it.name != name }, activity)
                     changed()
                     open(activity)
                 }
                 .show()
         }
-        .action(VocaColleStrings.playlistRename) {
-            askName(activity, VocaColleStrings.playlistRename, name) { renamed ->
+        .action(AppStrings.playlistRename) {
+            askName(activity, AppStrings.playlistRename, name) { renamed ->
                 val lists = playlists(activity)
                 if (lists.any { it.name == renamed }) {
-                    Toast.makeText(activity, VocaColleStrings.playlistExists, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, AppStrings.playlistExists, Toast.LENGTH_SHORT).show()
                 } else {
                     savePlaylists(lists.map { if (it.name == name) Playlist(renamed, it.songs) else it }, activity)
                     changed()
@@ -409,23 +454,23 @@ private fun editList(activity: Activity, name: String) {
 
 private fun askName(activity: Activity, title: String, current: String, then: (String) -> Unit) {
     val ui = Reseam.bundle(BUNDLE).ui(activity)
-    val field = ui.textField(VocaColleStrings.playlistName)
+    val field = ui.textField(AppStrings.playlistName)
     field.field.setText(current)
     ui.dialog()
         .title(title)
         .view(field)
-        .dismissAction(VocaColleStrings.cancel)
-        .action(VocaColleStrings.save) { cleanName(field.text)?.let(then) }
+        .dismissAction(AppStrings.cancel)
+        .action(AppStrings.save) { cleanName(field.text)?.let(then) }
         .show()
 }
 
 /** Export, import. */
 private fun more(activity: Activity) {
     Reseam.bundle(BUNDLE).ui(activity).dialog()
-        .title(VocaColleStrings.favoritesMore)
-        .message(VocaColleStrings.favoritesMoreSummary)
-        .action(VocaColleStrings.favoritesImport) { import(activity) }
-        .action(VocaColleStrings.favoritesExport) { export(activity) }
+        .title(AppStrings.favoritesMore)
+        .message(AppStrings.favoritesMoreSummary)
+        .action(AppStrings.favoritesImport) { import(activity) }
+        .action(AppStrings.favoritesExport) { export(activity) }
         .show()
 }
 
@@ -435,13 +480,13 @@ private fun export(activity: Activity) {
     val text = JSONObject().put("format", EXPORT_FORMAT).put("version", 2)
         .put("favorites", toJson(favorites(activity).songs)).put("playlists", lists).toString(2)
     val clipboard = activity.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
-    clipboard?.setPrimaryClip(ClipData.newPlainText(VocaColleStrings.favoritesTitle, text))
+    clipboard?.setPrimaryClip(ClipData.newPlainText(AppStrings.favoritesTitle, text))
     try {
         activity.startActivity(
-            Intent.createChooser(Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, text), VocaColleStrings.favoritesExport),
+            Intent.createChooser(Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, text), AppStrings.favoritesExport),
         )
     } catch (_: Exception) {
-        Toast.makeText(activity, VocaColleStrings.favoritesCopied, Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, AppStrings.favoritesCopied, Toast.LENGTH_SHORT).show()
     }
 }
 
@@ -454,12 +499,12 @@ private fun merge(current: List<Song>, incoming: List<Song>): Pair<List<Song>, I
 
 private fun import(activity: Activity) {
     val ui = Reseam.bundle(BUNDLE).ui(activity)
-    val field = ui.textField(VocaColleStrings.favoritesImportHint)
+    val field = ui.textField(AppStrings.favoritesImportHint)
     ui.dialog()
-        .title(VocaColleStrings.favoritesImport)
+        .title(AppStrings.favoritesImport)
         .view(field)
-        .dismissAction(VocaColleStrings.cancel)
-        .action(VocaColleStrings.favoritesImport) {
+        .dismissAction(AppStrings.cancel)
+        .action(AppStrings.favoritesImport) {
             var added = 0
             val ok = try {
                 val text = field.text.trim()
@@ -494,10 +539,10 @@ private fun import(activity: Activity) {
                 false
             }
             if (!ok) {
-                Toast.makeText(activity, VocaColleStrings.favoritesImportFailed, Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, AppStrings.favoritesImportFailed, Toast.LENGTH_LONG).show()
             } else {
                 changed()
-                Toast.makeText(activity, String.format(VocaColleStrings.favoritesImported, added), Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, String.format(AppStrings.favoritesImported, added), Toast.LENGTH_SHORT).show()
                 open(activity)
             }
         }

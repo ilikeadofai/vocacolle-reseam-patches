@@ -19,7 +19,7 @@ import app.reseam.runtime.Reseam
 import io.github.ilikeadofai.vocacolle.core.language as uiLanguage
 import io.github.ilikeadofai.vocacolle.core.hasVocaDbTitle
 import io.github.ilikeadofai.vocacolle.settings.AiSettings
-import io.github.ilikeadofai.vocacolle.settings.VocaColleStrings
+import io.github.ilikeadofai.vocacolle.core.AppStrings
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
@@ -341,6 +341,7 @@ fun shownDescription(original: String?): String? {
 @Export
 fun updateDescriptionView(view: Any?) {
     val textView = view as? android.widget.TextView ?: return
+    descriptionView = java.lang.ref.WeakReference(textView)
     val shown = readState(shownTranslation) as? Array<*>
     val original = lastDescription
     val wanted = if (shown != null && shown.getOrNull(0) == original) shown.getOrNull(1) as? String else null
@@ -358,7 +359,15 @@ private const val SHOWN_TAG = 0x0352_5E5A
 @Export
 fun translateLabel(): String {
     val shown = readState(shownTranslation) as? Array<*>
-    return if (shown != null && shown.getOrNull(0) == lastDescription) VocaColleStrings.showOriginal else VocaColleStrings.translate
+    return if (shown != null && shown.getOrNull(0) == lastDescription) AppStrings.showOriginal else AppStrings.translate
+}
+
+/** The description's TextView, last seen by [updateDescriptionView]. */
+@Volatile private var descriptionView: java.lang.ref.WeakReference<android.widget.TextView>? = null
+
+/** Puts the shown text in the description's view now, instead of on its next layout. */
+private fun refreshDescriptionView() {
+    descriptionView?.get()?.let { updateDescriptionView(it) }
 }
 
 /**
@@ -371,14 +380,15 @@ fun showDescriptionTranslation() {
     val shown = readState(shownTranslation) as? Array<*>
     if (shown != null && shown.getOrNull(0) == description) {
         writeState(shownTranslation, null)
+        refreshDescriptionView()
         return
     }
     val activity = currentActivity?.get()
     if (config() == null) {
-        activity?.let { Toast.makeText(it, VocaColleStrings.translationNotSetUp, Toast.LENGTH_SHORT).show() }
+        activity?.let { Toast.makeText(it, AppStrings.translationNotSetUp, Toast.LENGTH_SHORT).show() }
         return
     }
-    activity?.let { Toast.makeText(it, VocaColleStrings.translating, Toast.LENGTH_SHORT).show() }
+    activity?.let { Toast.makeText(it, AppStrings.translating, Toast.LENGTH_SHORT).show() }
     Thread({
         val translated = try {
             translatePieces(description, wait = true)
@@ -387,9 +397,10 @@ fun showDescriptionTranslation() {
         }
         mainHandler.post {
             if (translated == description) {
-                activity?.let { Toast.makeText(it, VocaColleStrings.translationFailed, Toast.LENGTH_LONG).show() }
+                activity?.let { Toast.makeText(it, AppStrings.translationFailed, Toast.LENGTH_LONG).show() }
             } else if (lastDescription == description) {
                 writeState(shownTranslation, arrayOf(description, translated))
+                refreshDescriptionView()
             }
         }
     }, "$TAG-description").apply { isDaemon = true }.start()
@@ -628,22 +639,22 @@ fun editApiKey(activity: Activity?) {
     if (activity == null) return
     appContext = appContext ?: activity.applicationContext
     val ui = Reseam.bundle(BUNDLE).ui(activity)
-    val field = ui.textField(VocaColleStrings.aiApiKeyHint)
+    val field = ui.textField(AppStrings.aiApiKeyHint)
     field.field.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
     ui.dialog()
-        .title(VocaColleStrings.aiApiKey)
-        .message(VocaColleStrings.aiApiKeySummary)
+        .title(AppStrings.aiApiKey)
+        .message(AppStrings.aiApiKeySummary)
         .view(field)
-        .dismissAction(VocaColleStrings.cancel)
-        .action(VocaColleStrings.remove) {
+        .dismissAction(AppStrings.cancel)
+        .action(AppStrings.remove) {
             writeApiKey(activity, null)
-            Toast.makeText(activity, VocaColleStrings.aiApiKeyCleared, Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, AppStrings.aiApiKeyCleared, Toast.LENGTH_SHORT).show()
         }
-        .action(VocaColleStrings.save) {
+        .action(AppStrings.save) {
             val value = field.text.trim()
             if (value.isNotEmpty()) {
                 writeApiKey(activity, value)
-                Toast.makeText(activity, VocaColleStrings.aiApiKeySaved, Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, AppStrings.aiApiKeySaved, Toast.LENGTH_SHORT).show()
             }
         }
         .show()
@@ -656,3 +667,10 @@ internal fun clearTranslationCache(context: Context): Long {
 }
 
 internal fun translationContext(): Context? = appContext
+
+/** The Translate button's inset, in dp: the description's own. */
+@Export
+fun buttonInset(): Float = 20f
+
+@Export
+fun noInset(): Float = 0f

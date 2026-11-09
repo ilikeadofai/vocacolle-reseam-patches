@@ -89,8 +89,8 @@ internal val descriptionText = mediaDetailScreen.points("descriptionText") {
 }
 
 /**
- * The update block of `DetailDescriptionText`, an AndroidView around a TextView whose text is set
- * once, by its factory: `(…, context, …, view) -> Unit`, run on every change the block reads.
+ * `DetailDescriptionText`'s layout callback: `(viewRef, …, context, …, coordinates) -> Unit`. The
+ * TextView, whose text its factory sets once, is in `viewRef`, a Kotlin `Ref.ObjectRef`.
  */
 private val descriptionViewUpdate = method("detailDescriptionText.update") {
     calls { name("setMovementMethod") }
@@ -292,6 +292,16 @@ internal fun PatchRuntime.buttonClick(): Pair<String, app.reseam.patch.dex.Metho
 private fun PatchRuntime.addTranslateButton() {
     val description = descriptionText.single()
     val button = appButton
+    // The description's own inset: `padding(modifier, horizontal = 20.dp)`, built just before it.
+    val padding = description.previous { invokeStatic { paramCount(5) } }.callee("Modifier.padding")
+    check(padding.parameterTypes.drop(1).take(3) == listOf(Type.Float, Type.Float, Type.Int) && padding.returnType == padding.parameterTypes[0]) {
+        "the description is no longer padded with padding(horizontal, vertical)"
+    }
+    val modifierCompanion = fieldTarget("Modifier.Companion") {
+        val modifier = bytecode.findClass(padding.returnType) ?: error("no Modifier")
+        modifier.staticFields.singleOrNull { it.fieldType.startsWith(padding.returnType.dropLast(1) + "$") }?.ref
+            ?: error("Modifier has no companion")
+    }
     val (clickType, invoke) = buttonClick()
     TranslateDescriptionClick.target.classDef.addInterface(clickType)
     TranslateDescriptionClick.target.addMethod(invoke.name, invoke.proto) {
@@ -300,7 +310,8 @@ private fun PatchRuntime.addTranslateButton() {
     }
     implementComposeState(TitleTranslator.newState, TitleTranslator.readState, TitleTranslator.writeState)
     gate(AiSettings.aiDescriptions) {
-        descriptionViewUpdate.before { TitleTranslator.updateDescriptionView(param(8)) }
+        // The view is in the Ref the factory filled (param 0); param 8 is the layout coordinates.
+        descriptionViewUpdate.before { TitleTranslator.updateDescriptionView(param(0).fieldOfType("Ljava/lang/Object;")) }
         // Reading the state while drawing makes the screen redraw when the translation arrives.
         description.captureArgumentAs("text", 1).before {
             capture("text").assign(TitleTranslator.shownDescription(capture("text")))
@@ -308,9 +319,10 @@ private fun PatchRuntime.addTranslateButton() {
         description.captureArgumentAs("composer", 7).after {
             call(
                 button,
-                nullObject, newInstance(TranslateDescriptionClick.descriptor), bool(true), long(BUTTON_COLOR), long(0),
+                call(padding, staticField(modifierCompanion), TitleTranslator.buttonInset(), TitleTranslator.noInset(), int(2), nullObject),
+                newInstance(TranslateDescriptionClick.descriptor), bool(true), long(BUTTON_COLOR), long(0),
                 nullObject, nullObject, TitleTranslator.translateLabel(), nullObject, nullObject,
-                capture("composer"), int(0), int(BUTTON_DEFAULTS),
+                capture("composer"), int(0), int(BUTTON_DEFAULTS and 1.inv()),
             )
         }
     }

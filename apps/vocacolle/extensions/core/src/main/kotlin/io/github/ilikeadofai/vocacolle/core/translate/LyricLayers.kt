@@ -4,6 +4,7 @@ package io.github.ilikeadofai.vocacolle.core.translate
 
 import android.util.Log
 import app.reseam.runtime.Export
+import io.github.ilikeadofai.vocacolle.core.AppStrings
 import io.github.ilikeadofai.vocacolle.settings.AiSettings
 import org.json.JSONArray
 import java.net.URLEncoder
@@ -99,15 +100,18 @@ fun lines(lines: List<String>?): List<String>? {
         }
         val reading = if (romanize) memory[romajiKey(source)] else null
         val translation = config?.let { memory[cacheKey(it, source)] }
+        if ((romanize && reading == null) || (config != null && translation == null)) want(source, config, romanize)
+        // A line whose layers are on their way shows that, until they arrive or fail.
+        val pending = source in queued
         val layers = listOfNotNull(
             reading?.let { if (hangul) romajiToHangul(it, source) else it },
             translation?.takeIf { it != source },
+            if (pending) AppStrings.lyricsLayersLoading else null,
         )
         // Marked for the row: the line keeps its size with a small gap under it, its layers are
         // drawn smaller and close together, and the last one keeps the app's gap to the next line.
         shown += if (layers.isEmpty()) line else MARK_LINE + line
         layers.forEachIndexed { index, layer -> shown += (if (index == layers.lastIndex) MARK_LAST else MARK_LAYER) + layer }
-        if ((romanize && reading == null) || (config != null && translation == null)) want(source, config, romanize)
     }
     return shown
 }

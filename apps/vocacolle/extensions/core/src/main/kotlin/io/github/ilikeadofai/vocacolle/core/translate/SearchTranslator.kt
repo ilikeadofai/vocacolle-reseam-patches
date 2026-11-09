@@ -7,7 +7,7 @@ import android.util.Log
 import android.widget.Toast
 import app.reseam.runtime.Export
 import io.github.ilikeadofai.vocacolle.settings.AiSettings
-import io.github.ilikeadofai.vocacolle.settings.VocaColleStrings
+import io.github.ilikeadofai.vocacolle.core.AppStrings
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
@@ -134,7 +134,7 @@ fun searchKeyword(keyword: String?): String? {
         announced = query
         val context = translationContext() ?: return japanese
         mainHandler.post {
-            Toast.makeText(context, String.format(VocaColleStrings.searchTranslated, japanese), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, String.format(AppStrings.searchTranslated, japanese), Toast.LENGTH_SHORT).show()
         }
     }
     return japanese

@@ -11,7 +11,7 @@ import android.os.Build
 import android.widget.Toast
 import app.reseam.runtime.Export
 import app.reseam.runtime.Reseam
-import io.github.ilikeadofai.vocacolle.settings.VocaColleStrings
+import io.github.ilikeadofai.vocacolle.core.AppStrings
 import java.net.HttpURLConnection
 import java.net.URL
 import java.security.MessageDigest
@@ -56,10 +56,10 @@ fun recordGuestError(type: Any?) {
 @Export
 fun recordAudio(highQuality: Any?, using: Boolean, exists: Boolean) {
     lastAudio = when {
-        highQuality != null && using -> VocaColleStrings.diagAudioUsing
-        highQuality != null -> VocaColleStrings.diagAudioOffered
-        exists -> VocaColleStrings.diagAudioNotForAccount
-        else -> VocaColleStrings.diagAudioNone
+        highQuality != null && using -> AppStrings.diagAudioUsing
+        highQuality != null -> AppStrings.diagAudioOffered
+        exists -> AppStrings.diagAudioNotForAccount
+        else -> AppStrings.diagAudioNone
     }
 }
 
@@ -81,7 +81,7 @@ private fun signers(context: Context): List<String> = try {
 private fun playServices(context: Context): String = try {
     context.packageManager.getPackageInfo("com.google.android.gms", 0).versionName ?: "?"
 } catch (_: PackageManager.NameNotFoundException) {
-    VocaColleStrings.diagNotInstalled
+    AppStrings.diagNotInstalled
 }
 
 /** The device clock minus the server's, in seconds, from the `Date` header; null when unreachable. */
@@ -110,40 +110,40 @@ private fun time(at: Long) = DateFormat.getDateTimeInstance(DateFormat.SHORT, Da
 @Export
 fun openDiagnostics(activity: Activity?) {
     if (activity == null) return
-    Toast.makeText(activity, VocaColleStrings.diagChecking, Toast.LENGTH_SHORT).show()
+    Toast.makeText(activity, AppStrings.diagChecking, Toast.LENGTH_SHORT).show()
     Thread({
         val signers = signers(activity)
         val original = signers.any { it in ORIGINAL_SIGNERS }
         val offset = clockOffset()
         val lines = buildList {
-            add(VocaColleStrings.diagSignature + ": " + if (original) VocaColleStrings.diagSignatureOriginal else VocaColleStrings.diagSignatureResigned)
+            add(AppStrings.diagSignature + ": " + if (original) AppStrings.diagSignatureOriginal else AppStrings.diagSignatureResigned)
             signers.forEach { add("  SHA-256 ${it.take(16)}…") }
-            add(VocaColleStrings.diagPlayServices + ": " + playServices(activity))
+            add(AppStrings.diagPlayServices + ": " + playServices(activity))
             add(
-                VocaColleStrings.diagClock + ": " + when {
-                    offset == null -> VocaColleStrings.diagUnreachable
-                    Math.abs(offset) <= 60 -> String.format(VocaColleStrings.diagClockOk, offset)
-                    else -> String.format(VocaColleStrings.diagClockOff, offset)
+                AppStrings.diagClock + ": " + when {
+                    offset == null -> AppStrings.diagUnreachable
+                    Math.abs(offset) <= 60 -> String.format(AppStrings.diagClockOk, offset)
+                    else -> String.format(AppStrings.diagClockOff, offset)
                 },
             )
-            add(VocaColleStrings.diagLastLogin + ": " + (lastLoginError?.let { "${it.second} (${time(it.first)})" } ?: VocaColleStrings.diagNone))
-            add(VocaColleStrings.diagLastGuest + ": " + (lastGuestError?.let { "${it.second} (${time(it.first)})" } ?: VocaColleStrings.diagNone))
-            add(VocaColleStrings.diagAudio + ": " + (lastAudio ?: VocaColleStrings.diagNone))
+            add(AppStrings.diagLastLogin + ": " + (lastLoginError?.let { "${it.second} (${time(it.first)})" } ?: AppStrings.diagNone))
+            add(AppStrings.diagLastGuest + ": " + (lastGuestError?.let { "${it.second} (${time(it.first)})" } ?: AppStrings.diagNone))
+            add(AppStrings.diagAudio + ": " + (lastAudio ?: AppStrings.diagNone))
             add("")
-            add(if (original) VocaColleStrings.diagAdviceOriginal else VocaColleStrings.diagAdviceResigned)
-            if (offset != null && Math.abs(offset) > 60) add(VocaColleStrings.diagAdviceClock)
+            add(if (original) AppStrings.diagAdviceOriginal else AppStrings.diagAdviceResigned)
+            if (offset != null && Math.abs(offset) > 60) add(AppStrings.diagAdviceClock)
         }
         val report = lines.joinToString("\n")
         activity.runOnUiThread {
             if (activity.isFinishing) return@runOnUiThread
             Reseam.bundle(BUNDLE).ui(activity).dialog()
-                .title(VocaColleStrings.diagnostics)
+                .title(AppStrings.diagnostics)
                 .message(report)
-                .dismissAction(VocaColleStrings.close)
-                .action(VocaColleStrings.diagCopy) {
+                .dismissAction(AppStrings.close)
+                .action(AppStrings.diagCopy) {
                     val clipboard = activity.getSystemService(Context.CLIPBOARD_SERVICE) as? ClipboardManager
-                    clipboard?.setPrimaryClip(ClipData.newPlainText(VocaColleStrings.diagnostics, report))
-                    Toast.makeText(activity, VocaColleStrings.favoritesCopied, Toast.LENGTH_SHORT).show()
+                    clipboard?.setPrimaryClip(ClipData.newPlainText(AppStrings.diagnostics, report))
+                    Toast.makeText(activity, AppStrings.favoritesCopied, Toast.LENGTH_SHORT).show()
                 }
                 .show()
         }

@@ -13,7 +13,7 @@ import android.widget.Toast
 import app.reseam.runtime.Export
 import app.reseam.runtime.Reseam
 import io.github.ilikeadofai.vocacolle.settings.LibrarySettings
-import io.github.ilikeadofai.vocacolle.settings.VocaColleStrings
+import io.github.ilikeadofai.vocacolle.core.AppStrings
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
@@ -182,26 +182,26 @@ fun failed(error: Any?) {
     val message = when (kind) {
         "like" -> if (code in LIKE_LIMITS && VIDEO_ID.matches(id)) {
             addToList(null, id, titleOf(id))
-            VocaColleStrings.limitSavedFavorite
+            AppStrings.limitSavedFavorite
         } else {
             null
         }
         "mylist" -> if (code in MYLIST_LIMITS && VIDEO_ID.matches(id)) {
-            val name = mylistNames[extra] ?: String.format(VocaColleStrings.limitMylistName, extra)
+            val name = mylistNames[extra] ?: String.format(AppStrings.limitMylistName, extra)
             addToList(name, id, titleOf(id))
-            String.format(VocaColleStrings.limitSavedPlaylist, name)
+            String.format(AppStrings.limitSavedPlaylist, name)
         } else {
             null
         }
         "followMylist" -> if (code in FOLLOW_MYLIST_LIMITS) {
-            addEntry(context, KEY_MYLISTS, id, mylistNames[id] ?: String.format(VocaColleStrings.limitMylistName, id))
-            VocaColleStrings.limitSavedMylist
+            addEntry(context, KEY_MYLISTS, id, mylistNames[id] ?: String.format(AppStrings.limitMylistName, id))
+            AppStrings.limitSavedMylist
         } else {
             null
         }
         "followUser" -> if (code in FOLLOW_USER_LIMITS) {
-            addEntry(context, KEY_CREATORS, id, creatorNames[id] ?: String.format(VocaColleStrings.creatorUnknown, id))
-            VocaColleStrings.limitSavedCreator
+            addEntry(context, KEY_CREATORS, id, creatorNames[id] ?: String.format(AppStrings.creatorUnknown, id))
+            AppStrings.limitSavedCreator
         } else {
             null
         }
@@ -221,31 +221,31 @@ private fun openUri(activity: Activity, uri: Uri) {
         activity.startActivity(Intent(Intent.ACTION_VIEW, uri).setPackage(activity.packageName).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
     } catch (failure: Exception) {
         Log.w(TAG, "couldn't open $uri: ${failure.javaClass.simpleName}")
-        Toast.makeText(activity, VocaColleStrings.favoritesOpenFailed, Toast.LENGTH_LONG).show()
+        Toast.makeText(activity, AppStrings.favoritesOpenFailed, Toast.LENGTH_LONG).show()
     }
 }
 
 internal fun openCreators(activity: Activity) {
     val list = creators(activity)
     val ui = Reseam.bundle(BUNDLE).ui(activity)
-    val dialog = ui.dialog().title("${VocaColleStrings.creatorsTitle} (${list.size})")
+    val dialog = ui.dialog().title("${AppStrings.creatorsTitle} (${list.size})")
     if (list.isEmpty()) {
-        dialog.message(VocaColleStrings.creatorsEmpty)
+        dialog.message(AppStrings.creatorsEmpty)
     } else {
         dialog.choices(list.map { it.name }.toTypedArray(), -1) { index ->
             val creator = list[index]
             ui.dialog()
                 .title(creator.name)
-                .action(VocaColleStrings.remove) {
+                .action(AppStrings.remove) {
                     saveEntries(activity, KEY_CREATORS, creators(activity).filter { it.id != creator.id })
                     openCreators(activity)
                 }
-                .action(VocaColleStrings.creatorOpen) {
+                .action(AppStrings.creatorOpen) {
                     openUri(activity, Uri.parse("nicobox://user?uid=${creator.id}"))
                 }
                 .show()
         }
-        dialog.action(VocaColleStrings.creatorsFeed) { playFeed(activity, list) }
+        dialog.action(AppStrings.creatorsFeed) { playFeed(activity, list) }
     }
     dialog.show()
 }
@@ -253,19 +253,19 @@ internal fun openCreators(activity: Activity) {
 internal fun openSavedMylists(activity: Activity) {
     val list = savedMylists(activity)
     val ui = Reseam.bundle(BUNDLE).ui(activity)
-    val dialog = ui.dialog().title("${VocaColleStrings.savedMylistsTitle} (${list.size})")
+    val dialog = ui.dialog().title("${AppStrings.savedMylistsTitle} (${list.size})")
     if (list.isEmpty()) {
-        dialog.message(VocaColleStrings.savedMylistsEmpty)
+        dialog.message(AppStrings.savedMylistsEmpty)
     } else {
         dialog.choices(list.map { it.name }.toTypedArray(), -1) { index ->
             val mylist = list[index]
             ui.dialog()
                 .title(mylist.name)
-                .action(VocaColleStrings.remove) {
+                .action(AppStrings.remove) {
                     saveEntries(activity, KEY_MYLISTS, savedMylists(activity).filter { it.id != mylist.id })
                     openSavedMylists(activity)
                 }
-                .action(VocaColleStrings.savedMylistOpen) {
+                .action(AppStrings.savedMylistOpen) {
                     openUri(activity, Uri.parse("nicobox://mylistDetail?mylistId=${mylist.id}"))
                 }
                 .show()
@@ -315,7 +315,7 @@ private fun uploads(userId: String): List<Upload> {
 }
 
 private fun playFeed(activity: Activity, list: List<Entry>) {
-    Toast.makeText(activity, VocaColleStrings.creatorsFeedLoading, Toast.LENGTH_SHORT).show()
+    Toast.makeText(activity, AppStrings.creatorsFeedLoading, Toast.LENGTH_SHORT).show()
     Thread({
         var failures = 0
         val all = list.take(FEED_MAX_CREATORS).flatMap { creator ->
@@ -332,9 +332,9 @@ private fun playFeed(activity: Activity, list: List<Entry>) {
         newest.forEach { rememberTitle(it.id, it.title) }
         activity.runOnUiThread {
             if (newest.isEmpty()) {
-                Toast.makeText(activity, VocaColleStrings.creatorsFeedFailed, Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, AppStrings.creatorsFeedFailed, Toast.LENGTH_LONG).show()
             } else {
-                playSongs(activity, VocaColleStrings.creatorsFeed, newest.map { it.id to it.title })
+                playSongs(activity, AppStrings.creatorsFeed, newest.map { it.id to it.title })
             }
         }
         if (failures > 0) Log.i(TAG, "feed: $failures of ${list.size} creators failed")
@@ -343,4 +343,4 @@ private fun playFeed(activity: Activity, list: List<Entry>) {
 
 /** The playlist chooser's row for watching the work's creator. */
 internal fun creatorChoiceLabel(context: Context?, userId: String, name: String): String =
-    (if (watching(context, userId)) "✓ " else "") + String.format(VocaColleStrings.creatorWatch, name)
+    (if (watching(context, userId)) "✓ " else "") + String.format(AppStrings.creatorWatch, name)
