@@ -10,6 +10,7 @@ import app.reseam.patch.Type
 import app.reseam.patch.after
 import app.reseam.patch.before
 import app.reseam.patch.classTarget
+import app.reseam.patch.field
 import app.reseam.patch.fieldOfType
 import app.reseam.patch.fieldTarget
 import app.reseam.patch.klass
@@ -184,7 +185,22 @@ val adControls = patch("Hide ads") {
         // that hand back a source type. Returning early skipped that setup and left the player
         // stuck showing an ad that never loaded. A suspended call returns the coroutine marker
         // instead, which the type check leaves alone.
+        // `ListeningTimeRecorder.isOverCoolingTime()`: whether enough has been listened to since
+        // the last ad for the next one to be due. The player screen reads it on its own to expect
+        // an ad (hiding Next, refusing lyrics and the queue); left alone, it stays "due" forever
+        // once no ad plays, so it answers "not due" too.
+        val coolingTime = audioAdSourceType.points("listeningTimeRecorderCalls") {
+            invokeVirtual { paramCount(1); returns(Type.Object) }
+        }.all.map { it.callee("listeningTimeRecorder call") }.filter { '$' !in it.owner }.distinctBy { it.descriptor }
+            .singleOrNull() ?: error("the ad source no longer asks ListeningTimeRecorder whether an ad is due")
+        check(bytecode.findClass(coolingTime.owner)?.sourceFile == "ListeningTimeRecorder.kt") {
+            "${coolingTime.owner} is not ListeningTimeRecorder"
+        }
+        val booleanFalse = field("java.lang.Boolean", "FALSE", "Ljava/lang/Boolean;")
         gate(AdSettings.skipAudioAds) {
+            coolingTime.after {
+                whenInstanceOf(result, "Ljava/lang/Boolean;") { returnValue(staticField(booleanFalse)) }
+            }
             audioAdSourceType.after {
                 whenInstanceOf(result, audioAdSourceTypeBase.descriptor) {
                     returnValue(staticField(noAudioAd))
