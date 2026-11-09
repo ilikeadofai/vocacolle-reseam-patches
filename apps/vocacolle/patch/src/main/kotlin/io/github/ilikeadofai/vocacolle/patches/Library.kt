@@ -15,9 +15,11 @@ import app.reseam.patch.points
 import app.reseam.patch.settings.gate
 import app.reseam.patch.settings.onAction
 import app.reseam.patch.settings.section
+import io.github.ilikeadofai.vocacolle.core.library.bindings.Downloads
 import io.github.ilikeadofai.vocacolle.core.library.bindings.FavoriteClick
 import io.github.ilikeadofai.vocacolle.core.library.bindings.LocalFavorites
 import io.github.ilikeadofai.vocacolle.core.library.bindings.LocalLibrary
+import io.github.ilikeadofai.vocacolle.core.library.bindings.OpenLibraryClick
 import io.github.ilikeadofai.vocacolle.core.library.bindings.PlaylistClick
 import io.github.ilikeadofai.vocacolle.settings.LibrarySettings
 import io.github.ilikeadofai.vocacolle.settings.VocaColleStrings
@@ -35,6 +37,22 @@ private val followAddErrorType = klass("FollowAddErrorType") {
 private val followVerb = klass("FollowRequestHeader.Method") {
     sourceFile("FollowRequestHeader.kt")
     enumConstants("POST", "DELETE")
+}
+
+/** VocaColle's cache service: `cache(mediaIds, playlistId)`, what a playlist's cache switch calls. */
+private val mediaCacheAdd = method("mediaCacheItemService.cache") {
+    custom {
+        classDef.sourceFile == "MediaCacheItemService.kt" && returnType == Type.Void &&
+            parameterTypes == listOf("Ljava/util/List;", Type.Long)
+    }
+}
+
+/** `removeCache(mediaIds, playlistId, beforeRemove)`, with an optional callback. */
+private val mediaCacheRemove = method("mediaCacheItemService.removeCache") {
+    custom {
+        classDef.sourceFile == "MediaCacheItemService.kt" && returnType == Type.Void && parameterTypes.size == 3 &&
+            parameterTypes[0] == "Ljava/util/List;" && parameterTypes[1] == Type.Long
+    }
 }
 
 /** `POST /v1/users/me/likes/items`: (session, videoId, isShortsPlayer). */
@@ -75,13 +93,12 @@ private fun PatchRuntime.keepOnLimit(label: String, request: MethodTarget, excep
 }
 
 @Suppress("unused")
-val localFavorites = patch("Local favorites") {
+val localFavorites = patch("My library") {
     description(
         """
-        Adds a library kept on this device only, with no limit: favorites, playlists, watched
-        creators, and saved mylists, with ☆ Favorite and + Playlist buttons on a work's detail
-        screen. When the server refuses a like, mylist item, or follow for the account's limit,
-        the item is kept there instead. The account's likes, mylists, and follows don't change.
+        Adds favorites, playlists, one-tap offline downloads, watched creators, and saved mylists on
+        this phone, with buttons on the song page and a row in VocaColle's Settings. Keeps what your
+        account's limits refuse.
         """,
     )
     compatibleWith(VOCACOLLE)
@@ -93,6 +110,18 @@ val localFavorites = patch("Local favorites") {
     execute {
         appEntry { LocalFavorites.init(application) }
         onAction(LibrarySettings.localFavorites) { LocalFavorites.open(activity) }
+        // The library from VocaColle's own Settings list too, under "About VocaColle".
+        addAppSettingsRow(OpenLibraryClick, { LocalFavorites.libraryRowTitle() }) { LocalFavorites.openFromApp() }
+        // Offline downloads go through the app's own cache, as a playlist's cache switch does.
+        check(mediaCacheAdd.owner == mediaCacheRemove.owner) { "the cache service split in two" }
+        Downloads.cacheSongs.implement {
+            newInstance(mediaCacheAdd.owner, "()V").call(mediaCacheAdd, param(0), param(1))
+            returnVoid()
+        }
+        Downloads.uncacheSongs.implement {
+            newInstance(mediaCacheRemove.owner, "()V").call(mediaCacheRemove, param(0), param(1), nullObject)
+            returnVoid()
+        }
         // Each MediaDetailData, with its id, title, and owner, for the buttons drawn from it.
         mediaDetailDataInit.after { LocalFavorites.rememberDetail(thisObject, param(0), param(1), param(4), param(5)) }
         // Names for items kept by id only.

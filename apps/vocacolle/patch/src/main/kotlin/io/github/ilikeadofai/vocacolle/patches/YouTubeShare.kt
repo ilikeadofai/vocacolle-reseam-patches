@@ -29,14 +29,12 @@ private val mediaShareTextGetter = method("snsMediaShareText.getShareText") {
 val youtubeShareLinks = patch("YouTube share links") {
     description(
         """
-        When sharing a work, uses the YouTube original that VocaDB lists for the exact Niconico
-        video instead of the Niconico link. Off until turned on in the Reseam patches screen; when
-        on, the shared video's id is sent to vocadb.net.
+        Shares the YouTube original instead of the Niconico link. Off until you turn it on in the
+        app.
         """,
     )
     compatibleWith(VOCACOLLE)
-    enabledByDefault(false)
-    settings(vocacolleSettings, section(VocaColleStrings.sectionMetadata, MetadataSettings.shareYoutube))
+    settings(vocacolleSettings, section(songInfoPage, VocaColleStrings.sectionMetadata, MetadataSettings.shareYoutube))
 
     execute {
         appEntry { VocaDbTitles.init(application) }

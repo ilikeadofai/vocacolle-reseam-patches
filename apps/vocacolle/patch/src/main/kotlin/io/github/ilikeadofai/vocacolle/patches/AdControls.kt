@@ -142,18 +142,18 @@ private fun PatchRuntime.hideHighQualityAudioSnackbar() {
 }
 
 @Suppress("unused")
-val adControls = patch("Ad controls") {
+val adControls = patch("Hide ads") {
     description(
         """
-        Adds switches to hide app-open ads, banner and in-feed ads, audio ads between tracks, and
-        Premium pop-ups. All four start on, and can be turned off in the Reseam patches screen, opened
-        from its row in VocaColle's Settings.
+        Hides launch, banner, list, and audio ads and Premium pop-ups. Each can be turned back on in
+        the Reseam patches screen.
         """,
     )
     compatibleWith(VOCACOLLE)
     settings(
         vocacolleSettings,
         section(
+            adsPage,
             VocaColleStrings.sectionAds,
             AdSettings.hideAppOpenAds,
             AdSettings.hideDisplayAds,

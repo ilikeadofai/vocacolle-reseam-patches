@@ -73,8 +73,15 @@ private fun PatchRuntime.appInfoRow(): PointTarget {
     return rows.singleOrNull() ?: error("expected one About VocaColle settings row, found ${rows.size}")
 }
 
-/** A "Reseam patches" row right after "About VocaColle", drawn by the app's own row composable. */
-private fun PatchRuntime.addSettingsRow() {
+/**
+ * A row right after "About VocaColle", drawn by the app's own row composable: [title] is its
+ * text, and [click], an exported class, becomes its click with [onClick] as the body.
+ */
+internal fun PatchRuntime.addAppSettingsRow(
+    click: app.reseam.patch.ExtClass,
+    title: app.reseam.patch.CodeScope.() -> app.reseam.patch.ValueRef,
+    onClick: app.reseam.patch.CodeScope.() -> Unit,
+) {
     val appInfoRow = appInfoRow()
     val settingsRow = appInfoRow.callee("settingsRow")
     val clickType = bytecode.findClass(settingsRow.parameterTypes[8]) ?: error("the settings row has no click type")
@@ -82,20 +89,24 @@ private fun PatchRuntime.addSettingsRow() {
     check(clickType.isInterface && invoke != null && invoke.returnType == Type.Object) {
         "the settings row no longer takes a Function0 click"
     }
-    OpenReseamSettings.target.classDef.addInterface(clickType.descriptor)
-    OpenReseamSettings.target.addMethod(invoke.name, invoke.proto) {
-        openSettings()
+    click.target.classDef.addInterface(clickType.descriptor)
+    click.target.addMethod(invoke.name, invoke.proto) {
+        onClick()
         // Compose ignores what an onClick returns.
         returnNull()
     }
     appInfoRow.captureArgumentAs("composer", 9).after {
         call(
             settingsRow,
-            nullObject, SettingsMenu.rowTitle(), nullObject, nullObject, nullObject, long(0), nullObject, long(0),
-            newInstance(OpenReseamSettings.descriptor), capture("composer"), int(0), int(ROW_DEFAULTS),
+            nullObject, title(), nullObject, nullObject, nullObject, long(0), nullObject, long(0),
+            newInstance(click.descriptor), capture("composer"), int(0), int(ROW_DEFAULTS),
         )
     }
 }
+
+/** A "Reseam patches" row right after "About VocaColle". */
+private fun PatchRuntime.addSettingsRow() =
+    addAppSettingsRow(OpenReseamSettings, { SettingsMenu.rowTitle() }) { openSettings() }
 
 private fun hex(value: String) = Color.hex(value)
 

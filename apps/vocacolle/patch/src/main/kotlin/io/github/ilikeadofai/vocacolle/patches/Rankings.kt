@@ -30,13 +30,11 @@ private val rankingScreenRequest = methods("defaultRankingDataLoader") {
 val fullRankings = patch("Full rankings") {
     description(
         """
-        Shows every page of a ranking, up to 300 songs, instead of only the top 100. The extra
-        pages come from VocaColle's own ranking service. Can be turned off in the Reseam patches
-        screen.
+        Shows up to 300 songs in a ranking instead of the top 100.
         """,
     )
     compatibleWith(VOCACOLLE)
-    settings(vocacolleSettings, section(VocaColleStrings.sectionRanking, RankingSettings.fullRanking))
+    settings(vocacolleSettings, section(songInfoPage, VocaColleStrings.sectionRanking, RankingSettings.fullRanking))
 
     execute {
         val page = rankingPage.descriptor
