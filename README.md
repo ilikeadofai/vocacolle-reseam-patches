@@ -37,7 +37,7 @@ ads and Premium pop-ups.
 | Custom branding | Changes the launcher name and icon. With no options set it changes nothing, so the original ボカコレ name and icon stay. The name is a separate resource, so text inside the app that says ボカコレ is not affected. |
 | External lyrics | Shows lyrics from LRCLIB, NetEase Cloud Music, KuGou, or VocaDB when VocaColle has none for a song or can't show them, and lets the lyrics button open for those songs. Songs are matched by the exact Niconico video on VocaDB. Off until turned on in the Reseam patches screen. |
 | Full rankings | Shows every page of a ranking, up to 300 songs, instead of only the top 100. The extra pages come from VocaColle's own ranking service. Can be turned off in the Reseam patches screen. |
-| Local favorites | Adds favorites and any number of playlists kept on this device only, with no limit: ☆ Favorite and + Playlist buttons on a work's detail screen, and a library in the Reseam patches screen that plays them in VocaColle's player and exports or imports them as text. Nothing is sent, and the account's likes and mylists don't change. |
+| Local favorites | Adds a library kept on this device only, with no limit: favorites, playlists, watched creators, and saved mylists, with ☆ Favorite and + Playlist buttons on a work's detail screen. When the server refuses a like, mylist item, or follow for the account's limit, the item is kept there instead. The account's likes, mylists, and follows don't change. |
 | Translate UI | Shows VocaColle in Korean or English: every reviewed UI string, text compiled into the app, and the ranking and push-topic labels the server sends. Titles, creators, tags, and anything sent back to the server stay in the original Japanese. |
 | VocaDB song titles | Shows the English or romanized title VocaDB lists for the exact Niconico video in the player. Off until turned on in the Reseam patches screen; when on, the player's video ids are sent to vocadb.net. |
 | YouTube share links | When sharing a work, uses the YouTube original that VocaDB lists for the exact Niconico video instead of the Niconico link. Off until turned on in the Reseam patches screen; when on, the shared video's id is sent to vocadb.net. |
@@ -147,20 +147,25 @@ that fails ends the list at the pages that loaded. Home's ranking sections are l
 ### Local favorites
 
 Selected by default. VocaColle's likes, mylists, and follows live on the server, with the
-account's limits. This patch adds favorites and any number of playlists kept only on the
-device, with no limit:
+account's limits. This patch adds a library kept only on the device, with no limit:
 
-- Under a work's description, **☆ Favorite** adds it to the favorites (**★ Remove from
-  favorites** takes it out), and **+ Playlist** opens a chooser that puts it in any playlist,
-  marked ✓ where it already is, or in a new one. The buttons can be hidden with their switch.
-- **Favorites and playlists on this device**, in the Reseam patches screen, lists the favorites
-  and each playlist. Open one to play it from any song or all of it, in VocaColle's own playlist
-  player; remove songs; and rename or delete playlists.
-- **Export / import** copies the favorites and every playlist as JSON text and opens the share
-  sheet, or adds the songs and playlists of a pasted export that aren't there yet.
+- Under a work's description, **☆ Favorite** adds it to the favorites, and **+ Playlist** opens
+  a chooser that puts it in any playlist, marked ✓ where it already is, or a new one, and that
+  can **watch the work's creator**. The buttons can be hidden with their switch.
+- **Favorites and playlists on this device**, in the Reseam patches screen, lists the
+  favorites, each playlist, the **creators** you watch, and **saved mylists**. Play a list from
+  any song in VocaColle's own playlist player, remove songs, rename or delete playlists; open a
+  creator's profile or a saved mylist in the app, or play **Latest from creators**: the ten
+  newest uploads of each watched creator, newest first, fetched from nicovideo.jp.
+- **Keep refused items on this device** (on by default): when the server refuses a like for the
+  daily limit, a mylist item or a mylist follow for the account's limit, or a user follow for the
+  follow limit, VocaColle still shows its own error, and the item is kept in the favorites, a
+  playlist named after the mylist, the saved mylists, or the creators, with a toast saying so.
+- **Export / import** copies the favorites and every playlist as JSON text, or adds the songs
+  and playlists of a pasted export that aren't there yet.
 
-Nothing is sent anywhere, the account's likes and mylists don't change, and the lists aren't
-synced to other devices. They are removed with the app's data.
+The account's likes, mylists, and follows never change, and the library isn't synced to other
+devices. It is removed with the app's data.
 
 ### Clear caches
 

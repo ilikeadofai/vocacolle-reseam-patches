@@ -67,7 +67,7 @@
     <string name="favorite_button">Favorite button</string>
     <string name="favorite_button_summary">Shows ☆ Favorite and + Playlist buttons on a work\'s detail screen, for the favorites and playlists on this device.</string>
     <string name="local_favorites">Favorites and playlists on this device</string>
-    <string name="local_favorites_summary">Favorites and any number of playlists, saved on this device only, with no limit: nothing is sent, and your likes and mylists don\'t change. Play them in VocaColle\'s player, and export or import them as text.</string>
+    <string name="local_favorites_summary">Favorites, playlists, watched creators, and saved mylists, kept on this device only, with no limit: nothing is sent, and your likes, mylists, and follows don\'t change. Play them in VocaColle\'s player, and export or import favorites and playlists as text.</string>
     <string name="favorite_add">☆ Favorite</string>
     <string name="favorite_remove">★ Remove from favorites</string>
     <string name="favorite_added">Added to the favorites on this device</string>
@@ -110,4 +110,24 @@
     <string name="ai_lyrics_script_auto">Auto</string>
     <string name="ai_lyrics_script_romaji">Romaji</string>
     <string name="ai_lyrics_script_hangul">Hangul</string>
+    <string name="save_on_limit">Keep refused items on this device</string>
+    <string name="save_on_limit_summary">When the server refuses a like (daily limit), a mylist item, a mylist follow, or a user follow because of your account\'s limit, VocaColle still shows its error, and the item is kept in the favorites, a playlist named after the mylist, your saved mylists, or your creators on this device.</string>
+    <string name="limit_saved_favorite">Daily like limit reached: saved to the favorites on this device instead</string>
+    <string name="limit_saved_playlist">Mylist limit reached: saved to the playlist “%s” on this device instead</string>
+    <string name="limit_mylist_name">Mylist %s</string>
+    <string name="limit_saved_mylist">Follow limit reached: saved to your mylists on this device instead</string>
+    <string name="limit_saved_creator">Follow limit reached: added to the creators you watch on this device instead</string>
+    <string name="creator_unknown">User %s</string>
+    <string name="creators_title">Creators</string>
+    <string name="creators_empty">No creators yet. Watch one from + Playlist on a work\'s detail screen.</string>
+    <string name="creator_open">Open profile</string>
+    <string name="creators_feed">Latest from creators</string>
+    <string name="creators_feed_loading">Loading the latest uploads…</string>
+    <string name="creators_feed_failed">Couldn\'t load the creators\' uploads.</string>
+    <string name="saved_mylists_title">Saved mylists</string>
+    <string name="saved_mylists_empty">No saved mylists yet. A mylist you couldn\'t follow because of the limit is kept here.</string>
+    <string name="saved_mylist_open">Open mylist</string>
+    <string name="creator_watch">Watch creator: %s</string>
+    <string name="creator_watched">Watching %s on this device</string>
+    <string name="creator_unwatched">Stopped watching %s</string>
 </resources>

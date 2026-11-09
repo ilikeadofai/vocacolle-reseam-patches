@@ -86,6 +86,7 @@ object RankingSettings : SettingsGroup(VocaColleStrings) {
 object LibrarySettings : SettingsGroup(VocaColleStrings) {
     val favoriteButton by toggle(default = true, key = "library.favorite_button", icon = Vector.lucide("star"))
     val localFavorites by action(key = "library.favorites", icon = Vector.lucide("list-music"))
+    val saveOnLimit by toggle(default = true, key = "library.save_on_limit", icon = Vector.lucide("archive"))
 }
 
 /** The patches' caches, shown whichever patches are applied. */

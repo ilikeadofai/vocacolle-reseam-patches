@@ -67,7 +67,7 @@
     <string name="favorite_button">お気に入りボタン</string>
     <string name="favorite_button_summary">作品詳細画面に、この端末のお気に入り・プレイリスト用の☆ お気に入りと＋ プレイリストボタンを表示します。</string>
     <string name="local_favorites">この端末のお気に入り・プレイリスト</string>
-    <string name="local_favorites_summary">この端末だけに保存するお気に入りと、好きなだけ作れるプレイリストで、件数の制限はありません。何も送信されず、いいねやマイリストも変わりません。ボカコレのプレイヤーで再生でき、テキストで書き出し・読み込みができます。</string>
+    <string name="local_favorites_summary">この端末だけに保存するお気に入り・プレイリスト・ウォッチしたクリエイター・保存したマイリストで、件数の制限はありません。アカウントのいいね・マイリスト・フォローは変わりません。ボカコレのプレイヤーで再生でき、お気に入りとプレイリストはテキストで書き出し・読み込みができます。</string>
     <string name="favorite_add">☆ お気に入り</string>
     <string name="favorite_remove">★ お気に入りから外す</string>
     <string name="favorite_added">この端末のお気に入りに追加しました</string>
@@ -110,4 +110,24 @@
     <string name="ai_lyrics_script_auto">自動</string>
     <string name="ai_lyrics_script_romaji">ローマ字</string>
     <string name="ai_lyrics_script_hangul">ハングル</string>
+    <string name="save_on_limit">拒否された項目をこの端末に保存</string>
+    <string name="save_on_limit_summary">アカウントの上限のためにサーバーがいいね（1日の上限）、マイリスト登録、マイリストのフォロー、ユーザーのフォローを拒否したとき、ボカコレのエラーはそのまま表示し、その項目をこの端末のお気に入り、マイリスト名のプレイリスト、保存したマイリスト、クリエイターに保存します。</string>
+    <string name="limit_saved_favorite">いいねの1日の上限に達したため、代わりにこの端末のお気に入りに保存しました</string>
+    <string name="limit_saved_playlist">マイリストの上限に達したため、代わりにこの端末のプレイリスト「%s」に保存しました</string>
+    <string name="limit_mylist_name">マイリスト %s</string>
+    <string name="limit_saved_mylist">フォローの上限に達したため、代わりにこの端末の保存したマイリストに保存しました</string>
+    <string name="limit_saved_creator">フォローの上限に達したため、代わりにこの端末のクリエイターウォッチリストに追加しました</string>
+    <string name="creator_unknown">ユーザー %s</string>
+    <string name="creators_title">クリエイター</string>
+    <string name="creators_empty">クリエイターはまだいません。作品詳細画面の＋ プレイリストからウォッチしてください。</string>
+    <string name="creator_open">プロフィールを開く</string>
+    <string name="creators_feed">クリエイターの新着</string>
+    <string name="creators_feed_loading">新着の投稿を読み込み中…</string>
+    <string name="creators_feed_failed">クリエイターの投稿を読み込めませんでした。</string>
+    <string name="saved_mylists_title">保存したマイリスト</string>
+    <string name="saved_mylists_empty">保存したマイリストはまだありません。上限のためにフォローできなかったマイリストがここに保存されます。</string>
+    <string name="saved_mylist_open">マイリストを開く</string>
+    <string name="creator_watch">クリエイターをウォッチ: %s</string>
+    <string name="creator_watched">この端末で%sさんをウォッチします</string>
+    <string name="creator_unwatched">%sさんのウォッチをやめました</string>
 </resources>

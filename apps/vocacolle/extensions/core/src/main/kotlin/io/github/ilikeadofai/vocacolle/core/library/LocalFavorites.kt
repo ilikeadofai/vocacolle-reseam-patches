@@ -67,12 +67,31 @@ fun init(context: Context?) {
 // The work detail screen --------------------------------------------------------------------
 
 /** The id and title of each `MediaDetailData` the app built, for the buttons drawn with it. */
-private val details: MutableMap<Any, Array<String>> = Collections.synchronizedMap(WeakHashMap())
+private val details: MutableMap<Any, Array<String?>> = Collections.synchronizedMap(WeakHashMap())
 
+/** Each work's id, title, and owner: `owner` is `User(userId=…)` or a channel. */
 @Export
-fun rememberDetail(detail: Any?, id: String?, title: String?) {
-    if (detail != null && id != null) details[detail] = arrayOf(id, title ?: id)
+fun rememberDetail(detail: Any?, id: String?, title: String?, owner: Any?, ownerName: String?) {
+    if (detail == null || id == null) return
+    val userId = ownerUserId(owner)
+    details[detail] = arrayOf(id, title ?: id, userId, ownerName)
+    rememberTitle(id, title)
+    if (userId != null) rememberCreator(userId, ownerName)
 }
+
+internal fun libraryContext(): Context? = appContext
+
+internal fun changedLibrary() = changed()
+
+/** Adds the song to the favorites ([name] null) or a playlist, made if needed, unless it is there. */
+internal fun addToList(name: String?, id: String, title: String) {
+    val context = appContext ?: return
+    if (name != null) createPlaylist(context, name)
+    if (list(name, context).songs.none { it.id == id }) toggleIn(name, id, title, context)
+}
+
+internal fun playSongs(activity: Activity, title: String, songs: List<Pair<String, String>>) =
+    play(activity, title, songs.map { Song(it.first, it.second, 0) }, 0)
 
 /**
  * The MediaDetailData the detail screen is drawing, set where the screen reads it, just before
@@ -126,8 +145,9 @@ fun playlistLabel(detail: Any?): String {
 /** Adds the work [detail] to the favorites, or removes it if it is there. */
 @Export
 fun toggle(detail: Any?) {
-    val (id, title) = details[detail ?: return] ?: return
-    val removed = toggleIn(null, id, title)
+    val info = details[detail ?: return] ?: return
+    val id = info[0] ?: return
+    val removed = toggleIn(null, id, info[1] ?: id)
     appContext?.let {
         Toast.makeText(it, if (removed) VocaColleStrings.favoriteRemoved else VocaColleStrings.favoriteAdded, Toast.LENGTH_SHORT).show()
     }
@@ -136,15 +156,28 @@ fun toggle(detail: Any?) {
 /** Opens the chooser that puts the work [detail] in playlists or takes it out. */
 @Export
 fun choosePlaylists(detail: Any?) {
-    val (id, title) = details[detail ?: return] ?: return
+    val info = details[detail ?: return] ?: return
+    val id = info[0] ?: return
+    val title = info[1] ?: id
+    val creatorId = info[2]
+    val creatorName = info[3] ?: creatorId
     val activity = currentActivity?.get()?.takeUnless { it.isFinishing } ?: return
     val lists = playlists()
     val labels = lists.map { list -> (if (list.songs.any { it.id == id }) "✓ " else "") + "${list.name} (${list.songs.size})" } +
-        VocaColleStrings.playlistNew
+        VocaColleStrings.playlistNew +
+        listOfNotNull(creatorId?.let { creatorChoiceLabel(activity, it, creatorName ?: it) })
     Reseam.bundle(BUNDLE).ui(activity).dialog()
         .title(title)
         .choices(labels.toTypedArray(), -1) { index ->
-            if (index < lists.size) {
+            if (index == lists.size + 1 && creatorId != null) {
+                val watched = toggleCreator(activity, creatorId, creatorName ?: creatorId)
+                changed()
+                Toast.makeText(
+                    activity,
+                    String.format(if (watched) VocaColleStrings.creatorWatched else VocaColleStrings.creatorUnwatched, creatorName),
+                    Toast.LENGTH_SHORT,
+                ).show()
+            } else if (index < lists.size) {
                 val removed = toggleIn(lists[index].name, id, title)
                 Toast.makeText(
                     activity,
@@ -270,9 +303,19 @@ fun open(activity: Activity?) {
     if (activity == null) return
     init(activity)
     val lists = listOf(favorites(activity)) + playlists(activity)
+    val labels = lists.map { "${it.label} (${it.songs.size})" } + listOf(
+        "${VocaColleStrings.creatorsTitle} (${creators(activity).size})",
+        "${VocaColleStrings.savedMylistsTitle} (${savedMylists(activity).size})",
+    )
     Reseam.bundle(BUNDLE).ui(activity).dialog()
         .title(VocaColleStrings.localFavorites)
-        .choices(lists.map { "${it.label} (${it.songs.size})" }.toTypedArray(), -1) { index -> openList(activity, lists[index].name) }
+        .choices(labels.toTypedArray(), -1) { index ->
+            when (index) {
+                lists.size -> openCreators(activity)
+                lists.size + 1 -> openSavedMylists(activity)
+                else -> openList(activity, lists[index].name)
+            }
+        }
         .action(VocaColleStrings.favoritesMore) { more(activity) }
         .action(VocaColleStrings.playlistNew) {
             askName(activity, VocaColleStrings.playlistNew, "") { name ->
