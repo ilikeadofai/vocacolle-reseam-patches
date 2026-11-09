@@ -44,14 +44,11 @@ private val audioChoice = method("audioInfoChoice") {
 val diagnostics = patch("Diagnostics") {
     description(
         """
-        Adds a Diagnostics row to the Reseam patches screen: whether the app keeps VocaColle's
-        original signature (login and guest login need it for App Check), the Play services
-        version, the device clock against the server's, the last login and guest login error,
-        and whether the server offered high-quality audio for the last track. Changes nothing.
+        Shows why login, guest login, or high-quality audio don't work. Changes nothing.
         """,
     )
     compatibleWith(VOCACOLLE)
-    settings(vocacolleSettings, section(VocaColleStrings.sectionDiagnostics, DiagnosticsSettings.diagnostics))
+    settings(vocacolleSettings, section(toolsPage, VocaColleStrings.sectionDiagnostics, DiagnosticsSettings.diagnostics))
 
     execute {
         onAction(DiagnosticsSettings.diagnostics) { Diagnostics.openDiagnostics(activity) }

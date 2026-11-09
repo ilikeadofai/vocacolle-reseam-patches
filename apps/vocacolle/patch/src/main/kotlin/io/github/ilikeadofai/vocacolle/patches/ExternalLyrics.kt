@@ -88,18 +88,15 @@ private val lyricsFailurePublish = method("playerViewModel.loadLyrics") {
 private val mediaCacheItem = klass("mediaCacheItem") { strings("MediaCacheItem(mediaId=") }
 
 @Suppress("unused")
-val externalLyrics = patch("External lyrics") {
+val externalLyrics = patch("Lyrics from other sources") {
     description(
         """
-        Shows lyrics from LRCLIB, NetEase Cloud Music, KuGou, or VocaDB when VocaColle has none
-        for a song or can't show them, and lets the lyrics button open for those songs. Songs are
-        matched by the exact Niconico video on VocaDB. Off until turned on in the Reseam patches
-        screen.
+        Shows lyrics from LRCLIB, NetEase, KuGou, or VocaDB when VocaColle has none or hit its
+        limit, and keeps them for offline songs. Off until you turn it on in the app.
         """,
     )
     compatibleWith(VOCACOLLE)
-    enabledByDefault(false)
-    settings(vocacolleSettings, section(VocaColleStrings.sectionLyrics, LyricsSettings.externalLyrics, LyricsSettings.lyricsProviders))
+    settings(vocacolleSettings, section(lyricsPage, VocaColleStrings.sectionLyricsSources, LyricsSettings.externalLyrics, LyricsSettings.lyricsProviders))
 
     execute {
         ExternalLyrics.newSegment.implement {

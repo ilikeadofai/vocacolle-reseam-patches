@@ -158,9 +158,8 @@ private fun PatchRuntime.translateServerLabels(language: String) {
 val translateUi = patch("Translate UI") {
     description(
         """
-        Shows VocaColle in Korean or English: every reviewed UI string, text compiled into the app,
-        and the ranking and push-topic labels the server sends. Titles, creators, tags, and
-        anything sent back to the server stay in the original Japanese.
+        Shows VocaColle in Korean or English (the language option). Song titles and anything sent to
+        the server stay in Japanese.
         """,
     )
     compatibleWith(VOCACOLLE)

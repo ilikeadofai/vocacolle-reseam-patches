@@ -58,12 +58,11 @@ private fun PatchRuntime.applyIcon(folder: OptionPath) {
 }
 
 @Suppress("unused")
-val customBranding = patch("Custom branding") {
+val customBranding = patch("App name and icon") {
     description(
         """
-        Changes the launcher name and icon. With no options set it changes nothing, so the
-        original ボカコレ name and icon stay. The name is a separate resource, so text inside the
-        app that says ボカコレ is not affected.
+        Changes the launcher name and icon, from the appName and icon options. Changes nothing
+        without them.
         """,
     )
     compatibleWith(VOCACOLLE)

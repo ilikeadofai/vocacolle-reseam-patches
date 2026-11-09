@@ -237,33 +237,22 @@ private fun PatchRuntime.addTranslateButton() {
 }
 
 @Suppress("unused")
-val titleTranslation = patch("Content translation") {
+val titleTranslation = patch("Translate songs, tags, and lyrics") {
     description(
         """
-        Translates Japanese song titles, tags, work descriptions, lyrics, and notices into Korean or English, with Google
-        Translate (no key) or an OpenAI-compatible API and your own key. Off until turned on in
-        the Reseam patches screen; titles are then sent to the chosen service.
+        Translates song titles, tags, descriptions, notices, and lyrics into Korean or English, with
+        Google Translate or your own AI key. Off until you turn each part on in the app.
         """,
     )
     compatibleWith(VOCACOLLE)
-    enabledByDefault(false)
     settings(
         vocacolleSettings,
+        section(translationPage, VocaColleStrings.sectionTranslateWhat, AiSettings.aiTitles, AiSettings.aiTags, AiSettings.aiDescriptions, AiSettings.aiNotices),
         section(
-            VocaColleStrings.sectionAi,
-            AiSettings.aiTitles,
-            AiSettings.aiDescriptions,
-            AiSettings.aiTags,
-            AiSettings.aiLyricsRomaji,
-            AiSettings.aiLyricsScript,
-            AiSettings.aiLyricsTranslation,
-            AiSettings.aiNotices,
-            AiSettings.aiLanguage,
-            AiSettings.aiProvider,
-            AiSettings.aiBaseUrl,
-            AiSettings.aiModel,
-            AiSettings.aiApiKey,
+            translationPage, VocaColleStrings.sectionTranslateService,
+            AiSettings.aiLanguage, AiSettings.aiProvider, AiSettings.aiBaseUrl, AiSettings.aiModel, AiSettings.aiApiKey,
         ),
+        section(lyricsPage, VocaColleStrings.sectionLyricsLayers, AiSettings.aiLyricsRomaji, AiSettings.aiLyricsScript, AiSettings.aiLyricsTranslation),
     )
 
     execute {

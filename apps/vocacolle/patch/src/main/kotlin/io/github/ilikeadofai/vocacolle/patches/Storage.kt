@@ -11,13 +11,11 @@ import io.github.ilikeadofai.vocacolle.settings.VocaColleStrings
 val clearCaches = patch("Clear caches") {
     description(
         """
-        Adds a Clear caches row to the Reseam patches screen: VocaDB titles and links,
-        translations and readings, and the lyrics found this session, each with its size,
-        cleared one at a time or all together. Favorites and playlists are kept.
+        Adds a button to clear the lyrics, translations, and VocaDB answers the patches keep.
         """,
     )
     compatibleWith(VOCACOLLE)
-    settings(vocacolleSettings, section(VocaColleStrings.sectionStorage, StorageSettings.clearCaches))
+    settings(vocacolleSettings, section(toolsPage, VocaColleStrings.sectionStorage, StorageSettings.clearCaches))
 
     execute {
         onAction(StorageSettings.clearCaches) { CacheCleaner.open(activity) }

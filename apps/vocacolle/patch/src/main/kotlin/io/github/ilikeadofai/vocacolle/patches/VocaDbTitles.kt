@@ -25,14 +25,12 @@ internal val playerVideoInfoInit = method("playerVideoInfo.<init>") {
 val vocadbTitles = patch("VocaDB song titles") {
     description(
         """
-        Shows the English or romanized title VocaDB lists for the exact Niconico video in the
-        player. Off until turned on in the Reseam patches screen; when on, the player's video ids
-        are sent to vocadb.net.
+        Shows VocaDB's English or romanized titles in the player. Off until you turn it on in the
+        app.
         """,
     )
     compatibleWith(VOCACOLLE)
-    enabledByDefault(false)
-    settings(vocacolleSettings, section(VocaColleStrings.sectionMetadata, MetadataSettings.vocadbTitles))
+    settings(vocacolleSettings, section(songInfoPage, VocaColleStrings.sectionMetadata, MetadataSettings.vocadbTitles))
 
     execute {
         appEntry { VocaDbTitles.init(application) }

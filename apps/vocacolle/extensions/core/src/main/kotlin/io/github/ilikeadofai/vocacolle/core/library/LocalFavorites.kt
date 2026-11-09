@@ -138,7 +138,7 @@ fun buttonLabel(detail: Any?): String {
 fun playlistLabel(detail: Any?): String {
     revision?.let { readState(it) }
     val id = details[detail ?: return VocaColleStrings.playlistAdd]?.get(0) ?: return VocaColleStrings.playlistAdd
-    val count = playlists().count { list -> list.songs.any { it.id == id } }
+    val count = playlists().count { list -> list.songs.any { it.id == id } } + if (isDownloaded(appContext, id)) 1 else 0
     return if (count == 0) VocaColleStrings.playlistAdd else String.format(VocaColleStrings.playlistIn, count)
 }
 
@@ -163,12 +163,21 @@ fun choosePlaylists(detail: Any?) {
     val creatorName = info[3] ?: creatorId
     val activity = currentActivity?.get()?.takeUnless { it.isFinishing } ?: return
     val lists = playlists()
-    val labels = lists.map { list -> (if (list.songs.any { it.id == id }) "✓ " else "") + "${list.name} (${list.songs.size})" } +
+    // First the offline download, then each playlist, a new one, and the creator.
+    val downloaded = isDownloaded(activity, id)
+    val labels = listOf(if (downloaded) VocaColleStrings.downloadDone else VocaColleStrings.downloadAdd) +
+        lists.map { list -> (if (list.songs.any { it.id == id }) "✓ " else "") + "${list.name} (${list.songs.size})" } +
         VocaColleStrings.playlistNew +
         listOfNotNull(creatorId?.let { creatorChoiceLabel(activity, it, creatorName ?: it) })
     Reseam.bundle(BUNDLE).ui(activity).dialog()
         .title(title)
-        .choices(labels.toTypedArray(), -1) { index ->
+        .choices(labels.toTypedArray(), -1) { choice ->
+            if (choice == 0) {
+                toggleDownload(activity, id, title)
+                changed()
+                return@choices
+            }
+            val index = choice - 1
             if (index == lists.size + 1 && creatorId != null) {
                 val watched = toggleCreator(activity, creatorId, creatorName ?: creatorId)
                 changed()
@@ -202,6 +211,14 @@ class FavoriteClick(@Export @JvmField val detail: Any?)
 
 @Export
 class PlaylistClick(@Export @JvmField val detail: Any?)
+
+/** The click of the "My library" row in VocaColle's Settings. */
+@Export
+class OpenLibraryClick
+
+/** The title of that row. */
+@Export
+fun libraryRowTitle(): String = VocaColleStrings.libraryRow
 
 // Storage -----------------------------------------------------------------------------------
 
@@ -297,6 +314,12 @@ private fun play(activity: Activity, title: String, songs: List<Song>, start: In
     }
 }
 
+/** The library from VocaColle's own Settings row: over the screen the user is on. */
+@Export
+fun openFromApp() {
+    currentActivity?.get()?.takeUnless { it.isFinishing }?.let { open(it) }
+}
+
 /** The library: the favorites, then each playlist. A dialog over the Reseam patches screen. */
 @Export
 fun open(activity: Activity?) {
@@ -306,6 +329,7 @@ fun open(activity: Activity?) {
     val labels = lists.map { "${it.label} (${it.songs.size})" } + listOf(
         "${VocaColleStrings.creatorsTitle} (${creators(activity).size})",
         "${VocaColleStrings.savedMylistsTitle} (${savedMylists(activity).size})",
+        "${VocaColleStrings.downloadsTitle} (${downloads(activity).size})",
     )
     Reseam.bundle(BUNDLE).ui(activity).dialog()
         .title(VocaColleStrings.localFavorites)
@@ -313,6 +337,7 @@ fun open(activity: Activity?) {
             when (index) {
                 lists.size -> openCreators(activity)
                 lists.size + 1 -> openSavedMylists(activity)
+                lists.size + 2 -> openDownloads(activity)
                 else -> openList(activity, lists[index].name)
             }
         }
