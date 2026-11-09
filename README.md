@@ -31,17 +31,17 @@ ads and Premium pop-ups.
 
 | Patch | What it does |
 |---|---|
-| Ad controls | Adds switches to hide app-open ads, banner and in-feed ads, audio ads between tracks, and Premium pop-ups. All four start on, and can be turned off in the Reseam patches screen, opened from its row in VocaColle's Settings. |
-| Clear caches | Adds a Clear caches row to the Reseam patches screen: VocaDB titles and links, translations and readings, and the lyrics found this session, each with its size, cleared one at a time or all together. Favorites and playlists are kept. |
-| Content translation | Translates Japanese song titles, tags, work descriptions, lyrics, and notices into Korean or English, with Google Translate (no key) or an OpenAI-compatible API and your own key. Off until turned on in the Reseam patches screen; titles are then sent to the chosen service. |
-| Custom branding | Changes the launcher name and icon. With no options set it changes nothing, so the original ボカコレ name and icon stay. The name is a separate resource, so text inside the app that says ボカコレ is not affected. |
-| Diagnostics | Adds a Diagnostics row to the Reseam patches screen: whether the app keeps VocaColle's original signature (login and guest login need it for App Check), the Play services version, the device clock against the server's, the last login and guest login error, and whether the server offered high-quality audio for the last track. Changes nothing. |
-| External lyrics | Shows lyrics from LRCLIB, NetEase Cloud Music, KuGou, or VocaDB when VocaColle has none for a song or can't show them, and lets the lyrics button open for those songs. Songs are matched by the exact Niconico video on VocaDB. Off until turned on in the Reseam patches screen. |
-| Full rankings | Shows every page of a ranking, up to 300 songs, instead of only the top 100. The extra pages come from VocaColle's own ranking service. Can be turned off in the Reseam patches screen. |
-| Local favorites | Adds a library kept on this device only, with no limit: favorites, playlists, watched creators, and saved mylists, with ☆ Favorite and + Playlist buttons on a work's detail screen. When the server refuses a like, mylist item, or follow for the account's limit, the item is kept there instead. The account's likes, mylists, and follows don't change. |
-| Translate UI | Shows VocaColle in Korean or English: every reviewed UI string, text compiled into the app, and the ranking and push-topic labels the server sends. Titles, creators, tags, and anything sent back to the server stay in the original Japanese. |
-| VocaDB song titles | Shows the English or romanized title VocaDB lists for the exact Niconico video in the player. Off until turned on in the Reseam patches screen; when on, the player's video ids are sent to vocadb.net. |
-| YouTube share links | When sharing a work, uses the YouTube original that VocaDB lists for the exact Niconico video instead of the Niconico link. Off until turned on in the Reseam patches screen; when on, the shared video's id is sent to vocadb.net. |
+| App name and icon | Changes the launcher name and icon, from the appName and icon options. Changes nothing without them. |
+| Clear caches | Adds a button to clear the lyrics, translations, and VocaDB answers the patches keep. |
+| Diagnostics | Shows why login, guest login, or high-quality audio don't work. Changes nothing. |
+| Full rankings | Shows up to 300 songs in a ranking instead of the top 100. |
+| Hide ads | Hides launch, banner, list, and audio ads and Premium pop-ups. Each can be turned back on in the Reseam patches screen. |
+| Lyrics from other sources | Shows lyrics from LRCLIB, NetEase, KuGou, or VocaDB when VocaColle has none or hit its limit, and keeps them for offline songs. Off until you turn it on in the app. |
+| My library | Adds favorites, playlists, one-tap offline downloads, watched creators, and saved mylists on this phone, with buttons on the song page and a row in VocaColle's Settings. Keeps what your account's limits refuse. |
+| Translate songs, tags, and lyrics | Translates song titles, tags, descriptions, notices, and lyrics into Korean or English, with Google Translate or your own AI key. Off until you turn each part on in the app. |
+| Translate UI | Shows VocaColle in Korean or English (the language option). Song titles and anything sent to the server stay in Japanese. |
+| VocaDB song titles | Shows VocaDB's English or romanized titles in the player. Off until you turn it on in the app. |
+| YouTube share links | Shares the YouTube original instead of the Niconico link. Off until you turn it on in the app. |
 
 <!-- patches:end -->
 
