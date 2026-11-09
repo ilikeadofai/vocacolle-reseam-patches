@@ -34,6 +34,7 @@ ads and Premium pop-ups.
 | Ad controls | Adds switches to hide app-open ads, banner and in-feed ads, audio ads between tracks, and Premium pop-ups. All four start on, and can be turned off in the Reseam patches screen, opened from its row in VocaColle's Settings. |
 | Clear caches | Adds a Clear caches row to the Reseam patches screen: VocaDB titles and links, translations and readings, and the lyrics found this session, each with its size, cleared one at a time or all together. Favorites and playlists are kept. |
 | Content translation | Translates Japanese song titles, tags, work descriptions, lyrics, and notices into Korean or English, with Google Translate (no key) or an OpenAI-compatible API and your own key. Off until turned on in the Reseam patches screen; titles are then sent to the chosen service. |
+| Diagnostics | Adds a Diagnostics row to the Reseam patches screen: whether the app keeps VocaColle's original signature (login and guest login need it for App Check), the Play services version, the device clock against the server's, the last login and guest login error, and whether the server offered high-quality audio for the last track. Changes nothing. |
 | Custom branding | Changes the launcher name and icon. With no options set it changes nothing, so the original ボカコレ name and icon stay. The name is a separate resource, so text inside the app that says ボカコレ is not affected. |
 | External lyrics | Shows lyrics from LRCLIB, NetEase Cloud Music, KuGou, or VocaDB when VocaColle has none for a song or can't show them, and lets the lyrics button open for those songs. Songs are matched by the exact Niconico video on VocaDB. Off until turned on in the Reseam patches screen. |
 | Full rankings | Shows every page of a ranking, up to 300 songs, instead of only the top 100. The extra pages come from VocaColle's own ranking service. Can be turned off in the Reseam patches screen. |
@@ -134,7 +135,9 @@ Music, and KuGou for synced lyrics whose recording is within 3 seconds of the so
 and VocaDB's original lyrics, untimed. A credit line names the source. For songs with no lyrics
 registered, the lyrics button opens once a source has them; each track is looked up when it
 starts playing. Found lyrics are saved on the device for 30 days ("none found" for a day, while
-the source order is the same), so they also show offline, and Clear caches removes them. The official lyrics and their limit are not touched.
+the source order is the same), so they also show offline, and Clear caches removes them. Songs
+in VocaColle's offline cache are looked up as soon as the app lists them, and their lyrics are
+kept without expiry, with the reading and translation rows fetched ahead when those are on. The official lyrics and their limit are not touched.
 
 ### Full rankings
 
@@ -166,6 +169,19 @@ account's limits. This patch adds a library kept only on the device, with no lim
 
 The account's likes, mylists, and follows never change, and the library isn't synced to other
 devices. It is removed with the app's data.
+
+### Diagnostics
+
+Selected by default. **Diagnostics** in the Reseam patches screen shows, with a copy button:
+
+- **Signature**: whether the installed app still has VocaColle's own signing certificate. A
+  re-signed app can't get a Firebase App Check (Play Integrity) token, which is why login and
+  guest login fail with WL-E08; no patch can change that, so the fix is to install with the
+  original signature kept (CorePatch on a rooted device) or a Reseam mount build.
+- **Google Play services** version, and the **device clock** against nicovideo.jp's.
+- The **last login error** code (WL-E…) and **last guest login error** type the app recorded.
+- **Last track's audio**: whether the server offered high quality to this account. It is only
+  reported: what the server offers decides it, and nothing is unlocked.
 
 ### Clear caches
 

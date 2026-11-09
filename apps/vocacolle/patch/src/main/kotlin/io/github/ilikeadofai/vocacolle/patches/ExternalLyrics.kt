@@ -84,6 +84,9 @@ private val lyricsFailurePublish = method("playerViewModel.loadLyrics") {
 }.point("loadLyricsFailed") { string("loadLyrics failed: ") }
     .next { invokeVirtual { paramCount(1); returns(Type.Void) } }
 
+/** `MediaCacheItem(mediaId, bytes, state, …)`: a song in VocaColle's offline cache. */
+private val mediaCacheItem = klass("mediaCacheItem") { strings("MediaCacheItem(mediaId=") }
+
 @Suppress("unused")
 val externalLyrics = patch("External lyrics") {
     description(
@@ -120,6 +123,11 @@ val externalLyrics = patch("External lyrics") {
         val error = lyricsErrorReason.descriptor.substringBeforeLast('$') + ";"
         appEntry { ExternalLyrics.init(application) }
         gate(LyricsSettings.externalLyrics) {
+            // A song in VocaColle's offline cache: its lyrics are kept for offline use.
+            method("mediaCacheItem.<init>") {
+                inClass(mediaCacheItem)
+                custom { name == "<init>" && parameterTypes.firstOrNull() == Type.String }
+            }.after { ExternalLyrics.pin(param(0)) }
             // The watch info of the track that is starting: (id, title, duration, …).
             videoWatchMetadataInit.after { ExternalLyrics.prefetch(param(0), param(1), param(2)) }
             hasLyricsGetter().after {

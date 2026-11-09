@@ -93,3 +93,8 @@ object LibrarySettings : SettingsGroup(VocaColleStrings) {
 object StorageSettings : SettingsGroup(VocaColleStrings) {
     val clearCaches by action(key = "storage.clear_caches", icon = Vector.lucide("trash"))
 }
+
+/** What decides whether login, guest login, and high-quality audio work. */
+object DiagnosticsSettings : SettingsGroup(VocaColleStrings) {
+    val diagnostics by action(key = "diagnostics.open", icon = Vector.lucide("stethoscope"))
+}

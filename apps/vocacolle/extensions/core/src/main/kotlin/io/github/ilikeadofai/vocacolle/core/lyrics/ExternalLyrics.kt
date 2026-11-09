@@ -68,6 +68,29 @@ fun init(context: Context?) {
 
 private fun providers(): String = LyricsSettings.lyricsProviders.value.trim().lowercase()
 
+/** Songs in VocaColle's offline cache: their lyrics are kept without expiry. */
+private val pinned: MutableSet<String> = Collections.synchronizedSet(HashSet())
+
+/**
+ * [videoId] is in VocaColle's offline cache (the app built its cache item, when caching or when
+ * listing the cache): look its lyrics up now, while online, and keep them without expiry, with
+ * their reading and translation rows when those are on.
+ */
+@Export
+fun pin(videoId: String?) {
+    if (videoId == null || !MEDIA_ID.matches(videoId) || !LyricsSettings.externalLyrics.value) return
+    if (!pinned.add(videoId)) return
+    val saved = known(videoId)
+    if (saved != null) {
+        if (saved.lines.isNotEmpty()) {
+            save(videoId, saved)
+            io.github.ilikeadofai.vocacolle.core.translate.prefetchLayers(saved.lines.map { it.text })
+        }
+        return
+    }
+    schedule(videoId)
+}
+
 /**
  * Lyrics saved for [videoId], or null: found lyrics for 30 days, and "none found" for a day,
  * and only while the sources asked are the same.
@@ -82,7 +105,7 @@ private fun readSaved(videoId: String): Found? {
             if (age !in 0..NONE_TTL_MS || saved.optString("providers") != providers()) return null
             return NONE
         }
-        if (age !in 0..FOUND_TTL_MS) return null
+        if (!saved.optBoolean("pinned") && age !in 0..FOUND_TTL_MS) return null
         Found(
             (0 until lines.length()).map { index ->
                 val line = lines.getJSONArray(index)
@@ -103,6 +126,7 @@ private fun save(videoId: String, found: Found) {
         found.lines.forEach { lines.put(JSONArray().put(it.startMs ?: JSONObject.NULL).put(it.text)) }
         val json = JSONObject().put("savedAt", System.currentTimeMillis()).put("source", found.source)
             .put("timed", found.timed).put("providers", providers()).put("lines", lines)
+            .put("pinned", videoId in pinned && found.lines.isNotEmpty())
         dir.mkdirs()
         val temp = File(dir, "$videoId.tmp")
         temp.writeText(json.toString(), Charsets.UTF_8)
@@ -262,6 +286,9 @@ private fun schedule(videoId: String): Future<*>? {
                     val found = load(videoId)
                     memory[videoId] = found
                     save(videoId, found)
+                    if (videoId in pinned && found.lines.isNotEmpty()) {
+                        io.github.ilikeadofai.vocacolle.core.translate.prefetchLayers(found.lines.map { it.text })
+                    }
                     Log.i(TAG, if (found.lines.isEmpty()) "no lyrics found for $videoId" else "${found.source} has lyrics for $videoId")
                     if (found.lines.isNotEmpty()) deliverLate(videoId, found)
                 } catch (failure: Exception) {

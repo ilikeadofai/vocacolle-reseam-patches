@@ -53,5 +53,9 @@
 v0.11 조사로 종료. 진단에 정보 표시만 추가(P3-A).
 
 ## 릴리스
-- v0.15.0: P2-A~D
-- v0.16.0: P3-A, P3-B, P4 진단
+- v0.15.0: P2-A~D — 완료
+- v0.16.0: P3-A, P3-B, P4 진단 — 완료
+
+검증: 7.48.0 XAPK에 전 패치 적용(11/11), 패치된 DEX를 디컴파일해 각 훅 위치 확인. 기기 실행 확인은 아직.
+조사 중 이 개발 환경의 DNS가 nicovideo.jp를 127.0.0.1로 돌려 실시간 API 응답 확인은 못 했다. 크리에이터 최신곡 피드는
+nvapi `/v3/users/{id}/videos`의 `data.items[].essential`과 앱의 `/v1/playlist/user-uploaded` 형식(`watchId`, `content`) 둘 다 읽는다.

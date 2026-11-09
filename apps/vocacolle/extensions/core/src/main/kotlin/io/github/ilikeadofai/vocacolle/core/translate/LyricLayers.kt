@@ -104,6 +104,20 @@ fun lines(lines: List<String>?): List<String>? {
     return shown
 }
 
+/** Fetches the layers of [lines] ahead of time, for lyrics kept for offline use. */
+internal fun prefetchLayers(lines: List<String>) {
+    val romanize = AiSettings.aiLyricsRomaji.value
+    val config = if (AiSettings.aiLyricsTranslation.value) config() else null
+    if (!romanize && config == null) return
+    for (line in lines) {
+        val source = line.trim()
+        if (source.isEmpty() || source.length > MAX_LINE_CHARS || !JAPANESE.containsMatchIn(source)) continue
+        val reading = if (romanize) cached(romajiKey(source)) else ""
+        val translation = config?.let { cached(cacheKey(it, source)) } ?: if (config == null) "" else null
+        if (reading == null || translation == null) want(source, config, romanize)
+    }
+}
+
 private fun want(source: String, config: Config?, romanize: Boolean) {
     if (source in attempted || !queued.add(source)) return
     lineWorker
