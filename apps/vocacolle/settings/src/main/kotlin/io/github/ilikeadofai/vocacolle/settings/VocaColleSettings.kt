@@ -47,6 +47,7 @@ object AiSettings : SettingsGroup(VocaColleStrings) {
     )
     val aiLyricsTranslation by toggle(default = false, key = "ai.lyrics_translation", icon = Vector.lucide("captions"))
     val aiNotices by toggle(default = false, key = "ai.notices", icon = Vector.lucide("megaphone"))
+    val aiSearch by toggle(default = false, key = "ai.search", icon = Vector.lucide("search"))
     val aiLanguage by choice(
         default = "auto",
         key = "ai.language",

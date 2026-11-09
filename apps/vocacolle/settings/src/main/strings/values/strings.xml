@@ -179,4 +179,8 @@
     <string name="downloads_item_summary">Saved in VocaColle\'s cache: it follows the cache settings (Wi-Fi only, size limit), and Delete cached content removes it too.</string>
     <string name="page_ads">Ads</string>
     <string name="page_ads_summary">Launch, banner, and audio ads, and Premium pop-ups</string>
+    <string name="section_search">Search</string>
+    <string name="ai_search">Search in Korean or English</string>
+    <string name="ai_search_summary">Song, producer, and singer names are matched on VocaDB, other Korean or English phrases are translated, and the search runs in Japanese. Sends the search to VocaDB and Google Translate. What you typed stays in the search box and history.</string>
+    <string name="search_translated">Searched for %s</string>
 </resources>

@@ -66,8 +66,16 @@ Everything here is kept on the phone, with no limit, and never changes your acco
   its limit, matched to the exact video and its length, and kept for offline songs. Under each
   line: the **reading** in romaji or Hangul, and a **translation**.
 
+- **Search in Korean or English** (Translation page): type 千本桜 as *senbonzakura*,
+  *thousand cherry blossoms*, or *천본앵*, or 初音ミク as *hatsune miku* or *하츠네 미쿠*. Song,
+  producer, and singer names are matched exactly on VocaDB; other Korean, and English phrases of
+  two or more words, are translated (*슬픈 노래* → 悲しい歌). A single English word VocaDB
+  doesn't know, such as *remix* or *MMD*, is searched as typed. A toast shows what was searched,
+  and the search box and history keep what you typed.
+
 Song titles and anything VocaColle sends to its server stay in Japanese; translation is for
-display only, and tapping a translated tag still searches the Japanese tag.
+display only, and tapping a translated tag still searches the Japanese tag. The one exception is
+Korean or English search, whose whole point is to send the Japanese for what you typed.
 
 ## Privacy
 
@@ -75,6 +83,7 @@ display only, and tapping a translated tag still searches the Japanese tag.
 |---|---|---|
 | Translation (titles, tags, notices, lyrics lines) | The Japanese text | Google Translate or your API |
 | Description button | The description, when tapped | Google Translate or your API |
+| Search in Korean or English | What you search for, if it isn't Japanese | VocaDB, Google Translate |
 | Lyrics from other sources | Song name, artist, length | VocaDB, LRCLIB, NetEase, KuGou |
 | VocaDB titles, YouTube share links | The video id | vocadb.net |
 | Latest from creators | The creators' user ids | nicovideo.jp |

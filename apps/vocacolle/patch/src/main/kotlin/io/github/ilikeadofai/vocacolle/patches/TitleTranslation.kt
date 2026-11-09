@@ -17,6 +17,7 @@ import app.reseam.patch.settings.gate
 import app.reseam.patch.settings.onAction
 import app.reseam.patch.settings.section
 import io.github.ilikeadofai.vocacolle.core.translate.bindings.LyricLayers
+import io.github.ilikeadofai.vocacolle.core.translate.bindings.SearchTranslator
 import io.github.ilikeadofai.vocacolle.core.translate.bindings.TitleTranslator
 import io.github.ilikeadofai.vocacolle.core.translate.bindings.TranslateDescriptionClick
 import io.github.ilikeadofai.vocacolle.settings.AiSettings
@@ -144,6 +145,31 @@ private fun PatchRuntime.addLyricLayers() {
     }
 }
 
+/**
+ * Where Niconico searches get their keyword: the video search (`/v2/search/video`) and the
+ * playlist of its results (`/v1/playlist/search`), each `params.put("keyword", keyword)`.
+ */
+private val searchKeywords = methods("nicoSearchRequests") {
+    strings("keyword")
+    custom { classDef.sourceFile == "DefaultSearchService.kt" || classDef.sourceFile == "DefaultNvPlaylistService.kt" }
+}.points("searchKeyword") {
+    invokeVirtual { paramCount(2) }
+    argument(1) { string("keyword") }
+}
+
+/** Korean and English searches go out in Japanese; the search box and history keep the original. */
+private fun PatchRuntime.translateSearches() {
+    val points = searchKeywords.all
+    check(points.size == 2) { "expected the video and playlist search keywords, found ${points.size}" }
+    gate(AiSettings.aiSearch) {
+        points.forEach { point ->
+            point.captureArgumentAs("keyword", 2).before {
+                capture("keyword").assign(SearchTranslator.searchKeyword(capture("keyword")))
+            }
+        }
+    }
+}
+
 private fun PatchRuntime.translateTags() {
     val detail = detailTagText.single()
     val search = searchTagText.single()
@@ -252,6 +278,7 @@ val titleTranslation = patch("Translate songs, tags, and lyrics") {
             translationPage, VocaColleStrings.sectionTranslateService,
             AiSettings.aiLanguage, AiSettings.aiProvider, AiSettings.aiBaseUrl, AiSettings.aiModel, AiSettings.aiApiKey,
         ),
+        section(translationPage, VocaColleStrings.sectionSearch, AiSettings.aiSearch),
         section(lyricsPage, VocaColleStrings.sectionLyricsLayers, AiSettings.aiLyricsRomaji, AiSettings.aiLyricsScript, AiSettings.aiLyricsTranslation),
     )
 
@@ -276,6 +303,7 @@ val titleTranslation = patch("Translate songs, tags, and lyrics") {
         }
         addTranslateButton()
         translateTags()
+        translateSearches()
         addLyricLayers()
     }
 }

@@ -179,4 +179,8 @@
     <string name="downloads_item_summary">ボカコレのキャッシュに保存：キャッシュの設定（Wi-Fiのみ、容量制限）に従い、キャッシュしたコンテンツを削除でも消えます。</string>
     <string name="page_ads">広告</string>
     <string name="page_ads_summary">起動時・バナー・音声の広告とプレミアムのポップアップ</string>
+    <string name="section_search">検索</string>
+    <string name="ai_search">韓国語・英語で検索</string>
+    <string name="ai_search_summary">曲・プロデューサー・歌手の名前はVocaDBで探し、それ以外の韓国語・英語の語句は翻訳して日本語で検索します。検索語がVocaDBとGoogle翻訳に渡されます。入力した検索語は検索欄と履歴にそのまま残ります。</string>
+    <string name="search_translated">%sで検索しました</string>
 </resources>

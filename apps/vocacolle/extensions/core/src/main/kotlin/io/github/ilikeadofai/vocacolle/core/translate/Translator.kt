@@ -654,3 +654,5 @@ internal fun clearTranslationCache(context: Context): Long {
     memory.clear()
     return io.github.ilikeadofai.vocacolle.core.deleteTree(File(context.cacheDir, "vocacolle-reseam/ai"))
 }
+
+internal fun translationContext(): Context? = appContext
