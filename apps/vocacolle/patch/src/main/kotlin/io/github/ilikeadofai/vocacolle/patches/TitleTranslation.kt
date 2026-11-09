@@ -9,6 +9,8 @@ import app.reseam.patch.after
 import app.reseam.patch.methods
 import app.reseam.patch.points
 import app.reseam.patch.appEntry
+import app.reseam.patch.dex.ref
+import app.reseam.patch.fieldTarget
 import app.reseam.patch.klass
 import app.reseam.patch.method
 import app.reseam.patch.before
@@ -142,6 +144,58 @@ private fun PatchRuntime.addLyricLayers() {
     // switches decide the layers, so the extension reads them instead of one gate.
     rowLines.captureArgumentAs("lines", 0).before {
         capture("lines").assign(LyricLayers.lines(capture("lines")))
+    }
+    styleLyricLayers()
+}
+
+/** `LyricsLine(modifier, text, highlighted, onClick)`: one row, a Text and a 16 dp spacer. */
+private val lyricsLine = methods("lyricsLine") { stringsStartingWith("jp.nicovideo.nicobox.ui.player.LyricsLine (") }
+
+/** The spacer's 16 dp, as the float bits the app loads. */
+private const val ROW_GAP_BITS = 0x41800000L
+
+/**
+ * Readings and translations drawn smaller and close to their line: the row's Text gets the
+ * theme's 14 sp `normalStrong` style instead of its 22 sp `titleNormal`, and the spacer under
+ * it a smaller height, both decided by the mark the extension put on the row's text.
+ */
+private fun PatchRuntime.styleLyricLayers() {
+    val text = lyricsLine.points("lyricsLine.text") { invokeStatic { paramCount(TEXT_PARAMS); returns(Type.Void) } }.single()
+    val textCall = text.callee("Text")
+    val styleType = textCall.parameterTypes[17]
+    val composerType = textCall.parameterTypes[18]
+    // The theme's styles: `NicoBoxTheme.textStyles` is read just before, then its titleNormal.
+    val titleGetter = lyricsLine.points("lyricsLine.titleStyle") {
+        invokeVirtual { returns(styleType); paramCount(0) }
+    }.single().callee("titleNormal")
+    val styles = bytecode.findClass(titleGetter.owner) ?: error("no text styles class")
+    val theme = lyricsLine.points("lyricsLine.textStyles") { invokeVirtual { returns(titleGetter.owner) } }.single().callee("textStyles")
+    // R8 named the eight style getters in their properties' alphabetical order: middle,
+    // middleStrong, normal, normalStrong, small, smallStrong, titleLarge, titleNormal.
+    val getters = styles.virtualMethods.filter { it.returnType == styleType && it.parameterTypes.isEmpty() }.map { it.name }.sorted()
+    check(getters.size == 8 && getters[7] == titleGetter.name) { "the text styles changed: $getters" }
+    val normalStrongName = getters[3]
+    val normalStrong = method("textStyles.normalStrong") {
+        inClass(klass(titleGetter.owner))
+        name(normalStrongName)
+        paramCount(0)
+    }
+    val themeInstance = fieldTarget("NicoBoxTheme.INSTANCE") {
+        val owner = bytecode.findClass(theme.owner) ?: error("no theme class")
+        owner.staticFields.singleOrNull { it.fieldType == theme.owner }?.ref ?: error("the theme isn't an object")
+    }
+    LyricLayers.layerStyle.implement {
+        returnValue(staticField(themeInstance).call(theme, param(0).cast(composerType), int(6)).call(normalStrong))
+    }
+    text.captureArgumentAs("text", 0).captureArgumentAs("style", 17).captureArgumentAs("composer", 18).before {
+        capture("text").assign(LyricLayers.rowText(capture("text")))
+        capture("style").assign(LyricLayers.rowStyle(capture("style"), capture("composer")).cast(styleType))
+    }
+    lyricsLine.points("lyricsLine.gap") {
+        invokeStatic { paramCount(1); returns(Type.Float) }
+        argument(0) { literal(ROW_GAP_BITS) }
+    }.single().captureArgumentAs("gap", 0).before {
+        capture("gap").assign(LyricLayers.rowGap(capture("gap")))
     }
 }
 

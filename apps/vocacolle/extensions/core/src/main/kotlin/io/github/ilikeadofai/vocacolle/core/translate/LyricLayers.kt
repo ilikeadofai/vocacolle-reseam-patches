@@ -92,16 +92,61 @@ fun lines(lines: List<String>?): List<String>? {
     }
     val shown = ArrayList<String>(lines.size * 3)
     for (line in lines) {
-        shown += line
         val source = line.trim()
-        if (source.isEmpty() || source.length > MAX_LINE_CHARS || !JAPANESE.containsMatchIn(source)) continue
+        if (source.isEmpty() || source.length > MAX_LINE_CHARS || !JAPANESE.containsMatchIn(source)) {
+            shown += line
+            continue
+        }
         val reading = if (romanize) memory[romajiKey(source)] else null
         val translation = config?.let { memory[cacheKey(it, source)] }
-        reading?.let { shown += if (hangul) romajiToHangul(it, source) else it }
-        translation?.takeIf { it != source }?.let { shown += it }
+        val layers = listOfNotNull(
+            reading?.let { if (hangul) romajiToHangul(it, source) else it },
+            translation?.takeIf { it != source },
+        )
+        // Marked for the row: the line keeps its size with a small gap under it, its layers are
+        // drawn smaller and close together, and the last one keeps the app's gap to the next line.
+        shown += if (layers.isEmpty()) line else MARK_LINE + line
+        layers.forEachIndexed { index, layer -> shown += (if (index == layers.lastIndex) MARK_LAST else MARK_LAYER) + layer }
         if ((romanize && reading == null) || (config != null && translation == null)) want(source, config, romanize)
     }
     return shown
+}
+
+// Invisible marks at the start of a row's text, read and removed by the row itself.
+private const val MARK_LINE = '\u2062'
+private const val MARK_LAYER = '\u2063'
+private const val MARK_LAST = '\u2064'
+
+/** The gaps under rows, in dp: under a line with layers, between layers, and the app's own. */
+private const val GAP_UNDER_LINE = 4f
+private const val GAP_BETWEEN_LAYERS = 2f
+
+/** What the row being composed is: 0 a plain line, else its mark. Composition is single-threaded. */
+private var rowMark: Char = 0.toChar()
+
+/** The text a lyrics row shows: its mark removed, and remembered for the style and the gap. */
+@Export
+fun rowText(text: String?): String? {
+    val first = text?.firstOrNull()
+    rowMark = if (first == MARK_LINE || first == MARK_LAYER || first == MARK_LAST) first else 0.toChar()
+    return if (rowMark == 0.toChar()) text else text!!.substring(1)
+}
+
+/** The app's smaller text style, from the theme being composed; built by the patch. */
+@Export
+external fun layerStyle(composer: Any?): Any?
+
+/** The row's style: the app's own for lines, the smaller one for a reading or translation. */
+@Export
+fun rowStyle(style: Any?, composer: Any?): Any? =
+    if (rowMark == MARK_LAYER || rowMark == MARK_LAST) layerStyle(composer) ?: style else style
+
+/** The gap under the row, in dp: the app's [gap], or a smaller one inside a line's group. */
+@Export
+fun rowGap(gap: Float): Float = when (rowMark) {
+    MARK_LINE -> GAP_UNDER_LINE
+    MARK_LAYER -> GAP_BETWEEN_LAYERS
+    else -> gap
 }
 
 /** Fetches the layers of [lines] ahead of time, for lyrics kept for offline use. */

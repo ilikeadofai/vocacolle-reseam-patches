@@ -64,7 +64,8 @@ Everything here is kept on the phone, with no limit, and never changes your acco
   OpenAI-compatible API with your key, stored encrypted on the phone.
 - **Lyrics** page: lyrics from LRCLIB, NetEase, KuGou, or VocaDB when VocaColle has none or hit
   its limit, matched to the exact video and its length, and kept for offline songs. Under each
-  line: the **reading** in romaji or Hangul, and a **translation**.
+  line: the **reading** in romaji or Hangul, and a **translation**, in smaller text and close to
+  their line.
 
 - **Search in Korean or English** (Translation page): type 千本桜 as *senbonzakura*,
   *thousand cherry blossoms*, or *천본앵*, or 初音ミク as *hatsune miku* or *하츠네 미쿠*. Song,
