@@ -191,4 +191,8 @@ object AppStrings {
     val menuFavoriteAdd: String get() = appText("menu_favorite_add") { VocaColleStrings.menuFavoriteAdd }
     val menuFavoriteRemove: String get() = appText("menu_favorite_remove") { VocaColleStrings.menuFavoriteRemove }
     val menuSave: String get() = appText("menu_save") { VocaColleStrings.menuSave }
+    val nativePlaylistsOpen: String get() = appText("native_playlists_open") { VocaColleStrings.nativePlaylistsOpen }
+    val nativePlaylistsManage: String get() = appText("native_playlists_manage") { VocaColleStrings.nativePlaylistsManage }
+    val nativePlaylistsTransfer: String get() = appText("native_playlists_transfer") { VocaColleStrings.nativePlaylistsTransfer }
+    val nativePlaylistsBackup: String get() = appText("native_playlists_backup") { VocaColleStrings.nativePlaylistsBackup }
 }

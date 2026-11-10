@@ -187,4 +187,8 @@
     <string name="menu_favorite_add">Add to favorites</string>
     <string name="menu_favorite_remove">Remove from favorites</string>
     <string name="menu_save">Save · Download…</string>
+    <string name="native_playlists_open">Playlists</string>
+    <string name="native_playlists_manage">Manage playlists in VocaColle’s Library. To add a song, tap the playlist button beside the heart.</string>
+    <string name="native_playlists_transfer">Existing patch playlists are copied in the background. Songs that cannot be loaded remain pending; reopen the app or the playlist picker to retry. The original backup is retained.</string>
+    <string name="native_playlists_backup">Playlist exports here contain the original patch backup, including later imports and limit saves. They do not include edits made in VocaColle’s Library.</string>
 </resources>

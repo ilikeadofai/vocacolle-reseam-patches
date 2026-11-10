@@ -62,6 +62,7 @@ fun init(context: Context?) {
         override fun onActivitySaveInstanceState(activity: Activity, state: Bundle) {}
         override fun onActivityDestroyed(activity: Activity) {}
     })
+    transferIfNeeded()
 }
 
 // The work detail screen --------------------------------------------------------------------
@@ -81,13 +82,20 @@ fun rememberDetail(detail: Any?, id: String?, title: String?, owner: Any?, owner
 
 internal fun libraryContext(): Context? = appContext
 
+/** A read-only snapshot for native transfer; the original serialized lists remain the backup. */
+internal fun legacyPlaylistBackups(): List<PlaylistBackup> =
+    playlists().mapNotNull { list -> list.name?.let { PlaylistBackup(it, list.songs.map { song -> song.id }) } }
+
 internal fun changedLibrary() = changed()
 
 /** Adds the song to the favorites ([name] null) or a playlist, made if needed, unless it is there. */
 internal fun addToList(name: String?, id: String, title: String) {
     val context = appContext ?: return
     if (name != null) createPlaylist(context, name)
-    if (list(name, context).songs.none { it.id == id }) toggleIn(name, id, title, context)
+    if (list(name, context).songs.none { it.id == id }) {
+        toggleIn(name, id, title, context)
+        if (name != null) refreshNativeBackups(setOf(name))
+    }
 }
 
 internal fun playSongs(activity: Activity, title: String, songs: List<Pair<String, String>>) =
@@ -165,6 +173,23 @@ private fun chooseFor(id: String, songTitle: String?, creatorId: String?, ownerN
     val title = songTitle ?: id
     val creatorName = ownerName ?: creatorId
     val activity = currentActivity?.get()?.takeUnless { it.isFinishing } ?: return
+    if (hasNativePlaylists()) {
+        Reseam.bundle(BUNDLE).ui(activity).dialog()
+            .title(title)
+            .action(AppStrings.nativePlaylistsOpen) {
+                if (!openNativePlaylistPicker(id)) Toast.makeText(activity, AppStrings.nativePlaylistsManage, Toast.LENGTH_LONG).show()
+            }
+            .action(if (isDownloaded(activity, id)) AppStrings.downloadDone else AppStrings.downloadAdd) {
+                toggleDownload(activity, id, title)
+                changed()
+            }.apply {
+                if (creatorId != null) action(creatorChoiceLabel(activity, creatorId, creatorName ?: creatorId)) {
+                    toggleCreator(activity, creatorId, creatorName ?: creatorId)
+                    changed()
+                }
+            }.show()
+        return
+    }
     val lists = playlists()
     // First the offline download, then each playlist, a new one, and the creator.
     val downloaded = isDownloaded(activity, id)
@@ -370,13 +395,14 @@ fun openFromApp() {
 fun open(activity: Activity?) {
     if (activity == null) return
     init(activity)
-    val lists = listOf(favorites(activity)) + playlists(activity)
+    val native = hasNativePlaylists()
+    val lists = listOf(favorites(activity)) + if (native) emptyList() else playlists(activity)
     val labels = lists.map { "${it.label} (${it.songs.size})" } + listOf(
         "${AppStrings.creatorsTitle} (${creators(activity).size})",
         "${AppStrings.savedMylistsTitle} (${savedMylists(activity).size})",
         "${AppStrings.downloadsTitle} (${downloads(activity).size})",
     )
-    Reseam.bundle(BUNDLE).ui(activity).dialog()
+    val dialog = Reseam.bundle(BUNDLE).ui(activity).dialog()
         .title(AppStrings.localFavorites)
         .choices(labels.toTypedArray(), -1) { index ->
             when (index) {
@@ -387,13 +413,14 @@ fun open(activity: Activity?) {
             }
         }
         .action(AppStrings.favoritesMore) { more(activity) }
-        .action(AppStrings.playlistNew) {
+    if (native) dialog.message(AppStrings.nativePlaylistsManage + "\n\n" + AppStrings.nativePlaylistsTransfer)
+    else dialog.action(AppStrings.playlistNew) {
             askName(activity, AppStrings.playlistNew, "") { name ->
                 createPlaylist(activity, name)
                 open(activity)
             }
         }
-        .show()
+    dialog.show()
 }
 
 private fun openList(activity: Activity, name: String?) {
@@ -468,7 +495,7 @@ private fun askName(activity: Activity, title: String, current: String, then: (S
 private fun more(activity: Activity) {
     Reseam.bundle(BUNDLE).ui(activity).dialog()
         .title(AppStrings.favoritesMore)
-        .message(AppStrings.favoritesMoreSummary)
+        .message(AppStrings.favoritesMoreSummary + if (hasNativePlaylists()) "\n\n" + AppStrings.nativePlaylistsBackup else "")
         .action(AppStrings.favoritesImport) { import(activity) }
         .action(AppStrings.favoritesExport) { export(activity) }
         .show()
@@ -506,6 +533,7 @@ private fun import(activity: Activity) {
         .dismissAction(AppStrings.cancel)
         .action(AppStrings.favoritesImport) {
             var added = 0
+            val changedNames = mutableSetOf<String>()
             val ok = try {
                 val text = field.text.trim()
                 if (text.startsWith("[")) {
@@ -526,6 +554,7 @@ private fun import(activity: Activity) {
                         val existing = lists.firstOrNull { it.name == name }?.songs ?: emptyList()
                         val (merged, n) = merge(existing, parse(item.optJSONArray("songs")))
                         added += n
+                        if (n > 0 || lists.none { it.name == name }) changedNames += name
                         lists = if (lists.any { it.name == name }) {
                             lists.map { if (it.name == name) Playlist(name, merged) else it }
                         } else {
@@ -541,6 +570,7 @@ private fun import(activity: Activity) {
             if (!ok) {
                 Toast.makeText(activity, AppStrings.favoritesImportFailed, Toast.LENGTH_LONG).show()
             } else {
+                refreshNativeBackups(changedNames)
                 changed()
                 Toast.makeText(activity, String.format(AppStrings.favoritesImported, added), Toast.LENGTH_SHORT).show()
                 open(activity)

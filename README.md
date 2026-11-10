@@ -45,17 +45,27 @@ says what it sends. Turning a switch off puts that part of the app back the way 
 Everything here is kept on the phone, with no limit, and never changes your account.
 
 - In the player, **⋮ → Add to favorites** adds the song to the favorites.
-- **⋮ → Save · Download…** opens a list: **⬇ Download for offline**, your playlists (✓ where the
-  song is), a new playlist, and **Watch creator**.
+- The **playlist button beside the heart** uses VocaColle’s original playlist picker. Named
+  playlists from earlier patch versions are copied into native local playlists in the background;
+  manage them in VocaColle’s **Library**, including creating, renaming, deleting, and playing them.
+- **⋮ → Save · Download…** keeps **⬇ Download for offline** and **Watch creator**. Its
+  **Playlists** action opens the same native picker while the player is available.
 - **Download for offline** uses VocaColle's own cache, which the app otherwise offers only for
   whole playlists: progress shows in VocaColle's notification, the cache settings (Wi-Fi only,
   size limit) apply, and *Delete cached content* removes downloads too. You need to be logged in.
-- **My library (this phone)** in Settings opens the favorites, playlists, **Downloads**,
+- **My library (this phone)** in Settings opens the favorites, **Downloads**,
   **Creators** (open a profile, or play *Latest from creators*: their newest uploads), and
   **Saved mylists**. Lists play in VocaColle's own player, from any song.
 - When your account's limit refuses a like, a mylist item, or a follow, VocaColle still shows
   its error, and the item is kept in My library instead (*Keep what the account limit refuses*).
-- **Export / import** copies favorites and playlists as text, to move them to another phone.
+- **Export / import** retains favorites and the original patch playlist backup. Native Library
+  edits are not written back into that backup. New lists and songs imported from a backup are
+  queued for native transfer. Same-name native lists get a separate numbered copy; deleting a
+  completed copy does not recreate it on the next app start. Songs that fail metadata loading
+  remain pending and retry when you reopen the app or playlist picker.
+
+Native playlist integration currently has build, migration-logic, and patched-DEX verification;
+phone UI validation is pending. Details and reproducible commands: [native playlists](docs/NATIVE-PLAYLISTS.md).
 
 ## Translation and lyrics
 

@@ -187,4 +187,8 @@
     <string name="menu_favorite_add">お気に入りに追加</string>
     <string name="menu_favorite_remove">お気に入りから外す</string>
     <string name="menu_save">保存・ダウンロード…</string>
+    <string name="native_playlists_open">プレイリスト</string>
+    <string name="native_playlists_manage">プレイリストはボカコレのライブラリで管理します。曲を追加するには、ハートの隣のプレイリストボタンを押してください。</string>
+    <string name="native_playlists_transfer">既存のパッチのプレイリストをバックグラウンドでコピーします。読み込めない曲は保留し、アプリやプレイリスト選択画面を開くと再試行します。元のバックアップは保持します。</string>
+    <string name="native_playlists_backup">ここで書き出すプレイリストは元のパッチのバックアップで、その後の読み込みや上限超過時の保存も含みます。ボカコレのライブラリでの編集は含まれません。</string>
 </resources>

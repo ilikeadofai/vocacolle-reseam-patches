@@ -171,6 +171,7 @@ val localFavorites = patch("My library") {
         keepOnLimit("mylistFollow", mylistFollow, apiException) { LocalLibrary.attemptFollowMylist(param(1)) }
         keepOnLimit("userFollow", userFollow, followException) { LocalLibrary.attemptFollowUser(param(0)) }
         implementComposeState(LocalFavorites.newState, LocalFavorites.readState, LocalFavorites.writeState)
+        installNativePlaylists()
 
 
         // Favorites and the save chooser in the player's ⋮ menu, after its last row.

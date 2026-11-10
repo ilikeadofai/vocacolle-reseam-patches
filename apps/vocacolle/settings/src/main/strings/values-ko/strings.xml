@@ -187,4 +187,8 @@
     <string name="menu_favorite_add">즐겨찾기에 추가</string>
     <string name="menu_favorite_remove">즐겨찾기에서 빼기</string>
     <string name="menu_save">저장 · 다운로드…</string>
+    <string name="native_playlists_open">재생목록</string>
+    <string name="native_playlists_manage">재생목록은 보카코레의 라이브러리에서 관리합니다. 곡을 추가하려면 하트 옆의 재생목록 버튼을 누르세요.</string>
+    <string name="native_playlists_transfer">기존 패치 재생목록은 백그라운드에서 복사됩니다. 불러올 수 없는 곡은 대기 상태로 남으며, 앱이나 재생목록 선택 창을 다시 열면 재시도합니다. 원본 백업은 보관됩니다.</string>
+    <string name="native_playlists_backup">여기서 내보내는 재생목록은 기존 패치 백업이며, 이후 가져오거나 한도 초과로 저장한 곡도 포함합니다. 보카코레 라이브러리에서 수정한 내용은 포함하지 않습니다.</string>
 </resources>
